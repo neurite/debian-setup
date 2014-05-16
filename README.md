@@ -8,3 +8,4 @@ debian-setup
 5. [Video and Audio](https://github.com/neurite/debian-setup/wiki/Video-and-Audio)
 6. [Samba Server](https://github.com/neurite/debian-setup/wiki/Samba-Server)
 7. [Debian VirtualBox Setup](https://github.com/neurite/debian-setup/wiki/Debian-VirtualBox-Setup)
+8. [Java](https://github.com/neurite/debian-setup/wiki/Java)
