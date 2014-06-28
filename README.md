@@ -9,3 +9,4 @@ debian-setup
 6. [Samba Server](https://github.com/neurite/debian-setup/wiki/Samba-Server)
 7. [Debian VirtualBox Setup](https://github.com/neurite/debian-setup/wiki/Debian-VirtualBox-Setup)
 8. [Java](https://github.com/neurite/debian-setup/wiki/Java)
+9. [Vagrant](https://github.com/neurite/debian-setup/wiki/Vagrant)
