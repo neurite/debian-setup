@@ -7,6 +7,6 @@ debian-setup
 4. [Minimal LXDE](https://github.com/neurite/debian-setup/wiki/Minimal-LXDE)
 5. [Video and Audio](https://github.com/neurite/debian-setup/wiki/Video-and-Audio)
 6. [Samba Server](https://github.com/neurite/debian-setup/wiki/Samba-Server)
-7. [Debian VirtualBox](https://github.com/neurite/debian-setup/wiki/Debian-VirtualBox)
+7. [VirtualBox](https://github.com/neurite/debian-setup/wiki/VirtualBox)
 8. [Java](https://github.com/neurite/debian-setup/wiki/Java)
 9. [Vagrant](https://github.com/neurite/debian-setup/wiki/Vagrant)
