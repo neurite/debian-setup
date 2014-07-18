@@ -10,3 +10,4 @@ debian-setup
 7. [VirtualBox](https://github.com/neurite/debian-setup/wiki/VirtualBox)
 8. [Java](https://github.com/neurite/debian-setup/wiki/Java)
 9. [Vagrant](https://github.com/neurite/debian-setup/wiki/Vagrant)
+10. [Mac OS X Notes](https://github.com/neurite/debian-setup/wiki/Mac-OS-X-Notes)
