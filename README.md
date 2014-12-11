@@ -9,6 +9,5 @@ Setting up a Debian development box step by step.
 4. [Minimal LXDE](https://github.com/neurite/debian-setup/wiki/Minimal-LXDE)
 5. [Video and Audio](https://github.com/neurite/debian-setup/wiki/Video-and-Audio)
 6. [Samba Server](https://github.com/neurite/debian-setup/wiki/Samba-Server)
-7. [VirtualBox](https://github.com/neurite/debian-setup/wiki/VirtualBox)
-8. [Vagrant](https://github.com/neurite/debian-setup/wiki/Vagrant)
-9. [Java](https://github.com/neurite/debian-setup/wiki/Java)
+7. [VirtualBox and Vagrant](https://github.com/neurite/debian-setup/wiki/VirtualBox-and-Vagrant)
+8. [Java](https://github.com/neurite/debian-setup/wiki/Java)
