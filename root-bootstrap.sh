@@ -104,7 +104,7 @@ apt-get -q -y install python-pip python3-pip
 # virtualenv
 apt-get -q -y install virtualenv
 # aws command-line
-apt-get -q -y install awscli
+apt-get -q -y install python3-boto awscli
 # Use virtualenvs for SciPy stacks
 # SciPy stack for Python 2
 # apt-get -q -y install ipython ipython-notebook
