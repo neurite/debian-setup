@@ -10,5 +10,6 @@ Setting up a Debian box for software development.
 5. [Minimal GNOME](https://github.com/neurite/debian-setup/wiki/Minimal-GNOME)
 6. [Video and Audio](https://github.com/neurite/debian-setup/wiki/Video-and-Audio)
 7. [Samba Server](https://github.com/neurite/debian-setup/wiki/Samba-Server)
-8. [VirtualBox and Vagrant](https://github.com/neurite/debian-setup/wiki/VirtualBox-and-Vagrant)
-9. [Java](https://github.com/neurite/debian-setup/wiki/Java)
+8. [VirtualBox](https://github.com/neurite/debian-setup/wiki/VirtualBox)
+9. [Docker](https://github.com/neurite/debian-setup/wiki/Docker)
+10. [Java](https://github.com/neurite/debian-setup/wiki/Java)
