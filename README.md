@@ -13,3 +13,4 @@ Setting up a Debian box for software development.
 8. [VirtualBox](https://github.com/neurite/debian-setup/wiki/VirtualBox)
 9. [Docker](https://github.com/neurite/debian-setup/wiki/Docker)
 10. [Java](https://github.com/neurite/debian-setup/wiki/Java)
+11. [Python](https://github.com/neurite/debian-setup/wiki/Python)
