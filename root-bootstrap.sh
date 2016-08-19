@@ -76,48 +76,6 @@ cd
 
 echo "Done installing git."
 
-### Python
-
-echo "About to install Python..."
-sleep 3s
-
-# Python header files
-apt-get -q -y install python-dev python3-dev
-# Linear algebra packages needed by numpy and scipy
-# These depedencies do not need to be installed explicitly if the
-# Debian packages, python-numpy or python-scipy, are installed.
-# If numpy or scipy are installed only in virtualenvs, these linear
-# algebra packages must be installed explicitly. The same can be
-# said for other Python dependencies.
-apt-get -q -y install libblas3 libblas-dev liblapack3 liblapack-dev
-# FreeType libraries needed by matplotlib
-apt-get -q -y install libfreetype6 libfreetype6-dev
-# Dependencies needed by cryptography
-apt-get -q -y install libffi-dev libssl-dev
-# Needed by Qt?
-# apt-get -q -y install libcanberra-gtk-module
-# Core python packages
-apt-get -q -y install python python3
-# pip
-# Note only use pip in virtual envs
-apt-get -q -y install python-pip python3-pip
-# virtualenv
-apt-get -q -y install virtualenv
-# aws command-line
-apt-get -q -y install python3-boto awscli
-# Use virtualenvs for SciPy stacks
-# SciPy stack for Python 2
-# apt-get -q -y install ipython ipython-notebook
-# apt-get -q -y install python-numpy python-matplotlib python-scipy
-# apt-get -q -y install python-pandas python-sklearn python-sympy
-# Scipy stack for Python 3
-# Note for jessie this is incomplete missing sympy and sklearn
-# apt-get -q -y install ipython3 ipython3-notebook
-# apt-get -q -y install python3-numpy python3-matplotlib python3-scipy
-# apt-get -q -y install python3-pandas
-
-echo "Done installing python."
-
 ### java
 
 echo "About to install java..."
