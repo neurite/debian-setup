@@ -73,6 +73,8 @@ apt-get -q -y install libgnome-keyring-dev
 cd /usr/share/doc/git/contrib/credential/gnome-keyring/
 make
 cd
+# /etc/gitconfig
+git config --system credential.helper /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
 
 echo "Done installing git."
 
