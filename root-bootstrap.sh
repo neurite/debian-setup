@@ -78,6 +78,20 @@ git config --system credential.helper /usr/share/doc/git/contrib/credential/gnom
 
 echo "Done installing git."
 
+### vim
+
+echo "About to configure vim..."
+sleep 3s
+
+# Finds the directory where this script is located
+# `dirname "${BASH_SOURCE[0]}"` gives the relative path
+# Change to that directory and pwd to get the absolute path
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+mv /etc/vim/vimrc /etc/vim/vimrc.backup
+cp "${DIR}/vimrc" /etc/vim/vimrc
+
+echo "Done configuring vim."
+
 ### java
 
 echo "About to install java..."
