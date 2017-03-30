@@ -37,12 +37,19 @@ sleep 3s
 # Additional fonts
 apt-get -q -y install fonts-droid fonts-inconsolata
 
+# Build tools
+#
+# dpkg-dev -- Debian package development tools
+# libc6-dev -- GNU C Library: Development Libraries and Header Files
 # gcc -- The GNU C compiler
 # g++ -- The GNU C++ compiler, a fairly portable optimizing compiler for C++
 # gfortran -- The GNU Fortran 95 compiler
 # make -- GNU Make
 # check -- A simple interface for defining unit tests
-apt-get -q -y install gcc g++ gfortran make check
+#
+# Alternatively these build tools can be provided via
+# the informational package, build-essential.
+apt-get -q -y install dpkg-dev libc6-dev gcc g++ gfortran make check
 
 # From the Ubuntu documentation:
 # "This DKMS (Dynamic Kernel Module Support) package provides support for
