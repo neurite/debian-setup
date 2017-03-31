@@ -66,6 +66,7 @@ apt-get -q -y install vim
 # Handy command-line tool for handling CSV files based on OCaml
 apt-get -q -y install csvtool
 
+# Ruby needed by tools such as the Travis CI command-line client
 apt-get -q -y install ruby-dev ruby
 
 echo "Done installing packages, tools for development."
