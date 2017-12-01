@@ -61,8 +61,6 @@ apt-get -q -y install openssl
 
 apt-get -q -y install curl wget
 
-apt-get -q -y install vim
-
 # Handy command-line tool for handling CSV files based on OCaml
 apt-get -q -y install csvtool
 
@@ -91,12 +89,10 @@ echo "Done installing git."
 echo "About to configure vim..."
 sleep 3s
 
-# Finds the directory where this script is located
-# `dirname "${BASH_SOURCE[0]}"` gives the relative path
-# Change to that directory and pwd to get the absolute path
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-mv /etc/vim/vimrc /etc/vim/vimrc.backup
-cp "${DIR}/vimrc" /etc/vim/vimrc
+apt-get -q -y remove vim
+apt-get -q -y remove vim-tiny
+# Alternatives include vim-gtk (jessie) or vim-gtk3 (stretch)
+apt-get -q -y install vim-gnome
 
 echo "Done configuring vim."
 
