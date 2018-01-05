@@ -1,6 +1,3 @@
-debian-setup
-============
-
-Setting up a Debian box for software development, machine learning, deep learning.
+Setting up Debian for software development and machine learning.
 
 1. [Installation](docs/installation.md)
