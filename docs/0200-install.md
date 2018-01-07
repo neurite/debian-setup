@@ -1,3 +1,5 @@
+### Why
+
 So why expert, manual install?
 
 Choosing "Expert install" gives us the option of manual disk partitions. When there is only one disk, the simplest configuration is one partition over the entire disk. This however is not ideal as data of `/`, `/home`, `/var`, `/tmp`, swap have different profiles and require different security measures. Splitting them into different partitions and setting different mounting options solve the problems.
@@ -5,6 +7,8 @@ Choosing "Expert install" gives us the option of manual disk partitions. When th
 My rig is hybrid with one SSD hosting the system binaries, one spinning disk for swap and temporary data, and one RAID10 for backup data. Manual partitions make efficient use of the different disks.
 
 The second reason is about installing a lightweight desktop. Like disk partitions, expert install gives the option for not installing the default desktop, which paves way for adding a lightweight desktop later on. For example, [a minimal GNOME desktop](0601-gnome.md).
+
+### How
 
 Here are the steps for `Expert install`:
 
@@ -48,3 +52,7 @@ Here are the steps for `Expert install`:
 17. Finish and reboot
     * Set the system clock to UTC: Yes
     * Reboot
+
+### Almost done, not yet...
+
+Make sure to read about [cleanup, fixes, issues](0202-cleanup.md)
