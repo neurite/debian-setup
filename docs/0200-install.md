@@ -10,8 +10,6 @@ The second reason is about installing a lightweight desktop. Like disk partition
 
 ### How
 
-Here are the steps for `Expert install`:
-
 1. First, boot to the USB disk [you just prepared](0100-prepare.md). In order to boot to the USB disk, modify the boot order in the BIOS. Note certain USB ports on the motherboard may not boot. If you suspect that is the case, try a different USB port. Once booted, the screen should display "UEFI Installer" in the title; otherwise revisit the UEFI settings of the motherboard.
 2. `Advanced options ...`, then `Expert install`
     * Note, **do not hit Enter yet**, if you want to set up [Serial ATA RAID (SATA RAID, hardware RAID)](https://wiki.debian.org/DebianInstaller/SataRaid). I _used to_ have SATA RAID. But this feature does not seem to be well supported. I have since switched to software RAID. Software RAID is set up in [the disk partition step](0201-partitions.md).
