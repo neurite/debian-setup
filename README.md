@@ -1,7 +1,7 @@
 Set up Debian for software development and machine learning.
 
 1. [Prepare](docs/0100-prepare.md)
-2. [Expert install](docs/0200-install.md)
+2. [Install](docs/0200-install.md)
     1. [Manual disk partitions](docs/0201-partitions.md)
     2. [Clean up, fixes, issues](docs/0202-cleanup.md)
 3. [NVIDIA](docs/0300-nvidia.md)
@@ -25,4 +25,3 @@ Set up Debian for software development and machine learning.
     2. [Linear algebra packages](docs/1002-blas-lapack.md)
     3. [Numpy](docs/1003-numpy.md)
     4. [Frameworks](docs/1004-frameworks.md)
-
