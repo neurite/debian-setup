@@ -22,18 +22,18 @@ Set up the partion with the correct format `Ext4 journaling`, mount point, and m
 
 ### Example partitions
 
-    | Drive               | Mount Point | Type | Size   | Mount Options                    | Other     |
-    |---------------------|-------------|------|--------|----------------------------------|-----------|
-    | sda (256 GB SSD)    |             | EFI  | 256 MB |                                  | Bootable  |
-    |                     | /           | EXT4 | 90 GB  | discard, relatime                |           |
-    |                     | /usr/local  | EXT4 | 30 GB  | discard, relatime, nodev         |           |
-    |                     | /opt        | EXT4 | 30 GB  | discard, relatime, nodev         |           | 
-    |                     | /home       | EXT4 | 100 GB | discard, relatime, nodev, nosuid |           |
-    | sdb (1 TB spinning) |             | SWAP | 64 GB  |                                  |           |
-    |                     | /var        | EXT4 | 128 GB | relatime, nodev, nosuid          |           |
-    |                     | /tmp        | EXT4 | 128 GB | relatime, nodev, nosuid, noexec  |           |
-    |                     | /stash      | EXT4 | 512 GB | relatime, nodev, nosuid, noexec  |           |
-    | RAID10              | /samba      | EXT4 | 4 TB   | relatime, nodev, nosuid, noexec  | largefile |
+| Drive               | Mount Point | Type | Size   | Mount Options                    | Other     |
+|---------------------|-------------|------|--------|----------------------------------|-----------|
+| sda (256 GB SSD)    |             | EFI  | 256 MB |                                  | Bootable  |
+|                     | /           | EXT4 | 90 GB  | discard, relatime                |           |
+|                     | /usr/local  | EXT4 | 30 GB  | discard, relatime, nodev         |           |
+|                     | /opt        | EXT4 | 30 GB  | discard, relatime, nodev         |           | 
+|                     | /home       | EXT4 | 100 GB | discard, relatime, nodev, nosuid |           |
+| sdb (1 TB spinning) |             | SWAP | 64 GB  |                                  |           |
+|                     | /var        | EXT4 | 128 GB | relatime, nodev, nosuid          |           |
+|                     | /tmp        | EXT4 | 128 GB | relatime, nodev, nosuid, noexec  |           |
+|                     | /stash      | EXT4 | 512 GB | relatime, nodev, nosuid, noexec  |           |
+| RAID10              | /samba      | EXT4 | 4 TB   | relatime, nodev, nosuid, noexec  | largefile |
 
 Finally it lets you review the partitions.
 
