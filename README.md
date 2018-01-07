@@ -14,7 +14,8 @@ Set up Debian for software development and machine learning.
     1. [Minimal GNOME](docs/0601-gnome.md)
     2. [Minimal LXDE](docs/0602-lxde.md)
     3. [Terminal](docs/0603-terminal.md)
-    5. [Audio](docs/0604-audio.md)
+    4. [Audio](docs/0604-audio.md)
+    5. [Firefox and Chrome](docs/0605-browser.md)
 7. [Java](docs/0700-java.md)
 8. [Python](docs/0800-python.md)
 9. Virtual machines
