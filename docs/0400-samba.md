@@ -32,4 +32,4 @@
 5. `sudo /etc/init.d/samba restart`
 6. Can connect using `smb://[HostName]/[SambaShareName]`
 
-Finally, there is the book [Using Samba](https://www.samba.org/samba/docs/using_samba/toc.html).
+To learn more, check out the book [Using Samba](https://www.samba.org/samba/docs/using_samba/toc.html).
