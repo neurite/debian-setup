@@ -14,27 +14,29 @@ Note nvidia-cuda-toolkit is not in stretch backports. Otherwise, we could upgrad
 
 ### Verify
 
-* Verify NVIDIA graphics is installed and recognized in the system `lspci | grep -i nvidia`
+* Verify NVIDIA graphics is installed and is recognized in the system `lspci | grep -i nvidia`
 * Verify Linux kernel `uname -r` and architecture `uname -m`
 
 ### Linux headers
 
-NVIDIA installs into the kernel tree. In order to do that, Linux headers are needed.
-
-It is important we install the exact version of Linux headers. Thus this better be done manually.
-
 `sudo apt-get install linux-headers-$(uname -r | sed 's/[^-]*-[^-]*-//')`
 
-The command `uname -r | sed 's/[^-]*-[^-]*-//'` output `amd64`. The package `linux-headers-amd64` is the architecture-specific meta package. The package manager points it to the correct package, for example, `linux-headers-4.9.0-5-amd64`.
+NVIDIA installs into the kernel tree. In order to do that, Linux headers are needed. It is important we install the exact version of Linux headers. Thus this better be done manually and separately.
 
-So in the list of packages to be installed, double check there is `linux-headers-4.9.0-5-amd64` where `4.9.0-5-amd64` should match the kernel.
+The command `uname -r | sed 's/[^-]*-[^-]*-//'` output `amd64`. The package `linux-headers-amd64` is the architecture-specific meta-package. The package manager points it to the package of correct kernel version, for example, `linux-headers-4.9.0-5-amd64`.
+
+So in the list of packages to be installed, double check there is `linux-headers-4.9.0-5-amd64` where `4.9.0-5-amd64` should match the kernel of your system.
 
 ### NVIDIA kernel and driver
 
 `sudo apt-get install dkms nvidia-kernel-dkms nvidia-driver`
 
-Must restart to replace nouveau with nvidia.
+The dkms packages are singled out to make it clear that NVIDIA installs into the kernel tree. They are actually hard dependencies of the `nvidia-driver` meta-package.
+
+In the end, must restart to replace nouveau with nvidia. You will be prompted if that is the case.
 
 ### CUDA
 
 `sudo apt-get install nvidia-cuda-toolkit`
+
+(TODO: Verify CUDA)
