@@ -35,7 +35,7 @@ echo "About to install various packages, tools for development..."
 sleep 3s
 
 # Additional fonts
-apt-get -q -y install fonts-droid fonts-inconsolata
+apt-get -q -y install fonts-anonymous-pro fonts-inconsolata
 
 # Build tools
 #
