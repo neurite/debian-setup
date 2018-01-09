@@ -77,5 +77,9 @@ In the end, must restart to replace nouveau with nvidia. You will be prompted if
 
 NVIDIA CUDA samples?
 
-[cuDNN (Deep Neural Network)](https://developer.nvidia.com/deep-learning-software)
+Verify numba
+
+Verify PyTorch
+
+[cuDNN (Deep Neural Network)](https://developer.nvidia.com/deep-learning-software), cuDNN needed by Tensorflow
 
