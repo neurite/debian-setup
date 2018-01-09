@@ -12,7 +12,7 @@ Alternatively, Debian has slightly older version of NVIDIA packages. But install
 
 Note nvidia-cuda-toolkit is not in stretch backports. Otherwise, we could upgrade the Linux kernel via the backports. Backports would provide newer versions of the packages.
 
-### Verify
+Do a quick verification before install:
 
 * Verify NVIDIA graphics is installed and is recognized in the system `lspci | grep -i nvidia`
 * Verify Linux kernel `uname -r` and architecture `uname -m`
