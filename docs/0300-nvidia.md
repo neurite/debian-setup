@@ -1,4 +1,4 @@
-### What to install
+### Prepare
 
 There are two sources for the NVIDIA packages. One is the package repository managed by Debian and the other is NVIDIA.
 
