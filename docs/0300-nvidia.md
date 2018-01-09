@@ -39,4 +39,43 @@ In the end, must restart to replace nouveau with nvidia. You will be prompted if
 
 `sudo apt-get install nvidia-cuda-toolkit`
 
-(TODO: Verify CUDA)
+### TODOs
+
+    nvidia-cuda-toolkit
+            |
+            |-----> nvidia-cuda-dev
+            |           |
+            |           |-----> libcublas8.0: cuBLAS
+            |           |
+            |           |-----> libcudart8.0: runtime
+            |           |
+            |           |-----> libnvblas8.0: nvBLAS
+            |           |
+            |           |-----> libcufft8.0: cuFFT
+            |           |
+            |           |-----> libcufftw8.0: cuFFTW
+            |           |
+            |           |-----> libcurand8.0: cuRAND
+            |           |
+            |           |-----> libcusolver8.0: cuSOLVER, LAPACK-like functions
+            |           |
+            |           |-----> libcusparse8.0: cuSPARSE
+            |           |
+            |           |=====> libcuda1 (this is already a hard dependency, double-check)
+            |                       |
+            |                       |=====> nvidia-cuda-mps (?)
+            |
+            |-----> libnvvm3
+            |
+            |-----> nvidia-opencl-dev
+            |
+            |-----> nvidia-profiler
+            |
+            |=====> nvidia-cuda-gdb (?)
+            |
+            |=====> nvidia-cuda-doc (?)
+
+NVIDIA CUDA samples?
+
+[cuDNN (Deep Neural Network)](https://developer.nvidia.com/deep-learning-software)
+
