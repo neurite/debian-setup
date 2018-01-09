@@ -2,10 +2,12 @@
 
 `sudo apt-get install gnome-core`
 
-If you want a typical yet basic desktop based on the very popular GNOME, install the metapackage [gnome-core](https://packages.debian.org/stretch/gnome-core). Notable packages include:
+If you want a typical yet basic desktop based on the very popular GNOME, install the metapackage [gnome-core](https://packages.debian.org/stretch/gnome-core). Notable members include:
 
-* [gdm3](https://packages.debian.org/stretch/gdm3) -- the GNOME display manager
-* [gnome-session](https://packages.debian.org/stretch/gnome-session)
+* [gdm3](https://packages.debian.org/stretch/gdm3) -- The GNOME display manager
+* [gnome-session](https://packages.debian.org/stretch/gnome-session) -- The GNOME session manager
+* [gnome-keyring](https://packages.debian.org/stretch/gnome-keyring)
+* [gnome-terminal](https://packages.debian.org/stretch/gnome-terminal) -- The GNOME terminal emulator
 * [network-mananger-gnome](https://packages.debian.org/stretch/network-manager-gnome)
 * [pulseaudio](https://packages.debian.org/stretch/pulseaudio)
 
