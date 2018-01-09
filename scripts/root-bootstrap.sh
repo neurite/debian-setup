@@ -64,48 +64,24 @@ apt-get -q -y install curl wget
 # Handy command-line tool for handling CSV files based on OCaml
 apt-get -q -y install csvtool
 
+# Python
+apt-get -q -y install python python-dev python-pip python3 python3-dev python3-pip
+
 # Ruby needed by tools such as the Travis CI command-line client
 apt-get -q -y install ruby-dev ruby
 
-echo "Done installing packages, tools for development."
-
-## Git
-
-echo "About to install git..."
-sleep 3s
-
+# git
 apt-get -q -y install git
-apt-get -q -y install libgnome-keyring-dev
-cd /usr/share/doc/git/contrib/credential/gnome-keyring/
-make
-cd
-# /etc/gitconfig
-git config --system credential.helper /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
 
-echo "Done installing git."
-
-### vim
-
-echo "About to configure vim..."
-sleep 3s
-
+# vim
 apt-get -q -y remove vim
 apt-get -q -y remove vim-tiny
-# Alternatives include vim-gtk (jessie) or vim-gtk3 (stretch)
-apt-get -q -y install vim-gnome
+apt-get -q -y install vim-gtk3
 
-echo "Done configuring vim."
+# Java
+apt-get -q -y install openjdk-8-jdk openjdk-8-source
 
-### java
-
-echo "About to install java..."
-sleep 3s
-
-echo "Installing open jdk 7 and 8."
-apt-get -q -y install openjdk-7-jdk openjdk-7-source
-apt-get -q -y -t jessie-backports install openjdk-8-jdk openjdk-8-source
-
-echo "Done installing java."
+echo "Done installing packages, tools for development."
 
 ### Clean up
 
