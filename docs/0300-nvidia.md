@@ -1,23 +1,32 @@
-### Prepare
+### Introduction
 
-There are two sources for the NVIDIA packages. One is the package repository managed by Debian and the other is NVIDIA.
+There are two sources for the NVIDIA packages. One is NVIDIA and the other is the package repository managed by Debian.
 
-NVIDIA provides the latest versions. Since the end target is CUDA, installing CUDA essentially installs all the packages. NVIDIA has [excellent documentation on CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/).
+NVIDIA provides the latest versions. NVIDIA has [excellent documentation on CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which includes the installation of graphics drivers.
 
-Alternatively, Debian has slightly older version of NVIDIA packages. But installation is a breeze. Debian has [documention on NVIDIA graphic drivers](https://wiki.debian.org/NvidiaGraphicsDrivers). The individual packages to install are:
+Alternatively, Debian has slightly older version of NVIDIA packages. But installation is a breeze. Debian has [documention on NVIDIA graphic drivers](https://wiki.debian.org/NvidiaGraphicsDrivers).
+
+Concretely the packages to install are:
 
 1. [Linux headers](https://packages.debian.org/stretch/linux-headers-amd64)
 2. [NVIDIA kernel and driver](https://packages.debian.org/stretch/nvidia-driver)
 3. [NVIDIA CUDA toolkit](https://packages.debian.org/stretch/nvidia-cuda-toolkit)
+4. [cuDNN](https://developer.nvidia.com/cudnn)
 
-Note nvidia-cuda-toolkit is not in stretch backports. Otherwise, we could upgrade the Linux kernel via the backports. Backports would provide newer versions of the packages.
+Note that nvidia-cuda-toolkit currently is not in stretch backports. A newer version would be in the next major release of Debian.
 
-Do a quick verification before install:
+The package [cuDNN](https://developer.nvidia.com/cudnn) is a library for deep neural networks. It is only available from NVIDIA. Certain deep learning frameworks, such as Tensorflow, require cuDNN.
+
+Other NVIDIA deep learning packages, not in the CUDA toolkit, include [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl). They are for production deployment of deep neural nets and are not covered here.
+
+### Linux headers
+
+First do quick verification before install:
 
 * Verify NVIDIA graphics is installed and is recognized in the system `lspci | grep -i nvidia`
 * Verify Linux kernel `uname -r` and architecture `uname -m`
 
-### Linux headers
+Then install the Linux headers:
 
 `sudo apt-get install linux-headers-$(uname -r | sed 's/[^-]*-[^-]*-//')`
 
@@ -31,39 +40,39 @@ So in the list of packages to be installed, double check there is `linux-headers
 
 `sudo apt-get install dkms nvidia-kernel-dkms nvidia-driver`
 
-The dkms packages are singled out to make it clear that NVIDIA installs into the kernel tree. They are actually hard dependencies of the `nvidia-driver` meta-package.
+The dkms packages are singled out to make it clear that NVIDIA installs into the kernel tree. They are actually hard dependencies of the `nvidia-driver` metapackage.
 
-In the end, must restart to replace nouveau with nvidia. You will be prompted if that is the case.
+In the end, restart to replace nouveau with nvidia. You will be prompted during installation if that is the case.
 
-### CUDA
+### CUDA toolkit
 
 `sudo apt-get install nvidia-cuda-toolkit`
 
-### TODOs
+Here is the toolkit package tree:
 
     nvidia-cuda-toolkit
             |
             |-----> nvidia-cuda-dev
             |           |
-            |           |-----> libcublas8.0: cuBLAS
+            |           |-----> libcudart: CUDA runtime
             |           |
-            |           |-----> libcudart8.0: runtime
+            |           |-----> libcublas: cuBLAS
             |           |
-            |           |-----> libnvblas8.0: nvBLAS
+            |           |-----> libnvblas: nvBLAS
             |           |
-            |           |-----> libcufft8.0: cuFFT
+            |           |-----> libcufft: cuFFT
             |           |
-            |           |-----> libcufftw8.0: cuFFTW
+            |           |-----> libcufftw: cuFFTW
             |           |
-            |           |-----> libcurand8.0: cuRAND
+            |           |-----> libcurand: cuRAND
             |           |
-            |           |-----> libcusolver8.0: cuSOLVER, LAPACK-like functions
+            |           |-----> libcusolver: cuSOLVER, LAPACK-like functions
             |           |
             |           |-----> libcusparse8.0: cuSPARSE
             |           |
-            |           |=====> libcuda1 (this is already a hard dependency, double-check)
+            |           |=====> libcuda1 (already a hard dependency)
             |                       |
-            |                       |=====> nvidia-cuda-mps (?)
+            |                       |=====> nvidia-cuda-mps
             |
             |-----> libnvvm3
             |
@@ -71,15 +80,19 @@ In the end, must restart to replace nouveau with nvidia. You will be prompted if
             |
             |-----> nvidia-profiler
             |
-            |=====> nvidia-cuda-gdb (?)
+            |=====> nvidia-cuda-gdb
             |
-            |=====> nvidia-cuda-doc (?)
+            |=====> nvidia-cuda-doc
+
+### Verification
 
 NVIDIA CUDA samples?
 
-Verify numba
+Numba
 
-Verify PyTorch
+PyTorch
 
-[cuDNN (Deep Neural Network)](https://developer.nvidia.com/deep-learning-software), cuDNN needed by Tensorflow
+### cuDNN
+
+Download from NVIDIA.
 
