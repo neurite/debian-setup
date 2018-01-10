@@ -17,7 +17,7 @@ Note that nvidia-cuda-toolkit currently is not in stretch backports. A newer ver
 
 The package [cuDNN](https://developer.nvidia.com/cudnn) is a library for deep neural networks. It is only available from NVIDIA. Certain deep learning frameworks, such as Tensorflow, require cuDNN.
 
-Other NVIDIA deep learning packages, not in the CUDA toolkit, include [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl). They are for production deployment of deep neural nets and are not covered here.
+Other NVIDIA deep learning packages, not in the CUDA toolkit, include [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl). They are for production deployment of deep neural nets. They are not covered here.
 
 ### Linux headers
 
@@ -48,7 +48,7 @@ In the end, restart to replace nouveau with nvidia. You will be prompted during 
 
 `sudo apt-get install nvidia-cuda-toolkit`
 
-Here is the toolkit package tree:
+Here is the CUDA toolkit package tree:
 
     nvidia-cuda-toolkit
             |
