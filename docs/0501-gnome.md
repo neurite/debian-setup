@@ -16,7 +16,7 @@ There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapa
 * [gdm3](https://packages.debian.org/stretch/gdm3) -- The display manager
 * [gnome-session](https://packages.debian.org/stretch/gnome-session) -- The session manager
 * [gnome-shell](https://packages.debian.org/stretch/gnome-shell) -- This points to [Mutter](https://packages.debian.org/stretch/mutter), the GTK+ window manager
-* [gnome-keyring](https://packages.debian.org/stretch/gnome-keyring), [libpam-gnome-keyring](https://packages.debian.org/stretch/libpam-gnome-keyring)
+* [gnome-keyring](https://packages.debian.org/stretch/gnome-keyring), [libpam-gnome-keyring](https://packages.debian.org/stretch/libpam-gnome-keyring) -- [The GNOM keyring packages](https://wiki.archlinux.org/index.php/GNOME/Keyring)
 * [gnome-control-center](https://packages.debian.org/stretch/gnome-control-center) -- The "Settings"
 * [gnome-terminal](https://packages.debian.org/stretch/gnome-terminal) -- The terminal emulator
 * [network-mananger-gnome](https://packages.debian.org/stretch/network-manager-gnome)
