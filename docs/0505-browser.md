@@ -6,7 +6,7 @@
 
 ### Chromium
 
-`sudo apt-get install chromium`
+`sudo apt-get install chromium chromium-l10n`
 
 This is the open source browser behind Google's Chrome.
 
