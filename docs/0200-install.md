@@ -38,7 +38,7 @@ The second reason is about installing a lightweight desktop. Like disk partition
     * Mirror: (choose a good one that is near to you, e.g. `mirrors.ocf.berkeley.edu`)
     * Use non-free software: Yes (which implies also using contrib software and can skip the next one). If you need to install NVIDIA packages, you must say yes to non-free
     * Use contrib software: Yes
-    * Enable source repositories in APT: Yes, to use the `/etc/apt/sources.list` file
+    * Enable source repositories in APT: No
     * Services to use: `security updates`, `release updates`, and also check `backported software`
 15. `Select and install software`
     * Package usage survey: No
