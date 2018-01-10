@@ -1,4 +1,4 @@
-### Lean GNOME
+### Reduced gnome-core
 
 `sudo apt-get install gdm3 gnome-session gnome-shell gnome-shell-extensions gnome-keyring gnome-control-center network-manager-gnome gnome-terminal`
 
