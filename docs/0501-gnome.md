@@ -2,7 +2,7 @@
 
 `sudo apt-get install gdm3 gnome-session gnome-shell gnome-shell-extensions gnome-keyring gnome-control-center network-manager-gnome gnome-terminal`
 
-There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapackage. But it does not look like lean enough. So these packages are hand-picked from the list:
+There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapackage. But it does not look like lean enough. So the following packages are hand-picked from the gnome-core list:
 
 * [gdm3](https://packages.debian.org/stretch/gdm3) -- The GNOME display manager
 * [gnome-session](https://packages.debian.org/stretch/gnome-session) -- The GNOME session manager
