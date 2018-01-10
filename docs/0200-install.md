@@ -6,7 +6,7 @@ Choosing "Expert install" gives us the option of manual disk partitions. When th
 
 My rig is hybrid with one SSD hosting the system binaries, one spinning disk for swap and temporary data, and one RAID10 for backup data. Manual partitions make efficient use of the different disks.
 
-The second reason is about installing a lightweight desktop. Like disk partitions, expert install gives the option for not installing the default desktop, which paves way for adding a lightweight desktop later on. For example, [a reduced GNOME desktop](0501-gnome.md).
+The second reason is about installing a customized, lightweight desktop. Like disk partitions, expert install gives the option for not installing the default desktop, which paves way for adding a customized desktop later on. For example, [a GNOME desktop reduced to the core](0501-gnome.md).
 
 ### How
 
@@ -44,9 +44,9 @@ The second reason is about installing a lightweight desktop. Like disk partition
     * Package usage survey: No
     * Should man and mandb be installed 'setuid man': No
     * Choose only `standard system utilities`, which includes bzip2, dpkg, perl, python, openssl, etc.
-    * Note, if you want to install a lightweight desktop, make sure **do not select any desktop environment**. We will install a lightweight desktop at a later stage. For example, [a reduced GNOME desktop](0501-gnome.md).
+    * Note, if you want to install a customized desktop, make sure **do not select any desktop environment**. We can install a lightweight desktop at a later stage. For example, [a GNOME desktop reduced to the core](0501-gnome.md).
 16. `Install the GRUB boot loader`
-    * Force GRUB installation to the EFI removable media path: yes
+    * Force GRUB installation to the EFI removable media path: Yes
 17. Finish and reboot
     * Set the system clock to UTC: Yes
     * Reboot
