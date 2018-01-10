@@ -1,7 +1,7 @@
 ### Reduced gnome-core
 
 ```bash
-sudo apt-get install
+sudo apt-get install \
         gdm3 \
         gnome-session \
         gnome-shell \
