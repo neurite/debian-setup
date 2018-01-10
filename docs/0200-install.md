@@ -6,7 +6,7 @@ Choosing "Expert install" gives us the option of manual disk partitions. When th
 
 My rig is hybrid with one SSD hosting the system binaries, one spinning disk for swap and temporary data, and one RAID10 for backup data. Manual partitions make efficient use of the different disks.
 
-The second reason is about installing a lightweight desktop. Like disk partitions, expert install gives the option for not installing the default desktop, which paves way for adding a lightweight desktop later on. For example, [a minimal GNOME desktop](0501-gnome.md).
+The second reason is about installing a lightweight desktop. Like disk partitions, expert install gives the option for not installing the default desktop, which paves way for adding a lightweight desktop later on. For example, [a lean GNOME desktop](0501-gnome.md).
 
 ### How
 
