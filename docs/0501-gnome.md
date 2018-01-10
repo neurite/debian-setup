@@ -24,10 +24,13 @@ There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapa
 
 ### Network Manager
 
-To let Network Manager also manager wired connections, edit `/etc/NetworkManager/NetworkManager.conf`. Change to `true`:
+To let Network Manager also manager wired connections, edit `/etc/NetworkManager/NetworkManager.conf`. Change to `true`
 ```
 [ifupdown]
 managed=true
+```
+```bash
+sudo /etc/init.d/network-manager restart
 ```
 
 Wireless has no internet connection. Again edit `/etc/NetworkManager/NetworkManager.conf` and comment out the following like so:
@@ -35,6 +38,9 @@ Wireless has no internet connection. Again edit `/etc/NetworkManager/NetworkMana
 # The primary network interface
 # allow-hotplug eth0
 # iface eth0 inet dhcp
+```
+```bash
+sudo /etc/init.d/network-manager restart
 ```
 
 ### VPN
