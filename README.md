@@ -6,9 +6,9 @@ Set up Debian for software development and machine learning.
     2. [Clean up, fixes, issues](docs/0202-cleanup.md)
 3. [NVIDIA](docs/0300-nvidia.md)
 4. [Samba server](docs/0400-samba.md)
-5. Minimal desktop
-    1. [Minimal GNOME](docs/0501-gnome.md)
-    2. [Minimal LXDE](docs/0502-lxde.md)
+5. Lean desktop
+    1. [Lean GNOME](docs/0501-gnome.md)
+    2. [Lean LXDE](docs/0502-lxde.md)
     3. [Terminal](docs/0503-terminal.md)
     4. [Audio](docs/0504-audio.md)
     5. [Firefox and Chrome](docs/0505-browser.md)
