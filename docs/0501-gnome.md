@@ -1,21 +1,18 @@
 ### GNOME
 
-`sudo apt-get install gnome-core`
+`sudo apt-get install gdm3 gnome-session gnome-shell gnome-shell-extensions gnome-keyring gnome-control-center network-manager-gnome gnome-terminal`
 
-If you want a typical yet basic desktop based on the very popular GNOME, install the metapackage [gnome-core](https://packages.debian.org/stretch/gnome-core). Notable members include:
+There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapackage. But it does not look like lean enough. So these packages are hand-picked from the list:
 
 * [gdm3](https://packages.debian.org/stretch/gdm3) -- The GNOME display manager
 * [gnome-session](https://packages.debian.org/stretch/gnome-session) -- The GNOME session manager
+* [gnome-shell](https://packages.debian.org/stretch/gnome-shell) -- This points to [Mutter](https://packages.debian.org/stretch/mutter), the GTK+ window manager 
+* [gnome-shell-extensions](https://packages.debian.org/stretch/gnome-shell-extensions)
 * [gnome-keyring](https://packages.debian.org/stretch/gnome-keyring)
+* [gnome-control-center](https://packages.debian.org/stretch/gnome-control-center) -- The "Settings"
 * [gnome-terminal](https://packages.debian.org/stretch/gnome-terminal) -- The GNOME terminal emulator
 * [network-mananger-gnome](https://packages.debian.org/stretch/network-manager-gnome)
 * [pulseaudio](https://packages.debian.org/stretch/pulseaudio)
-
-### VPN
-
-`sudo apt-get install network-manager-openvpn network-manager-openvpn-gnome`
-
-Note installing `gnome-core` should have already installed network manager.
 
 ### Network Manager
 
@@ -31,3 +28,7 @@ Wireless has no internet connection. Again edit `/etc/NetworkManager/NetworkMana
 # allow-hotplug eth0
 # iface eth0 inet dhcp
 ```
+
+### VPN
+
+`sudo apt-get install network-manager-openvpn network-manager-openvpn-gnome`
