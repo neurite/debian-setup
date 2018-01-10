@@ -1,12 +1,12 @@
 ### Firefox ESR
 
-`sudo apt-get install chrome-gnome-shell firefox-esr`
+`sudo apt-get install firefox-esr`
 
 [Debian Firefox Wiki](https://wiki.debian.org/Firefox)
 
 ### Chromium
 
-`sudo apt-get install chrome-gnome-shell chromium`
+`sudo apt-get install chromium`
 
 This is the open source browser behind Google's Chrome.
 
