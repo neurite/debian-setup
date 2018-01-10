@@ -1,18 +1,26 @@
 ### Reduced gnome-core
 
-`sudo apt-get install gdm3 gnome-session gnome-shell gnome-shell-extensions gnome-keyring gnome-control-center network-manager-gnome gnome-terminal`
+```bash
+sudo apt-get install
+        gdm3 \
+        gnome-session \
+        gnome-shell \
+        gnome-keyring \
+        gnome-control-center \
+        network-manager-gnome \
+        gnome-terminal
+```
 
 There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapackage. But it does not look like lean enough. So the following packages are hand-picked from the gnome-core list:
 
-* [gdm3](https://packages.debian.org/stretch/gdm3) -- The GNOME display manager
-* [gnome-session](https://packages.debian.org/stretch/gnome-session) -- The GNOME session manager
-* [gnome-shell](https://packages.debian.org/stretch/gnome-shell) -- This points to [Mutter](https://packages.debian.org/stretch/mutter), the GTK+ window manager 
-* [gnome-shell-extensions](https://packages.debian.org/stretch/gnome-shell-extensions)
+* [gdm3](https://packages.debian.org/stretch/gdm3) -- The display manager
+* [gnome-session](https://packages.debian.org/stretch/gnome-session) -- The session manager
+* [gnome-shell](https://packages.debian.org/stretch/gnome-shell) -- This points to [Mutter](https://packages.debian.org/stretch/mutter), the GTK+ window manager
 * [gnome-keyring](https://packages.debian.org/stretch/gnome-keyring)
 * [gnome-control-center](https://packages.debian.org/stretch/gnome-control-center) -- The "Settings"
-* [gnome-terminal](https://packages.debian.org/stretch/gnome-terminal) -- The GNOME terminal emulator
+* [gnome-terminal](https://packages.debian.org/stretch/gnome-terminal) -- The terminal emulator
 * [network-mananger-gnome](https://packages.debian.org/stretch/network-manager-gnome)
-* [pulseaudio](https://packages.debian.org/stretch/pulseaudio)
+* [pulseaudio](https://packages.debian.org/stretch/pulseaudio) (optional, if you want audio)
 
 ### Network Manager
 
