@@ -1,4 +1,4 @@
-## `gnome-core` Reduced
+## Reduced `gnome-core`
 
 ```bash
 sudo apt-get install \
