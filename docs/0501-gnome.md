@@ -11,7 +11,7 @@ sudo apt-get install \
         gnome-terminal
 ```
 
-There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapackage. But it does not look like lean enough. So the following packages are hand-picked from the gnome-core list:
+There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapackage. But it does not look lean enough. So the following packages are hand-picked from the gnome-core list instead:
 
 * [gdm3](https://packages.debian.org/stretch/gdm3) -- The display manager
 * [gnome-session](https://packages.debian.org/stretch/gnome-session) -- The session manager
