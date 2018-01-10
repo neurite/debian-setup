@@ -24,7 +24,7 @@ There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapa
 
 ### Network Manager
 
-To let Network Manager also manager wired connections, edit `/etc/NetworkManager/NetworkManager.conf`. Change to `true`
+To let Network Manager manage wired connections, edit `/etc/NetworkManager/NetworkManager.conf`. Change to `true`
 ```
 [ifupdown]
 managed=true
