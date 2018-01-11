@@ -9,7 +9,7 @@ The basic bootstrapping for development environment includes,
 
 Other aspects of development such as Java, Python, virualization, machine learning, deep learning are covered in separate topics.
 
-### Common dev packages
+### Common Dev Packages
 
 Please check out [the dev bootstrap script](https://github.com/neurite/debian-setup/blob/master/scripts/dev-bootstrap.sh).
 
