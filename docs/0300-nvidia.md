@@ -72,7 +72,7 @@ Here is the CUDA toolkit package tree:
             |           |
             |           |=====> libcuda1 (already a hard dependency)
             |                       |
-            |                       |=====> nvidia-cuda-mps
+            |                       |=====> nvidia-cuda-mps (not installed)
             |
             |-----> libnvvm3
             |
@@ -84,7 +84,44 @@ Here is the CUDA toolkit package tree:
             |
             |=====> nvidia-cuda-doc
 
-(TODO: Verify CUDA toolkit installation -- NVIDIA CUDA samples? Numba, PyTorch)
+### Verify CUDA Installation
+
+CUDA toolkit installed from Debian does seem to have [CUDA samples](http://docs.nvidia.com/cuda/cuda-samples/)?
+
+1. Verify graphics driver
+    * `cat /proc/driver/nvidia/version`
+    * `nvidia-driver`
+
+2. Verify the CUDA compiler
+    * `nvcc --version`
+
+3. Numba
+    1. Install [miniconda](https://conda.io/miniconda.html)
+    2. [Create a conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) for testing numba
+    3. [Activate the environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment), then `conda install cudatoolkit`
+    4. Run a python code sample ([credit](https://devblogs.nvidia.com/parallelforall/numba-python-cuda-acceleration/))
+    ```python
+    import numpy as np
+    from numba import vectorize
+    
+    @vectorize(['float32(float32, float32)'], target='cuda')
+    def add_by_gpu(a, b):
+        return a + b
+    
+    @vectorize(['float32(float32, float32)'], target='cpu')
+    def add_by_cpu(a, b):
+        return a + b
+    
+    N = 100000
+    A = np.ones(N, dtype=np.float32)
+    B = np.ones(A.shape, dtype=A.dtype)
+    C = np.empty_like(A, dtype=A.dtype)
+    
+    C = add_by_gpu(A, B)
+    
+    C = add_by_cpu(A, B)
+    
+    ```
 
 ### cuDNN
 
