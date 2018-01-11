@@ -49,7 +49,7 @@ In the end, restart to replace nouveau with nvidia. You will be prompted during 
 `sudo apt-get install nvidia-cuda-toolkit`
 
 Here is the CUDA toolkit package tree:
-
+```
     nvidia-cuda-toolkit
             |
             |-----> nvidia-cuda-dev
@@ -70,9 +70,8 @@ Here is the CUDA toolkit package tree:
             |           |
             |           |-----> libcusparse8.0: cuSPARSE
             |           |
-            |           |=====> libcuda1 (already a hard dependency)
-            |                       |
-            |                       |=====> nvidia-cuda-mps
+            |           |=====> libcuda1
+            |
             |
             |-----> libnvvm3
             |
@@ -83,6 +82,7 @@ Here is the CUDA toolkit package tree:
             |=====> nvidia-cuda-gdb
             |
             |=====> nvidia-cuda-doc
+```
 
 (TODO: Verify CUDA toolkit installation -- NVIDIA CUDA samples? Numba, PyTorch)
 
