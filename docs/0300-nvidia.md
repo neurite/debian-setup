@@ -84,15 +84,8 @@ Here is the CUDA toolkit package tree:
             |
             |=====> nvidia-cuda-doc
 
-## Verifify
-
-NVIDIA CUDA samples?
-
-Numba
-
-PyTorch
+(TODO: Verify CUDA toolkit installation -- NVIDIA CUDA samples? Numba, PyTorch)
 
 ## cuDNN
 
-Download from NVIDIA.
-
+(TODO: Download from NVIDIA)
