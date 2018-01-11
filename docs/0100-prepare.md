@@ -1,4 +1,4 @@
-### Bootable USB drive
+## Bootable USB Drive
 
 1. Download [the latest, stable image file](http://www.debian.org/CD/http-ftp/#stable). Only the first ISO is needed for installation with internet connection. Or, if you have a fast internet connection, download the much smaller [network install image](https://www.debian.org/distrib/netinst).
 2. Write the image to a USB drive.
@@ -8,6 +8,6 @@
     4. On Mac OS X, the command to list block devices is `diskutil list`, the mounted volumes are in `/Volumes`, and the command to unmount is `diskutil unmountDisk`. To eject, `diskutil eject`.
 3. Some of the non-free firmware may be needed during installation. The type of hardware that needs firmware during installation includes wireless network cards. Debian has a [firmware wiki](https://wiki.debian.org/Firmware) with detailed instructions. You can [download](http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/) and unpack the non-free firmware in a `firmware` folder on a separate USB drive. This USB drive may be needed during the installing process.
 
-### UEFI
+## UEFI
 
 In the motherboard BIOS, make sure **CSM (or BIOS legacy mode) is disabled in UEFI**, to guarantee it always boots into UEFI. One reason for the need of UEFI is the GPT partitioning scheme. If not sure if UEFI is engaged, the Debian bootable image, onced loaded, should display "UEFI Installer" in the title; otherwise revisit the UEFI settings of the motherboard. For more information about UEFI, check [the Debian wiki](https://wiki.debian.org/UEFI). 
