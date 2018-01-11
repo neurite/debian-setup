@@ -1,4 +1,4 @@
-## Manual Partitioning
+### Manual Partitioning
 
 This is the step `Partition disks`. Partitioning method is `Manual`.
 
@@ -20,7 +20,7 @@ Set up the partion with the correct format `Ext4 journaling`, mount point, and m
 
 ![](ss-mount-opts.jpg "mount options")
 
-## Example Partitions
+### Example Partitions
 
 | Drive               | Mount Point | Type | Size   | Mount Options                    | Other     |
 |---------------------|-------------|------|--------|----------------------------------|-----------|
@@ -41,7 +41,7 @@ Finally it lets you review the partitions.
 
 Note the blue boxes in the above screenshot highlight the RAID related stuff.
 
-## Software RAID
+### Software RAID
 
 If you have set up RAID in the BIOS and have correctly edited the command `Expert install`, the RAID should appear here as a single disk. Partition it as if it is a single disk. Remember this for setting up hardware RAID.
 
@@ -57,7 +57,7 @@ You can keep the data already on the RAID device. Here is how: Select the partit
 
 In fact, this applied not only to RAID partitions but also to any partition. Note, even if we keep the existing data, we still need to mount the partition and set the mount options (see the above table). The exception is the swap partition. It is already marked as `F` (format it) and nothing needs to be done for it.
 
-## Other Notes, Links
+### Other Notes, Links
 
 1. About partitions
     * [Partitioning - Arch Linux Wiki](https://wiki.archlinux.org/index.php/Partitioning)
