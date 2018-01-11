@@ -1,15 +1,15 @@
-## Package Source File
+### Package Source File
 
 Edit package sources `sudo vi /etc/apt/sources.list`. Since we are not using iso images any more for updates, comment out the line that starts with `deb cdrom:[Debian GNU/Linux ...`.
 
-## Upgrade Kernel via Backports (optional)
+### Upgrade Kernel via Backports (optional)
 
 If you want newer version of NVIDIA software, you may want to upgrade the kernel, as NVIDIA installs into the kernel tree. But double-check NVIDIA does have the compatible versions for the upgraded kernel.
 
 1. `sudo apt-get update`.
 2. `sudo apt-get -t stretch-backports dist-upgrade`. Note this command should upgrade a package `linux-image-(blah, blah)-amd64` which is the kernel.
 
-## Single-User Mode
+### Single-User Mode
 
 Disable single-user mode to lock down the box.
 
@@ -17,7 +17,7 @@ Disable single-user mode to lock down the box.
 2. Uncomment the line `GRUB_DISABLE_RECOVERY="true"`
 3. `sudo update-grub`
 
-## Nvidia Problem
+### Nvidia Problem
 
 Symptom: Boot hangs on normal startup.
 
@@ -32,7 +32,7 @@ Symptom: Boot hangs on normal startup.
     ```
 6. Exit and reboot from the hard disk.
 
-## Tune SSD (optional)
+### Tune SSD (optional)
 
 * I/O scheduler (optional, especially the hard disk letter sequence `sdx` is not 100% reliable)
     1. `cat /sys/block/sda/queue/scheduler` should show `CFQ` as the scheduler
