@@ -1,6 +1,6 @@
 ### Overview
 
-There are two sources for the NVIDIA packages. One is NVIDIA and the other is the package repository managed by Debian.
+There are two sources for the NVIDIA packages. One is NVIDIA and the other is the Debian repository.
 
 NVIDIA provides the latest versions. NVIDIA has [excellent documentation on CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which includes the installation of graphics drivers.
 
