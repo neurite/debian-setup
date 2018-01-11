@@ -9,11 +9,15 @@ There is also `~/.profile`, which is for the generic shell `sh` (`bash` is a spe
 To get a consistent environment across the login shells and the non-login shells, include `~/.bashrc` in `~/.bash_profile`. Also include `~/.profile` in `~/.bash_profile`. Here is what `~/.bash_profile` looks like:
 
 ```bash
-    if [ -r "${HOME}/.profile" ]; then
-        . "${HOME}/.profile"
-    fi
+if [ -r "${HOME}/.profile" ]; then
+    . "${HOME}/.profile"
+fi
 
-    if [ -r "${HOME}/.bashrc" ]; then
-        . "${HOME}/.bashrc"
-    fi
+if [ -r "${HOME}/.bashrc" ]; then
+    . "${HOME}/.bashrc"
+fi
 ```
+
+### Resources
+
+[Debian Wiki of Environment Variables](https://wiki.debian.org/EnvironmentVariables)
