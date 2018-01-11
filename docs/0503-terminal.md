@@ -1,3 +1,5 @@
+### Shell Profile
+
 The emulated terminals, [GNOME terminal](https://packages.debian.org/stretch/gnome-terminal) or [LXTerminal](https://packages.debian.org/stretch/lxterminal), are **non-login** shells. The start-up script is `~/.bashrc`, not `~/.bash_profile`. If we want to modify the `PATH` variable for the emulated GNOME terminal, for example, it should be modified in `~/.bashrc`.
 
 On the other hand, `~/.bash_profile` is read by login shells. To go to a login shell, type Ctrl+Alt+F1 to swich to tty1, for example. The desktop usually runs at tty3, you can switch back by Ctrl+Alt+F3.
