@@ -11,7 +11,7 @@ Other aspects of development such as Java, Python, virualization, machine learni
 
 ### Common dev packages
 
-Please check out [the dev bootstrap script](scripts/dev-bootstrap.sh).
+Please check out [the dev bootstrap script](../scripts/dev-bootstrap.sh).
 
 You can git clone this repository and run the script like the following,
 ```bash
