@@ -1,4 +1,4 @@
-## Reduced `gnome-core`
+### GNOME Core Reduced
 
 ```bash
 sudo apt-get install \
@@ -22,7 +22,7 @@ There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapa
 * [network-mananger-gnome](https://packages.debian.org/stretch/network-manager-gnome)
 * [pulseaudio](https://packages.debian.org/stretch/pulseaudio) (optional, if you want audio)
 
-## Network Manager & VPN
+### Network Manager & VPN
 
 To let Network Manager manage wired connections, edit `/etc/NetworkManager/NetworkManager.conf`. Change to `true`
 ```
