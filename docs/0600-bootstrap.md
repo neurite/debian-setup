@@ -11,7 +11,7 @@ Other aspects of development such as Java, Python, virualization, machine learni
 
 ### Common Dev Packages
 
-Please check out [the dev bootstrap script](https://github.com/neurite/debian-setup/blob/master/scripts/dev-bootstrap.sh) for the packages to install.
+Please check out [the dev bootstrap script](https://github.com/neurite/debian-setup/blob/master/scripts/dev-bootstrap.sh) for the typical packages.
 
 You can git clone this repository and run the script like the following,
 ```bash
