@@ -17,7 +17,7 @@ Disable single-user mode to lock down the box.
 2. Uncomment the line `GRUB_DISABLE_RECOVERY="true"`
 3. `sudo update-grub`
 
-## Nvidia problem
+## Nvidia Problem
 
 Symptom: Boot hangs on normal startup.
 
