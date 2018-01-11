@@ -49,7 +49,7 @@ In the end, restart to replace nouveau with nvidia. You will be prompted during 
 `sudo apt-get install nvidia-cuda-toolkit`
 
 Here is the CUDA toolkit package tree:
-
+```
     nvidia-cuda-toolkit
             |
             |-----> nvidia-cuda-dev
@@ -83,6 +83,7 @@ Here is the CUDA toolkit package tree:
             |=====> nvidia-cuda-gdb
             |
             |=====> nvidia-cuda-doc
+```
 
 ### Verify CUDA Installation
 
