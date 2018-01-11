@@ -1,4 +1,4 @@
-## Introduction
+## Overview
 
 There are two sources for the NVIDIA packages. One is NVIDIA and the other is the package repository managed by Debian.
 
@@ -84,7 +84,7 @@ Here is the CUDA toolkit package tree:
             |
             |=====> nvidia-cuda-doc
 
-### Verifify
+## Verifify
 
 NVIDIA CUDA samples?
 
@@ -92,7 +92,7 @@ Numba
 
 PyTorch
 
-### cuDNN
+## cuDNN
 
 Download from NVIDIA.
 
