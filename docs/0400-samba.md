@@ -1,3 +1,5 @@
+### Samba Steps
+
 1. `sudo apt-get install samba` and make sure the following installed:
     * `libcups2`: Common Unix printing system replacing lpd
     * `samba-common`
