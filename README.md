@@ -20,6 +20,7 @@ Set up Debian for software development and machine learning.
 9. Virtual machines
     1. [VirtualBox](docs/0901-virtualbox.md)
     2. [Docker](docs/0902-docker.md)
+    3. [Debian in the cloud](docs/0903-cloud.md)
 10. Deep learning
     1. [The work station](docs/1001-hardware.md)
     2. [Linear algebra packages](docs/1002-blas-lapack.md)
