@@ -1,4 +1,4 @@
-### Why
+## Why
 
 So why expert, manual install?
 
@@ -8,7 +8,7 @@ My rig is hybrid with one SSD hosting the system binaries, one spinning disk for
 
 The second reason is about installing a customized, lightweight desktop. Like disk partitions, expert install gives the option for not installing the default desktop, which paves way for adding a customized desktop later on. For example, [a GNOME desktop reduced to the core](0501-gnome.md).
 
-### How
+## How
 
 1. First, boot to the USB disk [you just prepared](0100-prepare.md). In order to boot to the USB disk, modify the boot order in the BIOS. Note certain USB ports on the motherboard may not boot. If you suspect that is the case, try a different USB port. Once booted, the screen should display "UEFI Installer" in the title; otherwise revisit the UEFI settings of the motherboard.
 2. `Advanced options ...`, then `Expert install`
@@ -51,6 +51,6 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * Set the system clock to UTC: Yes
     * Reboot
 
-### Almost done, not yet...
+## Almost done, not yet...
 
 Make sure to read about [cleanup, fixes, issues](0202-cleanup.md)

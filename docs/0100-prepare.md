@@ -1,4 +1,4 @@
-### Bootable USB drive
+### Bootable USB Drive
 
 1. Download [the latest, stable image file](http://www.debian.org/CD/http-ftp/#stable). Only the first ISO is needed for installation with internet connection. Or, if you have a fast internet connection, download the much smaller [network install image](https://www.debian.org/distrib/netinst).
 2. Write the image to a USB drive.

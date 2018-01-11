@@ -1,4 +1,4 @@
-### Reduced gnome-core
+### GNOME Core Reduced
 
 ```bash
 sudo apt-get install \
@@ -11,7 +11,7 @@ sudo apt-get install \
         gnome-terminal
 ```
 
-There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapackage. But it does not look like lean enough. So the following packages are hand-picked from the gnome-core list:
+There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapackage. But it does not look lean enough. So the following packages are hand-picked from the gnome-core list instead:
 
 * [gdm3](https://packages.debian.org/stretch/gdm3) -- The display manager
 * [gnome-session](https://packages.debian.org/stretch/gnome-session) -- The session manager
@@ -22,7 +22,7 @@ There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapa
 * [network-mananger-gnome](https://packages.debian.org/stretch/network-manager-gnome)
 * [pulseaudio](https://packages.debian.org/stretch/pulseaudio) (optional, if you want audio)
 
-### Network Manager
+### Network Manager & VPN
 
 To let Network Manager manage wired connections, edit `/etc/NetworkManager/NetworkManager.conf`. Change to `true`
 ```
@@ -43,6 +43,6 @@ Wireless has no internet connection. Again edit `/etc/NetworkManager/NetworkMana
 sudo /etc/init.d/network-manager restart
 ```
 
-### VPN
+To configure VPN, install the following:
 
 `sudo apt-get install network-manager-openvpn network-manager-openvpn-gnome`

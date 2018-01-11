@@ -1,4 +1,4 @@
-### Introduction
+### Overview
 
 There are two sources for the NVIDIA packages. One is NVIDIA and the other is the package repository managed by Debian.
 
@@ -17,9 +17,9 @@ Note that nvidia-cuda-toolkit currently is not in stretch backports. A newer ver
 
 The package [cuDNN](https://developer.nvidia.com/cudnn) is a library for deep neural networks. It is only available from NVIDIA. Certain deep learning frameworks, such as Tensorflow, require cuDNN.
 
-Other NVIDIA deep learning packages, not in the CUDA toolkit, include [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl). They are for production deployment of deep neural nets and are not covered here.
+Other NVIDIA deep learning packages, not in the CUDA toolkit, include [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl). They are for production deployment of deep neural nets. They are not covered here.
 
-### Linux headers
+### Linux Headers
 
 First do quick verification before install:
 
@@ -36,7 +36,7 @@ The command `uname -r | sed 's/[^-]*-[^-]*-//'` output `amd64`. The package `lin
 
 So in the list of packages to be installed, double check there is `linux-headers-4.9.0-5-amd64` where `4.9.0-5-amd64` should match the kernel of your system.
 
-### NVIDIA kernel and driver
+### NVIDIA Kernel and Driver
 
 `sudo apt-get install dkms nvidia-kernel-dkms nvidia-driver`
 
@@ -44,11 +44,11 @@ The dkms packages are singled out to make it clear that NVIDIA installs into the
 
 In the end, restart to replace nouveau with nvidia. You will be prompted during installation if that is the case.
 
-### CUDA toolkit
+### CUDA Toolkit
 
 `sudo apt-get install nvidia-cuda-toolkit`
 
-Here is the toolkit package tree:
+Here is the CUDA toolkit package tree:
 
     nvidia-cuda-toolkit
             |
@@ -84,15 +84,8 @@ Here is the toolkit package tree:
             |
             |=====> nvidia-cuda-doc
 
-### Verification
-
-NVIDIA CUDA samples?
-
-Numba
-
-PyTorch
+(TODO: Verify CUDA toolkit installation -- NVIDIA CUDA samples? Numba, PyTorch)
 
 ### cuDNN
 
-Download from NVIDIA.
-
+(TODO: Download from NVIDIA)
