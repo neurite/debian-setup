@@ -100,28 +100,35 @@ CUDA toolkit installed from Debian does seem to have [CUDA samples](http://docs.
     2. [Create a conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) for testing numba
     3. [Activate the environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment), then `conda install cudatoolkit`
     4. Run a python code sample ([credit](https://devblogs.nvidia.com/parallelforall/numba-python-cuda-acceleration/))
-    ```python
-    import numpy as np
-    from numba import vectorize
-    
-    @vectorize(['float32(float32, float32)'], target='cuda')
-    def add_by_gpu(a, b):
-        return a + b
-    
-    @vectorize(['float32(float32, float32)'], target='cpu')
-    def add_by_cpu(a, b):
-        return a + b
-    
-    N = 100000
-    A = np.ones(N, dtype=np.float32)
-    B = np.ones(A.shape, dtype=A.dtype)
-    C = np.empty_like(A, dtype=A.dtype)
-    
-    C = add_by_gpu(A, B)
-    
-    C = add_by_cpu(A, B)
-    
-    ```
+
+        ```python
+        import numpy as np
+        from numba import vectorize
+        from time import perf_counter
+
+        @vectorize(['float32(float32, float32)'], target='cuda')
+        def add_by_gpu(a, b):
+            return a + b
+
+        @vectorize(['float32(float32, float32)'], target='cpu')
+        def add_by_cpu(a, b):
+            return a + b
+
+        N = (1000, 1000)
+        A = np.ones(N, dtype=np.float32)
+        B = np.ones(A.shape, dtype=A.dtype)
+        C = np.empty_like(A, dtype=A.dtype)
+
+        start = perf_counter()
+        C = add_by_gpu(A, B)
+        end = perf_counter()
+        print('GPU time', end-start)
+
+        start = perf_counter()
+        C = add_by_cpu(A, B)
+        end = perf_counter()
+        print('CPU time', end-start)
+        ```
 
 ### cuDNN
 
