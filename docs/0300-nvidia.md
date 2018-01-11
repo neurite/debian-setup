@@ -1,4 +1,4 @@
-## Overview
+### Overview
 
 There are two sources for the NVIDIA packages. One is NVIDIA and the other is the package repository managed by Debian.
 
@@ -19,7 +19,7 @@ The package [cuDNN](https://developer.nvidia.com/cudnn) is a library for deep ne
 
 Other NVIDIA deep learning packages, not in the CUDA toolkit, include [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl). They are for production deployment of deep neural nets. They are not covered here.
 
-## Linux Headers
+### Linux Headers
 
 First do quick verification before install:
 
@@ -36,7 +36,7 @@ The command `uname -r | sed 's/[^-]*-[^-]*-//'` output `amd64`. The package `lin
 
 So in the list of packages to be installed, double check there is `linux-headers-4.9.0-5-amd64` where `4.9.0-5-amd64` should match the kernel of your system.
 
-## NVIDIA Kernel and Driver
+### NVIDIA Kernel and Driver
 
 `sudo apt-get install dkms nvidia-kernel-dkms nvidia-driver`
 
@@ -44,7 +44,7 @@ The dkms packages are singled out to make it clear that NVIDIA installs into the
 
 In the end, restart to replace nouveau with nvidia. You will be prompted during installation if that is the case.
 
-## CUDA Toolkit
+### CUDA Toolkit
 
 `sudo apt-get install nvidia-cuda-toolkit`
 
@@ -86,6 +86,6 @@ Here is the CUDA toolkit package tree:
 
 (TODO: Verify CUDA toolkit installation -- NVIDIA CUDA samples? Numba, PyTorch)
 
-## cuDNN
+### cuDNN
 
 (TODO: Download from NVIDIA)
