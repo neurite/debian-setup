@@ -99,8 +99,22 @@ CUDA toolkit installed from Debian does seem to have [CUDA samples](http://docs.
 3. Numba
     1. Install [miniconda](https://conda.io/miniconda.html)
     2. [Create a conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) for testing numba
-    3. [Activate the environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment), then `conda install cudatoolkit`
-    4. Run a python code sample ([credit](https://devblogs.nvidia.com/parallelforall/numba-python-cuda-acceleration/))
+    3. [Activate the environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment), then
+
+        ```bash
+        conda install numba
+        conda install cudatoolkit
+        ```
+
+    4. Launch python
+
+       ```python
+       from numba import cuda
+       
+       print(cuda.detect())
+       ```
+
+    5. Run a python code sample ([credit](https://devblogs.nvidia.com/parallelforall/numba-python-cuda-acceleration/))
 
         ```python
         import numpy as np
