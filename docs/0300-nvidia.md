@@ -91,7 +91,7 @@ CUDA toolkit installed from Debian does seem to have [CUDA samples](http://docs.
 
 1. Verify graphics driver
     * `cat /proc/driver/nvidia/version`
-    * `nvidia-driver`
+    * `nvidia-smi`
 
 2. Verify the CUDA compiler
     * `nvcc --version`
