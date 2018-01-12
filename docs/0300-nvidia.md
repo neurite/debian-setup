@@ -97,14 +97,14 @@ CUDA toolkit installed from Debian does seem to have [CUDA samples](http://docs.
     * `nvcc --version`
 
 3. Numba
-    1. Install [miniconda](https://conda.io/miniconda.html)
+    1. [Install miniconda](https://conda.io/miniconda.html)
     2. [Create a conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) for testing numba
     3. [Activate the environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment), then
         ```bash
         conda install numba
         conda install cudatoolkit
         ```
-    4. Launch the python REPL in the activate numba environment, the following indicates CUDA installation failure,
+    4. Launch the python REPL in the active numba environment, the following indicates CUDA installation failure,
        ```
        >>> from numba import cuda
        >>> 
