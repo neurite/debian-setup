@@ -37,5 +37,7 @@ The command `uname -r | sed 's/[^-]*-[^-]*-//'` output `amd64`. The package `lin
 
 From here, we will part into two paths:
 
+### CUDA
+
 * [Install CUDA using the Debian repository](0301-cuda-debian.md)
 * [Install CUDA from NVIDIA](0302-cuda-nvidia.md)
