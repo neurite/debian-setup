@@ -1,6 +1,6 @@
 ### Overview
 
-There are two sources for the NVIDIA packages. One is Debian and the other is NVIDIA.
+There are two sources for the NVIDIA packages, one is Debian, the other is NVIDIA.
 
 Debian has older versions of the NVIDIA packages. But installation is a breeze. Debian has [documention on NVIDIA graphic drivers](https://wiki.debian.org/NvidiaGraphicsDrivers). As of this moment, the repository for Debian Stretch does not have cuDNN. Be aware that, certain deep learning frameworks, such as Tensorflow, MXNet, require cuDNN for GPU support.
 
