@@ -109,6 +109,8 @@ CUDA toolkit installed from Debian does seem to have [CUDA samples](http://docs.
        >>> from numba import cuda
        >>> 
        >>> cuda.detect()
+       ```
+       ```
        numba.cuda.cudadrv.error.CudaSupportError: Error at driver init:
        CUDA driver library cannot be found.
        ```
