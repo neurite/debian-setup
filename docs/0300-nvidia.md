@@ -2,9 +2,9 @@
 
 There are two sources for the NVIDIA packages, one is Debian, the other is NVIDIA.
 
-Debian has older versions of the NVIDIA packages. But installation is a breeze. Debian has [documention on NVIDIA graphic drivers](https://wiki.debian.org/NvidiaGraphicsDrivers). As of this moment, the repository for Debian Stretch does not have cuDNN. Be aware that, certain deep learning frameworks, such as Tensorflow, MXNet, require cuDNN for GPU support.
+Debian has older versions of the NVIDIA packages. But installation is a breeze. Debian has [documention on NVIDIA graphic drivers](https://wiki.debian.org/NvidiaGraphicsDrivers). As of this moment, the repository for Debian Stretch does not have cuDNN. Be aware that, most deep learning frameworks, such as Tensorflow, MXNet, PyTorch, require cuDNN for GPU support.
 
-NVIDIA provides the latest versions. NVIDIA has excellent documentation on [CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which describes the installation of both the graphics drivers and the CUDA toolkit.
+NVIDIA provides the latest versions. NVIDIA has excellent documentation on [CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which describes the installation of both the graphics drivers and the CUDA toolkit. NVIDIA also has detailed documention on [cuDNN installation](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/). Note you must register with NVIDIA to download and install cuDNN.
 
 Here is the landscape of the packages to install:
 
@@ -12,11 +12,11 @@ Here is the landscape of the packages to install:
 2. NVIDIA graphics driver
     1. [Available from Debian](https://packages.debian.org/stretch/nvidia-driver)
     2. [Available from NVIDIA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)
-3. NVIDIA CUDA toolkit ==> PyTorch
+3. NVIDIA CUDA toolkit
     1. [Available from Debian](https://packages.debian.org/stretch/nvidia-cuda-toolkit)
     2. [Available from NVIDIA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)
-4. cuDNN ==> Tensorflow, MXNet, CNTK
-    1. [Available from NVIDIA only](https://developer.nvidia.com/cudnn)
+4. cuDNN
+    1. [Available from NVIDIA only](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/)
 
 Other NVIDIA deep learning packages include [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl). They are not covered here.
 
