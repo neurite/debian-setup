@@ -12,17 +12,17 @@ Here is the landscape of the packages to install:
 2. NVIDIA graphics driver
     1. [Available from Debian](https://packages.debian.org/stretch/nvidia-driver)
     2. [Available from NVIDIA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)
-3. NVIDIA CUDA toolkit
+3. NVIDIA CUDA toolkit ==> PyTorch
     1. [Available from Debian](https://packages.debian.org/stretch/nvidia-cuda-toolkit)
     2. [Available from NVIDIA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)
-4. cuDNN
+4. cuDNN ==> Tensorflow, MXNet, CNTK
     1. [Available from NVIDIA only](https://developer.nvidia.com/cudnn)
 
-Other NVIDIA deep learning packages include [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl). They are for production deployment of deep neural nets. They are not covered here.
+Other NVIDIA deep learning packages include [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl). They are not covered here.
 
 ### Linux Headers
 
-First do quick verification before install:
+First do a quick verification before install:
 
 * Verify NVIDIA graphics is installed and is recognized in the system `lspci | grep -i nvidia`
 * Verify Linux kernel `uname -r` and architecture `uname -m`
@@ -31,13 +31,11 @@ Then install the Linux headers:
 
 `sudo apt-get install linux-headers-$(uname -r | sed 's/[^-]*-[^-]*-//')`
 
-NVIDIA installs into the kernel tree. In order to do that, Linux headers are needed. It is important we install the exact version of Linux headers. Thus this better be done manually and separately.
+NVIDIA installs into the kernel tree. In order to do that, Linux headers are needed. **It is important we install the exact version of Linux headers**. Thus this better be done manually and separately.
 
-The command `uname -r | sed 's/[^-]*-[^-]*-//'` output `amd64`. The package `linux-headers-amd64` is the architecture-specific meta-package. The package manager points it to the package of correct kernel version, for example, `linux-headers-4.9.0-5-amd64`.
+The command `uname -r | sed 's/[^-]*-[^-]*-//'` output `amd64`. The package `linux-headers-amd64` is the architecture-specific meta-package. The package manager points it to the package of the correct kernel version, for example, `linux-headers-4.9.0-5-amd64`. So in the list of packages to be installed, double check there is `linux-headers-4.9.0-5-amd64` where the `4.9.0-5-amd64` part should match the kernel of your system.
 
-So in the list of packages to be installed, double check there is `linux-headers-4.9.0-5-amd64` where `4.9.0-5-amd64` should match the kernel of your system.
-
-### NVIDIA Kernel and Driver
+### NVIDIA graphics Driver
 
 `sudo apt-get install dkms nvidia-kernel-dkms nvidia-driver`
 
