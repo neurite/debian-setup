@@ -1,5 +1,3 @@
-# Install Docker
-
 ### Install from the Docker repository
 
 To install the newest version of Docker, follow [this excellent document](https://docs.docker.com/engine/installation/linux/docker-ce/debian/). Here is a quick summary of what I did,
@@ -14,6 +12,8 @@ To install the newest version of Docker, follow [this excellent document](https:
 
 ### Install from the Debian repository
 
+** This package not available in Debian Stretch**
+
 Alternatively, Docker can be installed from the Debian package repository. The Docker provided by Debian will be an older version of Docker.
 
 `sudo apt-get -t jessie-backports install docker.io`
@@ -26,15 +26,17 @@ Applies to both the Docker installation and the Debian installation.
 
 Add user to the `docker` group so that the user can access the docker daemon without `sudo`.
 
-    # Add the docker group if it doesn't already exist.
-    $ sudo groupadd docker
-    
-    # Add the connected user "${USER}" to the docker group.
-    # You may have to logout and log back in again for this to take effect.
-    $ sudo gpasswd -a ${USER} docker
-    
-    # Restart the Docker daemon.
-    $ sudo service docker restart
+```bash
+# Add the docker group if it doesn't already exist.
+$ sudo groupadd docker
+
+# Add the connected user "${USER}" to the docker group.
+# You may have to logout and log back in again for this to take effect.
+$ sudo gpasswd -a ${USER} docker
+
+# Restart the Docker daemon.
+$ sudo service docker restart
+```
 
 If `docker version` without sudo still gets you an error, restart the machine.
 
