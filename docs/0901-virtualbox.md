@@ -22,7 +22,7 @@ Here is the note:
 2. Add a new file `virtualbox.list` to `/etc/apt/sources.list.d/`.
 3. Add this line `deb http://download.virtualbox.org/virtualbox/debian stretch contrib` to the `virtualbox.list` file.
 4. Update with the Oracle VirtualBox packages `sudo apt-get update`.
-5. Install VirtualBox `sudo apt-get install virtualbox-5.1`.
+5. Install VirtualBox `sudo apt-get install virtualbox-5.2`.
 6. Fix the `vboxusers` user group for accessing USB devices. Note that installing VirtualBox will add the user group `vboxusers`. The documentation says, "VirtualBox accesses USB devices through special files in the file system. When VirtualBox is installed, these are made available to all users in the `vboxusers` system group. In order to be able to access USB from guest systems, make sure that you are a member of this group."
     1. To view the list of groups `groups <user>` (or `id <user>`)
     2. If not in the group, add to the group `sudo gpasswd -a <user> vboxusers` (or `sudo usermod -a -G vboxusers <user>`)
