@@ -12,19 +12,18 @@ NVIDIA provides the latest versions. NVIDIA has excellent documentation on [CUDA
 
 We have 4 tiers of packages to install. They are tiered because a particular tier depends on packages of previous tiers. Depending on the need, the last 2 tiears can be optional. Here is the landscape of the package tiers:
 
-1. [Linux headers](https://packages.debian.org/stretch/linux-headers-amd64)
+1. Linux headers
+    1. [Debian only](https://packages.debian.org/stretch/linux-headers-amd64)
 2. NVIDIA graphics driver
     1. [Debian](https://packages.debian.org/stretch/nvidia-driver)
-    2. [NVIDIA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)
+    2. [NVIDIA](http://www.nvidia.com/object/unix.html) (also included in the CUDA toolkit installation below)
 3. NVIDIA CUDA toolkit
     1. [Debian](https://packages.debian.org/stretch/nvidia-cuda-toolkit)
-    2. [NVIDIA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)
+    2. [NVIDIA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/) (includes the graphics driver installation)
 4. cuDNN
     1. [NVIDIA only](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/)
 
 Other NVIDIA deep learning packages include [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl). They are not covered here.
-
-
 
 ### Linux Headers
 
