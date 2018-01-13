@@ -12,7 +12,7 @@ To install the newest version of Docker, follow [this excellent document](https:
 
 ### Install from the Debian repository
 
-** This package not available in Debian Stretch**
+**This package is not available in Debian Stretch**
 
 Alternatively, Docker can be installed from the Debian package repository. The Docker provided by Debian will be an older version of Docker.
 
