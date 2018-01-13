@@ -10,7 +10,9 @@ Other aspects of development such as [Java](0700-java.md), [Python](0800-python.
 
 ### Common Dev Packages
 
-Please check out [the dev bootstrap script](https://github.com/neurite/debian-setup/blob/master/scripts/dev-bootstrap.sh) for the packages. You can run the script directly,
+Please check out [the dev bootstrap script](https://github.com/neurite/debian-setup/blob/master/scripts/dev-bootstrap.sh) for the list of packages.
+
+You can run the script directly to install the packages,
 
 1. Install git `sudo apt-get install git`
 2. Clone [this repository](https://github.com/neurite/debian-setup.git)
