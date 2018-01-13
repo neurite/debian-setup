@@ -1,16 +1,26 @@
-## Prerequisites
+### Table of Contents
 
-### DKMS
+1. [Prerequisites](#prerequisites)
+    1. [DKMS](#dkms)
+    2. [Evince (optional)](#evince-optional)
+2. [VirtualBox](#virtualbox)
+3. [Guest System](#guest-system)
+    1. [Hard disk type](#hard-disk-type)
+    2. [Guest additions](#guest-additions)
+
+### Prerequisites
+
+#### DKMS
 
 DKMS is recommended for VirtualBox. "Ubuntu/Debian users might want to install the dkms package to ensure that the VirtualBox host kernel modules (vboxdrv, vboxnetflt and vboxnetadp) are properly updated if the linux kernel version changes during the next apt-get upgrade." It should have already been installed (also needed for installing the NVIDIA drivers).
 
-### Evince (optional)
+#### Evince (optional)
 
 Note that if VirtualBox is installed directly from Debian using `apt-get`, a PDF viewer is not needed.
 
 Basically needs to install a PDF viewer as required by the VirtualBox package sourced from virtualbox.org. By default, installing VirtualBox will pull in mupdf. Run `sudo apt-get install evince` to install Evince. Another light-weight option is `xpdf`, which installs the same number of new packages as Evince.
 
-## VirtualBox
+### VirtualBox
 
 `sudo apt-get -t stretch-backports install virtualbox`
 
@@ -30,13 +40,13 @@ Here is the note:
     1. `mkdir ~/VirtualBoxVMs`
     2. Start VirtualBox. File -> Preferences -> General. Set the Default Machine Folder to `/home/<user>/VirtualBoxVMs`.
 
-## Debian as a Guest System on VirtualBox
+### Guest System
 
-### Hard disk type
+#### Hard disk type
 
 VDI, VHD, or VMDK? See this [excellent discussion](https://superuser.com/questions/360517/what-disk-image-should-i-use-with-virtualbox-vdi-vmdk-vhd-or-hdd). Choose VMDK for compatibility.
 
-### Guest additions
+#### Guest additions
 
 Create a Debian virtual machine, install a basic Debian, install a minimal desktop (like gnome-core). Then in the guest system, the virtual machine, make sure to install the guest additions for better screen resolution,
 
