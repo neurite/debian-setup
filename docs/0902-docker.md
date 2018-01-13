@@ -2,7 +2,7 @@
 
 ### Install from the Docker repository
 
-To install the newest version of Docker, follow [this excellent document](https://docs.docker.com/engine/installation/linux/debian/). Here is a quick summary of what I did,
+To install the newest version of Docker, follow [this excellent document](https://docs.docker.com/engine/installation/linux/docker-ce/debian/). Here is a quick summary of what I did,
 
 1. `sudo apt-get install apt-transport-https ca-certificates`.
 2. `sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D`. **Double-check with posted link above that the information is correct**.
