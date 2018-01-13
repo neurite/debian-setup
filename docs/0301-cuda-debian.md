@@ -1,10 +1,16 @@
 ### NVIDIA graphics Driver
 
-`sudo apt-get install dkms nvidia-kernel-dkms nvidia-driver`
+`sudo apt-get install dkms`
 
-The dkms packages are singled out to make it clear that NVIDIA installs into the kernel tree. They are actually hard dependencies of the `nvidia-driver` metapackage.
+The `dkms` package is singled out to make it clear that NVIDIA installs into the kernel tree. It is also required by other software such as VirtulBox. Thus locking it down as a manual install.
 
-In the end, restart to replace nouveau with nvidia. You will be prompted during installation if that is the case.
+`sudo apt-get install nvidia-driver` or `sudo apt-get -t stretch-backports install nvidia-driver`
+
+Stretch backports has a newer version of 384.11 vs 375.82 in Stretch.
+
+The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed or uninstalled together with other NVIDIA packages.
+
+In the end, restart to replace nouveau with nvidia. You will be prompted during installation if a reboot is needed.
 
 ### CUDA Toolkit
 
