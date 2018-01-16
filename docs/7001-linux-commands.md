@@ -21,7 +21,7 @@ tar xvJf csv.tar.xz
 
 CPU time for storage space
 
-Example, 626 MB of CSV files
+Example, archiving and compressing 626 MB of CSV files:
 
 * 155 MB, gzip
 * 101 MB, bzip2
