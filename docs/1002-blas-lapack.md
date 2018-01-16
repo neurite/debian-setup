@@ -6,7 +6,7 @@ As the name suggests these are for building packages. They are needed by Python 
 ```bash
 sudo apt-get install dpkg-dev libc6-dev gcc g++ gfortran make check
 ```
-Note these packages are covered by [the root-bootstrap.sh script](https://github.com/neurite/debian-setup/blob/master/root-bootstrap.sh).
+Note these packages are covered by [the dev-bootstrap.sh script](https://github.com/neurite/debian-setup/blob/master/scripts/dev-bootstrap.sh).
 
 You can also check the [`build-essential`](https://packages.debian.org/stretch/build-essential) meta-package which manages a similar list.
 
