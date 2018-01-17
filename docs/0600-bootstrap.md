@@ -24,7 +24,7 @@ git clone https://github.com/neurite/debian-setup.git
 3. Execute the script, In the end, it will reboot
 ```bash
 sudo su
-bash /<path>/<to>/<usr>/<Workspace>/debian-setup/scripts/dev-bootstrap.sh
+bash /home/<usr>/Workspace/debian-setup/scripts/dev-bootstrap.sh
 ```
 
 Now it is time to configure [vim](0601-vim.md) and [git](0603-git.md).
