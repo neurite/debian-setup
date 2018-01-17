@@ -43,7 +43,7 @@ The second reason is about installing a customized, lightweight desktop. Like di
 15. `Select and install software`
     * Package usage survey: No
     * Should man and mandb be installed 'setuid man': No
-    * Choose only `standard system utilities`, which includes bzip2, dpkg, perl, python, openssl, etc.
+    * Choose only `standard system utilities`, which includes bzip2, ca-certificates, dbus, dpkg, less, perl, python, openssl, etc.
     * Note, if you want to install a customized desktop, make sure **do not select any desktop environment**. We can install a lightweight desktop at a later stage. For example, [a GNOME desktop reduced to the core](0501-gnome.md).
 16. `Install the GRUB boot loader`
     * Force GRUB installation to the EFI removable media path: Yes
