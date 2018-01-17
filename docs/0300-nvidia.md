@@ -46,7 +46,7 @@ To list the linux-headers packages already installed:
 sudo dpkg -l | grep 'linux-headers'
 ```
 
-### `dkms`
+### dkms
 
 ```bash
 sudo apt-get install dkms
@@ -58,7 +58,7 @@ The dkms package is singled out to make it clear that NVIDIA installs into the k
 
 From here, we will part into two paths:
 
-* [Install graphics drivers only using the Debian repository](0301-nvidia-debian.md)
-* [Install CUDA from NVIDIA](0302-cuda-nvidia.md)
+* [Install graphics drivers only using the Debian repository](0301-cuda-debian.md)
+* [Install graphics drivers, CUDA, and cuDNN from NVIDIA](0302-cuda-nvidia.md)
 
 As said, Debian Stretch 1) has older versions of graphics drivers and CUDA toolkit, and 2) does not have cuDNN. If you want only the graphics drivers, you can install it from the Debian repo. Otherwise, you should install the rest of NVIDIA packages from NVIDIA.
