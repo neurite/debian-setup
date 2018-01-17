@@ -1,4 +1,4 @@
-### NVIDIA graphics Driver
+### NVIDIA Graphics Driver
 
 ```bash
 sudo apt-get install nvidia-driver
