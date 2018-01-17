@@ -1,3 +1,11 @@
+### Dot (.) command
+
+Equavilent to `source`. It "evaluates commands in a computer file in the current execution context."
+
+### locate
+
+`locate train.tsv`
+
 ### tar
 
 ```bash
