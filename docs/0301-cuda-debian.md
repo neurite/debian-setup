@@ -1,20 +1,20 @@
 ### NVIDIA graphics Driver
 
-`sudo apt-get install dkms`
+```bash
+sudo apt-get install nvidia-driver
+```
 
-The `dkms` package is singled out to make it clear that NVIDIA installs into the kernel tree. It is also required by other software such as VirtulBox. Thus locking it down as a manual install.
-
-`sudo apt-get install nvidia-driver` or `sudo apt-get -t stretch-backports install nvidia-driver`
-
-Stretch backports has a newer version of 384.11 vs 375.82 in Stretch.
-
-The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed or uninstalled together with other NVIDIA packages.
+The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed and uninstalled together with other NVIDIA packages.
 
 In the end, restart to replace nouveau with nvidia. You will be prompted during installation if a reboot is needed.
 
 ### CUDA Toolkit
 
-`sudo apt-get install nvidia-cuda-toolkit`
+```bash
+sudo apt-get install nvidia-cuda-toolkit
+```
+
+You can also install the CUDA toolkit from Debian. Note this is how far you can go with the Debian repo. The cuDNN package is from NVIDIA only. If you need it, you are on the wrong page and should follow [a different path](0302-cuda-nvidia.md).
 
 Here is the CUDA toolkit package tree:
 ```
@@ -55,7 +55,7 @@ Here is the CUDA toolkit package tree:
 
 ### Verify CUDA Installation
 
-CUDA toolkit installed from Debian does seem to have [CUDA samples](http://docs.nvidia.com/cuda/cuda-samples/)?
+CUDA toolkit installed from Debian does not seem to have [CUDA samples](http://docs.nvidia.com/cuda/cuda-samples/)?
 
 1. Verify graphics driver
     * `cat /proc/driver/nvidia/version`
@@ -83,13 +83,3 @@ CUDA toolkit installed from Debian does seem to have [CUDA samples](http://docs.
        CUDA driver library cannot be found.
        ```
     5. TODO: How about PyTorch?
-
-### cuDNN
-
-TODOs:
-
-1. Download from NVIDIA
-2. Compatible versions (toolkit 8.0) (cuDNN 5.1, 6.0) (compute version)
-3. Install path
-4. Verify (torch.cuda.is_available())
-
