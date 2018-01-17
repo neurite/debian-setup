@@ -29,10 +29,10 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * Choose `Manual` and see [manual disk partitions](0201-partitions.md) for detailed steps and information.
     * Or, for the simple cases such as setting up a VM, choose `Guided - use entire disk`.
 13. `Install the base system`
-    * kernel: `linux-image-amd-64` (this installs the same version but free to upgrade to newer kernel versions)
+    * kernel: `linux-image-amd-64` (this installs the same version but free to upgrade to newer kernel versions while the other option locks the kernel to a particular version)
     * initrd (initial ram disk): `generic (all available drivers)`
 14. `Configure the package manager`
-    * User network mirror: Yes
+    * Use network mirror: Yes
     * Protocol: https
     * Country: US
     * Mirror: (choose a good one that is near to you, e.g. `mirrors.ocf.berkeley.edu`)
