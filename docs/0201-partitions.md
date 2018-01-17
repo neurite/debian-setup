@@ -4,7 +4,7 @@ This is the step `Partition disks`. Partitioning method is `Manual`.
 
 ![](ss-manual.png "partition disks - manual")
 
-Select the disk to create an empty partition table.
+Select the disk to create an empty partition table. Note, if you want to keep the existing data, select the partition instead. Flip `Use as: do not use` to `Use as: Ext4 journaling file system` and `Format the partition: no, keep existing data`. Remember to set up the mount point and mounting options (see [an example](#example-partitions) below). 
 
 ![](ss-disk.png "select disk to create partition table")
 
@@ -22,6 +22,8 @@ Set up the partion with the correct format `Ext4 journaling`, mount point, and m
 
 ### Example Partitions
 
+You may notice the `discard` mount option for SSD drive.
+
 | Drive               | Mount Point | Type | Size   | Mount Options                    | Other     |
 |---------------------|-------------|------|--------|----------------------------------|-----------|
 | sda (256 GB SSD)    |             | EFI  | 256 MB |                                  | Bootable  |
@@ -35,23 +37,23 @@ Set up the partion with the correct format `Ext4 journaling`, mount point, and m
 |                     | /stash      | EXT4 | 512 GB | relatime, nodev, nosuid, noexec  |           |
 | RAID10              | /samba      | EXT4 | 4 TB   | relatime, nodev, nosuid, noexec  | largefile |
 
-Finally it lets you review the partitions.
+Finally it lets you review the partitions. Scroll to the bottom of the review list, choose `Finish partitioning and write changes`.
 
 ![](ss-partitions.jpg "partitions")
 
-Note the blue boxes in the above screenshot highlight the RAID related stuff.
-
 ### Software RAID
 
-If you have set up RAID in the BIOS and have correctly edited the command `Expert install`, the RAID should appear here as a single disk. Partition it as if it is a single disk. Remember this for setting up hardware RAID.
+First, let's talk briefly about hardware RAID. If you have set up RAID in the BIOS and have correctly edited the command `Expert install`, the RAID should appear here as a single disk. Partition it as if it is a single disk. Again this is for setting up hardware RAID.
+
+See the screenshot below for software RAID.
 
 ![](ss-raid.jpg "raid partitions")
 
-The preferred RAID is the software RAID. There is an option `Configure software RAID` (the first blue box in the screenshot). Once set, the RAID will appear as a single disk (the second blue box). The third blue box list the disks composing the RAID. **Do not touch them**.
+Software RAID is the preferred RAID. There is an option `Configure software RAID` (the first blue box in the screenshot). Once set, the RAID will appear as a single disk (the second blue box). The third blue box list the disks composing the RAID. **Do not touch them**.
 
 If you have a previously set software RAID, as the RAID configuration is written on the disks, it should show up here as a single device. You do not need to configure the RAID again. For example, mine just shows up as `RAID10 device #0`. It is from a previous install.
 
-You can keep the data already on the RAID device. Here is how: Select the partition (not the disk) on the RAID disk. Flip `Use as: do not use` to `Use as: Ext4 journaling file system` and `Format the partition: no, keep existing data`. Set up the mount point and mounting options.
+**You can keep the data already on the RAID device**. Here is how: Select the partition (not the disk) on the RAID disk. Flip `Use as: do not use` to `Use as: Ext4 journaling file system` and `Format the partition: no, keep existing data`. Set up the mount point and mounting options.
 
 ![](ss-mount-opts.jpg)
 
