@@ -60,7 +60,7 @@ apt-get -q -y install libopenblas-base libopenblas-dev
 # and installs into the kernel tree."
 apt-get -q -y install dkms
 
-apt-get -q -y install openssl gnupg gnupg2
+apt-get -q -y install openssl gnupg gnupg2 dirmngr
 
 apt-get -q -y install curl wget
 
