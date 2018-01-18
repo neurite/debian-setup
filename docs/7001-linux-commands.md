@@ -8,6 +8,12 @@ Equavilent to `source`. It "evaluates commands in a computer file in the current
 locate train.tsv
 ```
 
+May need to update index first:
+
+```bash
+sudo updatedb
+```
+
 ### md5sum
 
 ```bash
