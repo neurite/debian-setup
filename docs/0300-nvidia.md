@@ -21,9 +21,22 @@ As you already see in the above list, there are two sources for the NVIDIA packa
 
 Debian has older versions of the NVIDIA packages. But installation is a breeze. Debian has [documention on NVIDIA graphic drivers](https://wiki.debian.org/NvidiaGraphicsDrivers). Debian Stretch has [CUDA 8.0](https://packages.debian.org/stretch/nvidia-cuda-toolkit) while Debian Buster has [CUDA 9.0](https://packages.debian.org/buster/nvidia-cuda-toolkit). As of this moment, Debian repositories do not have cuDNN. Be aware that, most deep learning frameworks, such as Tensorflow, MXNet, PyTorch, require cuDNN to provide GPU support.
 
-NVIDIA provides the latest versions. NVIDIA has good documentation on [CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which describes the installation of both the graphics drivers and the CUDA toolkit. NVIDIA also has detailed documention on [cuDNN installation](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/). Note you must register with NVIDIA to download and install cuDNN.
+NVIDIA provides the latest versions. NVIDIA has good documentation on [CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which describes the installation of both the graphics drivers and the CUDA toolkit. NVIDIA also has detailed documention on [cuDNN installation](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/). Note you must register with NVIDIA to download and install cuDNN. In the cuDNN documentation, you can clearly see the 2 prerequisites: graphics drivers and CUDA.
 
-### Linux Headers
+Packages installed via NVIDIA has a unique challenge for Debian systems -- Debian is **not** an officially supported Linux variation via NVIDA. The closest one to Debian Stretch is Ubuntu 17.04. I tried the CUDA 9.1 installation, which failed due to missing dependencies to Ubuntu packages. There may be hacks to mix in these packages from Ubuntu. However, it looks to me like a treacherous path.
+
+After experimenting different versions, different sources of the packages, here is a viable yet relatively easy path:
+
+| packages                | version       | source            |
+|-------------------------|---------------|-------------------|
+| linux headers, dkms     | 4.9.0-5-amd64 | stretch           |
+| nvidia graphics drivers | 384.111       | stretch-backports |
+| nvidia cuda toolkit     | 8.0.44        | stretch           |
+| nvidia cudnn            | 7.0.5         | nvidia            |
+
+### Installation Steps
+
+#### Linux headers
 
 NVIDIA installs into the kernel tree. In order to do that, Linux headers are needed. **It is important we install the exact version of Linux headers**. Thus this better be done manually and separately.
 
@@ -46,7 +59,7 @@ To list the linux-headers packages already installed:
 sudo dpkg -l | grep 'linux-headers'
 ```
 
-### dkms
+#### dkms
 
 ```bash
 sudo apt-get install dkms
@@ -54,11 +67,8 @@ sudo apt-get install dkms
 
 The dkms package is singled out to make it clear that NVIDIA installs into the kernel tree. From the Ubuntu documentation, "This DKMS (Dynamic Kernel Module Support) package provides support for installing supplementary versions of kernel modules. The package compiles and installs into the kernel tree." It turns out this package is also required by other software such as VirtulBox. Thus locking it down as a manual install.
 
-### Graphics drivers, CUDA, cuDNN
+#### Graphics drivers
 
-From here, we will part into two paths:
+#### CUDA
 
-* [Install graphics drivers only using the Debian repository](0301-cuda-debian.md)
-* [Install graphics drivers, CUDA, and cuDNN from NVIDIA](0302-cuda-nvidia.md)
-
-As said, Debian Stretch 1) has older versions of graphics drivers and CUDA toolkit, and 2) does not have cuDNN. If you want only the graphics drivers, you can install it from the Debian repo. Otherwise, you should install the rest of NVIDIA packages from NVIDIA.
+#### cuDNN
