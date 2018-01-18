@@ -1,3 +1,5 @@
+## NVIDIA
+
 ### Packages
 
 We have 4 tiers of packages to install. They are tiered because a particular tier depends on packages of previous tiers. Depending on the need, the last 2 tiers can be optional. Here is the landscape of the package tiers:
@@ -36,7 +38,7 @@ After experimenting different versions, different sources of the packages, here 
 
 ### Installation Steps
 
-#### Linux headers
+#### 1.1 Linux headers
 
 NVIDIA installs into the kernel tree. In order to do that, Linux headers are needed. **It is important we install the exact version of Linux headers**. Thus this better be done manually and separately.
 
@@ -59,16 +61,16 @@ To list the linux-headers packages already installed:
 sudo dpkg -l | grep 'linux-headers'
 ```
 
-#### dkms
+#### 1.2 dkms
 
 ```bash
 sudo apt-get install dkms
 ```
 
-The dkms package is singled out to make it clear that NVIDIA installs into the kernel tree. From the Ubuntu documentation, "This DKMS (Dynamic Kernel Module Support) package provides support for installing supplementary versions of kernel modules. The package compiles and installs into the kernel tree." It turns out this package is also required by other software such as VirtulBox. Thus locking it down as a manual install.
+The dkms package is singled out to make it clear that NVIDIA installs into the kernel tree. From the Ubuntu documentation, "This DKMS (Dynamic Kernel Module Support) package provides support for installing supplementary versions of kernel modules. The package compiles and installs into the kernel tree." It turns out this package is also required by other software such as VirtulBox, Docker. Thus locking it down as a manual install.
 
-#### Graphics drivers
+#### 2. Graphics drivers
 
-#### CUDA
+#### 3. CUDA
 
-#### cuDNN
+#### 4. cuDNN
