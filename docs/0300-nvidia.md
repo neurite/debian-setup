@@ -1,14 +1,6 @@
-### Sources
-
-There are two sources for the NVIDIA packages, one is Debian, the other is NVIDIA.
-
-Debian has older versions of the NVIDIA packages. But installation is a breeze. Debian has [documention on NVIDIA graphic drivers](https://wiki.debian.org/NvidiaGraphicsDrivers). As of this moment, the repository for Debian Stretch does not have cuDNN. Be aware that, most deep learning frameworks, such as Tensorflow, MXNet, PyTorch, require cuDNN for GPU support.
-
-NVIDIA provides the latest versions. NVIDIA has excellent documentation on [CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which describes the installation of both the graphics drivers and the CUDA toolkit. NVIDIA also has detailed documention on [cuDNN installation](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/). Note you must register with NVIDIA to download and install cuDNN.
-
 ### Packages
 
-We have 4 tiers of packages to install. They are tiered because a particular tier depends on packages of previous tiers. Depending on the need, the last 2 tiears can be optional. Here is the landscape of the package tiers:
+We have 4 tiers of packages to install. They are tiered because a particular tier depends on packages of previous tiers. Depending on the need, the last 2 tiers can be optional. Here is the landscape of the package tiers:
 
 1. Linux headers
     1. [Debian only](https://packages.debian.org/stretch/linux-headers-amd64)
@@ -21,7 +13,15 @@ We have 4 tiers of packages to install. They are tiered because a particular tie
 4. cuDNN
     1. [NVIDIA only](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/)
 
-Other NVIDIA deep learning packages include [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl). They are not covered here.
+Other NVIDIA deep learning packages, such as [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl), are not covered here.
+
+### Sources
+
+As you already see in the above list, there are two sources for the NVIDIA packages. One is Debian, the other is NVIDIA.
+
+Debian has older versions of the NVIDIA packages. But installation is a breeze. Debian has [documention on NVIDIA graphic drivers](https://wiki.debian.org/NvidiaGraphicsDrivers). Debian Stretch has [CUDA 8.0](https://packages.debian.org/stretch/nvidia-cuda-toolkit) while Debian Buster has [CUDA 9.0](https://packages.debian.org/buster/nvidia-cuda-toolkit). As of this moment, Debian repositories do not have cuDNN. Be aware that, most deep learning frameworks, such as Tensorflow, MXNet, PyTorch, require cuDNN to provide GPU support.
+
+NVIDIA provides the latest versions. NVIDIA has good documentation on [CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which describes the installation of both the graphics drivers and the CUDA toolkit. NVIDIA also has detailed documention on [cuDNN installation](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/). Note you must register with NVIDIA to download and install cuDNN.
 
 ### Linux Headers
 
