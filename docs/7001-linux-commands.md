@@ -32,3 +32,13 @@ CPU time for storage space. Example, archiving and compressing 626 MB of CSV fil
 * 155 MB, gzip
 * 101 MB, bzip2
 * 89 MB, lzma2
+
+### wget
+
+```bash
+# Download
+wget http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+
+# Give it a different name
+wget -O mnist-train-imgs.gz http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+```
