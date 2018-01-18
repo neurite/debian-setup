@@ -4,7 +4,15 @@ Equavilent to `source`. It "evaluates commands in a computer file in the current
 
 ### locate
 
-`locate train.tsv`
+```bash
+locate train.tsv
+```
+
+### md5sum
+
+```bash
+md5sum train.csv
+```
 
 ### tar
 
