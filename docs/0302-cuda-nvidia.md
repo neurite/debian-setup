@@ -18,3 +18,21 @@ sudo apt-get install dirmngr
 
 Need other dependencies. Might as well install a desktop.
 
+
+**Require Ubuntu packages not available in Debian**
+
+## Revert the above installs
+
+```bash
+sudo apt-get -t stretch-backports install nvidia-driver
+```
+
+The target is CUDA 8.0 then cuDNN 7.0.5. According to cuDNN's documentation, NVIDIA graphics driver 384.81 or newer is required. The backports installs driver 384.111
+
+```bash
+sudo apt-get -t stretch-backports install nvidia-cuda-toolkit
+```
+
+CUDA 8.0.44
+
+cuDNN 7.0.5 for CUDA 8.0
