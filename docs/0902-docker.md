@@ -25,6 +25,7 @@ sudo apt-get update
 sudo apt-get install docker-ce
 
 # verify
+sudo docker version
 sudo docker run hello-world
 ```
 
