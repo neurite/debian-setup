@@ -38,7 +38,7 @@ After experimenting different versions, different sources of the packages, here 
 
 ### Installation Steps
 
-#### 1.1 Linux headers
+#### 1. Linux headers
 
 NVIDIA installs into the kernel tree. In order to do that, Linux headers are needed. **It is important we install the exact version of Linux headers**. Thus this better be done manually and separately.
 
@@ -61,7 +61,7 @@ To list the linux-headers packages already installed:
 sudo dpkg -l | grep 'linux-headers'
 ```
 
-#### 1.2 dkms
+#### 2. dkms
 
 ```bash
 sudo apt-get install dkms
@@ -69,8 +69,90 @@ sudo apt-get install dkms
 
 The dkms package is singled out to make it clear that NVIDIA installs into the kernel tree. From the Ubuntu documentation, "This DKMS (Dynamic Kernel Module Support) package provides support for installing supplementary versions of kernel modules. The package compiles and installs into the kernel tree." It turns out this package is also required by other software such as VirtulBox, Docker. Thus locking it down as a manual install.
 
-#### 2. Graphics drivers
+#### 3. Graphics drivers
 
-#### 3. CUDA
+```bash
+sudo apt-get -t stretch-backports install nvidia-driver
+```
 
-#### 4. cuDNN
+Notice the backports. It installs version 384.111. One of the installation target cuDNN requires driver version >= 384.81.
+
+The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed and uninstalled together with other NVIDIA packages.
+
+In the end, restart to replace nouveau with nvidia. You will be prompted during installation if a reboot is needed.
+
+#### 4. CUDA
+
+```bash
+sudo apt-get install nvidia-cuda-toolkit
+```
+
+Here is the CUDA toolkit package tree:
+```
+    nvidia-cuda-toolkit
+            |
+            |-----> nvidia-cuda-dev
+            |           |
+            |           |-----> libcudart: CUDA runtime
+            |           |
+            |           |-----> libcublas: cuBLAS
+            |           |
+            |           |-----> libnvblas: nvBLAS
+            |           |
+            |           |-----> libcufft: cuFFT
+            |           |
+            |           |-----> libcufftw: cuFFTW
+            |           |
+            |           |-----> libcurand: cuRAND
+            |           |
+            |           |-----> libcusolver: cuSOLVER, LAPACK-like functions
+            |           |
+            |           |-----> libcusparse8.0: cuSPARSE
+            |           |
+            |           |=====> libcuda1 (already a hard dependency)
+            |                       |
+            |                       |=====> nvidia-cuda-mps (not installed)
+            |
+            |-----> libnvvm3
+            |
+            |-----> nvidia-opencl-dev
+            |
+            |-----> nvidia-profiler
+            |
+            |=====> nvidia-cuda-gdb
+            |
+            |=====> nvidia-cuda-doc
+```
+
+#### 5. Verify CUDA Installation
+
+CUDA toolkit installed from Debian does not seem to have [CUDA samples](http://docs.nvidia.com/cuda/cuda-samples/)?
+
+1. Verify graphics driver
+    * `cat /proc/driver/nvidia/version`
+    * `nvidia-smi`
+
+2. Verify the CUDA compiler
+    * `nvcc --version`
+
+3. Numba
+    1. [Install miniconda](https://conda.io/miniconda.html)
+    2. [Create a conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) for testing numba
+    3. [Activate the environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment), then
+        ```bash
+        conda install numba
+        conda install cudatoolkit
+        ```
+    4. Launch the python REPL in the active numba environment, the following indicates CUDA installation failure,
+       ```
+       >>> from numba import cuda
+       >>> 
+       >>> cuda.detect()
+       ```
+       ```
+       numba.cuda.cudadrv.error.CudaSupportError: Error at driver init:
+       CUDA driver library cannot be found.
+       ```
+    5. TODO: How about PyTorch?
+
+#### 6. cuDNN
