@@ -1,3 +1,5 @@
+## Docker
+
 ### Install from the Docker repository
 
 To install the newest version of Docker, follow [this excellent document](https://docs.docker.com/engine/installation/linux/docker-ce/debian/). Here is a quick summary of what I did,
@@ -61,7 +63,7 @@ $ sudo service docker restart
 
 If `docker version` without sudo still gets you an error, restart the machine.
 
-# Create a Clean Debian Image
+### Create a Clean Debian Image
 
 The instructions below are ways to create your own Docker image of Debian.
 
@@ -73,7 +75,7 @@ Both options require debootstrap. Debootstrap "is a tool which will install a De
 sudo apt-get -t jessie-backports install debootstrap
 ```
 
-### Option 1
+#### Option 1
 
 Follow [the debian-docker repository](https://github.com/jmtd/debian-docker) at GitHub.
 
@@ -81,7 +83,7 @@ Follow [the debian-docker repository](https://github.com/jmtd/debian-docker) at 
 2. At the project root, run `sudo make prefix=<your docker user name>`. Optionally can set the mirror to your favorite one, e.g.  `mirror=http://mirrors.ocf.berkeley.edu/debian/`.
 3. Run `sudo docker images` to verify.
 
-### Option 2
+#### Option 2
 
 Alternatively use Docker's `mkimage.sh`.
 
