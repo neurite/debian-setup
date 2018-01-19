@@ -2,13 +2,31 @@
 
 To install the newest version of Docker, follow [this excellent document](https://docs.docker.com/engine/installation/linux/docker-ce/debian/). Here is a quick summary of what I did,
 
-1. `sudo apt-get install apt-transport-https ca-certificates`.
-2. `sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D`. **Double-check with posted link above that the information is correct**.
-3. `sudo vim /etc/apt/sources.list.d/docker.list` and add this line `deb https://apt.dockerproject.org/repo debian-jessie main`.
-4. `sudo apt-get update`.
-5. `sudo apt-get install docker-engine`.
-6. `sudo service docker start`.
-7. `sudo docker version` to verify.
+```bash
+sudo apt-get remove docker docker-engine docker.io
+
+sudo apt-get install \
+     apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg2 \
+     software-properties-common
+
+curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
+   $(lsb_release -cs) \
+   stable"
+
+sudo apt-get update
+
+# docker-ce also depends on dkms and linux-headers
+sudo apt-get install docker-ce
+
+# verify
+sudo docker run hello-world
+```
 
 ### Install from the Debian repository
 
