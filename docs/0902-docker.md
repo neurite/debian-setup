@@ -35,7 +35,9 @@ sudo docker run hello-world
 
 Alternatively, Docker can be installed from the Debian package repository. The Docker provided by Debian will be an older version of Docker.
 
-`sudo apt-get -t jessie-backports install docker.io`
+```bash
+sudo apt-get -t jessie-backports install docker.io
+```
 
 Run `sudo docker version` to verify.
 
@@ -67,7 +69,9 @@ The instructions below are ways to create your own Docker image of Debian.
 
 Both options require debootstrap. Debootstrap "is a tool which will install a Debian base system into a subdirectory of another, already installed system." On a Debian running on VirtualBox, install docker and debootstrap.
 
-`sudo apt-get -t jessie-backports install debootstrap`
+```bash
+sudo apt-get -t jessie-backports install debootstrap
+```
 
 ### Option 1
 
