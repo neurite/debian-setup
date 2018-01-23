@@ -81,6 +81,11 @@ Web scraping
 * scrapy
 * beautifulsoup
 
+Miscellaneous
+
+* [networkx](https://networkx.github.io) -- Graph algorithms
+* [datasketch](https://ekzhu.github.io/datasketch/) -- Probalistic data structures, hashing
+
 All the packages above can be installed via `conda install <package-name>`.
 
 It's worth noting the SciPy Stack which is now obsolete. But even today a typical Python ML/DL environment includes jupyter, numpy, scipy, pandas, matplotlib, seaborn. Other packages such as scikit-learn, or tensorflow, or mxnet, are added on top of them.
