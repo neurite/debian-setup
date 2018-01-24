@@ -12,7 +12,7 @@ The second reason is about installing a customized, lightweight desktop. Like di
 
 1. First, boot to the USB disk [you just prepared](0100-prepare.md). In order to boot to the USB disk, modify the boot order in the BIOS. Note certain USB ports on the motherboard may not boot. If you suspect that is the case, try a different USB port. Once booted, the screen should display "UEFI Installer" in the title; otherwise revisit the UEFI settings of the motherboard.
 2. `Advanced options ...`, then `Expert install`
-    * Note, **do not hit Enter yet**, if you want to set up [hardware RAID (Serial ATA RAID, SATA RAID)](https://wiki.debian.org/DebianInstaller/SataRaid). However, I recommend software RAID over hardware RAID. I have since switched to software RAID. Software RAID is set up in [the disk partition step](0201-partitions.md). You can continue `Expert install` without editing if you want to set up software RAID.
+    * Note, **do not hit Enter yet**, if you want to set up [hardware RAID (Serial ATA RAID, SATA RAID)](https://wiki.debian.org/DebianInstaller/SataRaid). Edit the command by appending `dmraid=true` at the end. However, I would recommend software RAID over hardware RAID. I have since switched to software RAID. Software RAID is set up in [the disk partition step](0201-partitions.md). You can continue `Expert install` without editing it if you want to set up software RAID.
 3. `Choose language`, locale `en_US.UTF-8`
 4. `Configure the keyboard`: `American English`
 5. `Detect and mount CD-ROM`. This should recognize the USB drive with the Debian ISO as the CD-ROM.
