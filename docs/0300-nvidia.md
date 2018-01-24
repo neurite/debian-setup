@@ -200,6 +200,23 @@ CUDA toolkit installed from Debian does not seem to have [CUDA samples](http://d
        numba.cuda.cudadrv.error.CudaSupportError: Error at driver init:
        CUDA driver library cannot be found.
        ```
-    5. TODO: How about PyTorch?
 
 #### 7. cuDNN
+
+Download [cuDNN](https://developer.nvidia.com/rdp/cudnn-download) from NVIDIA. You must login to download.
+
+Download the following files:
+
+* cuDNN v7.0.5 Runtime Library for Ubuntu16.04 (Deb)
+* cuDNN v7.0.5 Developer Library for Ubuntu16.04 (Deb)
+* cuDNN v7.0.5 Code Samples and User Guide for Ubuntu16.04 (Deb)
+
+Install:
+
+```bash
+sudo dpkg -i Packages/libcudnn7_7.0.5.15-1+cuda8.0_amd64.deb 
+sudo dpkg -i Packages/libcudnn7-dev_7.0.5.15-1+cuda8.0_amd64.deb 
+sudo dpkg -i Packages/libcudnn7-doc_7.0.5.15-1+cuda8.0_amd64.deb 
+```
+
+Verify:
