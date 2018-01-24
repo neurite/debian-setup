@@ -1,4 +1,4 @@
-### Manual Partitioning
+## Manual Partitioning
 
 This is the step `Partition disks`. Partitioning method is `Manual`.
 
