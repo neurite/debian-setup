@@ -33,10 +33,10 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * initrd (initial ram disk): `generic (all available drivers)`
 14. `Configure the package manager`
     * Use network mirror: Yes
-    * Protocol: https
+    * Protocol: http
     * Country: US
     * Mirror: (choose a good one that is near to you, e.g. `mirrors.ocf.berkeley.edu`)
-    * Use non-free software: Yes (which implies also using contrib software and can skip the next one). If you need to install NVIDIA packages, you must say yes to non-free
+    * Use non-free software: Yes (which implies also using contrib software and can skip the next one). If, for example, you need to install NVIDIA packages, you must say yes to non-free
     * Use contrib software: Yes
     * Enable source repositories in APT: No
     * Services to use: `security updates`, `release updates`, and also check `backported software`
