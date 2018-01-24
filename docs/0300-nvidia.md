@@ -131,18 +131,20 @@ The `nvcc` compiler is available from `/usr/bin/nvcc`. There is also a `nvcc` ex
 ```bash
 $ /usr/lib/nvidia-cuda-toolkit/bin/gcc --version
 
-ERROR: No supported gcc/g++ host compiler found, but clang-3.8 is avialable,
+ERROR: No supported gcc/g++ host compiler found, but clang-3.8 is avialable
 ```
 
 It turns out to be caused by missing dependency to `gcc-5` and `g++-5`. If they are not fixed, they cause problems down the road. They are avaible from Debian unstable. To install them, we need to add Debian testing and Debian unstable. Then they need to be pinned. Here is how:
 
 1. Add Debian testing and unstable to `/etc/apt/sources.list`:
+
 ```bash
 deb http://ftp.us.debian.org/debian/ testing main contrib non-free
 deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
 ```
 
 2. Set up [apt pinning](https://wiki.debian.org/AptPreferences), add file `/etc/apt/preferences`:
+
 ```bash
 Package: *
 Pin: release a=stable
@@ -156,6 +158,7 @@ Package: *
 Pin: release a=unstable
 Pin-Priority: 700
 ```
+
 It simply means packages have the highest priority from stable. If we do not pin them like the above, they will update and upgrade to unstable versions, including the kernel.
 
 3. `sudo apt-get update`
