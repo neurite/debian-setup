@@ -124,7 +124,48 @@ Here is the CUDA toolkit package tree:
             |=====> nvidia-cuda-doc
 ```
 
-#### 5. Verify CUDA Installation
+#### 5. Fix the gcc, g++ compilers
+
+The `nvcc` compiler is available from `/usr/bin/nvcc`. There is also a `nvcc` executable via `/usr/lib/nvidia-cuda-toolkit/bin/nvcc`. In the same folder, there are also `/usr/lib/nvidia-cuda-toolkit/bin/gcc` and `/usr/lib/nvidia-cuda-toolkit/bin/g++`. If they are broken, for example:
+
+```bash
+$ /usr/lib/nvidia-cuda-toolkit/bin/gcc --version
+
+ERROR: No supported gcc/g++ host compiler found, but clang-3.8 is avialable,
+```
+
+It turns out to be caused by missing dependency `gcc-5` and `g++-5`. They are avaible from Debian unstable. To install them, we need to add Debian testing and Debian unstable. They need to be pinned. Here is how:
+
+1. Add Debian testing and unstable to `/etc/apt/sources.list`:
+```bash
+deb http://ftp.us.debian.org/debian/ testing main contrib non-free
+deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
+```
+
+2. Set up [apt pinning](https://wiki.debian.org/AptPreferences), add file `/etc/apt/preferences`:
+```bash
+Package: *
+Pin: release a=stable
+Pin-Priority: 900
+
+Package: *
+Pin: release a=testing
+Pin-Priority: 800
+
+Package: *
+Pin: release a=unstable
+Pin-Priority: 700
+```
+
+3. `sudo apt-get update`
+
+4. `sudo apt-get -t testing install gcc-5 g++-5`
+
+The packages `gcc-5` and `g++-5` are only available in unstable. Even without specifing the port, they will fall through to unstable. The reason for `-t testing` is because dependencies such as `binutils` are in both testing and unstable. We want to "pin" them down to testing.
+
+Now `/usr/lib/nvidia-cuda-toolkit/bin/gcc --version` should show gcc-5. Whereas `gcc`, a different name from `gcc-5`, still runs gcc 6.
+
+#### 6. Verify CUDA Installation
 
 CUDA toolkit installed from Debian does not seem to have [CUDA samples](http://docs.nvidia.com/cuda/cuda-samples/)?
 
@@ -155,4 +196,4 @@ CUDA toolkit installed from Debian does not seem to have [CUDA samples](http://d
        ```
     5. TODO: How about PyTorch?
 
-#### 6. cuDNN
+#### 7. cuDNN
