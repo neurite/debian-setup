@@ -75,6 +75,8 @@ The dkms package is singled out to make it clear that NVIDIA installs into the k
 sudo apt-get install nvidia-driver
 ```
 
+Note `nvidia-driver` version 384.111 from the backports is not compatible with the cuda toolkit version 8.0.44. As of now, there is no cuda toolkit in the backports.
+
 The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed and uninstalled together with other NVIDIA packages.
 
 In the end, restart to replace nouveau with nvidia. You will be prompted during installation if a reboot is needed.
