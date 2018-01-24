@@ -156,7 +156,7 @@ Package: *
 Pin: release a=unstable
 Pin-Priority: 700
 ```
-It means packages have a highest priority from stable. If we do not pin them like the above, they will update and upgrade to unstable versions, including the kernel.
+It simply means packages have the highest priority from stable. If we do not pin them like the above, they will update and upgrade to unstable versions, including the kernel.
 
 3. `sudo apt-get update`
 
@@ -164,7 +164,7 @@ It means packages have a highest priority from stable. If we do not pin them lik
 
 The packages `gcc-5` and `g++-5` are only available in unstable. Even without specifing the port, they will fall through to unstable. The reason for `-t testing` is because dependencies such as `binutils` are in both testing and unstable. We want to "pin" them down to testing.
 
-Now `/usr/lib/nvidia-cuda-toolkit/bin/gcc --version` should show gcc-5. Whereas `gcc`, a different name from `gcc-5`, still runs gcc 6.
+Now `/usr/lib/nvidia-cuda-toolkit/bin/gcc --version` should show gcc-5. Whereas `gcc` via `/usr/bin/gcc`, a different name from `gcc-5`, still runs gcc 6.
 
 #### 6. Verify CUDA Installation
 
