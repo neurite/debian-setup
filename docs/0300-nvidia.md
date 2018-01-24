@@ -124,7 +124,7 @@ Here is the CUDA toolkit package tree:
             |=====> nvidia-cuda-doc
 ```
 
-#### 5. Fix the gcc, g++ compilers
+#### 5. Fix gcc, g++ compilers
 
 The `nvcc` compiler is available from `/usr/bin/nvcc`. There is also a `nvcc` executable via `/usr/lib/nvidia-cuda-toolkit/bin/nvcc`. In the same folder, there are also `/usr/lib/nvidia-cuda-toolkit/bin/gcc` and `/usr/lib/nvidia-cuda-toolkit/bin/g++`. If they are broken, for example:
 
@@ -134,7 +134,7 @@ $ /usr/lib/nvidia-cuda-toolkit/bin/gcc --version
 ERROR: No supported gcc/g++ host compiler found, but clang-3.8 is avialable,
 ```
 
-It turns out to be caused by missing dependency `gcc-5` and `g++-5`. They are avaible from Debian unstable. To install them, we need to add Debian testing and Debian unstable. They need to be pinned. Here is how:
+It turns out to be caused by missing dependency to `gcc-5` and `g++-5`. If they are not fixed, they cause problems down the road. They are avaible from Debian unstable. To install them, we need to add Debian testing and Debian unstable. Then they need to be pinned. Here is how:
 
 1. Add Debian testing and unstable to `/etc/apt/sources.list`:
 ```bash
@@ -156,6 +156,7 @@ Package: *
 Pin: release a=unstable
 Pin-Priority: 700
 ```
+It means packages have a highest priority from stable. If we do not pin them like the above, they will update and upgrade to unstable versions, including the kernel.
 
 3. `sudo apt-get update`
 
