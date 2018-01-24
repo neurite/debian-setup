@@ -1,6 +1,6 @@
 ### Package Source File
 
-Edit package sources `sudo vi /etc/apt/sources.list`. Since we are not using iso images any more for updates, comment out the line that starts with `deb cdrom:[Debian GNU/Linux ...`.
+Edit package sources `sudo vi /etc/apt/sources.list`. Since we are not using the USB disk any more for updates, comment out the line that starts with `deb cdrom:[Debian GNU/Linux ...`.
 
 ### Upgrade Kernel via Backports (optional)
 
