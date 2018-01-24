@@ -1,7 +1,7 @@
 Set up Debian for software development and machine learning. Updated for Debian Stretch.
 
-1. [Prepare](0100-prepare.md)
-2. [Install](0200-install.md)
+1. [Preparation](0100-prepare.md)
+2. [Installation](0200-install.md)
     1. [Manual disk partitions](0201-partitions.md)
     2. [Clean up, fixes, issues](0202-cleanup.md)
 3. [Dev bootstrap](0600-bootstrap.md)
