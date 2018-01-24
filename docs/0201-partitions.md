@@ -31,7 +31,7 @@ You may notice the `discard` mount option for SSD drive.
 |                     | /usr/local  | EXT4 | 32 GB     | discard, relatime, nodev         |           |
 |                     | /opt        | EXT4 | 32 GB     | discard, relatime, nodev         |           | 
 |                     | /home       | EXT4 | remaining | discard, relatime, nodev, nosuid |           |
-| sdb (1 TB spinning) |             | SWAP | 64 GB     |                                  |           |
+| sdb (1 TB spinning) |             | SWAP | 128 GB    |                                  |           |
 |                     | /var        | EXT4 | 128 GB    | relatime, nodev, nosuid          |           |
 |                     | /tmp        | EXT4 | 128 GB    | relatime, nodev, nosuid, noexec  |           |
 |                     | /stash      | EXT4 | remaining | relatime, nodev, nosuid, noexec  |           |
