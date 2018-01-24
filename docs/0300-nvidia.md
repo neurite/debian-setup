@@ -32,7 +32,7 @@ After experimenting different versions, different sources of the packages, here 
 | packages                | version       | source            |
 |-------------------------|---------------|-------------------|
 | linux headers, dkms     | 4.9.0-5-amd64 | stretch           |
-| nvidia graphics drivers | 384.111       | stretch-backports |
+| nvidia graphics drivers | 375.82        | stretch           |
 | nvidia cuda toolkit     | 8.0.44        | stretch           |
 | nvidia cudnn            | 7.0.5         | nvidia            |
 
@@ -72,10 +72,8 @@ The dkms package is singled out to make it clear that NVIDIA installs into the k
 #### 3. Graphics drivers
 
 ```bash
-sudo apt-get -t stretch-backports install nvidia-driver
+sudo apt-get install nvidia-driver
 ```
-
-Notice the backports. It installs version 384.111. One of the installation target cuDNN requires driver version >= 384.81.
 
 The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed and uninstalled together with other NVIDIA packages.
 
