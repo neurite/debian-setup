@@ -88,6 +88,7 @@ sudo apt-get install nvidia-cuda-toolkit
 ```
 
 Here is the CUDA toolkit package tree:
+
 ```
     nvidia-cuda-toolkit
             |
@@ -136,14 +137,14 @@ ERROR: No supported gcc/g++ host compiler found, but clang-3.8 is avialable
 
 It turns out to be caused by missing dependency to `gcc-5` and `g++-5`. If they are not fixed, they cause problems down the road. They are avaible from Debian unstable. To install them, we need to add Debian testing and Debian unstable. Then they need to be pinned. Here is how:
 
-1. Add Debian testing and unstable to `/etc/apt/sources.list`:
+Add Debian testing and unstable to `/etc/apt/sources.list`:
 
 ```bash
 deb http://ftp.us.debian.org/debian/ testing main contrib non-free
 deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
 ```
 
-2. Set up [apt pinning](https://wiki.debian.org/AptPreferences), add file `/etc/apt/preferences`:
+Set up [apt pinning](https://wiki.debian.org/AptPreferences), add file `/etc/apt/preferences`:
 
 ```bash
 Package: *
@@ -161,9 +162,10 @@ Pin-Priority: 700
 
 It simply means packages have the highest priority from stable. If we do not pin them like the above, they will update and upgrade to unstable versions, including the kernel.
 
-3. `sudo apt-get update`
-
-4. `sudo apt-get -t testing install gcc-5 g++-5`
+```bash
+sudo apt-get update
+sudo apt-get -t testing install gcc-5 g++-5
+```
 
 The packages `gcc-5` and `g++-5` are only available in unstable. Even without specifing the port, they will fall through to unstable. The reason for `-t testing` is because dependencies such as `binutils` are in both testing and unstable. We want to "pin" them down to testing.
 
