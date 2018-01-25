@@ -206,7 +206,7 @@ CUDA toolkit installed from Debian does not seem to have [CUDA samples](http://d
 
 Download [cuDNN](https://developer.nvidia.com/rdp/cudnn-download) from NVIDIA. You must login to download.
 
-Download the following files:
+Download cuDNN v7.0.5 for CUDA 8.0 with the following files:
 
 * cuDNN v7.0.5 Runtime Library for Ubuntu16.04 (Deb)
 * cuDNN v7.0.5 Developer Library for Ubuntu16.04 (Deb)
