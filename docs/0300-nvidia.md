@@ -247,3 +247,11 @@ Test the sample:
 make clean && make
 ./mnistCUDNN
 ```
+
+Verify with pytorch. Create a conda environment and activate it. Install pytorch for CUDA 8:
+
+```bash
+conda install pytorch torchvision -c pytorch
+```
+
+Run a script using the GPU.
