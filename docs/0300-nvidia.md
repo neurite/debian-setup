@@ -187,8 +187,8 @@ CUDA toolkit installed from Debian does not seem to have [CUDA samples](http://d
     2. [Create a conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) for testing numba
     3. [Activate the environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment), then
         ```bash
-        conda install numba
         conda install cudatoolkit
+        conda install numba
         ```
     4. Launch the python REPL in the active numba environment, the following indicates CUDA installation failure,
        ```
