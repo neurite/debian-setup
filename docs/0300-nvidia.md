@@ -196,6 +196,7 @@ CUDA toolkit installed from Debian does not seem to have [CUDA samples](http://d
        >>> 
        >>> cuda.detect()
        ```
+       It should list the CUDA devices, e.g. 'GeForce GTX 1080 Ti'. Otherwise, you will see an error:
        ```
        numba.cuda.cudadrv.error.CudaSupportError: Error at driver init:
        CUDA driver library cannot be found.
