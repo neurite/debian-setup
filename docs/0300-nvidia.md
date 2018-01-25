@@ -221,3 +221,29 @@ sudo dpkg -i Packages/libcudnn7-doc_7.0.5.15-1+cuda8.0_amd64.deb
 ```
 
 Verify:
+
+Copy the samples to a temporary folder:
+
+```bash
+mkdir ~/Temporary
+cp -r /usr/src/cudnn_samples_v7/ ~/Temporary/
+```
+
+Go to the MNIST sample folder:
+
+```bash
+cd ~/Temporary/cudnn_samples_v7/mnistCUDNN/
+```
+
+Note the Makefile points to the wrong location for the compilers. Fix it:
+
+```bash
+CUDA_PATH ?= /usr/lib/nvidia-cuda-toolkit
+```
+
+Test the sample:
+
+```bash
+make clean && make
+./mnistCUDNN
+```
