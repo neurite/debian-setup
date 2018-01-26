@@ -254,4 +254,8 @@ Verify with pytorch. Create a conda environment and activate it. Install pytorch
 conda install pytorch torchvision -c pytorch
 ```
 
-Run a script using the GPU.
+```python
+>>> import torch
+>>> torch.cuda.is_available()
+True
+```
