@@ -1,5 +1,18 @@
 ## NVIDIA
 
+### Table of Contents
+
+   * [Packages](#packages)
+   * [Sources](#sources)
+   * [Installation](#installation)
+       1. [Linux headers](#1-linux-headers)
+       2. [dkms](#2-dkms)
+       3. [Graphics drivers](#3-graphics-drivers)
+       4. [CUDA](#4-cuda)
+       5. [Fix gcc, g++ compilers](#5-fix-gcc-g-compilers)
+       6. [Verify CUDA](#6-verify-cuda-installation)
+       7. [cuDNN](#7-cudnn)
+
 ### Packages
 
 We have 4 tiers of packages to install. They are tiered because a particular tier depends on packages of previous tiers. Depending on the need, the last 2 tiers can be optional. Here is the landscape of the package tiers:
@@ -36,7 +49,7 @@ After experimenting different versions, different sources of the packages, here 
 | nvidia cuda toolkit     | 8.0.44        | stretch           |
 | nvidia cudnn            | 7.0.5         | nvidia            |
 
-### Installation Steps
+### Installation
 
 #### 1. Linux headers
 
@@ -164,10 +177,10 @@ It simply means packages have the highest priority from stable. If we do not pin
 
 ```bash
 sudo apt-get update
-sudo apt-get -t testing install gcc-5 g++-5
+sudo apt-get -t unstable install gcc-5 g++-5
 ```
 
-The packages `gcc-5` and `g++-5` are only available in unstable. Even without specifing the port, they will fall through to unstable. The reason for `-t testing` is because dependencies such as `binutils` are in both testing and unstable. We want to "pin" them down to testing.
+The packages `gcc-5` and `g++-5` are only available in unstable. Even without specifing the port, they will fall through to unstable. The reason for `-t unstable` is because dependencies such as `binutils`. Their compatible versions are only available in unstable. We also want to "pin" them.
 
 Now `/usr/lib/nvidia-cuda-toolkit/bin/gcc --version` should show gcc-5. Whereas `gcc` via `/usr/bin/gcc`, a different name from `gcc-5`, still runs gcc 6.
 
