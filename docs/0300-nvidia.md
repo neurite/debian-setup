@@ -27,6 +27,7 @@ We have 4 tiers of packages to install. They are tiered because a particular tie
     2. [NVIDIA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/) (includes the graphics driver installation)
 4. cuDNN
     1. [NVIDIA only](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/)
+    2. [Conda](https://anaconda.org/anaconda/cudnn)
 
 Other NVIDIA deep learning packages, such as [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl), are not covered here.
 
