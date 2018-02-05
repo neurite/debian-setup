@@ -63,7 +63,7 @@ Visualization
 
 * matplotlib -- Data plotting
 * seaborn -- Statistical data visualization
-* bokeh -- Interactive visualization
+* plotly (bokeh) -- Interactive visualization
 
 Machine learning
 
