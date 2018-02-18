@@ -76,10 +76,10 @@ Natural language processing
 * gensim
 * spacy
 
-Web scraping
+Web scraping, HTML/XML parsing
 
-* scrapy
-* beautifulsoup
+* [scrapy](https://scrapy.org/)
+* [beautifulsoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 
 Miscellaneous
 
