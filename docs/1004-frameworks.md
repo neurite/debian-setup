@@ -65,20 +65,28 @@ Caffe was developed by BVLC of UC Berkeley. Caffe2 was adopted and developed by 
 
 ### [MXNet](https://github.com/apache/incubator-mxnet)
 
-Started in UW. Adopted by Apache. This is the default deep learning framework adopted by AWS.
+Started in UW. Adopted by Apache. This is the default deep learning framework for AWS.
 
 [Example notebooks](https://github.com/dmlc/mxnet-notebooks).
 
 [MXNet model zoo](https://mxnet.incubator.apache.org/model_zoo).
 
-Follow these steps to install MXNet in conda,
+Option 1 via conda
 
-1. Create a conda environment `conda create --name mxnet`
-2. Activate the conda environment `source activate mxnet`
-3. Install numpy via conda `conda install numpy`
-4. Install mxnet via pip `pip install mxnet graphviz`
+```bash
+conda install mxnet
+```
+
+Option 2 via pip within a conda environment
+
+```bash
+conda install numpy
+pip install mxnet graphviz
+```
 
 Note, if mxnet is installed using pip *without* installing numpy first using conda, numpy will be pulled in as a dependency of mxnet. On my MacBook, numpy installed via pip is linked against the OS X Accelerate framework. Whereas conda's numpy is linked against a locally installed MKL library. The package graphviz is a dependency on top of mxnet.
+
+As this is being written, MXNet with GPU support requires CUDA 9.0. I did not try it. MXNet has [instructions](https://mxnet.apache.org/install/index.html).
 
 ### [CNTK](https://github.com/Microsoft/CNTK)
 
