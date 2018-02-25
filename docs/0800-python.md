@@ -23,9 +23,13 @@ Before running the installation script on the Debian box, try it on a [VirtualBo
 
 The essential concept of conda is that Python packages are installed in a **managed** environment. So the first choice for installing a package is `conda install <package>` in an activated conda environment. You can search for packages in [the anaconda repo](https://anaconda.org/anaconda/repo).
 
-2. `conda install -c conda-forge <pkg>`
+2. `conda install <pkg> -c conda-forge`
 
-If a package is not provided in the default "anaconda" channel, you may choose an alternative channel such as "conda-forge". The command would be `conda install -c conda-forge <package>`. This would be your second choice. The upgrade command `conda update --all` automatically takes care of the packages from different channels. Basically channels have priorities and the default channel has the highest priority. If a package of the same or higher version becomes available in the default channel during upgrade, it will supercede other channels.
+If a package is not provided in the default "anaconda" channel, you may choose an alternative channel such as "conda-forge". The command would be `conda install -c conda-forge <package>`. This would be your second choice. The upgrade command `conda update --all` automatically takes care of the packages from different channels. Basically channels have priorities and the default channel has the highest priority. If a package of the same or higher version becomes available in the default channel during upgrade, it will supercede other channels. Other similar commands include:
+```bash
+conda update <pk> -c conda-forge  # upgrade a particular package and its dependencies from the conda-forge channel
+conda update --all -c conda-forge # upgrade everything to those in the conda-forge channel
+```
 
 3. `pip install <pkg> --upgrade`
 
