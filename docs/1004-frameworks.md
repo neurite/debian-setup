@@ -21,6 +21,36 @@ If you need newer versions of tensorflow which are not available from the defaul
 
 Developed by Facebook. Good for research use.
 
+On Linux:
+
+```bash
+conda install pytorch torchvision
+```
+
+On Mac, or for newer version on Linux:
+
+```bash
+conda install pytorch torchvision -c pytorch
+```
+
+It is worth noting that it automatically pulls in dependencies for GPU support:
+
+```
+libgcc-ng 7.2.0
+libgfortran-ng 7.2.0
+libstdcxx-ng 7.2.0
+cudatoolkit 8.0-3
+cudnn 7.0.5
+nccl 1.3.4
+```
+
+The following for linear algebra on CPU:
+
+```bash
+intel-openmp 2018.0.0
+mkl 2018.0.1
+```
+
 ### [Caffe2](https://github.com/caffe2/caffe2)
 
 Caffe was developed by BVLC of UC Berkeley. Caffe2 was adopted and developed by Facebook. Good for industrial (production) use.
@@ -61,7 +91,3 @@ Microsoft distributed learning toolkit.
 ### [XGBoost](https://github.com/dmlc/xgboost)
 
 Boosted trees. Well this is not deep learning. But it has been used a lot in competitions.
-
-## NVidia
-
-(To be written)
