@@ -84,6 +84,8 @@ conda install numpy
 pip install mxnet graphviz
 ```
 
+pip provides newer versions of MXNet.
+
 Note, if mxnet is installed using pip *without* installing numpy first using conda, numpy will be pulled in as a dependency of mxnet. On my MacBook, numpy installed via pip is linked against the OS X Accelerate framework. Whereas conda's numpy is linked against a locally installed MKL library. The package graphviz is a dependency on top of mxnet.
 
 As this is being written, MXNet with GPU support requires CUDA 9.0. I did not try it. MXNet has [instructions](https://mxnet.apache.org/install/index.html).
@@ -103,3 +105,9 @@ Microsoft distributed learning toolkit.
 ### [XGBoost](https://github.com/dmlc/xgboost)
 
 Boosted trees. Well this is not deep learning. But it has been used a lot in competitions.
+
+Within a conda environment:
+
+```bash
+pip install xgboost
+```
