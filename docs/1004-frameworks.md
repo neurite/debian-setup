@@ -1,21 +1,28 @@
 
 ## Deep Learning Frameworks
 
-### TensorFlow
+### [TensorFlow](https://github.com/tensorflow/tensorflow)
 
-CPU package: `tensorflow`. GPU package: `tensorflow-gpu`. The GPU package will be covered in the NVidia section.
+For CPU `tensorflow`
 
-#### Option 1
+```bash
+conda install tensorflow
+```
 
-    conda install tensorflow
+Or, for GPU `tensorflow-gpu`
 
-This installs tensorflow from the default channel. Note for some OS conda installs older versions of tensorflow. For example, as this is being written, conda installs tensorflow version 1.1.0 for osx-64 whereas the current stable version of tensorflow is 1.3.0. The older version of tensorflow also downgrades its dependencies such as numpy and mkl. For linux-64, conda installs the latest version of tensorflow though. Again double check the versions of the packages to be installed.
+```bash
+conda install tensorflow-gpu
+```
 
-#### Option 2
+Note that the GPU tensorflow automatically pulls in dependencies for GPU support:
 
-    conda install -c conda-forge tensorflow
+```
+cudatoolkit 8.0-3
+cudnn 7.0.5
+```
 
-If you need newer versions of tensorflow which are not available from the default channel, you can use the conda-forge channel.
+If you want newer version, install from the `conda-forge` channel.
 
 ### [PyTorch](https://github.com/pytorch/pytorch)
 
@@ -36,15 +43,12 @@ conda install pytorch torchvision -c pytorch
 It is worth noting that it automatically pulls in dependencies for GPU support:
 
 ```
-libgcc-ng 7.2.0
-libgfortran-ng 7.2.0
-libstdcxx-ng 7.2.0
 cudatoolkit 8.0-3
 cudnn 7.0.5
 nccl 1.3.4
 ```
 
-The following for linear algebra on CPU:
+The following for linear algebra on CPU (they are also needed by numpy):
 
 ```bash
 intel-openmp 2018.0.0
