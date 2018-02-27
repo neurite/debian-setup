@@ -91,3 +91,5 @@ Depending on how Docker is installed, run either of the commands below,
 
 * `sudo /usr/share/docker-engine/contrib/mkimage.sh -t <your docker user name>/minbase debootstrap --variant=minbase stable`
 * `sudo /usr/share/docker.io/contrib/mkimage.sh -t <your docker user name>/minbase debootstrap --variant=minbase stable`
+* `sudo /usr/share/docker-ce/contrib/mkimage.sh -t <your docker user name>/minbase debootstrap --variant=minbase stable`
+
