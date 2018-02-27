@@ -1,4 +1,4 @@
-Set up Debian for software development and machine learning. Updated for Debian Stretch.
+Set up Debian for software development and machine learning/deep learning. Updated for Debian Stretch.
 
 1. [Preparation](0100-prepare.md)
 2. [Installation](0200-install.md)
