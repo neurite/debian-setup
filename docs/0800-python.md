@@ -6,16 +6,50 @@ This is the preferred approach.
 
 Before running the installation script on the Debian box, try it on a [VirtualBox](0901-virtualbox.md) first.
 
-1. Download [the miniconda installation script](http://conda.pydata.org/miniconda.html). I downloaded the one of Python 3.6 for 64-bit system.
+1. Download [the miniconda installation script](http://conda.pydata.org/miniconda.html). I downloaded the one for Python 3.6 for 64-bit system.
 2. If the download URL is not https, make sure to verify the MD5 `md5sum Miniconda3-latest-Linux-x86_64.sh`.
-3. Run the install script `bash Miniconda3-latest-Linux-x86_64.sh`. **Do NOT sudo it**.
-4. Follow the instructions on screen. During the process it will inform you it will install in your home directory and will prepend the binary to $PATH in your .bashrc.
+3. Run the install script `bash Miniconda3-latest-Linux-x86_64.sh`. **IMPORTANT: Do NOT sudo it.**
+4. Follow the instructions on screen. During the process it will inform you it will install in your home directory and will prepend the binary to $PATH in your .bashrc. Accept it with "yes".
 5. Verify
     * `source ~/.bashrc`
     * `conda env list` lists the envs, should see the ROOT environment
     * `conda list` lists the packages in the ROOT environment
     * `conda update conda` updates conda
     * `conda update --all` updates all the packages in the ROOT environment
+
+#### Create environments
+
+```
+conda create --name my-env python=3.6
+```
+
+The environment not only creates an isolated, self-contained space for installing packages, but also makes it portable across hosts of the same architecture. There are several ways to duplicate an environment.
+
+Clone an environment:
+
+```
+conda create --name myclone --clone myenv
+```
+
+Create from an evironment file:
+
+```
+conda env export > my-env.yml
+conda env create --name my-env-copy --file my-env.yml
+```
+
+Create from a list of package specifications:
+
+```
+conda list --explicit > my-env-package-spec.txt
+conda create --name myenv --file my-env-package-spec.txt
+```
+
+Sync the environment from an environment file:
+
+```
+conda env update -f my-env.yml --prune
+```
 
 #### Install Packages
 
