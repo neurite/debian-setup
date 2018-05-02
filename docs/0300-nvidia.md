@@ -279,6 +279,8 @@ True
 
 ### Conda for CUDA and cuDNN
 
+`sudo apt-get install nvidia-cuda-dev`
+
 `conda install cudatoolkit cudnn`
 
 Verify with TensorFlow:
