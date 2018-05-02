@@ -12,6 +12,7 @@
        5. [Fix gcc, g++ compilers](#5-fix-gcc-g-compilers)
        6. [Verify CUDA](#6-verify-cuda-installation)
        7. [cuDNN](#7-cudnn)
+   * Conda Option for CUDA and cuDNN (to be written)
 
 ### Packages
 
@@ -274,4 +275,20 @@ conda install pytorch torchvision -c pytorch
 >>> import torch
 >>> torch.cuda.is_available()
 True
+```
+
+### Conda for CUDA and cuDNN
+
+`conda install cudatoolkit cudnn`
+
+Verify with TensorFlow:
+
+`conda install tensorflow-gpu keras`
+
+Then in Python:
+
+```python
+import tensorflow as tf
+
+sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 ```
