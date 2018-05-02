@@ -85,6 +85,8 @@ The dkms package is singled out to make it clear that NVIDIA installs into the k
 
 #### 3. Graphics drivers
 
+Note the package `nvidia-driver` requires non-free software enabled in `/etc/apt/sources.list`.
+
 ```bash
 sudo apt-get install nvidia-driver
 ```
