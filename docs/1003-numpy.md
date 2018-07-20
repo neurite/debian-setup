@@ -84,23 +84,21 @@ Machine learning
 
 Natural language processing
 
-* nltk
-* gensim
-* spacy
+* [nltk](https://www.nltk.org/)
+* [spacy](https://spacy.io/usage/)
+* [gensim](https://github.com/RaRe-Technologies/gensim)
 
 Web scraping, HTML/XML parsing
 
-* [scrapy](https://scrapy.org/)
-* [beautifulsoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+* [scrapy](https://scrapy.org/) -- Web crawl
+* [beautifulsoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) -- Web page scraping
 
 Miscellaneous
 
 * [networkx](https://networkx.github.io) -- Graph algorithms
 * [datasketch](https://ekzhu.github.io/datasketch/) -- Probalistic data structures, hashing, available via pip
-* [beautiful soup](https://www.crummy.com/software/BeautifulSoup/) -- Web page scraping
-* scrapy -- Web crawlers
-* boto3 -- AWS S3 client
-* dask -- parallel, distributed computation
+* [boto3](https://github.com/boto/boto3) -- AWS Python client
+* [dask](https://dask.pydata.org/) -- parallel, distributed computation
 
 All the packages above, unless noted otherwise, can be installed via `conda install <package-name>`.
 
