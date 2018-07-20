@@ -38,7 +38,18 @@ lapack_opt_info:
     include_dirs = ['/Users/neurite/Applications/miniconda3/envs/temp/include']
 ```
 
-### Python Packages
+### Packages that depends on numpy
+
+* pandas, h5py, fastparquet
+* matplotlib, seaborn, bokeh
+* scikit-learn
+* tensorflow, pytorch
+* gensim, spacy
+* dask
+
+A few exceptions include jupyter, nltk, plotly
+
+### Python packages
 
 Install and run Python via miniconda. See [the note](https://github.com/neurite/debian-setup/wiki/Python) on installing miniconda. Alternatively, anaconda bundles in more packages. I prefer miniconda and handpick packages for individual conda environment.
 
@@ -53,7 +64,7 @@ I/O
 * requests -- HTTP client
 * sqlite -- SQL Database
 
-Numpy and its dependencies
+The numpy family
 
 * blas
 * intel-openmp
