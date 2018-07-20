@@ -26,18 +26,16 @@ If you want newer version, install from the `conda-forge` channel.
 
 ### [PyTorch](https://github.com/pytorch/pytorch)
 
-Developed by Facebook. Good for research use.
-
-On Linux:
+CPU:
 
 ```bash
-conda install pytorch torchvision
+conda install pytorch -c pytorch
 ```
 
-On Mac, or for newer version on Linux:
+GPU:
 
 ```bash
-conda install pytorch torchvision -c pytorch
+conda install pytorch cuda91 -c pytorch
 ```
 
 It is worth noting that it automatically pulls in dependencies for GPU support:
@@ -46,13 +44,6 @@ It is worth noting that it automatically pulls in dependencies for GPU support:
 cudatoolkit 8.0-3
 cudnn 7.0.5
 nccl 1.3.4
-```
-
-The following for linear algebra on CPU (they are also needed by numpy):
-
-```bash
-intel-openmp 2018.0.0
-mkl 2018.0.1
 ```
 
 ### [Caffe2](https://github.com/caffe2/caffe2)
