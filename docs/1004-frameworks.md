@@ -3,13 +3,13 @@
 
 ### [TensorFlow](https://github.com/tensorflow/tensorflow)
 
-For CPU `tensorflow`
+CPU:
 
 ```bash
 conda install tensorflow
 ```
 
-Or, for GPU `tensorflow-gpu`
+GPU:
 
 ```bash
 conda install tensorflow-gpu
