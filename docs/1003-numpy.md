@@ -42,28 +42,40 @@ lapack_opt_info:
 
 Install and run Python via miniconda. See [the note](https://github.com/neurite/debian-setup/wiki/Python) on installing miniconda. Alternatively, anaconda bundles in more packages. I prefer miniconda and handpick packages for individual conda environment.
 
-IDE
+Develop
 
-* jupyter -- Browser-based IDE
+* pylint -- Code analysis
+* pytest -- Unit tests
+* jupyter -- Interactive coding on web UI
+
+I/O
+
+* requests -- HTTP client
+* sqlite -- SQL Database
+
+Numpy and its dependencies
+
+* blas
+* intel-openmp
+* libgfortran
+* mkl
+* mkl_fft
+* mkl_random
+* numpy -- "The fundamental package for scientific computing"
+* numpy-base
+* scipy -- "The core package for scientific computing"
 
 Data I/O
 
-* sqlite -- Database, data I/O
-* requests -- HTTP client, data I/O
 * pandas -- Data I/O, data munging
 * h5py, pytables (> 3.2) -- HDF5
 * fastparquet, python-snappy -- Parquet
-
-Scientific computing
-
-* numpy -- "The fundamental package for scientific computing"
-* scipy -- "The core package for scientific computing"
 
 Visualization
 
 * matplotlib -- Data plotting
 * seaborn -- Statistical data visualization
-* plotly (bokeh) -- Interactive visualization
+* bokeh (or plotly) -- Interactive visualization
 
 Machine learning
 
@@ -93,3 +105,10 @@ Miscellaneous
 All the packages above, unless noted otherwise, can be installed via `conda install <package-name>`.
 
 It's worth noting the SciPy Stack which is now obsolete. But even today a typical Python ML/DL environment includes jupyter, numpy, scipy, pandas, matplotlib, seaborn. Other packages such as scikit-learn, or tensorflow, or mxnet, are added on top of them.
+
+### Conda package installation tiers
+
+1. `conda install pylint pytest`
+2. `conda install requests sqlite`
+3. `conda install jupyter`
+4. `conda install numpy scipy`
