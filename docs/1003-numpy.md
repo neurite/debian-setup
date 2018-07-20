@@ -49,7 +49,7 @@ lapack_opt_info:
 
 A few exceptions include jupyter, nltk, plotly
 
-### Python packages
+### The extended list of python packages
 
 Install and run Python via miniconda. See [the note](https://github.com/neurite/debian-setup/wiki/Python) on installing miniconda. Alternatively, anaconda bundles in more packages. I prefer miniconda and handpick packages for individual conda environment.
 
