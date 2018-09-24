@@ -64,6 +64,10 @@ I/O
 * requests -- HTTP client
 * sqlite -- SQL Database
 
+Cloud
+
+* awscli -- AWS Command-Line Tools, can be installed in the base, default conda env `conda install awscli -c conda-forge`
+
 The numpy family
 
 * blas
