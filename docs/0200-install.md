@@ -37,7 +37,7 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * Use network mirror: Yes
     * Protocol: http
     * Country: US
-    * Mirror: (choose a good one that is near to you, e.g. `mirrors.ocf.berkeley.edu`)
+    * Mirror: (choose a good one that is near you, e.g. `mirrors.ocf.berkeley.edu`)
     * Use non-free software: Yes (which implies also using contrib software and can skip the next one). If, for example, you need to install NVIDIA packages, you must say yes to non-free
     * Use contrib software: Yes
     * Enable source repositories in APT: No
