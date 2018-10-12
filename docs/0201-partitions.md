@@ -41,7 +41,7 @@ You may notice the `discard` mount option for SSD drive.
 |                     | /stash      | EXT4 | remaining | relatime, nodev, nosuid, noexec  |           |
 | RAID10              | /samba      | EXT4 | 4 TB      | relatime, nodev, nosuid, noexec  | largefile |
 
-Finally it lets you review the partitions. Scroll to the bottom of the review list, choose `Finish partitioning and write changes`.
+Finally it lets you review the partitions. Scroll to the bottom of the review list, choose `Finish partitioning and write changes to disk`.
 
 ![](ss-partitions.jpg "partitions")
 
