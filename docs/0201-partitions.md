@@ -4,7 +4,9 @@ This is the step `Partition disks`. Partitioning method is `Manual`.
 
 ![](ss-manual.png "partition disks - manual")
 
-Select the disk to create an empty partition table. Note, if you want to keep the existing data, select the partition instead. Flip `Use as: do not use` to `Use as: Ext4 journaling file system` and `Format the partition: no, keep existing data`. Remember to set up the mount point and mount options (see [an example](#example-partitions) below). 
+Select *the disk* to create an empty partition table.
+
+Note, if you want to keep the existing data, select *the partition* instead. Flip `Use as: do not use` to `Use as: Ext4 journaling file system`. And then `Format the partition: no, keep existing data`. And lastly set up the mount point and mount options ([example](#example-partitions)). 
 
 ![](ss-disk.png "select disk to create partition table")
 
