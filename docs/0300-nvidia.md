@@ -261,34 +261,31 @@ True
 
 `conda install cudatoolkit cudnn`
 
-Verify with TensorFlow:
-
-`conda install tensorflow-gpu keras`
-
-Then in Python:
-
-```python
-import tensorflow as tf
-
-sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
-```
-
-3. Numba
-    1. [Install miniconda](https://conda.io/miniconda.html)
-    2. [Create a conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) for testing numba
-    3. [Activate the environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment), then
-        ```bash
-        conda install cudatoolkit
-        conda install numba
-        ```
-    4. Launch the python REPL in the active numba environment, the following indicates CUDA installation failure,
-       ```
-       >>> from numba import cuda
-       >>> 
-       >>> cuda.detect()
-       ```
-       It should list the CUDA devices, e.g. 'GeForce GTX 1080 Ti'. Otherwise, you will see an error:
-       ```
-       numba.cuda.cudadrv.error.CudaSupportError: Error at driver init:
-       CUDA driver library cannot be found.
-       ```
+1. [Install miniconda](https://conda.io/miniconda.html)
+2. Verify
+    1. Verify with Numba
+        1. `conda create --name cuda-numba python=3.6`
+        2. `source activate cuda-numba`
+        3. `conda install cudatoolkit cudnn numba`
+        4. Launch Python
+            ```python
+            from numba import cuda
+            
+            cuda.detect()
+            ```
+            It should list the CUDA devices, e.g. 'GeForce GTX 1080 Ti'. Otherwise, you will see an error:
+            ```
+            numba.cuda.cudadrv.error.CudaSupportError: Error at driver init:
+            CUDA driver library cannot be found.
+            ```
+    2. Verify with Tensorflow
+        1. `conda create --name cuda-tf python=3.6`
+        2. `source activate cuda-tf`
+        3. `conda install tensorflow-gpu`
+        4. Launch Python
+            ```python
+            import tensorflow as tf
+            
+            sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+            ```
+    3. Verify with PyTorch
