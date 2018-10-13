@@ -34,13 +34,11 @@ Other NVIDIA deep learning packages, such as [TensorRT](https://developer.nvidia
 
 ### Sources
 
-As you already see in the above list, there are two sources for the NVIDIA packages. One is Debian, the other is NVIDIA.
-
-Debian has older versions of the NVIDIA packages. But installation is a breeze. Debian has [documention on NVIDIA graphic drivers](https://wiki.debian.org/NvidiaGraphicsDrivers). Debian Stretch has [CUDA 8.0](https://packages.debian.org/stretch/nvidia-cuda-toolkit) while Debian Buster has [CUDA 9.0](https://packages.debian.org/buster/nvidia-cuda-toolkit). As of this moment, Debian repositories do not have cuDNN. Be aware that, most deep learning frameworks, such as Tensorflow, MXNet, PyTorch, require cuDNN to provide GPU support.
+Debian has older versions of the NVIDIA packages. But installation is a breeze. As of this moment, Debian repositories do not have cuDNN. Be aware that, most deep learning frameworks, such as Tensorflow, MXNet, PyTorch, require cuDNN to provide GPU support.
 
 NVIDIA provides the latest versions. NVIDIA has good documentation on [CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which describes the installation of both the graphics drivers and the CUDA toolkit. NVIDIA also has detailed documention on [cuDNN installation](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/). Note you must register with NVIDIA to download and install cuDNN. In the cuDNN documentation, you can clearly see the 2 prerequisites: graphics drivers and CUDA.
 
-Packages installed via NVIDIA has a unique challenge for Debian systems -- Debian is **not** an officially supported Linux variation via NVIDA. The closest one to Debian Stretch is Ubuntu 17.04. I tried the CUDA 9.1 installation, which failed due to missing dependencies to Ubuntu packages. There may be hacks to mix in these packages from Ubuntu. However, it looks to me like a treacherous path.
+Packages installed via NVIDIA has a unique challenge for Debian systems -- Debian is **not** an officially supported Linux variant via NVIDA. The closest one to Debian Stretch is Ubuntu 17.04. I tried the CUDA 9.1 installation, which failed due to missing dependencies to Ubuntu packages. There may be hacks to mix in these packages from Ubuntu. However, it looks to me like a treacherous path ahead.
 
 After experimenting different versions, different sources of the packages, here is a viable yet relatively easy path:
 
@@ -199,26 +197,6 @@ CUDA toolkit installed from Debian does not seem to have [CUDA samples](http://d
 2. Verify the CUDA compiler
     * `nvcc --version`
 
-3. Numba
-    1. [Install miniconda](https://conda.io/miniconda.html)
-    2. [Create a conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) for testing numba
-    3. [Activate the environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment), then
-        ```bash
-        conda install cudatoolkit
-        conda install numba
-        ```
-    4. Launch the python REPL in the active numba environment, the following indicates CUDA installation failure,
-       ```
-       >>> from numba import cuda
-       >>> 
-       >>> cuda.detect()
-       ```
-       It should list the CUDA devices, e.g. 'GeForce GTX 1080 Ti'. Otherwise, you will see an error:
-       ```
-       numba.cuda.cudadrv.error.CudaSupportError: Error at driver init:
-       CUDA driver library cannot be found.
-       ```
-
 #### 7. cuDNN
 
 Download [cuDNN](https://developer.nvidia.com/rdp/cudnn-download) from NVIDIA. You must login to download.
@@ -294,3 +272,23 @@ import tensorflow as tf
 
 sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 ```
+
+3. Numba
+    1. [Install miniconda](https://conda.io/miniconda.html)
+    2. [Create a conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) for testing numba
+    3. [Activate the environment](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment), then
+        ```bash
+        conda install cudatoolkit
+        conda install numba
+        ```
+    4. Launch the python REPL in the active numba environment, the following indicates CUDA installation failure,
+       ```
+       >>> from numba import cuda
+       >>> 
+       >>> cuda.detect()
+       ```
+       It should list the CUDA devices, e.g. 'GeForce GTX 1080 Ti'. Otherwise, you will see an error:
+       ```
+       numba.cuda.cudadrv.error.CudaSupportError: Error at driver init:
+       CUDA driver library cannot be found.
+       ```
