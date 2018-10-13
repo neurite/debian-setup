@@ -19,12 +19,12 @@
 We have 4 tiers of packages to install. They are tiered because a particular tier depends on packages of previous tiers. Depending on the need, the last 2 tiers can be optional. Here is the landscape of the package tiers:
 
 1. Linux headers
-    1. [Debian](https://packages.debian.org/stretch/linux-headers-amd64)
+    1. [Debian](https://packages.debian.org/stretch/linux-headers-amd64) ([backports](https://packages.debian.org/stretch-backports/linux-headers-amd64))
 2. NVIDIA graphics driver
-    1. [Debian](https://packages.debian.org/stretch/nvidia-driver)
+    1. [Debian](https://packages.debian.org/stretch/nvidia-driver) ([backports](https://packages.debian.org/stretch-backports/nvidia-driver))
     2. [NVIDIA](http://www.nvidia.com/object/unix.html) (also included in the CUDA toolkit installation below)
 3. NVIDIA CUDA toolkit
-    1. [Debian](https://packages.debian.org/stretch/nvidia-cuda-toolkit)
+    1. [Debian](https://packages.debian.org/stretch/nvidia-cuda-toolkit) ([backports](https://packages.debian.org/stretch-backports/nvidia-cuda-toolkit))
     2. [NVIDIA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/) (includes the graphics driver installation)
 4. cuDNN
     1. [NVIDIA](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/)
