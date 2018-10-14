@@ -44,10 +44,10 @@ After experimenting different versions, different sources of the packages, here 
 
 | packages                | version       | source            |
 |-------------------------|---------------|-------------------|
-| linux headers, dkms     | 4.9.0-5-amd64 | stretch           |
-| nvidia graphics drivers | 375.82        | stretch           |
-| nvidia cuda toolkit     | 8.0.44        | stretch           |
-| nvidia cudnn            | 7.0.5         | nvidia            |
+| linux headers, dkms     | 4.9+80+deb9u6 | stretch           |
+| nvidia graphics drivers | 390.87        | stretch-backports |
+| nvidia cuda toolkit     | 9.1.85        | stretch-backports |
+| nvidia cudnn            | 7.2.1         | conda             |
 
 ### Installation
 
@@ -87,10 +87,8 @@ The dkms package is singled out to make it clear that NVIDIA installs into the k
 Note the package `nvidia-driver` requires non-free software enabled in `/etc/apt/sources.list`.
 
 ```bash
-sudo apt-get install nvidia-driver
+sudo apt-get install nvidia-driver -t stretch-backports
 ```
-
-Note `nvidia-driver` version 384.111 from the backports is not compatible with the cuda toolkit version 8.0.44. As of now, there is no cuda toolkit in the backports.
 
 The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed and uninstalled together with other NVIDIA packages.
 
@@ -99,7 +97,7 @@ In the end, restart to replace nouveau with nvidia. You will be prompted during 
 #### 4. CUDA
 
 ```bash
-sudo apt-get install nvidia-cuda-toolkit
+sudo apt-get install nvidia-cuda-toolkit -t stretch-backports
 ```
 
 Here is the CUDA toolkit package tree:
@@ -126,8 +124,10 @@ Here is the CUDA toolkit package tree:
             |           |-----> libcusparse8.0: cuSPARSE
             |           |
             |           |=====> libcuda1 (already a hard dependency)
-            |                       |
-            |                       |=====> nvidia-cuda-mps (not installed)
+            |           |           |
+            |           |           |=====> nvidia-cuda-mps (not installed)
+            |           |
+            |           |-----> libnvvm3 (NVCC library)
             |
             |-----> libnvvm3
             |
