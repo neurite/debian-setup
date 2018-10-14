@@ -8,7 +8,7 @@
        1. [Linux headers](#1-linux-headers)
        2. [dkms](#2-dkms)
        3. [Graphics drivers](#3-graphics-drivers)
-       4. [CUDA](#4-cuda)
+       4. [CUDA toolkit](#4-cuda-toolkit)
        5. [Fix gcc, g++ compilers](#5-fix-gcc-g-compilers)
        6. [Verify CUDA](#6-verify-cuda-installation)
        7. [cuDNN](#7-cudnn)
@@ -94,10 +94,16 @@ The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be instal
 
 In the end, restart to replace nouveau with nvidia. You will be prompted during installation if a reboot is needed.
 
-#### 4. CUDA
+#### 4. CUDA toolkit
 
 ```bash
 sudo apt-get install nvidia-cuda-toolkit -t stretch-backports
+```
+
+Alternatively without installing the nvcc compiler:
+
+```bash
+sudo apt-get install nvidia-cuda-dev -t stretch-backports
 ```
 
 Here is the CUDA toolkit package tree:
@@ -127,7 +133,7 @@ Here is the CUDA toolkit package tree:
             |           |           |
             |           |           |=====> nvidia-cuda-mps (not installed)
             |           |
-            |           |-----> libnvvm3 (NVCC library)
+            |           |-----> libnvvm3 (library used by NVCC)
             |
             |-----> libnvvm3
             |
