@@ -243,17 +243,6 @@ make clean && make
 ./mnistCUDNN
 ```
 
-Verify with pytorch. Create a conda environment and activate it. Install pytorch for CUDA 8:
-
-```bash
-conda install pytorch torchvision -c pytorch
-```
-
-```python
->>> import torch
->>> torch.cuda.is_available()
-True
-```
 
 ### Conda for CUDA and cuDNN
 
@@ -270,14 +259,9 @@ True
         4. Launch Python
             ```python
             from numba import cuda
-            
             cuda.detect()
             ```
-            It should list the CUDA devices, e.g. 'GeForce GTX 1080 Ti'. Otherwise, you will see an error:
-            ```
-            numba.cuda.cudadrv.error.CudaSupportError: Error at driver init:
-            CUDA driver library cannot be found.
-            ```
+            It should list the CUDA devices, e.g. 'GeForce GTX 1080 Ti'.
     2. Verify with Tensorflow
         1. `conda create --name cuda-tf python=3.6`
         2. `source activate cuda-tf`
@@ -285,7 +269,14 @@ True
         4. Launch Python
             ```python
             import tensorflow as tf
-            
             sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
             ```
     3. Verify with PyTorch
+        1. `conda create --name cuda-torch python=3.6`
+        2. `source activate cuda-torch`
+        3. `conda install pytorch`
+        4. Launch Python
+            ```python
+            import torch
+            torch.cuda.is_available()
+            ```
