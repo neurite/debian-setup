@@ -26,19 +26,32 @@ We have 4 tiers of packages to install. They are tiered because a particular tie
 3. NVIDIA CUDA toolkit
     1. [Stretch](https://packages.debian.org/stretch/nvidia-cuda-toolkit) ([Stretch Backports](https://packages.debian.org/stretch-backports/nvidia-cuda-toolkit))
     2. [NVIDIA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/) (includes the graphics driver installation)
+    3. [Conda](https://anaconda.org/anaconda/cudatoolkit)
 4. cuDNN
     1. [NVIDIA](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/)
     2. [Conda](https://anaconda.org/anaconda/cudnn)
 
 Other NVIDIA deep learning packages, such as [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl), are not covered here.
 
-### Sources
+### Package Versions
+
+#### Sources
+
+1. Debian
 
 Debian has older versions of the NVIDIA packages. But installation is a breeze. As of this moment, Debian repositories do not have cuDNN. Be aware that, most deep learning frameworks, such as Tensorflow, MXNet, PyTorch, require cuDNN to provide GPU support.
+
+2. NVIDIA
 
 NVIDIA provides the latest versions. NVIDIA has good documentation on [CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which describes the installation of both the graphics drivers and the CUDA toolkit. NVIDIA also has detailed documention on [cuDNN installation](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/). Note you must register with NVIDIA to download and install cuDNN. In the cuDNN documentation, you can clearly see the 2 prerequisites: graphics drivers and CUDA.
 
 Packages installed via NVIDIA has a unique challenge for Debian systems -- Debian is **not** an officially supported Linux variant via NVIDA. The closest one to Debian Stretch is Ubuntu 17.04. I tried the CUDA 9.1 installation, which failed due to missing dependencies to Ubuntu packages. There may be hacks to mix in these packages from Ubuntu. However, it looks to me like a treacherous path ahead.
+
+3. Conda
+
+Conda provides CUDA toolkit and cuDNN. However, it requires compatible versions of the graphics driver (see discussion below).
+
+#### Versions
 
 After experimenting different versions, different sources of the packages, here is a viable yet relatively easy path:
 
