@@ -36,17 +36,17 @@ Other NVIDIA deep learning packages, such as [TensorRT](https://developer.nvidia
 
 #### Sources
 
-1. Debian
+##### 1. Debian
 
 Debian has older versions of the NVIDIA packages. But installation is a breeze. As of this moment, Debian repositories do not have cuDNN. Be aware that, most deep learning frameworks, such as Tensorflow, MXNet, PyTorch, require cuDNN to provide GPU support.
 
-2. NVIDIA
+##### 2. NVIDIA
 
 NVIDIA provides the latest versions. NVIDIA has good documentation on [CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which describes the installation of both the graphics drivers and the CUDA toolkit. NVIDIA also has detailed documention on [cuDNN installation](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/). Note you must register with NVIDIA to download and install cuDNN. In the cuDNN documentation, you can clearly see the 2 prerequisites: graphics drivers and CUDA.
 
 Packages installed via NVIDIA has a unique challenge for Debian systems -- Debian is **not** an officially supported Linux variant via NVIDA. The closest one to Debian Stretch is Ubuntu 17.04. I tried the CUDA 9.1 installation, which failed due to missing dependencies to Ubuntu packages. There may be hacks to mix in these packages from Ubuntu. However, it looks to me like a treacherous path ahead.
 
-3. Conda
+##### 3. Conda
 
 Conda provides CUDA toolkit and cuDNN. However, it requires compatible versions of the graphics driver (see discussion below).
 
@@ -120,6 +120,8 @@ The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be instal
 
 In the end, restart to replace nouveau with nvidia. You will be prompted during installation if a reboot is needed.
 
+To verify, `nvidia-smi`.
+
 #### 4. CUDA toolkit
 
 ```bash
@@ -173,10 +175,6 @@ Here is the CUDA toolkit package tree:
 ```
 
 ### Conda for CUDA and cuDNN
-
-`sudo apt-get install nvidia-cuda-dev`
-
-`conda install cudatoolkit cudnn`
 
 1. [Install miniconda](https://conda.io/miniconda.html)
 2. Verify
