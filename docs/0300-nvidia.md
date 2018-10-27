@@ -2,19 +2,18 @@
 
 ### Table of Contents
 
-   * [Packages](#packages)
-   * [Sources](#sources)
+   * [Package Tiers](#package-tiers)
+   * [Package Versions](#package-versions)
+       * [Sources](#sources)
+       * [Versions](#versions)
    * [Installation](#installation)
        1. [Linux headers](#1-linux-headers)
        2. [dkms](#2-dkms)
        3. [Graphics drivers](#3-graphics-drivers)
        4. [CUDA toolkit](#4-cuda-toolkit)
-       5. [Fix gcc, g++ compilers](#5-fix-gcc-g-compilers)
-       6. [Verify CUDA](#6-verify-cuda-installation)
-       7. [cuDNN](#7-cudnn)
-   * Conda Option for CUDA and cuDNN (to be written)
+   * [Conda for CUDA and cuDNN](#conda-for-cuda-and-cudnn)
 
-### Packages
+### Package Tiers
 
 We have 4 tiers of packages to install. They are tiered because a particular tier depends on packages of previous tiers. Depending on the need, the last 2 tiers can be optional. Here is the landscape of the package tiers:
 
@@ -52,6 +51,20 @@ Packages installed via NVIDIA has a unique challenge for Debian systems -- Debia
 Conda provides CUDA toolkit and cuDNN. However, it requires compatible versions of the graphics driver (see discussion below).
 
 #### Versions
+
+It is **important** that the CUDA toolkit is supported by a compatible graphics driver. Here is a table copied from NVIDIA's release nots of [CUDA toolkit components](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#major-components):
+
+| CUDA Toolkit                | Linux x86_64 Driver Version | Windows x86_64 Driver Version |
+|-----------------------------|-----------------------------|-------------------------------|
+| CUDA 10.0.130               | >= 410.48                   | >= 411.31                     |
+| CUDA 9.2 (9.2.148 Update 1) | >= 396.37                   | >= 398.26                     |
+| CUDA 9.2 (9.2.88)           | >= 396.26                   | >= 397.44                     |
+| CUDA 9.1 (9.1.85)           | >= 390.46                   | >= 391.29                     |
+| CUDA 9.0 (9.0.76)           | >= 384.81                   | >= 385.54                     |
+| CUDA 8.0 (8.0.61 GA2)       | >= 375.26                   | >= 376.51                     |
+| CUDA 8.0 (8.0.44)           | >= 367.48                   | >= 369.30                     |
+| CUDA 7.5 (7.5.16)           | >= 352.31                   | >= 353.66                     |
+| CUDA 7.0 (7.0.28)           | >= 346.46                   | >= 347.62                     |
 
 After experimenting different versions, different sources of the packages, here is a viable yet relatively easy path:
 
@@ -158,110 +171,6 @@ Here is the CUDA toolkit package tree:
             |
             |=====> nvidia-cuda-doc
 ```
-
-#### 5. Fix gcc, g++ compilers
-
-The `nvcc` compiler is available from `/usr/bin/nvcc`. There is also a `nvcc` executable via `/usr/lib/nvidia-cuda-toolkit/bin/nvcc`. In the same folder, there are also `/usr/lib/nvidia-cuda-toolkit/bin/gcc` and `/usr/lib/nvidia-cuda-toolkit/bin/g++`. If they are broken, for example:
-
-```bash
-$ /usr/lib/nvidia-cuda-toolkit/bin/gcc --version
-
-ERROR: No supported gcc/g++ host compiler found, but clang-3.8 is avialable
-```
-
-It turns out to be caused by missing dependency to `gcc-5` and `g++-5`. If they are not fixed, they cause problems down the road. They are avaible from Debian unstable. To install them, we need to add Debian testing and Debian unstable. Then they need to be pinned. Here is how:
-
-Add Debian testing and unstable to `/etc/apt/sources.list`:
-
-```bash
-deb http://ftp.us.debian.org/debian/ testing main contrib non-free
-deb http://ftp.us.debian.org/debian/ unstable main contrib non-free
-```
-
-Set up [apt pinning](https://wiki.debian.org/AptPreferences), add file `/etc/apt/preferences`:
-
-```bash
-Package: *
-Pin: release a=stable
-Pin-Priority: 900
-
-Package: *
-Pin: release a=testing
-Pin-Priority: 800
-
-Package: *
-Pin: release a=unstable
-Pin-Priority: 700
-```
-
-It simply means packages have the highest priority from stable. If we do not pin them like the above, they will update and upgrade to unstable versions, including the kernel.
-
-```bash
-sudo apt-get update
-sudo apt-get -t unstable install gcc-5 g++-5
-```
-
-The packages `gcc-5` and `g++-5` are only available in unstable. Even without specifing the port, they will fall through to unstable. The reason for `-t unstable` is because dependencies such as `binutils`. Their compatible versions are only available in unstable. We also want to "pin" them.
-
-Now `/usr/lib/nvidia-cuda-toolkit/bin/gcc --version` should show gcc-5. Whereas `gcc` via `/usr/bin/gcc`, a different name from `gcc-5`, still runs gcc 6.
-
-#### 6. Verify CUDA Installation
-
-CUDA toolkit installed from Debian does not seem to have [CUDA samples](http://docs.nvidia.com/cuda/cuda-samples/)?
-
-1. Verify graphics driver
-    * `cat /proc/driver/nvidia/version`
-    * `nvidia-smi`
-
-2. Verify the CUDA compiler
-    * `nvcc --version`
-
-#### 7. cuDNN
-
-Download [cuDNN](https://developer.nvidia.com/rdp/cudnn-download) from NVIDIA. You must login to download.
-
-Download cuDNN v7.0.5 for CUDA 8.0 with the following files:
-
-* cuDNN v7.0.5 Runtime Library for Ubuntu16.04 (Deb)
-* cuDNN v7.0.5 Developer Library for Ubuntu16.04 (Deb)
-* cuDNN v7.0.5 Code Samples and User Guide for Ubuntu16.04 (Deb)
-
-Install:
-
-```bash
-sudo dpkg -i Packages/libcudnn7_7.0.5.15-1+cuda8.0_amd64.deb 
-sudo dpkg -i Packages/libcudnn7-dev_7.0.5.15-1+cuda8.0_amd64.deb 
-sudo dpkg -i Packages/libcudnn7-doc_7.0.5.15-1+cuda8.0_amd64.deb 
-```
-
-Verify:
-
-Copy the samples to a temporary folder:
-
-```bash
-mkdir ~/Temporary
-cp -r /usr/src/cudnn_samples_v7/ ~/Temporary/
-```
-
-Go to the MNIST sample folder:
-
-```bash
-cd ~/Temporary/cudnn_samples_v7/mnistCUDNN/
-```
-
-Note the Makefile points to the wrong location for the compilers. Fix it:
-
-```bash
-CUDA_PATH ?= /usr/lib/nvidia-cuda-toolkit
-```
-
-Test the sample:
-
-```bash
-make clean && make
-./mnistCUDNN
-```
-
 
 ### Conda for CUDA and cuDNN
 
