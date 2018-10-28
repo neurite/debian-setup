@@ -191,7 +191,7 @@ Here is the CUDA toolkit package tree:
     2. Verify with Tensorflow
         1. `conda create --name cuda-tf python=3.6`
         2. `source activate cuda-tf`
-        3. `conda install tensorflow-gpu`
+        3. `conda install cudatoolkit cudnn tensorflow-gpu`
         4. Launch Python
             ```python
             import tensorflow as tf
