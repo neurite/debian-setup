@@ -16,7 +16,7 @@
     * `sudo chown <usr>:users /samba/share`
     * `sudo chmod ug+rwx,o-rwx /samba/share`
 4. `sudo vim /etc/samba/smb.conf`
-    * Set `security = user` to require a Unix account on the Samba server
+    * Set `security = user` under `[global]` to require a Unix account on the Samba server
     * At the end, add the following section
     ```
     [samba]
