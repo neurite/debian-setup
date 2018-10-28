@@ -21,10 +21,10 @@ We have 4 tiers of packages to install. They are tiered because a particular tie
     1. [Stretch](https://packages.debian.org/stretch/linux-headers-amd64) ([Stretch Backports](https://packages.debian.org/stretch-backports/linux-headers-amd64))
 2. NVIDIA graphics driver
     1. [Stretch](https://packages.debian.org/stretch/nvidia-driver) ([Stretch Backports](https://packages.debian.org/stretch-backports/nvidia-driver))
-    2. [NVIDIA](http://www.nvidia.com/object/unix.html) (also included in the CUDA toolkit installation below)
+    2. [NVIDIA](http://www.nvidia.com/object/unix.html)
 3. NVIDIA CUDA toolkit
     1. [Stretch](https://packages.debian.org/stretch/nvidia-cuda-toolkit) ([Stretch Backports](https://packages.debian.org/stretch-backports/nvidia-cuda-toolkit))
-    2. [NVIDIA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/) (includes the graphics driver installation)
+    2. [NVIDIA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)
     3. [Conda](https://anaconda.org/anaconda/cudatoolkit)
 4. cuDNN
     1. [NVIDIA](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/)
