@@ -207,9 +207,10 @@ Here is the CUDA toolkit package tree:
             import torch
             torch.cuda.is_available()
             ```
-### Pytorch
 
-PyTorch allows you to choose a particular version of CUDA when installing PyTorch. Make sure the NVIDIA graphics driver version is compatible.
+### PyTorch
+
+PyTorch allows you to choose a specific version of CUDA when installing PyTorch. Just make sure that the NVIDIA graphics driver version is compatible.
 
 For example, `conda install pytorch -c pytorch` installs CUDA 9.0 which requires graphics driver >= 384.81.
 
