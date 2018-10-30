@@ -53,7 +53,7 @@ Conda provides CUDA toolkit and cuDNN. However, it requires compatible versions 
 
 #### Versions
 
-It is **important** that the CUDA toolkit is supported by a compatible graphics driver. Here is a table copied from NVIDIA's release nots of [CUDA toolkit components](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#major-components):
+It is important that **CUDA toolkit is supported by a compatible graphics driver**. Here is a table copied from NVIDIA's release nots of [CUDA toolkit components](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#major-components):
 
 | CUDA Toolkit                | Linux x86_64 Driver Version | Windows x86_64 Driver Version |
 |-----------------------------|-----------------------------|-------------------------------|
