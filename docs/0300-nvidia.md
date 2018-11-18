@@ -8,7 +8,7 @@
        * [Versions](#versions)
    * [Installation](#installation)
        1. [Linux headers](#1-linux-headers)
-       2. [dkms](#2-dkms)
+       2. [DKMS](#2-dkms)
        3. [Graphics drivers](#3-graphics-drivers)
        4. [CUDA toolkit](#4-cuda-toolkit)
    * [Conda for CUDA and cuDNN](#conda-for-cuda-and-cudnn)
@@ -101,7 +101,7 @@ To list the linux-headers packages already installed:
 sudo dpkg -l | grep 'linux-headers'
 ```
 
-#### 2. dkms
+#### 2. DKMS
 
 ```bash
 sudo apt-get install dkms
@@ -122,6 +122,16 @@ The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be instal
 In the end, restart to replace nouveau with nvidia. You will be prompted during installation if a reboot is needed.
 
 To verify, `nvidia-smi`.
+
+Note on Ubuntu.
+
+Get the lastest graphics driver from PPA (Personal Package Archives):
+
+```bash
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt install nvidia-396
+```
 
 #### 4. CUDA toolkit
 
