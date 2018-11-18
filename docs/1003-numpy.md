@@ -84,7 +84,8 @@ Data I/O
 
 * pandas -- Data I/O, data munging
 * h5py, pytables (> 3.2) -- HDF5
-* fastparquet, python-snappy -- Parquet
+* [fastparquet](https://fastparquet.readthedocs.io/en/latest/), [python-snappy](https://pypi.org/project/python-snappy/) -- Parquet
+* [fastavro](https://fastavro.readthedocs.io/en/latest/), [python-snappy](https://pypi.org/project/python-snappy/) -- AVRO
 
 Visualization
 
