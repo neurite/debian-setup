@@ -82,7 +82,7 @@ apt-get -q -y remove vim-tiny
 apt-get -q -y install vim-gtk3
 
 # Java
-apt-get -q -y install openjdk-8-jdk openjdk-8-source
+apt-get -q -y install openjdk-11-jdk openjdk-11-source
 
 echo "Done installing packages, tools for development."
 
