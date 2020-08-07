@@ -77,8 +77,8 @@ apt-get -q -y install ruby-dev ruby
 apt-get -q -y install git
 
 # vim
-apt-get -q -y remove vim
-apt-get -q -y remove vim-tiny
+apt-get -q -y purge vim
+apt-get -q -y purge vim-tiny
 apt-get -q -y install vim-gtk3
 
 # Java
