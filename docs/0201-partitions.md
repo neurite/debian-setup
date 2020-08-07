@@ -38,10 +38,10 @@ You may notice the `discard` mount option for SSD drive.
 | sdb (1 TB spinning) |             | SWAP | 128 GB    |                                  |           |
 |                     | /var        | EXT4 | 128 GB    | relatime, nodev, nosuid          |           |
 |                     | /tmp        | EXT4 | 128 GB    | relatime, nodev, nosuid, noexec  |           |
-|                     | /stash      | EXT4 | remaining | relatime, nodev, nosuid          | Workspace |
+|                     | /stash      | EXT4 | remaining | relatime, nodev, nosuid          |           |
 | RAID10              | /samba      | EXT4 | 4 TB      | relatime, nodev, nosuid, noexec  | largefile |
 
-Another example with larger disks.
+Another example for larger disks.
 
 | Drive               | Mount Point | Type | Size      | Mount Options                    | Other         |
 |---------------------|-------------|------|-----------|----------------------------------|---------------|
@@ -53,7 +53,7 @@ Another example with larger disks.
 | sdb (2 TB spinning) |             | SWAP | 196 GB    |                                  | 128 GB memory |
 |                     | /var        | EXT4 | 256 GB    | relatime, nodev, nosuid          |               |
 |                     | /tmp        | EXT4 | 256 GB    | relatime, nodev, nosuid, noexec  |               |
-|                     | /stash      | EXT4 | remaining | relatime, nodev, nosuid          | Workspace     |
+|                     | /stash      | EXT4 | remaining | relatime, nodev, nosuid          |               |
 | RAID10              | /samba      | EXT4 | 4 TB      | relatime, nodev, nosuid, noexec  | largefile     |
 
 Finally it lets you review the partitions. Scroll to the bottom of the review list, choose `Finish partitioning and write changes to disk`.
@@ -62,9 +62,9 @@ Finally it lets you review the partitions. Scroll to the bottom of the review li
 
 ### Software RAID
 
-First, let's talk briefly about hardware RAID. If you have set up RAID in the BIOS and have correctly edited the command `Expert install`, the RAID should appear here as a single disk. Partition it as if it is a single disk. Again this is for setting up hardware RAID.
+First, let's talk briefly about hardware RAID. If you have set up RAID in the BIOS and have correctly edited the command `Expert install`, the RAID should appear here as a single disk. Partition it as if it is a single disk. Again this is for setting up a hardware RAID.
 
-See the screenshot below for software RAID.
+Now software RAID is different from hardware RAID. See the screenshot below for software RAID.
 
 ![](ss-raid.jpg "raid partitions")
 
