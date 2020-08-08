@@ -9,7 +9,7 @@ Edit package sources `sudo vi /etc/apt/sources.list`. Since we are not using the
 If you want newer version of NVIDIA software, you may want to upgrade the kernel, as NVIDIA installs into the kernel tree. But double-check NVIDIA does have the compatible versions for the upgraded kernel.
 
 1. `sudo apt-get update`.
-2. `sudo apt-get -t stretch-backports dist-upgrade`. Note this command should upgrade a package `linux-image-(blah, blah)-amd64` which is the kernel.
+2. `sudo apt-get dist-upgrade`. Note, if using the backports here, it will likely upgrade the kernel `linux-image-(blah, blah)-amd64`.
 
 ### Single-User Mode
 
