@@ -117,8 +117,21 @@ The dkms package is singled out to make it clear that NVIDIA installs into the k
 
 Note the package `nvidia-driver` requires non-free software enabled in `/etc/apt/sources.list`.
 
+Choose the version of the driver that is compatible with the hardware. Note newer cards such 2070 super, 2080 super are only supported by nvidia-driver 440 and thus has be installed via `buster-backports`.
+
+1. [nvidia-driver 440 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/440.100/README/supportedchips.html)
+2. [nvidia-driver 418 (buster)](https://packages.debian.org/buster/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)
+3. [nvidia-driver 418 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-driver)) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)
+4. [nvidia-driver 390 (stretch)](https://packages.debian.org/stretch/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/390.132/README/supportedchips.html)
+
 ```bash
-sudo apt-get install nvidia-driver -t stretch-backports
+sudo apt-get install nvidia-driver -t buster-backports  # nvidia-driver 440
+```
+
+Or
+
+```bash
+sudo apt-get install nvidia-driver  # nvidia-driver 418
 ```
 
 The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed and uninstalled together with other NVIDIA packages.
