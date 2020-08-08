@@ -34,10 +34,10 @@ We have 4 tiers of packages to install. They are tiered because a particular tie
     3. [nvidia-cuda-toolkit 9.1 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-cuda-toolkit)
     4. [nvidia-cuda-toolkit 8.0 (stretch)](https://packages.debian.org/stretch/nvidia-cuda-toolkit)
     5. [NVIDIA doc](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)
-    6. [conda](https://anaconda.org/anaconda/cudatoolkit)
+    6. [conda cudatoolkit](https://anaconda.org/anaconda/cudatoolkit)
 4. cuDNN
-    1. [NVIDIA](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/)
-    2. [conda](https://anaconda.org/anaconda/cudnn)
+    1. [NVIDIA doc](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/)
+    2. [conda cudnn](https://anaconda.org/anaconda/cudnn)
 
 Other NVIDIA deep learning packages, such as [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl), are not covered here.
 
