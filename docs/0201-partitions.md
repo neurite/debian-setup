@@ -38,14 +38,14 @@ You may notice the `discard` mount option for SSD drive.
 | sdb (1 TB spinning) |             | SWAP | 128 GB    |                                  |           |
 |                     | /var        | EXT4 | 128 GB    | relatime, nodev, nosuid          |           |
 |                     | /tmp        | EXT4 | 128 GB    | relatime, nodev, nosuid, noexec  |           |
-|                     | /stash      | EXT4 | remaining | relatime, nodev, nosuid          |           |
+|                     | /data       | EXT4 | remaining | relatime, nodev, nosuid, noexec  |           |
 | RAID10              | /samba      | EXT4 | 4 TB      | relatime, nodev, nosuid, noexec  | largefile |
 
 Another example for larger disks.
 
 | Drive               | Mount Point | Type | Size      | Mount Options                    | Other         |
 |---------------------|-------------|------|-----------|----------------------------------|---------------|
-| sda (512 GB NVME)   |             | EFI  | 256 MB    |                                  | Bootable      |
+| sda (512 GB NVME)   |             | EFI  | 512 MB    |                                  | Bootable      |
 |                     | /           | EXT4 | 128 GB    | discard, relatime                |               |
 |                     | /usr/local  | EXT4 | 96 GB     | discard, relatime, nodev         |               |
 |                     | /opt        | EXT4 | 96 GB     | discard, relatime, nodev         |               | 
@@ -53,10 +53,12 @@ Another example for larger disks.
 | sdb (2 TB spinning) |             | SWAP | 196 GB    |                                  | 128 GB memory |
 |                     | /var        | EXT4 | 256 GB    | relatime, nodev, nosuid          |               |
 |                     | /tmp        | EXT4 | 256 GB    | relatime, nodev, nosuid, noexec  |               |
-|                     | /stash      | EXT4 | remaining | relatime, nodev, nosuid          |               |
+|                     | /data       | EXT4 | remaining | relatime, nodev, nosuid, noexec  |               |
 | RAID10              | /samba      | EXT4 | 4 TB      | relatime, nodev, nosuid, noexec  | largefile     |
 
 Finally it lets you review the partitions. Scroll to the bottom of the review list, choose `Finish partitioning and write changes to disk`.
+
+Note one use of the partition mounted at `/data` is to link the datasets folder of project, e.g. `/data/<usr>/<project>` linked to `~/Workspace/<project>/datasets`.
 
 ![](ss-partitions.jpg "partitions")
 
