@@ -67,12 +67,6 @@ apt-get -q -y install curl wget
 # Handy command-line tool for handling CSV files based on OCaml
 apt-get -q -y install csvtool
 
-# Python
-apt-get -q -y install python python-dev python-pip python3 python3-dev python3-pip
-
-# Ruby needed by tools such as the Travis CI command-line client
-apt-get -q -y install ruby-dev ruby
-
 # git
 apt-get -q -y install git
 
