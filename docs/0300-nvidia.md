@@ -65,6 +65,10 @@ It is critical that CUDA is supported by **a compatible graphics driver**. Here 
 
 | CUDA Toolkit                | Linux x86_64 Driver Version | Windows x86_64 Driver Version |
 |-----------------------------|-----------------------------|-------------------------------|
+| CUDA 11.0.3 Update 1        | >= 450.51.06                | >= 451.82                     |
+| CUDA 11.0.2 GA              | >= 450.51.05                | >= 451.48                     |
+| CUDA 11.0.1 RC              | >= 450.36.06                | >= 451.22                     |
+| CUDA 10.2.89                | >= 440.33                   | >= 441.22                     |
 | CUDA 10.1.105               | >= 418.39                   | >= 418.96                     |
 | CUDA 10.0.130               | >= 410.48                   | >= 411.31                     |
 | CUDA 9.2 (9.2.148 Update 1) | >= 396.37                   | >= 398.26                     |
@@ -75,15 +79,6 @@ It is critical that CUDA is supported by **a compatible graphics driver**. Here 
 | CUDA 8.0 (8.0.44)           | >= 367.48                   | >= 369.30                     |
 | CUDA 7.5 (7.5.16)           | >= 352.31                   | >= 353.66                     |
 | CUDA 7.0 (7.0.28)           | >= 346.46                   | >= 347.62                     |
-
-After experimenting different versions, different sources of the packages, here is a viable yet relatively easy path:
-
-| packages                | version       | source            |
-|-------------------------|---------------|-------------------|
-| linux headers, dkms     | 4.9+80+deb9u6 | stretch           |
-| nvidia graphics drivers | 390.87        | stretch-backports |
-| nvidia cuda toolkit     | 9.1.85        | stretch-backports |
-| nvidia cudnn            | 7.2.1         | conda             |
 
 ### Installation
 
