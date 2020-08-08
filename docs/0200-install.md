@@ -38,7 +38,7 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * Protocol: http
     * Country: US
     * Mirror: (choose a good one that is near you, e.g. `mirrors.ocf.berkeley.edu`)
-    * Use non-free software: Yes (which implies also using contrib software and can skip the next one). If, for example, you need to install NVIDIA packages, you must say yes to non-free
+    * Use non-free software: Yes (which implies also using contrib software). If, for example, you need to install NVIDIA packages, you must say yes to non-free
     * Use contrib software: Yes
     * Enable source repositories in APT: No
     * Services to use: `security updates`, `release updates`, and also check `backported software`
@@ -46,7 +46,7 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * Package usage survey: No
     * Should man and mandb be installed 'setuid man': No
     * Choose only `standard system utilities`, which includes bzip2, ca-certificates, dbus, dpkg, less, perl, python, openssl, etc.
-    * Note, if you want to install a customized desktop, make sure **do not select any desktop environment**. We can install a lightweight desktop at a later stage. For example, [a GNOME desktop reduced to the core](0501-gnome.md).
+    * Note, if you want to install a customized desktop, make sure **do not select any desktop environment**. We will install a lightweight desktop at a later stage. For example, [a GNOME desktop reduced to the core](0501-gnome.md).
 16. `Install the GRUB boot loader`
     * Force GRUB installation to the EFI removable media path: Yes
 17. Finish and reboot
