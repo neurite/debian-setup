@@ -7,6 +7,7 @@ Set up Debian for software development and machine learning/deep learning. Updat
 3. [Dev bootstrap](0600-bootstrap.md)
     1. [vim](0601-vim.md)
     2. [git](0603-git.md)
+    3. [fonts](0602-fonts.md)
 4. [NVIDIA](0300-nvidia.md)
 5. [Samba server](0400-samba.md)
 6. Lean desktop
