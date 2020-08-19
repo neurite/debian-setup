@@ -91,19 +91,19 @@ First do a quick verification before install:
 * Verify NVIDIA graphics is installed and is recognized in the system `lspci | grep -i nvidia`
 * Verify Linux kernel `uname -r` and architecture `uname -m`
 
-Then install the Linux headers:
-
-```bash
-sudo apt-get install linux-headers-$(uname -r | sed 's/[^-]*-[^-]*-//')
-```
-
-The command `uname -r | sed 's/[^-]*-[^-]*-//'` output `amd64`. The package `linux-headers-amd64` is the architecture-specific meta-package. The package manager points it to the package of the correct kernel version, for example, `linux-headers-4.9.0-5-amd64`. So in the list of packages to be installed, double check there is `linux-headers-4.9.0-5-amd64` where the `4.9.0-5-amd64` part should match the kernel of your system.
-
 To list the linux-headers packages already installed:
 
 ```bash
 sudo dpkg -l | grep 'linux-headers'
 ```
+
+Then to install the Linux headers:
+
+```bash
+sudo apt-get install linux-headers-$(uname -r | sed 's/[^-]*-[^-]*-//')
+```
+
+The command `uname -r | sed 's/[^-]*-[^-]*-//'` output `amd64`. The package `linux-headers-amd64` is the architecture-specific meta-package. The package manager points it to the package of the correct kernel version, for example, `linux-headers-4.19.0-10-amd64`. So in the list of packages to be installed, double check there is `linux-headers-4.19.0-10-amd64` where the `4.19.0-10-amd64` part should match the kernel of your system.
 
 #### 2. DKMS
 
@@ -125,13 +125,13 @@ Choose the version of the driver that is compatible with the hardware. Note newe
 4. [nvidia-driver 390 (stretch)](https://packages.debian.org/stretch/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/390.132/README/supportedchips.html)
 
 ```bash
-sudo apt-get install nvidia-driver -t buster-backports  # nvidia-driver 440
+sudo apt-get install nvidia-driver nvidia-smi -t buster-backports  # nvidia-driver 440
 ```
 
 Or
 
 ```bash
-sudo apt-get install nvidia-driver  # nvidia-driver 418
+sudo apt-get install nvidia-driver nvidia-smi  # nvidia-driver 418
 ```
 
 The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed and uninstalled together with other NVIDIA packages.
