@@ -117,7 +117,7 @@ The dkms package is singled out to make it clear that NVIDIA installs into the k
 
 Note the package `nvidia-driver` requires non-free software enabled in `/etc/apt/sources.list`.
 
-Choose the version of the driver that is compatible with the hardware. Note newer cards such 2070 super, 2080 super are only supported by nvidia-driver 440 and thus has be installed via `buster-backports`.
+Choose the version of the driver that is compatible with the hardware. Note newer cards such as 2070 super, 2080 super are only supported by nvidia-driver 440 and thus has to be installed via `buster-backports`.
 
 1. [nvidia-driver 440 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/440.100/README/supportedchips.html)
 2. [nvidia-driver 418 (buster)](https://packages.debian.org/buster/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)
@@ -125,13 +125,15 @@ Choose the version of the driver that is compatible with the hardware. Note newe
 4. [nvidia-driver 390 (stretch)](https://packages.debian.org/stretch/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/390.132/README/supportedchips.html)
 
 ```bash
-sudo apt-get install nvidia-driver nvidia-smi -t buster-backports  # nvidia-driver 440
+# nvidia-driver 440
+sudo apt-get -t buster-backports install nvidia-driver nvidia-smi
 ```
 
 Or
 
 ```bash
-sudo apt-get install nvidia-driver nvidia-smi  # nvidia-driver 418
+# nvidia-driver 418
+sudo apt-get install nvidia-driver nvidia-smi
 ```
 
 The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed and uninstalled together with other NVIDIA packages.
@@ -140,26 +142,24 @@ In the end, restart to replace nouveau with nvidia. You will be prompted during 
 
 To verify, `nvidia-smi`.
 
-Note on Ubuntu.
-
-Get the lastest graphics driver from PPA (Personal Package Archives):
-
-```bash
-sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt-get update
-sudo apt install nvidia-396
-```
-
 #### 4. CUDA toolkit
 
 ```bash
-sudo apt-get install nvidia-cuda-toolkit -t stretch-backports
+# nvidia-cuda-toolkit 10.1.243
+sudo apt-get -t buster-backports install nvidia-cuda-toolkit
 ```
 
-Alternatively without installing the nvcc compiler:
+Or
 
 ```bash
-sudo apt-get install nvidia-cuda-dev -t stretch-backports
+# nvidia-cuda-toolkit 9.2.148
+sudo apt-get install nvidia-cuda-toolkit
+```
+
+Alternatively, without installing the nvcc compiler:
+
+```bash
+sudo apt-get -t buster-backports install nvidia-cuda-dev
 ```
 
 Here is the CUDA toolkit package tree:
