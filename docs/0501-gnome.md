@@ -22,7 +22,7 @@ There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapa
 * [network-mananger-gnome](https://packages.debian.org/stretch/network-manager-gnome)
 * [pulseaudio](https://packages.debian.org/stretch/pulseaudio) (optional, if you want audio)
 
-Alternatively,
+Alternatively, `gnome-core` would install more packages but still less number of packages than `gnome`:
 
 ```
 sudo apt-get --no-install-recommends install gnome-core
