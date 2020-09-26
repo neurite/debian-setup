@@ -22,6 +22,12 @@ There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapa
 * [network-mananger-gnome](https://packages.debian.org/stretch/network-manager-gnome)
 * [pulseaudio](https://packages.debian.org/stretch/pulseaudio) (optional, if you want audio)
 
+Alternatively,
+
+```
+sudo apt-get --no-install-recommends install gnome-core
+```
+
 ### Network Manager & VPN
 
 To let Network Manager manage wired connections, edit `/etc/NetworkManager/NetworkManager.conf`. Change to `true`
