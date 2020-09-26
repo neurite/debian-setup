@@ -1,6 +1,6 @@
 ### Firefox ESR
 
-`sudo apt-get install firefox-esr`
+`sudo apt-get install firefox-esr firefox-esr-l10n-all`
 
 [Debian Firefox Wiki](https://wiki.debian.org/Firefox)
 
