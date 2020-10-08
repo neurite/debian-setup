@@ -23,7 +23,7 @@ We have 4 tiers of packages to install. They are tiered because a particular tie
     2. [linux-headers-amd64 4.19 (stretch-backports)](https://packages.debian.org/stretch-backports/linux-headers-amd64)
     3. [linux-headers-amd64 4.9 (stretch)](https://packages.debian.org/stretch/linux-headers-amd64)
 2. NVIDIA graphics driver
-    1. [nvidia-driver 440 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver)
+    1. [nvidia-driver 450 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver)
     2. [nvidia-driver 418 (buster)](https://packages.debian.org/buster/nvidia-driver)
     3. [nvidia-driver 418 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-driver))
     4. [nvidia-driver 390 (stretch)](https://packages.debian.org/stretch/nvidia-driver) 
@@ -117,15 +117,15 @@ The dkms package is singled out to make it clear that NVIDIA installs into the k
 
 Note the package `nvidia-driver` requires non-free software enabled in `/etc/apt/sources.list`.
 
-Choose the version of the driver that is compatible with the hardware. Note newer cards such as 2070 super, 2080 super are only supported by nvidia-driver 440 and thus has to be installed via `buster-backports`.
+Choose the version of the driver that is compatible with the hardware. Note newer cards such as 2070 super, 2080 super are only supported by nvidia-driver >= 440 and thus has to be installed via `buster-backports`.
 
-1. [nvidia-driver 440 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/440.100/README/supportedchips.html)
+1. [nvidia-driver 450 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/450.66/README/supportedchips.html)
 2. [nvidia-driver 418 (buster)](https://packages.debian.org/buster/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)
 3. [nvidia-driver 418 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-driver)) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)
 4. [nvidia-driver 390 (stretch)](https://packages.debian.org/stretch/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/390.132/README/supportedchips.html)
 
 ```bash
-# nvidia-driver 440
+# nvidia-driver 450
 sudo apt-get -t buster-backports install nvidia-driver nvidia-smi
 ```
 
@@ -234,11 +234,3 @@ Here is the CUDA toolkit package tree:
             import torch
             torch.cuda.is_available()
             ```
-
-### PyTorch
-
-PyTorch allows you to choose a specific version of CUDA when installing PyTorch from the `pytorch` channel. Just make sure that the NVIDIA graphics driver version is compatible.
-
-For example, `conda install pytorch -c pytorch` installs CUDA 9.0 which requires graphics driver >= 384.81.
-
-For example, `conda install pytorch cuda92 -c pytorch` installs CUDA 9.2 which requires graphics driver >= 396.26.
