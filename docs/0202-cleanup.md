@@ -19,21 +19,6 @@ Disable single-user mode to lock down the box.
 2. Uncomment the line `GRUB_DISABLE_RECOVERY="true"`
 3. `sudo update-grub`
 
-### Nvidia Problem
-
-Symptom: Boot hangs on normal startup.
-
-1. Reboot the system using the USB disk. On the Debian boot screen, choose `Advanced Options` --> `Recovery Mode`. The last output on the screen is "fb: switching to nouveaufb from simple" indicating a problem with nouveau.
-2. Reboot the system from the USB disk. `Advanced options ...` --> `Rescue mode`.
-3. After the quick setup in the rescue mode, choose the root file system `/dev/sda2` (the partition that is mounted as `/`). Execute a shell there as the root.
-4. Move `/etc/modprobe.conf` to backup, if present.
-5. `vi /etc/modprobe.d/nouveau.conf` and add the following 2 lines:
-    ```bash
-    blacklist nouveau
-    blacklist lbm-nouveau
-    ```
-6. Exit and reboot from the hard disk.
-
 ### Tune SSD (optional)
 
 * I/O scheduler (optional, especially the hard disk letter sequence `sdx` is not 100% reliable)
