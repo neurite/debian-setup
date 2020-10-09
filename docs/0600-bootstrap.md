@@ -30,4 +30,4 @@ bash /home/<usr>/Workspace/debian-setup/scripts/dev-bootstrap.sh
 ```
 
 
-**Next steps: [vim](0601-vim.md), [fonts](0602-fonts.md), [git](0603-git.md)
+**Next steps: [vim](0601-vim.md), [fonts](0602-fonts.md), [git](0603-git.md)**
