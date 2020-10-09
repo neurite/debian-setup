@@ -29,4 +29,5 @@ sudo su
 bash /home/<usr>/Workspace/debian-setup/scripts/dev-bootstrap.sh
 ```
 
-Now it is time to configure [vim](0601-vim.md) and [git](0603-git.md).
+
+**Next steps: [vim](0601-vim.md), [fonts](0602-fonts.md), [git](0603-git.md)
