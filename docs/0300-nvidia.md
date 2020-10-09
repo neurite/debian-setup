@@ -19,20 +19,20 @@
 We have 4 tiers of packages to install. They are tiered because a particular tier depends on packages of previous tiers. Depending on the need, the last 2 tiers can be optional. Here is the landscape of the package tiers:
 
 1. Linux headers
-    1. [linux-headers-amd64 4.19 (buster)](https://packages.debian.org/buster/linux-headers-amd64)
-    2. [linux-headers-amd64 4.19 (stretch-backports)](https://packages.debian.org/stretch-backports/linux-headers-amd64)
-    3. [linux-headers-amd64 4.9 (stretch)](https://packages.debian.org/stretch/linux-headers-amd64)
+    1. [linux-headers-amd64 4.19.0-11 (buster)](https://packages.debian.org/buster/linux-headers-amd64)
+    2. [linux-headers-amd64 4.19.0-0 (stretch-backports)](https://packages.debian.org/stretch-backports/linux-headers-amd64)
+    3. [linux-headers-amd64 4.9.0-13 (stretch)](https://packages.debian.org/stretch/linux-headers-amd64)
 2. NVIDIA graphics driver
-    1. [nvidia-driver 450 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver)
-    2. [nvidia-driver 418 (buster)](https://packages.debian.org/buster/nvidia-driver)
-    3. [nvidia-driver 418 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-driver))
-    4. [nvidia-driver 390 (stretch)](https://packages.debian.org/stretch/nvidia-driver) 
+    1. [nvidia-driver 450.66 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver)
+    2. [nvidia-driver 418.152 (buster)](https://packages.debian.org/buster/nvidia-driver)
+    3. [nvidia-driver 418.152 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-driver))
+    4. [nvidia-driver 390.138 (stretch)](https://packages.debian.org/stretch/nvidia-driver) 
     5. [NVIDIA list](http://www.nvidia.com/object/unix.html)
 3. NVIDIA CUDA toolkit
-    1. [nvidia-cuda-toolkit 10.1 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-cuda-toolkit)
-    2. [nvidia-cuda-toolkit 9.2 (buster)](https://packages.debian.org/buster/nvidia-cuda-toolkit)
-    3. [nvidia-cuda-toolkit 9.1 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-cuda-toolkit)
-    4. [nvidia-cuda-toolkit 8.0 (stretch)](https://packages.debian.org/stretch/nvidia-cuda-toolkit)
+    1. [nvidia-cuda-toolkit 10.1.243 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-cuda-toolkit)
+    2. [nvidia-cuda-toolkit 9.2.148 (buster)](https://packages.debian.org/buster/nvidia-cuda-toolkit)
+    3. [nvidia-cuda-toolkit 9.1.85 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-cuda-toolkit)
+    4. [nvidia-cuda-toolkit 8.0.44 (stretch)](https://packages.debian.org/stretch/nvidia-cuda-toolkit)
     5. [NVIDIA doc](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)
     6. [conda cudatoolkit](https://anaconda.org/anaconda/cudatoolkit)
 4. cuDNN
