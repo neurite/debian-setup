@@ -24,3 +24,6 @@ Some of the non-free firmware may be needed during installation. The type of har
 ### UEFI
 
 In the motherboard BIOS, make sure **CSM (or BIOS legacy mode) is disabled in UEFI**, to guarantee it always boots into UEFI. One reason for the need of UEFI is the GPT partitioning scheme. If not sure if UEFI is engaged, the Debian bootable image, onced loaded, should display "UEFI Installer" in the title; otherwise revisit the UEFI settings of the motherboard. For more information about UEFI, check [the Debian wiki](https://wiki.debian.org/UEFI). 
+
+
+**Next step: [Installation](0200-install.md)**
