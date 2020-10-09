@@ -53,6 +53,5 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * Set the system clock to UTC: Yes
     * Reboot
 
-### Almost done, not yet...
 
-Make sure to read about [cleanup, fixes, issues](0202-cleanup.md)
+**Next step: [cleanup, fixes, issues](0202-cleanup.md)**
