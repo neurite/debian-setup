@@ -28,3 +28,6 @@ Disable single-user mode to lock down the box.
     1. `cat /proc/sys/vm/swappiness` should show the default value of 60
     2. `cat /proc/sys/vm/vfs_cache_pressure` should show the default value of 100
     3. Edit `/etc/sysctl.conf` and set `vm.swappiness=30` and `vm.vfs_cache_pressure=50`
+
+
+**Next step: [Bootstrap](0600-bootstrap.md)**
