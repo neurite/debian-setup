@@ -65,6 +65,7 @@ It is critical that CUDA is supported by **a compatible graphics driver**. Here 
 
 | CUDA Toolkit                | Linux x86_64 Driver Version | Windows x86_64 Driver Version |
 |-----------------------------|-----------------------------|-------------------------------|
+| CUDA 11.1                   | >=455.23                    | >=456.38                      |
 | CUDA 11.0.3 Update 1        | >= 450.51.06                | >= 451.82                     |
 | CUDA 11.0.2 GA              | >= 450.51.05                | >= 451.48                     |
 | CUDA 11.0.1 RC              | >= 450.36.06                | >= 451.22                     |
