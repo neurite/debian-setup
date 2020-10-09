@@ -54,4 +54,4 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * Reboot
 
 
-**Next step: [cleanup, fixes, issues](0202-cleanup.md)**
+**Next step: [Cleanup](0202-cleanup.md)**
