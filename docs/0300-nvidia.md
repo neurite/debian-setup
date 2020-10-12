@@ -221,7 +221,7 @@ In my test with buster backports, `nvidia-cuda-toolkit` vs `nvidia-cude-dev` has
             It should list the CUDA devices, e.g. 'GeForce GTX 1080 Ti'.
     2. Verify with Tensorflow
         1. `conda create --name tf python=3.7`
-        2. `source activate tf`
+        2. `conda activate tf`
         3. `conda install tensorflow-gpu`
         4. Launch Python
             ```python
