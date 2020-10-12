@@ -65,7 +65,7 @@ It is critical that CUDA is supported by **a compatible graphics driver**. Here 
 
 | CUDA Toolkit                | Linux x86_64 Driver Version | Windows x86_64 Driver Version |
 |-----------------------------|-----------------------------|-------------------------------|
-| CUDA 11.1                   | >=455.23                    | >=456.38                      |
+| CUDA 11.1                   | >= 455.23                   | >= 456.38                     |
 | CUDA 11.0.3 Update 1        | >= 450.51.06                | >= 451.82                     |
 | CUDA 11.0.2 GA              | >= 450.51.05                | >= 451.48                     |
 | CUDA 11.0.1 RC              | >= 450.36.06                | >= 451.22                     |
@@ -120,24 +120,24 @@ Note the package `nvidia-driver` requires non-free software enabled in `/etc/apt
 
 Choose the version of the driver that is compatible with the hardware. Note newer cards such as 2070 super, 2080 super are only supported by nvidia-driver >= 440 and thus has to be installed via `buster-backports`.
 
-1. [nvidia-driver 450 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/450.66/README/supportedchips.html)
-2. [nvidia-driver 418 (buster)](https://packages.debian.org/buster/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)
-3. [nvidia-driver 418 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-driver)) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)
-4. [nvidia-driver 390 (stretch)](https://packages.debian.org/stretch/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/390.132/README/supportedchips.html)
+1. [nvidia-driver 450.66 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/450.66/README/supportedchips.html)
+2. [nvidia-driver 418.113 (buster)](https://packages.debian.org/buster/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)
+3. [nvidia-driver 418.113 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-driver)) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)
+4. [nvidia-driver 390.132 (stretch)](https://packages.debian.org/stretch/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/390.132/README/supportedchips.html)
 
 ```bash
-# nvidia-driver 450
+# nvidia-driver 450.66
 sudo apt-get -t buster-backports install nvidia-driver nvidia-smi
 ```
 
 Or
 
 ```bash
-# nvidia-driver 418
+# nvidia-driver 418.113
 sudo apt-get install nvidia-driver nvidia-smi
 ```
 
-The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed and uninstalled together with other NVIDIA packages.
+The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed and uninstalled together with other NVIDIA packages. That is to say, do not install `nvidia-kernel-dkms` by itself.
 
 In the end, restart to replace nouveau with nvidia. You will be prompted during installation if a reboot is needed.
 
@@ -157,7 +157,7 @@ Or
 sudo apt-get install nvidia-cuda-toolkit
 ```
 
-Alternatively, without installing the nvcc compiler:
+Alternatively, without installing the nvcc compiler (which is included in `nvidia-cuda-toolkit`):
 
 ```bash
 sudo apt-get -t buster-backports install nvidia-cuda-dev
@@ -203,13 +203,15 @@ Here is the CUDA toolkit package tree:
             |=====> nvidia-cuda-doc
 ```
 
+In my test with buster backports, `nvidia-cuda-toolkit` vs `nvidia-cude-dev` has these addtional packages: `'libnvidia-compiler', 'ocl-icd-opencl-dev', 'opencl-c-headers', 'nvidia-profiler', 'nvidia-cuda-doc', 'nvidia-opencl-common', 'libjs-underscore', 'nvidia-opencl-dev', 'nsight-systems', 'nsight-compute', 'nvidia-openjdk-8-jre', 'ocl-icd-libopencl1', 'nvidia-opencl-icd', 'libbabeltrace1', 'nvidia-visual-profiler', 'nvidia-cuda-gdb', 'nvidia-cuda-toolkit'`.
+
 ### Conda for CUDA and cuDNN
 
 1. [Install miniconda](https://conda.io/miniconda.html)
 2. Verify
     1. Verify with Numba
-        1. `conda create --name cuda-numba python=3.6`
-        2. `source activate cuda-numba`
+        1. `conda create --name numba python=3.7`
+        2. `conda activate numba`
         3. `conda install cudatoolkit cudnn numba`
         4. Launch Python
             ```python
@@ -218,18 +220,18 @@ Here is the CUDA toolkit package tree:
             ```
             It should list the CUDA devices, e.g. 'GeForce GTX 1080 Ti'.
     2. Verify with Tensorflow
-        1. `conda create --name cuda-tf python=3.6`
-        2. `source activate cuda-tf`
-        3. `conda install cudatoolkit cudnn tensorflow-gpu`
+        1. `conda create --name tf python=3.7`
+        2. `source activate tf`
+        3. `conda install tensorflow-gpu`
         4. Launch Python
             ```python
             import tensorflow as tf
-            sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+            tf.config.list_physical_devices()
             ```
     3. Verify with PyTorch
-        1. `conda create --name cuda-torch python=3.6`
-        2. `source activate cuda-torch`
-        3. `conda install pytorch`
+        1. `conda create --name torch python=3.7`
+        2. `conda activate torch`
+        3. `conda install pytorch cudatoolkit=10.2 -c pytorch`
         4. Launch Python
             ```python
             import torch
