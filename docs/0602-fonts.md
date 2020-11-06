@@ -14,3 +14,11 @@
 6. `fc-list`, list available fonts
 
 Fonts are in `/usr/share/fonts` or `/usr/local/share/fonts`. We can check the organization of the font files already in the system at `/usr/share/fonts`. We should install our own fonts into `/usr/local/share/fonts`.
+
+### CJK Support
+
+| Language                                | Serif                | Sans serif           |
+|-----------------------------------------|----------------------|----------------------|
+| Chinese (both Simplified & Traditional) |	fonts-arphic-ukai    | fonts-arphic-uming   |
+| Japanese                                |	fonts-ipafont-mincho | fonts-ipafont-gothic |
+| Korean                                  |	fonts-unfonts-core                          |
