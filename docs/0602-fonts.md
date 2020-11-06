@@ -22,3 +22,11 @@ Fonts are in `/usr/share/fonts` or `/usr/local/share/fonts`. We can check the or
 | Chinese (both Simplified & Traditional) |	fonts-arphic-ukai    | fonts-arphic-uming   |
 | Japanese                                |	fonts-ipafont-mincho | fonts-ipafont-gothic |
 | Korean                                  |	fonts-unfonts-core                          |
+
+```
+sudo apt-get install fonts-arphic-ukai \
+                     fonts-arphic-uming \
+                     fonts-ipafont-mincho \
+                     fonts-ipafont-gothic \
+                     fonts-unfonts-core
+```
