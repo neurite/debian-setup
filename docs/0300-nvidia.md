@@ -24,7 +24,7 @@ We have 4 tiers of packages to install. They are tiered because a particular tie
     3. [linux-headers-amd64 4.9.0-13 (stretch)](https://packages.debian.org/stretch/linux-headers-amd64)
 2. NVIDIA graphics driver
     1. [nvidia-driver 455.38 (experimental)](https://packages.debian.org/experimental/nvidia-driver)
-    2. [nvidia-driver 450.66 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver)
+    2. [nvidia-driver 450.80 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver)
     3. [nvidia-driver 418.152 (buster)](https://packages.debian.org/buster/nvidia-driver)
     4. [nvidia-driver 418.152 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-driver))
     5. [nvidia-driver 390.138 (stretch)](https://packages.debian.org/stretch/nvidia-driver) 
@@ -66,7 +66,7 @@ It is critical that CUDA is supported by **a compatible graphics driver**. Here 
 
 | CUDA Toolkit                | Linux x86_64 Driver Version | Windows x86_64 Driver Version |
 |-----------------------------|-----------------------------|-------------------------------|
-| CUDA 11.1.1 Update 1.       | >= 455.32                   | >= 456.81                     |
+| CUDA 11.1.1 Update 1        | >= 455.32                   | >= 456.81                     |
 | CUDA 11.1 GA                | >= 455.23                   | >= 456.38                     |
 | CUDA 11.0.3 Update 1        | >= 450.51.06                | >= 451.82                     |
 | CUDA 11.0.2 GA              | >= 450.51.05                | >= 451.48                     |
@@ -123,13 +123,13 @@ Note the package `nvidia-driver` requires non-free software enabled in `/etc/apt
 Choose the version of the driver that is compatible with the hardware. Note **newer cards such as 2070 super, 2080 super are only supported by nvidia-driver >= 440 and thus has to be installed via `buster-backports`, and 30xx Ampere series are supported by 455.38 which is currently on in experimental Debian**.
 
 1. [nvidia-driver 455.38 (experimental)](https://packages.debian.org/experimental/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/455.38/README/supportedchips.html)
-2. [nvidia-driver 450.66 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/450.66/README/supportedchips.html)
+2. [nvidia-driver 450.80 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/450.66/README/supportedchips.html)
 3. [nvidia-driver 418.113 (buster)](https://packages.debian.org/buster/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)
 4. [nvidia-driver 418.113 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-driver)) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)
 5. [nvidia-driver 390.132 (stretch)](https://packages.debian.org/stretch/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/390.132/README/supportedchips.html)
 
 ```bash
-# nvidia-driver 450.66
+# nvidia-driver 450.80
 sudo apt-get -t buster-backports install nvidia-driver nvidia-smi
 ```
 
