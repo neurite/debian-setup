@@ -51,6 +51,9 @@ apt-get -q -y install ttf-anonymous-pro fonts-inconsolata
 # the informational package, build-essential.
 apt-get -q -y install dpkg-dev libc6-dev gcc g++ gfortran make check
 
+# Debugging tools
+dstat htop strace lsof
+
 # Optimized linear algebra libraries
 apt-get -q -y install libopenblas-base libopenblas-dev
 
