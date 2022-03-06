@@ -2,8 +2,8 @@
 
 ### Bootable USB Drive
 
-1. Download [the latest, stable image file](http://www.debian.org/CD/http-ftp/#stable). Only the first ISO is needed for installation with internet connection.
-2. Write the image to a USB drive. Using `/dev/sdx` and `/dev/diskx` below as an example. **Double check that `/dev/sdx` or `/dev/diskx` is the USB drive you want to write the image to**.
+1. Download [the latest, stable image file](http://www.debian.org/CD/http-ftp/#stable). Only the ISO file is needed. If there are multiple ISO files, only the first ISO is needed for installation with internet connection.
+2. Write the image to a USB drive. Using `/dev/sdx` and `/dev/diskx` below as an example. **Double check that `/dev/sdx` or `/dev/diskx` is the USB drive you want to write the image to**. It is important the drive is _not_ mounted. Run `lsblk` or `diskutil list` to make sure there is no mount point for the device. If there is a mount point, `umount` the drive first.
     1. Linux
         1. `lsblk`
         2. `umount /dev/sdx` or `umount /media/usbx`, unmount device or directory
@@ -14,8 +14,6 @@
         2. `diskutil unmountDisk /dev/diskx`, unmount device or directory
         3. `sudo dd if=/path/to/iso of=/dev/diskx bs=4096`, this step can take 10~30 min
         4. `diskutil eject`
-
-It is important the drive is _not_ mounted. Run `lsblk` or `diskutil list` to make sure there is no mount point for the device. If there is a mount point, `umount` the drive first.
 
 ### Firmware
 
