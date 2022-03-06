@@ -19,26 +19,25 @@
 We have 4 tiers of packages to install. They are tiered because a particular tier depends on packages of previous tiers. Depending on the need, the last 2 tiers can be optional. Here is the landscape of the package tiers:
 
 1. Linux headers
-    1. [linux-headers-amd64 4.19.0-11 (buster)](https://packages.debian.org/buster/linux-headers-amd64)
-    2. [linux-headers-amd64 4.19.0-0 (stretch-backports)](https://packages.debian.org/stretch-backports/linux-headers-amd64)
-    3. [linux-headers-amd64 4.9.0-13 (stretch)](https://packages.debian.org/stretch/linux-headers-amd64)
+    1. [linux-headers-amd64 5.15 (bullseye-backports)](https://packages.debian.org/bullseye-backports/linux-headers-amd64)
+    2. [linux-headers-amd64 5.10 (bullseye)](https://packages.debian.org/bullseye/linux-headers-amd64)
+    3. [linux-headers-amd64 5.10 (buster-backports)](https://packages.debian.org/buster-backports/linux-headers-amd64)
+    4. [linux-headers-amd64 4.19 (buster)](https://packages.debian.org/buster/linux-headers-amd64)
 2. NVIDIA graphics driver
-    1. [nvidia-driver 455.38 (experimental)](https://packages.debian.org/experimental/nvidia-driver)
-    2. [nvidia-driver 450.80 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver)
-    3. [nvidia-driver 418.152 (buster)](https://packages.debian.org/buster/nvidia-driver)
-    4. [nvidia-driver 418.152 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-driver))
-    5. [nvidia-driver 390.138 (stretch)](https://packages.debian.org/stretch/nvidia-driver) 
-    6. [NVIDIA list](http://www.nvidia.com/object/unix.html)
+    1. [nvidia-driver 470.103 (bullseye-backports)](https://packages.debian.org/bullseye-backports/nvidia-driver)
+    2. [nvidia-driver 460.91 (bullseye)](https://packages.debian.org/bullseye/nvidia-driver)
+    3. [nvidia-driver 460.73 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver)
+    4. [nvidia-driver 418.211 (buster)](https://packages.debian.org/buster/nvidia-driver)
+    5. [NVIDIA list](http://www.nvidia.com/object/unix.html)
 3. NVIDIA CUDA toolkit
-    1. [nvidia-cuda-toolkit 10.1.243 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-cuda-toolkit)
-    2. [nvidia-cuda-toolkit 9.2.148 (buster)](https://packages.debian.org/buster/nvidia-cuda-toolkit)
-    3. [nvidia-cuda-toolkit 9.1.85 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-cuda-toolkit)
-    4. [nvidia-cuda-toolkit 8.0.44 (stretch)](https://packages.debian.org/stretch/nvidia-cuda-toolkit)
+    1. [nvidia-cuda-toolkit 11.2.2 (bullseye)](https://packages.debian.org/bullseye/nvidia-cuda-toolkit)
+    2. [nvidia-cuda-toolkit 11.2.2 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-cuda-toolkit)
+    3. [nvidia-cuda-toolkit 9.2.148 (buster)](https://packages.debian.org/buster/nvidia-cuda-toolkit)
+    4. [anaconda cudatoolkit](https://anaconda.org/anaconda/cudatoolkit)
     5. [NVIDIA doc](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)
-    6. [conda cudatoolkit](https://anaconda.org/anaconda/cudatoolkit)
 4. cuDNN
-    1. [NVIDIA doc](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/)
-    2. [conda cudnn](https://anaconda.org/anaconda/cudnn)
+    1. [anaconda cudnn](https://anaconda.org/anaconda/cudnn)
+    2. [NVIDIA doc](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/)
 
 Other NVIDIA deep learning packages, such as [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl), are not covered here.
 
@@ -54,7 +53,7 @@ Debian has older versions of the NVIDIA packages. But installation is a breeze. 
 
 NVIDIA provides the latest versions. NVIDIA has good documentation on [CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which describes the installation of both the graphics drivers and the CUDA toolkit. NVIDIA also has detailed documention on [cuDNN installation](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/). Note you must register with NVIDIA to download and install cuDNN. In the cuDNN documentation, you can clearly see the 2 prerequisites: graphics drivers and CUDA.
 
-Packages installed via NVIDIA has a unique challenge for Debian systems -- Debian is **not** an officially supported Linux variant via NVIDA. The closest one to Debian Stretch is Ubuntu 17.04. I tried the CUDA 9.1 installation, which failed due to missing dependencies to Ubuntu packages. There may be hacks to mix in these packages from Ubuntu. However, it looks to me like a treacherous path ahead.
+NVIDIA installation supports Debian Bullseye 11.2 (kernel 5.10).
 
 ##### 3. Conda
 
