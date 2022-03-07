@@ -61,10 +61,34 @@ Conda provides CUDA toolkit and cuDNN. However, it requires compatible versions 
 
 #### Versions
 
-It is critical that CUDA is supported by **a compatible graphics driver**. Here is a table copied from NVIDIA's release nots of [CUDA toolkit components](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#major-components):
+First, choose the version of the graphics driver that is compatible with the GPUs at hand. For example, for 2070 Super, `buster-backports` or later is needed. For 3080 TI, `bullseye` or later is needed.
+
+| Debian Release     | NVIDIA graphics driver | Supported GPUs | Note |
+|--------------------|------------------------|----------------|------|
+| bullseye-backports | [nvidia-driver 470.103.01](https://packages.debian.org/bullseye-backports/nvidia-driver) | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/470.103.01/README/supportedchips.html) |                           |
+| bullseye           | [nvidia-driver 460.91.03](https://packages.debian.org/bullseye/nvidia-driver)            | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/460.91.03/README/supportedchips.html)  | 3070 ti, 3080 ti          |
+| buster-backports   | [nvidia-driver 460.73.01 ](https://packages.debian.org/buster-backports/nvidia-driver)   | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/460.73.01/README/supportedchips.html)  | 20xx super, 30xx, 3060 ti |
+| buster             | [nvidia-driver 418.211 ](https://packages.debian.org/buster/nvidia-driver)               | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)    | 20xx, 20xx ti             |
+
+Second, it is critical that CUDA is supported by **a compatible graphics driver**. Here is a table copied from NVIDIA's release nots of [CUDA toolkit components](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#major-components):
 
 | CUDA Toolkit                | Linux x86_64 Driver Version | Windows x86_64 Driver Version |
 |-----------------------------|-----------------------------|-------------------------------|
+| CUDA 11.6 Update 1          | >=510.47.03                 | >=511.65                      |
+| CUDA 11.6 GA                | >=510.39.01                 | >=511.23                      |
+| CUDA 11.5 Update 2          | >=495.29.05                 | >=496.13                      |
+| CUDA 11.5 Update 1          | >=495.29.05                 | >=496.13                      |
+| CUDA 11.5 GA                | >=495.29.05                 | >=496.04                      |
+| CUDA 11.4 Update 4          | >=470.82.01                 | >=472.50                      |
+| CUDA 11.4 Update 3          | >=470.82.01                 | >=472.50                      |
+| CUDA 11.4 Update 2          | >=470.57.02                 | >=471.41                      |
+| CUDA 11.4 Update 1          | >=470.57.02                 | >=471.41                      |
+| CUDA 11.4.0 GA.             | >=470.42.01                 | >=471.11                      |
+| CUDA 11.3.1 Update 1        | >=465.19.01                 | >=465.89                      |
+| CUDA 11.3.0 GA              | >=465.19.01                 | >=465.89                      |
+| CUDA 11.2.2 Update 2        | >=460.32.03                 | >=461.33                      |
+| CUDA 11.2.1 Update 1        | >=460.32.03                 | >=461.09                      |
+| CUDA 11.2.0 GA              | >=460.27.03                 | >=460.82                      |
 | CUDA 11.1.1 Update 1        | >= 455.32                   | >= 456.81                     |
 | CUDA 11.1 GA                | >= 455.23                   | >= 456.38                     |
 | CUDA 11.0.3 Update 1        | >= 450.51.06                | >= 451.82                     |
@@ -119,23 +143,15 @@ The dkms package is singled out to make it clear that NVIDIA installs into the k
 
 Note the package `nvidia-driver` requires non-free software enabled in `/etc/apt/sources.list`.
 
-Choose the version of the driver that is compatible with the hardware. Note **newer cards such as 2070 super, 2080 super are only supported by nvidia-driver >= 440 and thus has to be installed via `buster-backports`, and 30xx Ampere series are supported by 455.38 which is currently on in experimental Debian**.
-
-1. [nvidia-driver 455.38 (experimental)](https://packages.debian.org/experimental/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/455.38/README/supportedchips.html)
-2. [nvidia-driver 450.80 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/450.66/README/supportedchips.html)
-3. [nvidia-driver 418.113 (buster)](https://packages.debian.org/buster/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)
-4. [nvidia-driver 418.113 (stretch-backports)](https://packages.debian.org/stretch-backports/nvidia-driver)) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)
-5. [nvidia-driver 390.132 (stretch)](https://packages.debian.org/stretch/nvidia-driver) [supported devices](http://us.download.nvidia.com/XFree86/Linux-x86_64/390.132/README/supportedchips.html)
-
 ```bash
-# nvidia-driver 450.80
-sudo apt-get -t buster-backports install nvidia-driver nvidia-smi
+# nvidia-driver 470.103
+sudo apt-get -t bullseye-backports install nvidia-driver nvidia-smi
 ```
 
 Or
 
 ```bash
-# nvidia-driver 418.113
+# nvidia-driver 460.91
 sudo apt-get install nvidia-driver nvidia-smi
 ```
 
@@ -145,24 +161,20 @@ In the end, restart to replace nouveau with nvidia. You will be prompted during 
 
 To verify, `nvidia-smi`.
 
-#### 4. CUDA toolkit
+#### 4. CUDA toolkit (optional)
+
+This step is optional as CUDA toolkit can be provided by anaconda.
 
 ```bash
-# nvidia-cuda-toolkit 10.1.243
-sudo apt-get -t buster-backports install nvidia-cuda-toolkit
-```
-
-Or
-
-```bash
-# nvidia-cuda-toolkit 9.2.148
+# nvidia-cuda-toolkit 11.2.2
 sudo apt-get install nvidia-cuda-toolkit
 ```
 
 Alternatively, without installing the nvcc compiler (which is included in `nvidia-cuda-toolkit`):
 
 ```bash
-sudo apt-get -t buster-backports install nvidia-cuda-dev
+# nvidia-cuda-dev 11.2.2
+sudo apt-get install nvidia-cuda-dev
 ```
 
 Here is the CUDA toolkit package tree:
@@ -205,14 +217,12 @@ Here is the CUDA toolkit package tree:
             |=====> nvidia-cuda-doc
 ```
 
-In my test with buster backports, `nvidia-cuda-toolkit` vs `nvidia-cude-dev` has these addtional packages: `'libnvidia-compiler', 'ocl-icd-opencl-dev', 'opencl-c-headers', 'nvidia-profiler', 'nvidia-cuda-doc', 'nvidia-opencl-common', 'libjs-underscore', 'nvidia-opencl-dev', 'nsight-systems', 'nsight-compute', 'nvidia-openjdk-8-jre', 'ocl-icd-libopencl1', 'nvidia-opencl-icd', 'libbabeltrace1', 'nvidia-visual-profiler', 'nvidia-cuda-gdb', 'nvidia-cuda-toolkit'`.
-
 ### Conda for CUDA and cuDNN
 
 1. [Install miniconda](https://conda.io/miniconda.html)
 2. Verify
     1. Verify with Numba
-        1. `conda create --name numba python=3.7`
+        1. `conda create --name numba python=3.9`
         2. `conda activate numba`
         3. `conda install cudatoolkit cudnn numba`
         4. Launch Python
@@ -220,9 +230,9 @@ In my test with buster backports, `nvidia-cuda-toolkit` vs `nvidia-cude-dev` has
             from numba import cuda
             cuda.detect()
             ```
-            It should list the CUDA devices, e.g. 'GeForce GTX 1080 Ti'.
+            It should list the CUDA devices, e.g. 'GeForce GTX 3080 Ti'.
     2. Verify with Tensorflow
-        1. `conda create --name tf python=3.7`
+        1. `conda create --name tf python=3.9`
         2. `conda activate tf`
         3. `conda install tensorflow-gpu`
         4. Launch Python
@@ -231,7 +241,7 @@ In my test with buster backports, `nvidia-cuda-toolkit` vs `nvidia-cude-dev` has
             tf.config.list_physical_devices()
             ```
     3. Verify with PyTorch
-        1. `conda create --name torch python=3.7`
+        1. `conda create --name torch python=3.9`
         2. `conda activate torch`
         3. `conda install pytorch cudatoolkit=10.2 -c pytorch`
         4. Launch Python
