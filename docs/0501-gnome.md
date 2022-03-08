@@ -1,32 +1,36 @@
 ### GNOME Core Reduced
 
+There is the [gnome-core](https://packages.debian.org/bullseye/gnome-core) metapackage that can be installed.
+
 ```bash
-sudo apt-get install \
+sudo apt-get --no-install-recommends install gnome-core
+```
+
+If `gnome-core` does not look lean enough, the following packages are hand-picked from the gnome-core list:
+
+```bash
+sudo apt-get --no-install-recommends install \
+        xserver-xorg \
         gdm3 \
         gnome-session \
         gnome-shell \
         gnome-keyring libpam-gnome-keyring \
         gnome-control-center \
+        gnome-terminal \
         network-manager-gnome \
-        gnome-terminal
+        pulseaudio
 ```
 
-There is the [gnome-core](https://packages.debian.org/stretch/gnome-core) metapackage. But it does not look lean enough. So the following packages are hand-picked from the gnome-core list instead:
+* [xserver-xorg](https://packages.debian.org/bullseye/xserver-xorg) -- The X server, input drivers, video drivers
+* [gdm3](https://packages.debian.org/bullseye/gdm3) -- The display manager
+* [gnome-session](https://packages.debian.org/bullseye/gnome-session) -- The session manager
+* [gnome-shell](https://packages.debian.org/bullseye/gnome-shell) -- This points to [Mutter](https://packages.debian.org/bullseye/mutter), the GTK+ window manager
+* [gnome-keyring](https://packages.debian.org/bullseye/gnome-keyring), [libpam-gnome-keyring](https://packages.debian.org/bullseye/libpam-gnome-keyring) -- [The GNOM keyring packages](https://wiki.archlinux.org/index.php/GNOME/Keyring)
+* [gnome-control-center](https://packages.debian.org/bullseye/gnome-control-center) -- The "Settings"
+* [gnome-terminal](https://packages.debian.org/bullseye/gnome-terminal) -- The terminal emulator
+* [network-mananger-gnome](https://packages.debian.org/bullseye/network-manager-gnome) -- Optional, if you want to manage network
+* [pulseaudio](https://packages.debian.org/bullseye/pulseaudio) -- Optional, if you want audio
 
-* [gdm3](https://packages.debian.org/stretch/gdm3) -- The display manager
-* [gnome-session](https://packages.debian.org/stretch/gnome-session) -- The session manager
-* [gnome-shell](https://packages.debian.org/stretch/gnome-shell) -- This points to [Mutter](https://packages.debian.org/stretch/mutter), the GTK+ window manager
-* [gnome-keyring](https://packages.debian.org/stretch/gnome-keyring), [libpam-gnome-keyring](https://packages.debian.org/stretch/libpam-gnome-keyring) -- [The GNOM keyring packages](https://wiki.archlinux.org/index.php/GNOME/Keyring)
-* [gnome-control-center](https://packages.debian.org/stretch/gnome-control-center) -- The "Settings"
-* [gnome-terminal](https://packages.debian.org/stretch/gnome-terminal) -- The terminal emulator
-* [network-mananger-gnome](https://packages.debian.org/stretch/network-manager-gnome)
-* [pulseaudio](https://packages.debian.org/stretch/pulseaudio) (optional, if you want audio)
-
-Alternatively, `gnome-core` would install more packages but still less number of packages than `gnome`:
-
-```
-sudo apt-get --no-install-recommends install gnome-core
-```
 
 ### Network Manager & VPN
 
