@@ -5,14 +5,14 @@
    * [Package Tiers](#package-tiers)
    * [Package Versions](#package-versions)
        * [Sources](#sources)
-       * [Versions](#versions)
+       * [Compatible Versions](#compatible-versions)
    * [Installation](#installation)
        1. [Linux headers](#1-linux-headers)
        2. [DKMS](#2-dkms)
        3. [Graphics drivers](#3-graphics-drivers)
        4. [CUDA toolkit](#4-cuda-toolkit)
    * [Conda for CUDA and cuDNN](#conda-for-cuda-and-cudnn)
-   * [PyTorch](#pytorch)
+
 
 ### Package Tiers
 
@@ -57,9 +57,9 @@ NVIDIA installation supports Debian Bullseye 11.2 (kernel 5.10).
 
 ##### 3. Conda
 
-Conda provides CUDA toolkit and cuDNN. However, it requires compatible versions of the graphics driver (see discussion below).
+Conda provides CUDA toolkit and cuDNN. Note they requires compatible versions of the graphics driver to function. In fact, conda provides CUDA toolkit and cuDNN in multiple channels. The default channel has [cudatoolkit](https://anaconda.org/anaconda/cudatoolkit) and [cudnn](https://anaconda.org/anaconda/cudnn). The NVIDIA channel has [cuda](https://anaconda.org/nvidia/cuda) and [cudnn](https://anaconda.org/nvidia/cudnn).
 
-#### Versions
+#### Compatible Versions
 
 First, choose the version of the graphics driver that is compatible with the GPUs at hand. For example, for 2070 Super, `buster-backports` or later is needed. For 3080 TI, `bullseye` or later is needed.
 
@@ -161,7 +161,7 @@ In the end, restart to replace nouveau with nvidia. You will be prompted during 
 
 To verify, `nvidia-smi`.
 
-#### 4. CUDA toolkit (optional)
+#### 4. CUDA toolkit
 
 This step is optional as CUDA toolkit can be provided by anaconda.
 
@@ -216,6 +216,8 @@ Here is the CUDA toolkit package tree:
             |
             |=====> nvidia-cuda-doc
 ```
+
+To verify, `nvcc --version` should display the CUDA version.
 
 ### Conda for CUDA and cuDNN
 
