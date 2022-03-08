@@ -63,12 +63,10 @@ apt-get -q -y install libopenblas-base libopenblas-dev
 # and installs into the kernel tree."
 apt-get -q -y install dkms
 
+# Security utils
 apt-get -q -y install openssl gnupg gnupg2 dirmngr
 
 apt-get -q -y install curl wget
-
-# Handy command-line tool for handling CSV files based on OCaml
-apt-get -q -y install csvtool
 
 # git
 apt-get -q -y install git
