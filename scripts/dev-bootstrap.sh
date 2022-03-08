@@ -77,7 +77,7 @@ apt-get -q -y purge vim-tiny
 apt-get -q -y install vim-gtk3
 
 # Java
-apt-get -q -y install openjdk-11-jdk openjdk-11-source
+apt-get -q -y install openjdk-17-jdk openjdk-17-source
 
 echo "Done installing packages, tools for development."
 
