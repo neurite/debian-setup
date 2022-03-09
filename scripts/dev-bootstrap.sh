@@ -95,7 +95,7 @@ apt-get -q -y install dpkg-dev libc6-dev gcc g++ gfortran make check
 
 # Debugging tools
 # ==================
-dstat htop strace lsof
+apt-get -q -y install dstat htop strace lsof
 
 # Optimized linear algebra libraries
 # ======================================
