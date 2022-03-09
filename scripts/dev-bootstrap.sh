@@ -34,8 +34,31 @@ echo "Done updating and upgrading the system."
 echo "About to install various packages, tools for development..."
 sleep 3s
 
-# Additional fonts
+# git
+apt-get -q -y install git
+
+# Mono-space fonts for coding
 apt-get -q -y install ttf-anonymous-pro fonts-inconsolata
+
+# Source Code Pro from Adobe
+# The default branch is release which is what we want
+git clone https://github.com/adobe-fonts/source-code-pro.git
+mkdir -p /usr/local/share/fonts/source-code-pro
+# Note otf files are newer format than ttf files
+cp source-code-pro/OTF/*otf /usr/local/share/fonts/source-code-pro/
+# Force font cache build
+fc-cache -fv
+
+# CJK fonts
+apt-get -q -y install \
+                    # Chinese
+                    fonts-arphic-ukai \
+                    fonts-arphic-uming \
+                    # Japanese
+                    fonts-ipafont-mincho \
+                    fonts-ipafont-gothic \
+                    # Korean
+                    fonts-unfonts-core
 
 # Build tools
 #
@@ -67,9 +90,6 @@ apt-get -q -y install dkms
 apt-get -q -y install openssl gnupg gnupg2 dirmngr
 
 apt-get -q -y install curl wget
-
-# git
-apt-get -q -y install git
 
 # vim
 apt-get -q -y purge vim
