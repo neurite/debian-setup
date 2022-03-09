@@ -34,22 +34,14 @@ echo "Done updating and upgrading the system."
 echo "About to install various packages, tools for development..."
 sleep 3s
 
+# For commandline downloading
+apt-get -q -y install curl wget
+
+# Security tools
+apt-get -q -y install openssl gnupg gnupg2 dirmngr
+
 # git
 apt-get -q -y install git
-
-# Mono-space fonts for coding
-apt-get -q -y install ttf-anonymous-pro fonts-inconsolata
-
-# Source Code Pro from Adobe
-# The default branch is release which is what we want
-git clone https://github.com/adobe-fonts/source-code-pro.git
-mkdir -p /usr/local/share/fonts/source-code-pro
-# Note otf files are newer format than ttf files
-cp source-code-pro/OTF/*otf /usr/local/share/fonts/source-code-pro/
-# Force font cache build
-fc-cache -fv
-# Clean up
-rm -r source-code-pro/
 
 # CJK fonts
 apt-get -q -y install \
@@ -61,6 +53,25 @@ apt-get -q -y install \
                     fonts-ipafont-gothic \
                     # Korean
                     fonts-unfonts-core
+
+# Mono-space fonts for coding
+apt-get -q -y install ttf-anonymous-pro fonts-inconsolata
+
+# Source Code Pro from Adobe
+# The default branch is release which is what we want
+git clone https://github.com/adobe-fonts/source-code-pro.git
+mkdir -p /usr/local/share/fonts/adobe/source-code-pro
+# Note otf files are newer format than ttf files
+cp source-code-pro/OTF/*otf /usr/local/share/fonts/adobe/source-code-pro/
+# Force font cache build
+fc-cache -fv
+# Clean up
+rm -r source-code-pro/
+
+# Mono-space CJK from adobe
+wget https://github.com/adobe-fonts/source-han-mono/releases/download/1.002/SourceHanMono.ttc
+mv SourceHanMono.ttc /usr/local/share/fonts/adobe
+fc-cache -fv
 
 # Build tools
 #
@@ -87,11 +98,6 @@ apt-get -q -y install libopenblas-base libopenblas-dev
 # installing supplementary versions of kernel modules. The package compiles
 # and installs into the kernel tree."
 apt-get -q -y install dkms
-
-# Security utils
-apt-get -q -y install openssl gnupg gnupg2 dirmngr
-
-apt-get -q -y install curl wget
 
 # vim
 apt-get -q -y purge vim
