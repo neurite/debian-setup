@@ -50,7 +50,7 @@ apt-get -q -y install ca-certificates openssl gnupg gpg dirmngr
 # ==================
 apt-get -q -y install git
 
-# fonts
+# Fonts
 # ==================
 # CJK fonts
 apt-get -q -y install fonts-arphic-ukai \
@@ -119,8 +119,9 @@ apt-get -q -y install vim-gtk3
 # ==================
 apt-get -q -y install openjdk-17-jdk openjdk-17-source
 
-# Conda
+# conda
 # ==================
+# Installs miniconda via the repository
 # Install our public GPG key to trusted store
 curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg
 install -o root -g root -m 644 conda.gpg /usr/share/keyrings/conda-archive-keyring.gpg
