@@ -51,5 +51,6 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * Set the system clock to UTC: Yes
     * Reboot
 
+Edit package sources `sudo vi /etc/apt/sources.list`. Since we are not using the USB disk any more for updates, comment out the line that starts with `deb cdrom:[Debian GNU/Linux ...`.
 
-**Next step: [Cleanup](0202-cleanup.md)**
+**Next step: [Bootstrap](0600-bootstrap.md)**
