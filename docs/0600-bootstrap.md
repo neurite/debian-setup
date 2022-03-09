@@ -1,16 +1,32 @@
-## Bootstrap
+## Dev bootstrap
 
 ### Overview
 
-The basic bootstrapping for a development environment includes:
+#### Tools
 
-1. Installing packages commonly used in a Linux dev environment.
-2. Installing and configuring a text editor; my favourite is [vim](0601-vim.md).
-3. Installing and configuring source control; it has to be [git](0603-git.md).
+1. git
+2. C/C++ compilers
+3. Debugging utils
+4. Linear algebra libraries
+5. Security utils
+6. Network utils
+7. vim-gtk3
+8. OpenJDK
 
-Other aspects of development such as [Java](0700-java.md), [Python](0800-python.md), virualization, machine learning, deep learning are covered in separate topics.
+#### Fonts
 
-### Common Dev Packages
+1. [Anonymous Pro](https://packages.debian.org/buster/fonts/ttf-anonymous-pro): coding
+2. [Inconsolata](https://packages.debian.org/buster/fonts-inconsolata): terminal
+3. [Source Code Pro](https://github.com/adobe-fonts/source-code-pro): coding
+4. CJK fonts:
+
+| Language                                | Serif                | Sans serif           |
+|-----------------------------------------|----------------------|----------------------|
+| Chinese (both Simplified & Traditional) |	fonts-arphic-ukai    | fonts-arphic-uming   |
+| Japanese                                |	fonts-ipafont-mincho | fonts-ipafont-gothic |
+| Korean                                  |	fonts-unfonts-core                          |
+
+### Execute the bootstrap script
 
 Please check out [the dev bootstrap script](https://github.com/neurite/debian-setup/blob/master/scripts/dev-bootstrap.sh) for the list of packages to install.
 
@@ -29,5 +45,4 @@ sudo su
 bash /home/<usr>/Workspace/debian-setup/scripts/dev-bootstrap.sh
 ```
 
-
-**Next step: [fonts](0602-fonts.md)**
+**Next step: [nvidia](0300-nvidia.md)**
