@@ -48,6 +48,8 @@ mkdir -p /usr/local/share/fonts/source-code-pro
 cp source-code-pro/OTF/*otf /usr/local/share/fonts/source-code-pro/
 # Force font cache build
 fc-cache -fv
+# Clean up
+rm -r source-code-pro/
 
 # CJK fonts
 apt-get -q -y install \
@@ -99,7 +101,29 @@ apt-get -q -y install vim-gtk3
 # Java
 apt-get -q -y install openjdk-17-jdk openjdk-17-source
 
-echo "Done installing packages, tools for development."
+# Conda
+# Install our public GPG key to trusted store
+curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg
+install -o root -g root -m 644 conda.gpg /usr/share/keyrings/conda-archive-keyring.gpg
+rm conda.gpg
+
+# Check whether fingerprint is correct (will output an error message otherwise)
+gpg --keyring /usr/share/keyrings/conda-archive-keyring.gpg --no-default-keyring \
+    --fingerprint 34161F5BF5EB1D4BFBBB8F0A8AEB4F8B29D82806
+
+# Add our Debian repo
+DEB_CONDA="deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg]"
+DEB_CONDA+=" https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main"
+echo "${DEB_CONDA}" > /etc/apt/sources.list.d/conda.list
+
+# Install conda
+apt-get -q -y update
+apt-get -q -y install conda
+
+# Init conda at login
+ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+
+echo "Done installing. Cleaning up..."
 
 ### Clean up
 
@@ -107,5 +131,8 @@ apt-get -q -y update
 apt-get -q -y dist-upgrade
 apt-get -q -y autoremove
 apt-get -q -y autoclean
+
+echo "Done. Rebooting..."
+sleep 3s
 
 reboot
