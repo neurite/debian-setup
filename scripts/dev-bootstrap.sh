@@ -31,50 +31,56 @@ echo "Done updating and upgrading the system."
 
 ### Various packages, tools for development
 
-echo "About to install various packages, tools for development..."
+echo "About to install packages..."
 sleep 3s
 
 # For commandline downloading
 apt-get -q -y install curl wget
 
 # Security tools
-apt-get -q -y install openssl gnupg gnupg2 dirmngr
+# ==================
+# ca-certificates: certificate authorities shipped with Mozilla's browser
+# openssl: OpenSSL's implementation of SSL and TLS
+# gnupg: the full suite of GnuPG tools
+# gpg: part of gnupg, for public key operations only
+# dirmngr: part of gnupg, for managing and downloading OpenPGP and X.509 certificates
+apt-get -q -y install ca-certificates openssl gnupg gpg dirmngr
 
 # git
+# ==================
 apt-get -q -y install git
 
+# fonts
+# ==================
 # CJK fonts
-apt-get -q -y install \
-                    # Chinese
-                    fonts-arphic-ukai \
-                    fonts-arphic-uming \
-                    # Japanese
-                    fonts-ipafont-mincho \
-                    fonts-ipafont-gothic \
-                    # Korean
-                    fonts-unfonts-core
+apt-get -q -y install fonts-arphic-ukai \
+                      fonts-arphic-uming \
+                      fonts-ipafont-mincho \
+                      fonts-ipafont-gothic \
+                      fonts-unfonts-core
 
-# Mono-space fonts for coding
+# Monospaced fonts
 apt-get -q -y install ttf-anonymous-pro fonts-inconsolata
 
-# Source Code Pro from Adobe
-# The default branch is release which is what we want
+# Monospaced Source Code Pro from Adobe
+# Note the default branch is release which is what we want
 git clone https://github.com/adobe-fonts/source-code-pro.git
 mkdir -p /usr/local/share/fonts/adobe/source-code-pro
-# Note otf files are newer format than ttf files
+# The otf files are a newer format than ttf files
 cp source-code-pro/OTF/*otf /usr/local/share/fonts/adobe/source-code-pro/
 # Force font cache build
 fc-cache -fv
 # Clean up
-rm -r source-code-pro/
+rm -r source-code-pro
 
-# Mono-space CJK from adobe
+# Monospaced CJK from Adobe
 wget https://github.com/adobe-fonts/source-han-mono/releases/download/1.002/SourceHanMono.ttc
+mkdir -p /usr/local/share/fonts/adobe
 mv SourceHanMono.ttc /usr/local/share/fonts/adobe
 fc-cache -fv
 
 # Build tools
-#
+# ==================
 # dpkg-dev -- Debian package development tools
 # libc6-dev -- GNU C Library: Development Libraries and Header Files
 # gcc -- The GNU C compiler
@@ -88,11 +94,15 @@ fc-cache -fv
 apt-get -q -y install dpkg-dev libc6-dev gcc g++ gfortran make check
 
 # Debugging tools
+# ==================
 dstat htop strace lsof
 
 # Optimized linear algebra libraries
+# ======================================
 apt-get -q -y install libopenblas-base libopenblas-dev
 
+# dkms
+# ==================
 # From the Ubuntu documentation:
 # "This DKMS (Dynamic Kernel Module Support) package provides support for
 # installing supplementary versions of kernel modules. The package compiles
@@ -100,14 +110,17 @@ apt-get -q -y install libopenblas-base libopenblas-dev
 apt-get -q -y install dkms
 
 # vim
+# ==================
 apt-get -q -y purge vim
 apt-get -q -y purge vim-tiny
 apt-get -q -y install vim-gtk3
 
 # Java
+# ==================
 apt-get -q -y install openjdk-17-jdk openjdk-17-source
 
 # Conda
+# ==================
 # Install our public GPG key to trusted store
 curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg
 install -o root -g root -m 644 conda.gpg /usr/share/keyrings/conda-archive-keyring.gpg
