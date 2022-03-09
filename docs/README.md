@@ -2,7 +2,7 @@
 2. [Installation](0200-install.md)
     1. [Manual disk partitions](0201-partitions.md)
 3. Bootstrap
-    1. [Vanilla](0600-bootstrap.md)
+    1. [Bootstrap](0600-bootstrap.md)
     2. [NVIDIA](0300-nvidia.md)
     3. [Gnome](0501-gnome.md)
     4. [Terminal](0503-terminal.md)
