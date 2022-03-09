@@ -11,7 +11,8 @@
 5. Security utils
 6. Network utils
 7. vim-gtk3
-8. OpenJDK
+8. conda
+9. OpenJDK
 
 #### Fonts
 
