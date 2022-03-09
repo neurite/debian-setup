@@ -1,31 +1,35 @@
-## Dev bootstrap
+## Bootstrap
 
 ### Overview
 
-#### Tools
+#### Tools & libraries
 
 1. git
 2. C/C++ compilers
-3. Debugging utils
+3. Debugging
 4. Linear algebra libraries
-5. Security utils
-6. Network utils
+5. Security tools
+6. Network
 7. vim-gtk3
 8. conda
 9. OpenJDK
 
 #### Fonts
 
-1. [Anonymous Pro](https://packages.debian.org/buster/fonts/ttf-anonymous-pro): coding
-2. [Inconsolata](https://packages.debian.org/buster/fonts-inconsolata): terminal
-3. [Source Code Pro](https://github.com/adobe-fonts/source-code-pro): coding
-4. CJK fonts:
+1. Monospaced fonts
+    1. [Anonymous Pro](https://packages.debian.org/bullseye/fonts/ttf-anonymous-pro)
+    2. [Inconsolata](https://packages.debian.org/bullseye/fonts-inconsolata)
+    3. [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
+    4. [Source Han Mono](https://github.com/adobe-fonts/source-han-mono)
+2. CJK fonts:
+    1. [fonts-arphic-ukai](https://packages.debian.org/bullseye/fonts-arphic-ukai) (Chinese Serif)
+    2. [fonts-arphic-uming](https://packages.debian.org/bullseye/fonts-arphic-uming) (Chinese Sans Serif)
+    3. [fonts-ipafont-mincho](https://packages.debian.org/bullseye/fonts-ipafont-mincho) (Japanese Serif)
+    4. [fonts-ipafont-gothic](https://packages.debian.org/bullseye/fonts-ipafont-gothic) (Japanese Sans Serif)
+    5. [fonts-nanum](https://packages.debian.org/bullseye/fonts-nanum) (Korean)
+    6. [fonts-nanum-extra](https://packages.debian.org/bullseye/fonts-nanum-extra) (Korean)
 
-| Language                                | Serif                | Sans serif           |
-|-----------------------------------------|----------------------|----------------------|
-| Chinese (both Simplified & Traditional) |	fonts-arphic-ukai    | fonts-arphic-uming   |
-| Japanese                                |	fonts-ipafont-mincho | fonts-ipafont-gothic |
-| Korean                                  |	fonts-unfonts-core                          |
+Installed fonts can be listed by `fc-list`. 
 
 ### Execute the bootstrap script
 
