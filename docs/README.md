@@ -7,9 +7,8 @@
     3. [Gnome](0501-gnome.md)
     4. [Terminal](0503-terminal.md)
     5. [Vim](0601-vim.md)
-    6. [Conda](0307-conda.md)
     7. [Browsers](0505-browser.md)
-    8. [Verification & fixes](0202-cleanup.md)
+    8. [Cleanup](0202-cleanup.md)
 4. Other Installation Topics
     1. [LXDE](0502-lxde.md)
     2. [Samba](0400-samba.md)
