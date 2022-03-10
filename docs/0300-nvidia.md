@@ -47,7 +47,7 @@ Other NVIDIA deep learning packages, such as [TensorRT](https://developer.nvidia
 
 ##### 1. Debian
 
-Debian has older versions of the NVIDIA packages. But installation is a breeze. As of this moment, Debian repositories do not have cuDNN. Be aware that, most deep learning frameworks, such as Tensorflow, MXNet, PyTorch, require cuDNN to provide GPU support.
+Debian has older versions of the NVIDIA packages. But installation is a breeze. As of Debian Bullseye, there is no cuDNN. The package [nvidia-cudnn](https://packages.debian.org/bookworm/nvidia-cudnn) is being tested. 
 
 ##### 2. NVIDIA
 
@@ -57,11 +57,11 @@ NVIDIA installation supports Debian Bullseye 11.2 (kernel 5.10).
 
 ##### 3. Conda
 
-Conda provides CUDA toolkit and cuDNN. Note they requires compatible versions of the graphics driver to function. In fact, conda provides CUDA toolkit and cuDNN in multiple channels. The default channel has [cudatoolkit](https://anaconda.org/anaconda/cudatoolkit) and [cudnn](https://anaconda.org/anaconda/cudnn). The NVIDIA channel has [cuda](https://anaconda.org/nvidia/cuda) and [cudnn](https://anaconda.org/nvidia/cudnn).
+Conda provides CUDA toolkit and cuDNN. Note they requires compatible versions of the graphics driver to function. In fact, conda has multiple channels providing CUDA toolkit and cuDNN. The default channel has [cudatoolkit](https://anaconda.org/anaconda/cudatoolkit) and [cudnn](https://anaconda.org/anaconda/cudnn). The conda-forge channel has newer versions of [cudatoolkit](https://anaconda.org/conda-forge/cudatoolkit) and [cudnn](https://anaconda.org/conda-forge/cudnn). The NVIDIA channel has [cuda](https://anaconda.org/nvidia/cuda) and [cudnn](https://anaconda.org/nvidia/cudnn).
 
 #### Compatible Versions
 
-First, choose the version of the graphics driver that is compatible with the GPUs at hand. For example, for 2070 Super, `buster-backports` or later is needed. For 3080 TI, `bullseye` or later is needed.
+First, choose the version of the graphics driver that is compatible with the GPUs at hand. For example, for 2070 Super, the graphics driver from `buster-backports` or later is needed. For 3080 TI, `bullseye` or later is needed.
 
 | Debian Release     | NVIDIA graphics driver | Supported GPUs | Note |
 |--------------------|------------------------|----------------|------|
@@ -70,7 +70,7 @@ First, choose the version of the graphics driver that is compatible with the GPU
 | buster-backports   | [nvidia-driver 460.73.01 ](https://packages.debian.org/buster-backports/nvidia-driver)   | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/460.73.01/README/supportedchips.html)  | 20xx super, 30xx, 3060 ti |
 | buster             | [nvidia-driver 418.211 ](https://packages.debian.org/buster/nvidia-driver)               | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)    | 20xx, 20xx ti             |
 
-Second, it is critical that CUDA is supported by **a compatible graphics driver**. Here is a table copied from NVIDIA's release nots of [CUDA toolkit components](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#major-components):
+Second, it is critical that CUDA is supported by a **compatible graphics driver**. Here is a table copied from NVIDIA's release nots of [CUDA toolkit components](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#major-components):
 
 | CUDA Toolkit                | Linux x86_64 Driver Version | Windows x86_64 Driver Version |
 |-----------------------------|-----------------------------|-------------------------------|
@@ -105,6 +105,8 @@ Second, it is critical that CUDA is supported by **a compatible graphics driver*
 | CUDA 8.0 (8.0.44)           | >= 367.48                   | >= 369.30                     |
 | CUDA 7.5 (7.5.16)           | >= 352.31                   | >= 353.66                     |
 | CUDA 7.0 (7.0.28)           | >= 346.46                   | >= 347.62                     |
+
+When installing CUDA and cuDNN, you may need to lock down the versions to obtain compatibility.
 
 ### Installation
 
@@ -145,17 +147,19 @@ Note the package `nvidia-driver` requires non-free software enabled in `/etc/apt
 
 ```bash
 # nvidia-driver 470.103
-sudo apt-get -t bullseye-backports install nvidia-driver nvidia-smi
+sudo apt-get -t bullseye-backports install nvidia-driver nvidia-smi nvidia-persistenced
 ```
 
 Or
 
 ```bash
 # nvidia-driver 460.91
-sudo apt-get install nvidia-driver nvidia-smi
+sudo apt-get install nvidia-driver nvidia-smi nvidia-persistenced
 ```
 
 The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed and uninstalled together with other NVIDIA packages. That is to say, do not install `nvidia-kernel-dkms` by itself.
+
+The `nvidia-driver` metapackage has a hard dependency to `xserver-xorg-video-nvidia` which in turn depends on `xserver-xorg-core`. Installing `nvidia-driver` pulls in the X server. However, just `xserver-xorg-core` is incomplete; it is missing the input drivers. This is addressed at the step of installing [Gnome](0501-gnome.md) by installing the meta package `xserver-xorg`.
 
 In the end, restart to replace nouveau with nvidia. You will be prompted during installation if a reboot is needed.
 
@@ -251,3 +255,5 @@ To verify, `nvcc --version` should display the CUDA version.
             import torch
             torch.cuda.is_available()
             ```
+
+**Next step: [Gnome](0501-gnome.md)**
