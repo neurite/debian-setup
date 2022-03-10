@@ -6,7 +6,7 @@ if [[ "${EUID}" -ne 0 ]]; then
     exit 1
 fi
 
-### Non-interactive
+# Non-interactive
 export DEBIAN_FRONTEND=noninteractive
 
 # Docker
