@@ -2,7 +2,7 @@
 
 ### Overview
 
-#### Tools & libraries
+##### Tools & libraries
 
 1. git
 2. C/C++ compilers
@@ -14,7 +14,7 @@
 8. conda
 9. OpenJDK
 
-#### Fonts
+##### Fonts
 
 1. Monospaced fonts
     1. [Anonymous Pro](https://packages.debian.org/bullseye/fonts/ttf-anonymous-pro)
@@ -49,5 +49,15 @@ git clone https://github.com/neurite/debian-setup.git
 sudo su
 bash /home/<usr>/Workspace/debian-setup/scripts/dev-bootstrap.sh
 ```
+
+### Verify
+
+1. `git --version`
+2. `gcc --version`
+3. `g++ --version`
+4. `vim --version`, check for Python 3 support
+5. `conda --version`
+6. `java -version`, note the non-standard way of the java command, 1 dash only
+7. `fc-list`
 
 **Next step: [nvidia](0300-nvidia.md)**
