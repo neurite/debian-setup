@@ -15,8 +15,8 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * Note, **do not hit Enter yet**, if you want to set up [hardware RAID (Serial ATA RAID, SATA RAID)](https://wiki.debian.org/DebianInstaller/SataRaid). Edit the command by appending `dmraid=true` at the end. However, I would recommend software RAID over hardware RAID. I have since switched to software RAID. Software RAID is set up in [the disk partition step](0201-partitions.md). You can continue `Expert install` without editing it if you want to set up software RAID.
 3. `Choose language`, locale `en_US.UTF-8`
 4. `Configure the keyboard`: `American English`
-5. `Detect and mount CD-ROM`. This should recognize the USB drive with the Debian ISO as the CD-ROM.
-6. `Load installer components from CD`: Choose none.
+5. `Detect and mount installation media`. This should recognize the USB drive with the Debian ISO.
+6. `Load installer components from installation media`: Choose none.
 7. `Detect network hardware`
 8. `Configure the network`. Auto-configure `yes` as we are using DHCP. Specify the host name. Leave the domain name empty.
 9. `Set up users and passwords`
@@ -33,7 +33,7 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * initrd (initial ram disk): `generic (all available drivers)`
 14. `Configure the package manager`
     * Use network mirror: Yes
-    * Protocol: http
+    * Protocol: https
     * Country: US
     * Mirror: (choose a good one that is near you, e.g. `mirrors.ocf.berkeley.edu`)
     * Use non-free software: Yes (which implies also using contrib software). If, for example, you need to install NVIDIA packages, you must say yes to non-free
@@ -41,6 +41,7 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * Enable source repositories in APT: No
     * Services to use: `security updates`, `release updates`, and also check `backported software`
 15. `Select and install software`
+    * Updates management on this system: No automatic updates (we don't want model tranining to be interrupted for example)
     * Package usage survey: No
     * Should man and mandb be installed 'setuid man': No
     * Choose only `standard system utilities`, which includes bzip2, ca-certificates, dbus, dpkg, less, perl, python, openssl, etc.
@@ -51,6 +52,6 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * Set the system clock to UTC: Yes
     * Reboot
 
-Edit package sources `sudo vi /etc/apt/sources.list`. Since we are not using the USB disk any more for updates, comment out the line that starts with `deb cdrom:[Debian GNU/Linux ...`.
+Edit package sources `sudo vi /etc/apt/sources.list`. Since we will not use the USB disk for updates and we have chosen to use network for updates, comment out the line that starts with `deb cdrom:[Debian GNU/Linux ...`.
 
 **Next step: [Bootstrap](0600-bootstrap.md)**
