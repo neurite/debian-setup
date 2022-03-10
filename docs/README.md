@@ -7,12 +7,12 @@
     3. [Gnome](0501-gnome.md)
     7. [Browsers](0505-browser.md)
     8. [Cleanup](0202-cleanup.md)
-4. Other Installation Topics
+4. Other Installation
     1. [LXDE](0502-lxde.md)
     2. [Samba](0400-samba.md)
     3. [Docker](0902-docker.md)
-6. Deep learning
-    1. [The work station](1001-hardware.md)
+6. Notes
+    1. [The deep learning work station](1001-hardware.md)
     2. [Linear algebra packages](1002-blas-lapack.md)
     3. [Numpy and other python packages](1003-numpy.md)
     4. [Frameworks](1004-frameworks.md)
