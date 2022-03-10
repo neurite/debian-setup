@@ -4,13 +4,19 @@ This is the step `Partition disks`. Partitioning method is `Manual`.
 
 ![](ss-manual.png "partition disks - manual")
 
-Select **the disk** to create an empty partition table.
+********
+
+The manual partitioning screen has 3 sections. The first section are the top-level operations. Of particular interest is Configure Software RAID. Toward the end of this page, there is discussion of creating a software RAID. The second section lists the disks and, under each disk, its partitions. The third section are menu items fo finalize the partitions.
+
+Select **a disk** to create an empty partition table.
 
 Note, if you want to keep the existing data, select **the partition** instead. Flip `Use as: do not use` to `Use as: Ext4 journaling file system`. And then `Format the partition: no, keep existing data`. Lastly set up [the mount point and the mount options](#example-partitions).
 
 Below shows a disk selected for creating a partition table.
 
 ![](ss-disk.png "select disk to create partition table")
+
+********
 
 Partition table type **gpt**.
 
@@ -20,9 +26,11 @@ Select **the free space** to set up the partitions.
 
 ![](ss-free-space.png "select free space to partition")
 
-Set up the partion with the correct format `Ext4 journaling`, mount point, and mount options.
+Set up the partion with the correct format `Ext4 journaling`, mount point, and mount options. Below shows a partition where we want to keep the existing data on it.
 
 ![](ss-mount-opts.jpg "mount options")
+
+********
 
 ### Example Partitions
 
@@ -58,9 +66,15 @@ Another example for larger disks.
 
 Finally it lets you review the partitions. Scroll to the bottom of the review list, choose `Finish partitioning and write changes to disk`.
 
-Note one use of the partition mounted at `/data` is to link the datasets folder of project, e.g. `/data/<usr>/<project>` linked to `~/Workspace/<project>/datasets`.
+********
+
+Note one use of the partition mounted at `/data` (or `/stash` as shown) is to link to the datasets folder of a project, e.g. `/data/<usr>/<project>` is linked to `~/Workspace/<project>/datasets`.
 
 ![](ss-partitions.jpg "partitions")
+
+********
+
+**Go back to [Installation](0200-install.md)**
 
 ### Software RAID
 
@@ -79,6 +93,8 @@ If you have a previously set software RAID, as the RAID configuration is written
 ![](ss-mount-opts.jpg)
 
 In fact, this applied not only to RAID partitions but also to any partition. Note, even if we keep the existing data, we still need to mount the partition and set the mount options (see the above table). The exception is the swap partition. It is already marked as `F` (format it) and nothing needs to be done for it.
+
+**Go back to [Installation](0200-install.md)**
 
 ### Other Notes, Links
 
@@ -102,3 +118,5 @@ In fact, this applied not only to RAID partitions but also to any partition. Not
     * `less /etc/fstab` to view the file system tabs.
 5. SSD Notes
     * [Solid State Drives - Arch Linux Wiki](https://wiki.archlinux.org/index.php/Solid_State_Drives)
+
+**Go back to [Installation](0200-install.md)**
