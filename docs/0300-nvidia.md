@@ -225,7 +225,7 @@ To verify, `nvcc --version` should display the CUDA version.
 
 ### Conda for CUDA and cuDNN
 
-1. [Install miniconda](https://conda.io/miniconda.html)
+1. Install [miniconda](https://conda.io/miniconda.html) if `conda` is not alreay installed
 2. Verify
     1. Verify with Numba
         1. `conda create --name numba python=3.9`
