@@ -40,7 +40,7 @@ fi
 See [Debian Wiki of Environment Variables](https://wiki.debian.org/EnvironmentVariables) for more details.
 
 
-### vim
+### Vim
 
 `cp ~/Workspace/debian-setup/scripts/.vimrc ~/`
 
@@ -74,6 +74,13 @@ sudo apt-get purge   vim
 sudo apt-get purge   vim-tiny
 sudo apt-get install vim-gtk3
 ```
+
+
+### Conda
+
+`echo "source /opt/conda/etc/profile.d/conda.sh" > ~/.bashrc`
+
+To make `conda activate` available.
 
 
 ### Network Manager
