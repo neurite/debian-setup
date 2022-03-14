@@ -5,8 +5,9 @@
     1. [Bootstrap](0301-bootstrap.md)
     2. [NVIDIA](0302-nvidia.md)
     3. [Gnome](0303-gnome.md)
-    7. [Browsers](0304-browsers.md)
-    8. [Cleanup](0305-cleanup.md)
+    4. [Browsers](0304-browsers.md)
+    5. [Cleanup](0305-cleanup.md)
+    6. [Repairs](0306-repairs.md)
 6. Other Installation
     1. [LXDE](0601-lxde.md)
     2. [Samba](0602-samba.md)
