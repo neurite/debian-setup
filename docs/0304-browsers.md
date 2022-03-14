@@ -30,4 +30,4 @@ wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key ad
 ```
 3. The package `google-chrome-stable` and its dependencies are installed
 
-**Next step: [Browsers](0305-cleanup.md)**
+**Next step: [Cleanup](0305-cleanup.md)**
