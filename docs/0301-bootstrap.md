@@ -60,4 +60,4 @@ bash /home/<usr>/Workspace/debian-setup/scripts/dev-bootstrap.sh
 6. `java -version`, note the non-standard way of the java command, 1 dash only
 7. `fc-list`
 
-**Next step: [nvidia](0300-nvidia.md)**
+**Next step: [nvidia](0302-nvidia.md)**

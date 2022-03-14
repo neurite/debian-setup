@@ -31,4 +31,4 @@ sudo apt-get --no-install-recommends install \
 * [network-mananger-gnome](https://packages.debian.org/bullseye/network-manager-gnome) -- Optional, if you want to manage network
 * [pulseaudio](https://packages.debian.org/bullseye/pulseaudio) -- Optional, if you want audio
 
-**Next step: [Browsers](0505-browser.md)**
+**Next step: [Browsers](0304-browsers.md)**

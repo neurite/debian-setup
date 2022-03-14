@@ -2,11 +2,11 @@
 2. [Installation](0200-install.md)
     1. [Manual disk partitions](0201-partitions.md)
 3. Bootstrap
-    1. [Bootstrap](0600-bootstrap.md)
-    2. [NVIDIA](0300-nvidia.md)
-    3. [Gnome](0501-gnome.md)
-    7. [Browsers](0505-browser.md)
-    8. [Cleanup](0202-cleanup.md)
+    1. [Bootstrap](0301-bootstrap.md)
+    2. [NVIDIA](0302-nvidia.md)
+    3. [Gnome](0303-gnome.md)
+    7. [Browsers](0304-browsers.md)
+    8. [Cleanup](0305-cleanup.md)
 4. Other Installation
     1. [LXDE](0502-lxde.md)
     2. [Samba](0400-samba.md)

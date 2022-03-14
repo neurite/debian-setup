@@ -6,7 +6,7 @@ So why expert, manual install?
 
 Choosing "Expert install" gives us the option of manual disk partitions. When there is only one disk, the simplest configuration is one partition over the entire disk. This however is not ideal as data of `/`, `/home`, `/var`, `/tmp`, and swap area have different characteristics and require different security measures. Splitting them into different partitions and setting different mounting options addresses the requirements. My rig is hybrid with one SSD hosting the system binaries, one spinning disk for swap and temporary data, and one RAID10 for backup data. Manual partitions make efficient use of the different disks.
 
-The second reason is about installing a customized, lightweight desktop. Like disk partitions, expert install gives the option for not installing the default desktop, which paves way for adding a customized desktop later on. For example, [a GNOME desktop reduced to the core](0501-gnome.md). You can even choose not to have a desktop at all.
+The second reason is about installing a customized, lightweight desktop. Like disk partitions, expert install gives the option for not installing the default desktop, which paves way for adding a customized desktop later on. For example, [a GNOME desktop reduced to the core](0303-gnome.md). You can even choose not to have a desktop at all.
 
 ### How
 
@@ -45,7 +45,7 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * Package usage survey: No
     * Should man and mandb be installed 'setuid man': No
     * Choose only `standard system utilities`, which includes bzip2, ca-certificates, dbus, dpkg, less, perl, python, openssl, etc.
-    * Note, if you want to install a customized desktop, make sure **do not select any desktop environment**. We will install a lightweight desktop at a later stage. For example, [a GNOME desktop reduced to the core](0501-gnome.md).
+    * Note, if you want to install a customized desktop, make sure **do not select any desktop environment**. We will install a lightweight desktop at a later stage. For example, [a GNOME desktop reduced to the core](0303-gnome.md).
 16. `Install the GRUB boot loader`
     * Force GRUB installation to the EFI removable media path: Yes
 17. Finish and reboot
@@ -54,4 +54,4 @@ The second reason is about installing a customized, lightweight desktop. Like di
 
 Edit package sources `sudo vi /etc/apt/sources.list`. Since we will not use the USB disk for updates and we have chosen to use network for updates, comment out the line that starts with `deb cdrom:[Debian GNU/Linux ...`.
 
-**Next step: [Bootstrap](0600-bootstrap.md)**
+**Next step: [Bootstrap](0301-bootstrap.md)**

@@ -159,7 +159,7 @@ sudo apt-get install nvidia-driver nvidia-smi nvidia-persistenced
 
 The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed and uninstalled together with other NVIDIA packages. That is to say, do not install `nvidia-kernel-dkms` by itself.
 
-The `nvidia-driver` metapackage has a hard dependency to `xserver-xorg-video-nvidia` which in turn depends on `xserver-xorg-core`. Installing `nvidia-driver` pulls in the X server. However, just `xserver-xorg-core` is incomplete; it is missing the input drivers. This is addressed at the step of installing [Gnome](0501-gnome.md) by installing the meta package `xserver-xorg`.
+The `nvidia-driver` metapackage has a hard dependency to `xserver-xorg-video-nvidia` which in turn depends on `xserver-xorg-core`. Installing `nvidia-driver` pulls in the X server. However, just `xserver-xorg-core` is incomplete; it is missing the input drivers. This is addressed at the step of installing [Gnome](0303-gnome.md) by installing the meta package `xserver-xorg`.
 
 In the end, restart to replace nouveau with nvidia. You will be prompted during installation if a reboot is needed.
 
@@ -256,4 +256,4 @@ To verify, `nvcc --version` should display the CUDA version.
             torch.cuda.is_available()
             ```
 
-**Next step: [Gnome](0501-gnome.md)**
+**Next step: [Gnome](0303-gnome.md)**
