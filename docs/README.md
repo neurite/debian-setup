@@ -15,6 +15,5 @@
     1. [The deep learning work station](1001-hardware.md)
     2. [Linear algebra packages](1002-blas-lapack.md)
     3. [Numpy and other python packages](1003-numpy.md)
-    4. [Frameworks](1004-frameworks.md)
     5. [Java](0700-java.md)
     6. [Python](0800-python.md)
