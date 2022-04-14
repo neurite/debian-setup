@@ -13,8 +13,8 @@
     2. [Samba](0602-samba.md)
     3. [Docker](0603-docker.md)
 10. Notes
-    1. [The deep learning work station](1001-hardware.md)
-    2. [Linear algebra packages](1002-blas-lapack.md)
-    3. [Numpy and other python packages](1003-numpy.md)
-    5. [Python](1005-python.md)
-    6. [Java](1006-java.md)
+    1. [Python](1005-python.md)
+    2. [Java](1006-java.md)
+    3. [Linear algebra packages](1002-blas-lapack.md)
+    4. [Numpy and other python packages](1003-numpy.md)
+    5. [The deep learning work station](1001-hardware.md)
