@@ -4,9 +4,9 @@ Conda is the preferred approach for installing Python packages.
 
 #### Install miniconda
 
-If you have gone through [the bootstrap step](0301-bootstrap.md), conda should have been installed already. The bootstrap script adds the conda deb repo to the sources list and installs miniconda from there. In order to run the `conda` command in terminal, add `source /opt/conda/etc/profile.d/conda.sh` to `~/.bashrc`. This is taken care of at [the cleanup step](0305-cleanup.md).
+If you have gone through [the bootstrap step](0301-bootstrap.md), conda should have been installed already. The bootstrap script adds the conda deb repo to the sources list and installs miniconda from there. In order to run the `conda` command in terminal, add `source /opt/conda/etc/profile.d/conda.sh` to `~/.bashrc`. This is also mentioned in [the cleanup step](0305-cleanup.md).
 
-Alternatively, you can install miniconda manually. Note this installs miniconda in your user home:
+Alternatively, you can install miniconda manually. Note this installs miniconda in your user home by default:
 
 1. Download [the miniconda installation script](https://docs.conda.io/en/latest/miniconda.html).
 2. Run the install script `bash Miniconda3-latest-Linux-x86_64.sh`. **IMPORTANT: Do NOT sudo it.**
@@ -20,23 +20,39 @@ Alternatively, you can install miniconda manually. Note this installs miniconda 
 
 #### Manage environments
 
-The environment not only creates an isolated, self-contained space for installing packages, but also makes it portable across hosts of the same architecture. There are several ways to create an environment.
+A conda environment not only creates an isolated, self-contained space for installing packages, but also makes it portable across hosts of the same architecture. There are several ways to create an environment.
 
-Create a Python 3.9 environment; note this creates an environment where the packages are stored in the user home:
-
-```bash
-conda create --name my-env python=3.9
-```
-
-Another way, using prefix, creates a Python 3.9 environment located within the project folder:
+Create a Python 3.9 environment with a name:
 
 ```bash
-conda create --prefix <project-folder>/envs/<project-name> python=3.9
+conda create --name coffeemug python=3.9
 ```
 
-As indicated by the prefix parameter, the environment is stored in the project folder.
+The above command creates a Python 3.9 environment called `coffeemug`. It is located in the user home by default. Another way, using the `--prefix` option, creates an environment at a specific location. The following command, *running from the project folder*, creates a Python 3.9 environment located within the project's `envs/coffeemug` folder:
 
-Once the packages are installed, the list can be exported to a text file:
+```bash
+conda create --prefix envs/coffeemug python=3.9
+```
+
+The directories of the project `coffeemug` looks like this:
+
+```bash
+
+~/Workspace/coffeemug           # project root
+                |
+                |-- coffeemug   # source code for the coffee-mug module
+                |
+                |-- envs        # managed envs for the project
+                    |
+                    |-- coffeemug   # the default env by the same name
+
+```
+
+This way, each project can have its own env located within its own folder and each project can have multiple envs. Things that are related are also physically close to each other or are even contained within.
+
+Next, how do we duplicate the environment?
+
+Activate the environment and then install packages in it. Once the packages are installed, the list of packages can be exported to a text file:
 
 ```bash
 conda list --explicit > package-specs.txt
@@ -45,16 +61,16 @@ conda list --explicit > package-specs.txt
 Then the same environment can be recreated for *the same OS and architecture*:
 
 ```bash
-conda create --name myenv --file package-specs.txt
+conda create --name coffeemug --file package-specs.txt
 ```
 
-Or
+Or at the `coffeemug` project root:
 
 ```bash
-conda create --prefix <project-folder>/envs/<project-name> --file package-specs.txt
+conda create --prefix envs/coffeemug --file package-specs.txt
 ```
 
-Alternatively, `conda env export` outpus package versions without OS nor architecture. (Why aren't we using this except for the annoying prefix in the output. But, if we create the env within the project folder and recreate it also from the project folder, might work well?)
+Alternatively, `conda env export` outpus package versions and build numbers without the OS or architecture but includes the environment's name and prefix.
 
 #### Install packages
 
