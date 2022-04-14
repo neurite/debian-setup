@@ -107,7 +107,7 @@ Recommend locking down the versions for the target packages. For example, if the
 
 Note PyCharm is a Java app. We set it up like other Java apps.
 
-1. Download the community version.
+1. Download the PyCharm community version.
 2. Unpack into `~/Applications`.
 3. Add to `~/.bashrc` the following lines:
 
@@ -116,7 +116,7 @@ export PYCHARM_HOME="${HOME}/Applications/pycharm-community-2021.3.3"
 PATH="${PYCHARM_HOME}/bin:${PATH}"
 ```
 
-Next add a desktop shortcut. Files with .desktop extension are desktop entries for applications. By putting `.desktop` files into `/usr/share/applications` (for system-wide) or `.local/share/applications` (for the current user only), Linux will recognize them and show the app icons for launching from start menu. Here is the `pycharm.desktop` file for PyCharm:
+Next, add a desktop shortcut. Files with .desktop extension are desktop entries for applications. By putting `.desktop` files into `/usr/share/applications` (for system-wide) or `.local/share/applications` (for the current user only), Linux will recognize them and show the app icons for launching from start menu. Here is the `pycharm.desktop` file:
 
 ```
 [Desktop Entry]
@@ -134,14 +134,15 @@ StartupWMClass=jetbrains-pycharm-ce
 
 See [this thread](https://askubuntu.com/questions/367396/what-does-the-startupwmclass-field-of-a-desktop-file-represent) for what `StartupWMClass` does for Java apps.
 
-To set up a PyCharm project:
+To set up a PyCharm project that is in harmony with command-line, set up the project in command-line first. Then open PyCharm:
 
-1. Projects -> New Project
-2. Location -> Select Base Directory. Choose the project folder
-3. Python Interpreter -> Previously Configured Interpreter -> Add Python Interpreter. Choose Python interpreter in the conda environment in `<project-folder>/envs/<project-name>`
-4. Uncheck "Create a main.py" if it is not needed
-5. Create from Existing Sources
+1. Projects -> New Project.
+2. Location -> Select Base Directory. Choose the project folder.
+3. Python Interpreter -> Previously Configured Interpreter -> Add Python Interpreter. Choose the Python interpreter in the conda environment in `<project-folder>/envs/<project-name>`.
+4. Uncheck "Create a main.py" if it is not needed.
+5. Create from Existing Sources.
 6. Right-click the project module folder directly under the project folder. The module folder usually has the same name as the project. Mark the project module as Sources Root.
+7. Add the `.idea/` PyCharm folder to `.gitignore`.
 
 #### Visual Studio Code
 
@@ -161,11 +162,10 @@ Integrate with conda:
 
 ### Debian Python Packages
 
-Alternatively, install core Python packages at the OS level and manage Python environments using virtualenv.
+Debian has Python packages the OS level. The core Python packages include `python`, `python3`, `python-pip`, `python3-pip`, and `python3-venv`.
 
 **Never run `pip` directly. Run `pip` only in virtual environments.**
 
-The core Python packages include `python`, `python3`, `python-pip`, `python3-pip`, and `virtualenv`.
 
 Certain dependencies, such as `libblas3`, `libblas-dev`, `liblapack3`, `liblapack-dev` needed by the SciPy virtual environment, need to be installed explicitly.
 
