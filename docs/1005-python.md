@@ -164,8 +164,13 @@ Integrate with conda:
 
 Debian has Python packages the OS level. The core Python packages include `python`, `python3`, `python-pip`, `python3-pip`, and `python3-venv`.
 
-**Never run `pip` directly. Run `pip` only in virtual environments.**
+**Never run `pip` directly. Run `pip` only in virtual environments and run `pip` as a Python module.** Always run as Python modules to make sure they are from the same distribution as the Python interpreter. For example, create a virtual environment called `coffeemug` and install `numpy` in it:
 
+```bash
+python3 -m venv coffeemug
+source coffeemug/bin/activate
+python -m pip install numpy
+```
 
 Certain dependencies, such as `libblas3`, `libblas-dev`, `liblapack3`, `liblapack-dev` needed by the SciPy virtual environment, need to be installed explicitly.
 
