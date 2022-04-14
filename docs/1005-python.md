@@ -1,6 +1,6 @@
 ### Conda
 
-This is the preferred approach.
+Conda is the preferred approach for installing Python packages.
 
 #### Install Conda
 
@@ -18,53 +18,91 @@ Alternatively, you can install miniconda manually. Note this installs miniconda 
     * `conda update conda` updates conda
     * `conda update --all` updates all the packages in the ROOT environment
 
-#### Create environments
+#### Manage environments
 
-```
+The environment not only creates an isolated, self-contained space for installing packages, but also makes it portable across hosts of the same architecture. There are several ways to create an environment.
+
+Create a Python 3.9 environment; note this creates an environment where the packages are stored in the user home:
+
+```bash
 conda create --name my-env python=3.9
 ```
 
-The environment not only creates an isolated, self-contained space for installing packages, but also makes it portable across hosts of the same architecture. There are several ways to duplicate an environment.
+Another way, using prefix, creates a Python 3.9 environment located within the project folder:
 
-Clone an environment:
-
-```
-conda create --name myclone --clone myenv
+```bash
+conda create --prefix <project-folder>/envs/<project-name> python=3.9
 ```
 
-Create from an evironment file:
+As indicated by the prefix parameter, the environment is stored in the project folder.
 
-```
-conda env export > my-env.yml
-conda env create --name my-env-copy --file my-env.yml
-```
+Once the packages are installed, the list can be exported to a text file:
 
-Create from a list of package specifications:
-
-```
-conda list --explicit > my-env-package-spec.txt
-conda create --name myenv --file my-env-package-spec.txt
+```bash
+conda list --explicit > package-specs.txt
 ```
 
-Sync the environment from an environment file:
+Then the same environment can be recreated for *the same OS and architecture*:
 
-```
-conda env update -f my-env.yml --prune
+```bash
+conda create --name myenv --file package-specs.txt
 ```
 
-#### Install Packages
+Or
+
+```bash
+conda create --prefix <project-folder>/envs/<project-name> --file package-specs.txt
+```
+
+Alternatively, `conda env export` outpus package versions without OS nor architecture. (Why aren't we using this except for the annoying prefix in the output. But, if we create the env within the project folder and recreate it also from the project folder, might work well?)
+
+#### Install packages
 
 1. `conda install <pkg>`
 
 The essential concept of conda is that Python packages are installed in a **managed** environment. So the first choice for installing a package is `conda install <package>` in an activated conda environment. You can search for packages in [the anaconda repo](https://anaconda.org/anaconda/repo).
 
-2. `conda install <pkg> -c conda-forge` or 3rd party channels
+2. `conda install <pkg> -c conda-forge` or a 3rd party channel
 
 If a package is not provided in the default "anaconda" channel, you may choose a second tier channel such as "conda-forge". The command would be `conda install -c conda-forge <package>`. This would be your second choice. The upgrade command `conda update --all` automatically takes care of the packages from different channels. Basically, channels have priorities where the default channel has the highest priority. If a package of the same or higher version becomes available in the default channel during upgrade, it will supercede other channels.
 
 3. `pip install <pkg>`
 
 Lastly, if a package you want to install is not managed by conda, you can use pip. Make sure to use the pip **within the conda environment**. This would be your last choice. The command to install and upgrade is `pip install <package> --upgrade`. When you list the packages using `conda list`, you will see which packages are installed via pip.
+
+4. Install from source code
+
+If the source has the conda build file, `conda build conda-build.yaml`. The created `tar.gz` package can be installed via `conda install --use-local`.
+
+Or using the `pip` in the conda environment, `pip install -e path/to/setup.py`. Or install from git, `pip install git+<repository-url>@<branch-or-tag>`. For example, `pip install git+https://github.com/pytube/pytube.git@11.0.2`.
+
+5. Lock down the versions of the target packages
+
+Recommend locking down the versions for the target packages. For example, if the project is to use Scrapy to crawl websites, lock down Scrapy `conda install scrapy=2.6.1` or `pip install scrapy==2.6.1`.
+
+
+### IDE
+
+#### PyCharm
+
+#### Visual Studio Code
+
+1. Download the .deb file from [Visual Studio Code](https://code.visualstudio.com/download).
+2. `sudo dpkg --install <path to the downloaded VSC deb file>`.
+3. Install the Python extension managed by Microsoft (ms-python.python).
+
+Integrate with conda:
+
+1. Edit Preferences -> Settings.
+2. There are 3 sets of settings. The default settings, the user settings, and the workspace settings. You should edit only the user settings and the workspace settings.
+3. The user settings are stored in the folder `~/.config/Code/`. This is the place I edited the font and the font size.
+4. The workspace settings are actually project specific. If you opened the folder `~/Workspace/<project>`, this file should be `~/Workspace/<project>/.vscode/settings.json`. This is where you integrate with the project-specific conda environment.
+5. Point the python path to `~/miniconda3/envs/<environment>/bin/python`.
+6. Restart Visual Studio Code.
+7. Note IDE dependencies like `pylint` should be installed via conda into the virtual environment.
+
+Why would this work? In the same `~/miniconda3/envs/<environment>/` folder, `lib/<the-python-binary-that-is-linked-to>/site-packages/` has all the installed packages for the environment.
+
 
 ### Debian Python Packages
 
@@ -111,25 +149,3 @@ apt-get -q -y install python3-boto awscli
 # apt-get -q -y install python3-numpy python3-matplotlib python3-scipy
 # apt-get -q -y install python3-pandas
 ```
-
-### IDE
-
-Recommend Visual Studio Code.
-
-#### Install
-
-1. Download the .deb file from [Visual Studio Code](https://code.visualstudio.com/download).
-2. `sudo dpkg --install <path to the downloaded VSC deb file>`.
-3. Install the Python extension managed by Microsoft (ms-python.python).
-
-#### Integrate with conda
-
-1. Edit Preferences -> Settings.
-2. There are 3 sets of settings. The default settings, the user settings, and the workspace settings. You should edit only the user settings and the workspace settings.
-3. The user settings are stored in the folder `~/.config/Code/`. This is the place I edited the font and the font size.
-4. The workspace settings are actually project specific. If you opened the folder `~/Workspace/<project>`, this file should be `~/Workspace/<project>/.vscode/settings.json`. This is where you integrate with the project-specific conda environment.
-5. Point the python path to `~/miniconda3/envs/<environment>/bin/python`.
-6. Restart Visual Studio Code.
-7. Note IDE dependencies like `pylint` should be installed via conda into the virtual environment.
-
-Why would this work? In the same `~/miniconda3/envs/<environment>/` folder, `lib/<the-python-binary-that-is-linked-to>/site-packages/` has all the installed packages for the environment.
