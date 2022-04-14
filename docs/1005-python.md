@@ -135,11 +135,8 @@ Integrate with conda:
 2. There are 3 sets of settings. The default settings, the user settings, and the workspace settings. You should edit only the user settings and the workspace settings.
 3. The user settings are stored in the folder `~/.config/Code/`. This is the place I edited the font and the font size.
 4. The workspace settings are actually project specific. If you opened the folder `~/Workspace/<project>`, this file should be `~/Workspace/<project>/.vscode/settings.json`. This is where you integrate with the project-specific conda environment.
-5. Point the python path to `~/miniconda3/envs/<environment>/bin/python`.
+5. Point the Python interpreter to `<project-folder>/envs/<project-name>/bin/python`.
 6. Restart Visual Studio Code.
-7. Note IDE dependencies like `pylint` should be installed via conda into the virtual environment.
-
-Why would this work? In the same `~/miniconda3/envs/<environment>/` folder, `lib/<the-python-binary-that-is-linked-to>/site-packages/` has all the installed packages for the environment.
 
 
 ### Debian Python Packages
