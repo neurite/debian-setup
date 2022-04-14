@@ -2,7 +2,7 @@
 
 Conda is the preferred approach for installing Python packages.
 
-#### Install Conda
+#### Install miniconda
 
 If you have gone through [the bootstrap step](0301-bootstrap.md), conda should have been installed already. The bootstrap script adds the conda deb repo to the sources list and installs miniconda from there. In order to run the `conda` command in terminal, add `source /opt/conda/etc/profile.d/conda.sh` to `~/.bashrc`. This is taken care of at [the cleanup step](0305-cleanup.md).
 
@@ -81,9 +81,47 @@ Or using the `pip` in the conda environment, `pip install -e path/to/setup.py`. 
 Recommend locking down the versions for the target packages. For example, if the project is to use Scrapy to crawl websites, lock down Scrapy `conda install scrapy=2.6.1` or `pip install scrapy==2.6.1`.
 
 
-### IDE
+### IDEs
 
 #### PyCharm
+
+Note PyCharm is a Java app. We set it up like other Java apps.
+
+1. Download the community version.
+2. Unpack into `~/Applications`.
+3. Add to `~/.bashrc` the following lines:
+
+```
+export PYCHARM_HOME="${HOME}/Applications/pycharm-community-2021.3.3"
+PATH="${PYCHARM_HOME}/bin:${PATH}"
+```
+
+Next add a desktop shortcut. Files with .desktop extension are desktop entries for applications. By putting `.desktop` files into `/usr/share/applications` (for system-wide) or `.local/share/applications` (for the current user only), Linux will recognize them and show the app icons for launching from start menu. Here is the `pycharm.desktop` file for PyCharm:
+
+```
+[Desktop Entry]
+Name=PyCharm
+GenericName=Python IDE
+Comment=Python IDE
+Exec=/home/neurite/Applications/pycharm-community-2021.3.3/bin/pycharm.sh
+Icon=/home/neurite/Applications/pycharm-community-2021.3.3/bin/pycharm.png
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+StartupNotify=true
+StartupWMClass=jetbrains-pycharm-ce
+```
+
+See [this thread](https://askubuntu.com/questions/367396/what-does-the-startupwmclass-field-of-a-desktop-file-represent) for what `StartupWMClass` does for Java apps.
+
+To set up a PyCharm project:
+
+1. Projects -> New Project
+2. Location -> Select Base Directory. Choose the project folder
+3. Python Interpreter -> Previously Configured Interpreter -> Add Python Interpreter. Choose Python interpreter in the conda environment in `<project-folder>/envs/<project-name>`
+4. Uncheck "Create a main.py" if it is not needed
+5. Create from Existing Sources
+6. Right-click the project module folder directly under the project folder. The module folder usually has the same name as the project. Mark the project module as Sources Root.
 
 #### Visual Studio Code
 
