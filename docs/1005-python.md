@@ -4,13 +4,14 @@ This is the preferred approach.
 
 #### Install Conda
 
-Before running the installation script on the Debian box, try it on a [VirtualBox](0901-virtualbox.md) first.
+If you have gone through [the bootstrap step](0301-bootstrap.md), conda should have been installed already. The bootstrap script adds the conda deb repo to the sources list and installs miniconda from there. In order to run the `conda` command in terminal, add `source /opt/conda/etc/profile.d/conda.sh` to `~/.bashrc`. This is taken care of at [the cleanup step](0305-cleanup.md).
 
-1. Download [the miniconda installation script](http://conda.pydata.org/miniconda.html). I downloaded the one for Python 3.6 for 64-bit system.
-2. If the download URL is not https, make sure to verify the MD5 `md5sum Miniconda3-latest-Linux-x86_64.sh`.
-3. Run the install script `bash Miniconda3-latest-Linux-x86_64.sh`. **IMPORTANT: Do NOT sudo it.**
-4. Follow the instructions on screen. During the process it will inform you it will install in your home directory and will prepend the binary to $PATH in your .bashrc. Accept it with "yes".
-5. Verify
+Alternatively, you can install miniconda manually. Note this installs miniconda in your user home:
+
+1. Download [the miniconda installation script](https://docs.conda.io/en/latest/miniconda.html).
+2. Run the install script `bash Miniconda3-latest-Linux-x86_64.sh`. **IMPORTANT: Do NOT sudo it.**
+3. Follow the instructions on screen. During the process it will inform you it will install in your home directory and will prepend the binary to $PATH in your .bashrc. Accept it with "yes".
+4. Verify
     * `source ~/.bashrc`
     * `conda env list` lists the envs, should see the ROOT environment
     * `conda list` lists the packages in the ROOT environment
@@ -20,7 +21,7 @@ Before running the installation script on the Debian box, try it on a [VirtualBo
 #### Create environments
 
 ```
-conda create --name my-env python=3.6
+conda create --name my-env python=3.9
 ```
 
 The environment not only creates an isolated, self-contained space for installing packages, but also makes it portable across hosts of the same architecture. There are several ways to duplicate an environment.
@@ -57,17 +58,13 @@ conda env update -f my-env.yml --prune
 
 The essential concept of conda is that Python packages are installed in a **managed** environment. So the first choice for installing a package is `conda install <package>` in an activated conda environment. You can search for packages in [the anaconda repo](https://anaconda.org/anaconda/repo).
 
-2. `conda install <pkg> -c conda-forge`
+2. `conda install <pkg> -c conda-forge` or 3rd party channels
 
-If a package is not provided in the default "anaconda" channel, you may choose an alternative channel such as "conda-forge". The command would be `conda install -c conda-forge <package>`. This would be your second choice. The upgrade command `conda update --all` automatically takes care of the packages from different channels. Basically channels have priorities and the default channel has the highest priority. If a package of the same or higher version becomes available in the default channel during upgrade, it will supercede other channels. Other similar commands include:
-```bash
-conda update <pk> -c conda-forge  # upgrade a particular package and its dependencies from the conda-forge channel
-conda update --all -c conda-forge # upgrade everything to those in the conda-forge channel
-```
+If a package is not provided in the default "anaconda" channel, you may choose a second tier channel such as "conda-forge". The command would be `conda install -c conda-forge <package>`. This would be your second choice. The upgrade command `conda update --all` automatically takes care of the packages from different channels. Basically, channels have priorities where the default channel has the highest priority. If a package of the same or higher version becomes available in the default channel during upgrade, it will supercede other channels.
 
-3. `pip install <pkg> --upgrade`
+3. `pip install <pkg>`
 
-Lastly, if a package you want to install is not managed by conda, you can use pip. Make sure to use pip **within the conda environment**. This would be your last choice. The command to install and upgrade is `pip install <package> --upgrade`. When you list the packages using `conda list`, you will see which packages are installed via pip.
+Lastly, if a package you want to install is not managed by conda, you can use pip. Make sure to use the pip **within the conda environment**. This would be your last choice. The command to install and upgrade is `pip install <package> --upgrade`. When you list the packages using `conda list`, you will see which packages are installed via pip.
 
 ### Debian Python Packages
 
