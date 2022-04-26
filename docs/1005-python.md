@@ -74,29 +74,37 @@ Alternatively, `conda env export` outpus package versions and build numbers with
 
 #### Install packages
 
-1. `conda install <pkg>`
+The essential concept of conda is that Python packages are installed in a **managed** environment.
 
-The essential concept of conda is that Python packages are installed in a **managed** environment. So the first choice for installing a package is `conda install <package>` in the activated conda environment from the default anaconda channel. By they way, you can search packages in [the anaconda repo](https://anaconda.org/anaconda/repo).
+##### 1. `conda install <pkg>`
 
-2. `conda install <pkg> -c conda-forge` or a 3rd party channel
+The first choice for installing a package is `conda install <package>` in the activated conda environment. This installs the package version from the default anaconda channel. By the way, you can search packages in [the anaconda repo](https://anaconda.org/anaconda/repo).
+
+##### 2. `conda install <pkg> -c conda-forge` or a 3rd party channel
 
 If a package is not provided in the default "anaconda" channel, you may choose a second tier channel such as "conda-forge". The command would be `conda install <package> -c conda-forge `. This would be your second choice.
 
+Another example is the "pytorch" channel. Pytorch is typically installed via `conda install pytorch -c pytorch`.
+
 If you have used multiple channels in your environment, the upgrade command `conda update --all` automatically takes care of the packages from different channels. Basically, channels have priorities where the default channel has the highest priority. If a package of the same or higher version becomes available in the default channel during upgrade, it will supercede the other channels.
 
-3. `pip install <pkg>`
+##### 3. `pip install <pkg>`
 
-Lastly, if a package is not managed by conda yet, you can use `pip` to install it. **Make sure to use the pip within the conda environment**. This would be your last choice. The command to install and upgrade is `pip install <package> --upgrade`. When you list the packages using `conda list`, you will see which packages are installed via pip.
+Lastly, if a package is not managed by conda yet, you can use `pip` to install it. Make sure to **use the pip within the activated conda environment**. The command to install and upgrade is `pip install <package> --upgrade`. When you list the packages using `conda list`, you will see which packages are installed via pip. They are listed under the channel "pypi".
 
-4. Install from source code
+##### 4. Install from source code
 
-Sometimes you want the latest code that hasn't been distributed in conda or PyPI.
+Sometimes you want the latest code that hasn't been distributed in conda or PyPI yet.
 
 If the source has a conda build file, `conda build conda-build.yaml`. Then the created `tar.gz` package can be installed via `conda install --use-local`.
 
-Or, if the project has the `setup.py` file, use the `pip` in the conda environment to install. Install from the setup file `pip install -e path/to/setup.py`. Or install from git, `pip install git+<repository-url>@<branch-or-tag>`. For example, `pip install git+https://github.com/pytube/pytube.git@11.0.2`.
+Or, if the project has the `setup.py` file, use the `pip` in the conda environment to install. Install from the setup file `pip install -e path/to/setup.py`. When specifying the path, do not include `setup.py` in the path string.
 
-5. Lock down the versions of the target packages
+Or, install from git, `pip install git+<repository-url>@<branch-or-tag>`. For example, `pip install git+https://github.com/pytube/pytube.git@11.0.2`.
+
+Packags installed from the source code will be listed under the "<develop>" channel.
+
+##### 5. Lock down the versions of the target packages
 
 Recommend locking down the versions for the target packages. For example, if the project is to use Scrapy to crawl websites, lock down Scrapy `conda install scrapy=2.6.1` or `pip install scrapy==2.6.1`.
 
