@@ -120,12 +120,12 @@ Kernel upgrade better be done at a early stage of the installation. The earlier 
 If you want newer versions of NVIDIA software, you may want to upgrade the kernel, as NVIDIA installs into the kernel tree. But double-check NVIDIA does have the compatible versions for the upgraded kernel.
 
 1. `sudo apt-get update`
-2. `sudo apt-get -t bullseye-backport upgrade`
+2. `sudo apt-get -t bullseye-backports upgrade`
 
 Or, more aggressively, do `dist-upgrade` which replaces old dependencies with new ones.
 
 1. `sudo apt-get update`
-2. `sudo apt-get -t bullseye-backport dist-upgrade`
+2. `sudo apt-get -t bullseye-backports dist-upgrade`
 
 
 ### Tune SSD (optional)
