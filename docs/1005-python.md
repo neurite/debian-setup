@@ -59,22 +59,22 @@ Next, how do we duplicate the environment across machines?
 Activate the environment and then install packages in it. Once the packages are installed, the list of packages can be exported to a text file like so:
 
 ```bash
-conda list --explicit > package-specs.txt
+conda list --explicit > package-specs-linux-64.txt
 ```
 
 Then the same environment can be recreated for *the same OS and architecture*:
 
 ```bash
-conda create --name coffeemug --file package-specs.txt
+conda create --name coffeemug --file package-specs-linux-64.txt
 ```
 
 Or at the `coffeemug` project root:
 
 ```bash
-conda create --prefix envs/coffeemug --file package-specs.txt
+conda create --prefix envs/coffeemug --file package-specs-linux-64.txt
 ```
 
-Alternatively, `conda env export` outputs package versions and build numbers without the OS or architecture but includes the environment's name and prefix.
+Alternatively, `conda env export` (or `conda env export --prefix <prefix>`) outputs package versions and build numbers without the OS or architecture but includes the environment's name and prefix. We do not use this approach for duplicating environments across platforms for 2 reasons. First, a package of a particular version and build number may not available on a different platform. Second, the output includes the absolute file path for the prefix. A file path like `/home/neurite/Workspace/coffeemug/envs/coffeemug` is not portable. The solution is to include a script that creates the project environment in the source control. In the script, lock down the versions of important packages. The same script is used to create environments across different platforms. Then each platform has its own specs file.
 
 #### Install packages
 
