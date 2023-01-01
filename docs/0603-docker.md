@@ -1,5 +1,7 @@
 ## Docker
 
+[The Debian Wiki about Docker](https://wiki.debian.org/Docker). Notice the warning about the `docker` user group. The [Docker post-installation doc](https://docs.docker.com/engine/install/linux-postinstall/) has a similar warning.
+
 ### Install from the Docker repository
 
 To install the newest version of Docker, follow [this excellent document](https://docs.docker.com/engine/installation/linux/docker-ce/debian/). Here is a quick summary of what I did,
@@ -33,17 +35,22 @@ sudo docker run hello-world
 
 ### Install from the Debian repository
 
-**This package is not available in Debian Stretch**
-
-Alternatively, Docker can be installed from the Debian package repository. The Docker provided by Debian will be an older version of Docker.
+Docker can be installed from the Debian package repository. The Docker provided by Debian will be an older version of Docker.
 
 ```bash
-sudo apt-get -t jessie-backports install docker.io
+sudo apt-get install docker.io
 ```
 
-Run `sudo docker version` to verify.
+To verify,
+
+```bash
+docker version
+sudo docker run hello-world
+```
 
 ### Add user to the docker group
+
+WARN: See [Debian Docker Wiki](https://wiki.debian.org/Docker) and [Docker Post-installation Doc](https://docs.docker.com/engine/install/linux-postinstall/) about the danger.
 
 Applies to both the Docker installation and the Debian installation.
 
@@ -67,19 +74,19 @@ If `docker version` without sudo still gets you an error, restart the machine.
 
 The instructions below are ways to create your own Docker image of Debian.
 
-**IMPORTANT** both options require the disk partition is set `exec` and `dev`. This is only possible with the `/` root partition.  Partitions `/home`, `/usr/local`, `/opt`, `/var`, `/tmp` are out of the question. To keep the host safe, create the images on a Debian virtual machine (see [[VirtualBox]]).
+**IMPORTANT** both options require the disk partition is set `exec` and `dev`. This is only possible with the `/` root partition.  Partitions `/home`, `/usr/local`, `/opt`, `/var`, `/tmp` are out of the question. To keep the host safe, create the images on a Debian virtual machine (e.g. [VirtualBox](https://wiki.debian.org/VirtualBox)).
 
 Both options require debootstrap. Debootstrap "is a tool which will install a Debian base system into a subdirectory of another, already installed system." On a Debian running on VirtualBox, install docker and debootstrap.
 
 ```bash
-sudo apt-get -t jessie-backports install debootstrap
+sudo apt-get install debootstrap
 ```
 
 #### Option 1
 
 Follow [the debian-docker repository](https://github.com/jmtd/debian-docker) at GitHub.
 
-1. Dependencies include `debootstrap` (`sudo apt-get -t jessie-backports install debootstrap`), `make`, and `docker`.
+1. Dependencies include `debootstrap` (`sudo apt-get install debootstrap`), `make`, and `docker`.
 2. At the project root, run `sudo make prefix=<your docker user name>`. Optionally can set the mirror to your favorite one, e.g.  `mirror=http://mirrors.ocf.berkeley.edu/debian/`.
 3. Run `sudo docker images` to verify.
 
