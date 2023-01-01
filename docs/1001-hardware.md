@@ -1,4 +1,4 @@
-### My rig
+### My Rig
 
 * Motherboard: ASUS WS C422 Sage/10G
 * CPU: Intel Xeon W-2255
