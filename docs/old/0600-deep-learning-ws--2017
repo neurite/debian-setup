@@ -1,0 +1,9 @@
+* Mother Board: Asus X99-E-10G WS
+* CPU: Intel® Xeon® E5-2600/1600 v4/v3 Processor
+* Memory: 128GB, DDR4 2400/2133 MHz ECC, Un-buffered Memory (must use Xeon CPU to support ECC)
+* HDD: Samsung 960 PRO Series - 512GB PCIe NVMe - M.2 Internal SSD
+* HDD RAID: 
+* GPU: Dual NVIDIA 1080 Ti water cooled (MSI SEA HAWK EK X or GIGABYTE AORUS Xtreme Waterforce)
+    * See good analysis and discussions [here](http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning/)
+ and [here](https://datascience.stackexchange.com/questions/18626/what-is-the-best-hardware-gpu-for-deep-learning)
+    * Budget $1600
