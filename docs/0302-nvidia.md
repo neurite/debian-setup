@@ -19,15 +19,15 @@
 We have 4 tiers of packages to install. They are tiered because a particular tier depends on packages of previous tiers. Depending on the need, the last 2 tiers can be optional. Here is the landscape of the package tiers:
 
 1. Linux headers
-    1. [linux-headers-amd64 5.15 (bullseye-backports)](https://packages.debian.org/bullseye-backports/linux-headers-amd64)
+    1. [linux-headers-amd64 6.0 (bullseye-backports)](https://packages.debian.org/bullseye-backports/linux-headers-amd64)
     2. [linux-headers-amd64 5.10 (bullseye)](https://packages.debian.org/bullseye/linux-headers-amd64)
     3. [linux-headers-amd64 5.10 (buster-backports)](https://packages.debian.org/buster-backports/linux-headers-amd64)
     4. [linux-headers-amd64 4.19 (buster)](https://packages.debian.org/buster/linux-headers-amd64)
 2. NVIDIA graphics driver
     1. [nvidia-driver 470.103 (bullseye-backports)](https://packages.debian.org/bullseye-backports/nvidia-driver)
-    2. [nvidia-driver 460.91 (bullseye)](https://packages.debian.org/bullseye/nvidia-driver)
-    3. [nvidia-driver 460.73 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver)
-    4. [nvidia-driver 418.211 (buster)](https://packages.debian.org/buster/nvidia-driver)
+    2. [nvidia-driver 470.161 (bullseye)](https://packages.debian.org/bullseye/nvidia-driver)
+    3. [nvidia-driver 470.141 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver)
+    4. [nvidia-driver 418.226 (buster)](https://packages.debian.org/buster/nvidia-driver)
     5. [NVIDIA list](http://www.nvidia.com/object/unix.html)
 3. NVIDIA CUDA toolkit
     1. [nvidia-cuda-toolkit 11.2.2 (bullseye)](https://packages.debian.org/bullseye/nvidia-cuda-toolkit)
@@ -66,9 +66,9 @@ First, choose the version of the graphics driver that is compatible with the GPU
 | Debian Release     | NVIDIA graphics driver | Supported GPUs | Note |
 |--------------------|------------------------|----------------|------|
 | bullseye-backports | [nvidia-driver 470.103.01](https://packages.debian.org/bullseye-backports/nvidia-driver) | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/470.103.01/README/supportedchips.html) |                           |
-| bullseye           | [nvidia-driver 460.91.03](https://packages.debian.org/bullseye/nvidia-driver)            | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/460.91.03/README/supportedchips.html)  | 3070 ti, 3080 ti          |
-| buster-backports   | [nvidia-driver 460.73.01 ](https://packages.debian.org/buster-backports/nvidia-driver)   | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/460.73.01/README/supportedchips.html)  | 20xx super, 30xx, 3060 ti |
-| buster             | [nvidia-driver 418.211 ](https://packages.debian.org/buster/nvidia-driver)               | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)    | 20xx, 20xx ti             |
+| bullseye           | [nvidia-driver 470.161.03](https://packages.debian.org/bullseye/nvidia-driver)            | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/460.91.03/README/supportedchips.html)  | 3070 ti, 3080 ti          |
+| buster-backports   | [nvidia-driver 470.141.01](https://packages.debian.org/buster-backports/nvidia-driver)   | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/460.73.01/README/supportedchips.html)  | 20xx super, 30xx, 3060 ti |
+| buster             | [nvidia-driver 418.226](https://packages.debian.org/buster/nvidia-driver)               | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)    | 20xx, 20xx ti             |
 
 Second, it is critical that CUDA is supported by a **compatible graphics driver**. Here is a table copied from NVIDIA's release nots of [CUDA toolkit components](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#major-components):
 
