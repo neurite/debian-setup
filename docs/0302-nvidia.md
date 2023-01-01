@@ -67,8 +67,8 @@ First, choose the version of the graphics driver that is compatible with the GPU
 |--------------------|------------------------|----------------|------|
 | bullseye-backports | [nvidia-driver 470.103.01](https://packages.debian.org/bullseye-backports/nvidia-driver) | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/470.103.01/README/supportedchips.html) |                           |
 | bullseye           | [nvidia-driver 470.161.03](https://packages.debian.org/bullseye/nvidia-driver)            | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/460.91.03/README/supportedchips.html)  | 3070 ti, 3080 ti          |
-| buster-backports   | [nvidia-driver 470.141.01](https://packages.debian.org/buster-backports/nvidia-driver)   | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/460.73.01/README/supportedchips.html)  | 20xx super, 30xx, 3060 ti |
-| buster             | [nvidia-driver 418.226](https://packages.debian.org/buster/nvidia-driver)               | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)    | 20xx, 20xx ti             |
+| buster-backports   | [nvidia-driver 470.141.03](https://packages.debian.org/buster-backports/nvidia-driver)   | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/460.73.01/README/supportedchips.html)  | 20xx super, 30xx, 3060 ti |
+| buster             | [nvidia-driver 418.226.00](https://packages.debian.org/buster/nvidia-driver)               | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)    | 20xx, 20xx ti             |
 
 Second, it is critical that CUDA is supported by a **compatible graphics driver**. Here is a table copied from NVIDIA's release nots of [CUDA toolkit components](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#major-components):
 
