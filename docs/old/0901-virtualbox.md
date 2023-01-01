@@ -10,6 +10,8 @@
 
 ### Prerequisites
 
+See the [Debian Wiki](https://wiki.debian.org/VirtualBox) for the latest status about Virtualbox.
+
 #### DKMS
 
 DKMS is recommended for VirtualBox. "Ubuntu/Debian users might want to install the dkms package to ensure that the VirtualBox host kernel modules (vboxdrv, vboxnetflt and vboxnetadp) are properly updated if the linux kernel version changes during the next apt-get upgrade." It should have already been installed (also needed for installing the NVIDIA drivers).
