@@ -221,3 +221,27 @@ apt-get -q -y install python3-boto awscli
 # apt-get -q -y install python3-numpy python3-matplotlib python3-scipy
 # apt-get -q -y install python3-pandas
 ```
+
+### Jupyter
+
+[Stackoverflow question](https://stackoverflow.com/questions/58068818/how-to-use-jupyter-notebooks-in-a-conda-environment). Look at the accepted answer. We are following option 2 in the accepted answer.
+
+##### Jupyter Lab environment
+
+```
+conda create -n jupyter python=3.11
+conda activate jupyter
+conda install jupyterlab
+```
+
+##### Project environment
+
+In the project environment, `conda install ipykernel`.
+
+Then `ipython kernel install --user --name=project-name`. This will create a kernel configuration in `~/.local/share/jupyter/kernels`.
+
+As of this writing, we have 50 less packages from installing `ipykernel` only vs installing `jupyter`.
+
+##### Run the project kernel
+
+Go to the project root, activate the jupyter environment, launch `jupyter lab`, then choose the project kernel from the dropdown list.
