@@ -229,14 +229,14 @@ apt-get -q -y install python3-boto awscli
 ##### Jupyter Lab environment
 
 ```
-conda create -n jupyter python=3.11
+conda create -name jupyter python=3.11
 conda activate jupyter
-conda install jupyterlab
+conda install jupyterlab jupyterlab_widgets
 ```
 
 ##### Project environment
 
-In the project environment, `conda install ipykernel`.
+In the project environment, `conda install ipykernel ipywidgets`.
 
 Then `ipython kernel install --user --name=project-name`. This will create a kernel configuration in `~/.local/share/jupyter/kernels`.
 
