@@ -224,24 +224,40 @@ apt-get -q -y install python3-boto awscli
 
 ### Jupyter
 
-[Stackoverflow question](https://stackoverflow.com/questions/58068818/how-to-use-jupyter-notebooks-in-a-conda-environment). Look at the accepted answer. We are following option 2 in the accepted answer.
+Our goal here is to run Jupyter and the project code in separate Python processes and yet let Jupyter access the project process. See [Stackoverflow question](https://stackoverflow.com/questions/58068818/how-to-use-jupyter-notebooks-in-a-conda-environment). We are following an approach similar to option 3 in the accepted answer. Here are 2 steps for setting up Jupyter:
 
-##### Jupyter Lab environment
+1. Create a Jupyter environment
 
 ```
 conda create -name jupyter python=3.11
 conda activate jupyter
-conda install jupyterlab jupyterlab_widgets
+conda install jupyterlab jupyterlab_widgets nb_conda_kernels
 ```
 
-##### Project environment
+Note the Jupyter evironment is created in the user home `~/.conda/envs` and is meant for any project, any work.
 
-In the project environment, `conda install ipykernel ipywidgets`.
+2. Create a project environment
 
-Then `ipython kernel install --user --name=project-name`. This will create a kernel configuration in `~/.local/share/jupyter/kernels`.
+```
+conda create --prefix <project-folder>/envs/<env-name>
+conda activate --prefix <project-folder>/envs/<env-name>
+conda install ipywidgets ipykernel
+```
 
-As of this writing, we have 50 less packages from installing `ipykernel` only vs installing `jupyter`.
+Note we normally create the project environment within the project folder. It is local to the project.
 
-##### Run the project kernel
+3. Load the project kernel in Jupyter
 
 Go to the project root, activate the jupyter environment, launch `jupyter lab`, then choose the project kernel from the dropdown list.
+
+#### Jupyter Widgets
+
+Widgets for interactive UI in the notebooks. It is required to run progress bar properly for example.
+
+See [manual](https://ipywidgets.readthedocs.io/en/latest/user_install.html) for installing `jupyterlab_widgets` in the Jupyter environment and installing `ipywidget` in the kernel environment.
+
+#### ipykernel install
+
+Note we install `nb_conda_kernels` in the Jupyter environment and we do NOT explicitly install the project kernel.
+
+Installing the kernel `ipython kernel install --user --name=project-name` creates a kernel configuration in `~/.local/share/jupyter/kernels`. However, we do NOT use this approach -- it has an issue that the project environment's bin folder is not in PATH. Instead the PATH has the Jupyter environment's bin folder.
