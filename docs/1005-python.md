@@ -233,7 +233,7 @@ Here are the 3 steps for setting up and running Jupyter:
 ##### 1. Create a Jupyter environment
 
 ```
-conda create -name jupyter python=3.11
+conda create --name jupyter python=3.11
 conda activate jupyter
 conda install jupyterlab jupyterlab_widgets nb_conda_kernels
 ```
@@ -260,7 +260,7 @@ Go to the project root, activate the jupyter environment `conda activate jupyter
 
 #### Jupyter Widgets
 
-Here is brief explaination of why.
+Here is a brief explaination of why.
 
 Widgets for interactive UI in the notebooks. It is required to run progress bar properly for example.
 
