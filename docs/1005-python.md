@@ -24,18 +24,18 @@ Alternatively, you can install miniconda manually. Note this installs miniconda 
 
 A conda environment not only creates an isolated, self-contained space for installing packages, but also makes it portable across hosts of the same architecture. There are several ways to create an environment.
 
-Create a Python 3.9 environment with the `--name` option:
+Create a Python 3.12 environment with the `--name` option:
 
 ```bash
-conda create --name coffeemug python=3.9
+conda create --name coffeemug python=3.12
 ```
 
-The above command creates a Python 3.9 environment called `coffeemug`. It is located in the user home by default.
+The above command creates a Python 3.12 environment called `coffeemug`. It is located in the user home by default.
 
 Another way, using the `--prefix` option, creates an environment at a specific location. The following command, *running from the project folder*, creates a Python 3.9 environment within the project's `envs/coffeemug` folder:
 
 ```bash
-conda create --prefix envs/coffeemug python=3.9
+conda create --prefix envs/coffeemug python=3.12
 ```
 
 The directories of the project `coffeemug` look like below:
@@ -53,6 +53,8 @@ The directories of the project `coffeemug` look like below:
 ```
 
 This way, each project has its own envs located within its own folder and each project can have multiple envs. The principle is such that relevant stuff are physically close to each other and/or are contained within.
+
+Recommend explicitly specifying the `python` package version when creating a conda environment. As of 2025, use [python 3.12](https://devguide.python.org/versions/) by default.
 
 Next, how do we duplicate the environment across machines?
 
@@ -222,6 +224,7 @@ apt-get -q -y install python3-boto awscli
 # apt-get -q -y install python3-pandas
 ```
 
+
 ### Jupyter
 
 Run Jupyter and the project separately in different Python processes. Yet let Jupyter access the running project code. This is indeed similar to how typical IDEs work. See [Stackoverflow question](https://stackoverflow.com/questions/58068818/how-to-use-jupyter-notebooks-in-a-conda-environment). We are following an approach similar to option 3 in the accepted answer.
@@ -233,7 +236,7 @@ Here are the 3 steps for setting up and running Jupyter:
 ##### 1. Create a Jupyter environment
 
 ```
-conda create --name jupyter python=3.11
+conda create --name jupyter python=3.12
 conda activate jupyter
 conda install jupyterlab jupyterlab_widgets nb_conda_kernels
 ```
@@ -256,7 +259,11 @@ Note the project environment is created within the project folder. It is local t
 
 ##### 3. Load the project kernel in Jupyter
 
+See documentation about [`nb_conda_kernels`](https://github.com/anaconda/nb_conda_kernels). As mentioned in the doc, language kernels other than Python are also possible.
+
 Go to the project root, activate the jupyter environment `conda activate jupyter`, launch `jupyter lab`, then choose the project kernel from the dropdown list.
+
+Note we install `nb_conda_kernels` in the Jupyter environment and we do NOT explicitly install the project kernel. Installing the kernel `ipython kernel install --user --name=project-name` creates a kernel configuration in `~/.local/share/jupyter/kernels`. However, we do NOT use this approach -- it has an issue that the project environment's bin folder is not in PATH. Instead the PATH has the Jupyter environment's bin folder.
 
 #### Jupyter Widgets
 
@@ -265,5 +272,3 @@ Here is a brief explaination of why.
 Widgets for interactive UI in the notebooks. It is required to run progress bar properly for example.
 
 See [manual](https://ipywidgets.readthedocs.io/en/latest/user_install.html) for installing `jupyterlab_widgets` in the Jupyter environment and installing `ipywidgets` in the kernel environment.
-
-Note we install `nb_conda_kernels` in the Jupyter environment and we do NOT explicitly install the project kernel. Installing the kernel `ipython kernel install --user --name=project-name` creates a kernel configuration in `~/.local/share/jupyter/kernels`. However, we do NOT use this approach -- it has an issue that the project environment's bin folder is not in PATH. Instead the PATH has the Jupyter environment's bin folder.
