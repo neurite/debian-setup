@@ -36,33 +36,45 @@ Set up the partion with the correct format `Ext4 journaling`, mount point, and m
 
 You may notice the `discard` mount option for SSD drive.
 
-| Drive               | Mount Point | Type | Size      | Mount Options                    | Other     |
-|---------------------|-------------|------|-----------|----------------------------------|-----------|
-| sda (256 GB SSD)    |             | EFI  | 256 MB    |                                  | Bootable  |
-|                     | /           | EXT4 | 96 GB     | discard, relatime                |           |
-|                     | /usr/local  | EXT4 | 32 GB     | discard, relatime, nodev         |           |
-|                     | /opt        | EXT4 | 32 GB     | discard, relatime, nodev         |           | 
-|                     | /home       | EXT4 | remaining | discard, relatime, nodev, nosuid |           |
-| sdb (1 TB spinning) |             | SWAP | 128 GB    |                                  |           |
-|                     | /var        | EXT4 | 128 GB    | relatime, nodev, nosuid          |           |
-|                     | /tmp        | EXT4 | 128 GB    | relatime, nodev, nosuid, noexec  |           |
-|                     | /data       | EXT4 | remaining | relatime, nodev, nosuid, noexec  |           |
-| RAID10              | /samba      | EXT4 | 4 TB      | relatime, nodev, nosuid, noexec  | largefile |
+| Drive               | Mount Point | Type | Size      | Mount Options                    | Typical Usage     | Note  |
+|---------------------|-------------|------|-----------|----------------------------------|-------------------|-------|
+| sda (256 GB SSD)    |             | EFI  | 256 MB    |                                  |                   | FAT32 |
+|                     | /           | EXT4 | 96 GB     | discard, relatime                | standard          |       |
+|                     | /usr/local  | EXT4 | 32 GB     | discard, relatime, nodev         | largefile         |       |
+|                     | /opt        | EXT4 | 32 GB     | discard, relatime, nodev         | largefile         |       |
+|                     | /home       | EXT4 | remaining | discard, relatime, nodev, nosuid | standard          |       |
+| sdb (1 TB spinning) |             | SWAP | 128 GB    |                                  |                   |       |
+|                     | /var        | EXT4 | 128 GB    | relatime, nodev, nosuid          | news              |       |
+|                     | /tmp        | EXT4 | 128 GB    | relatime, nodev, nosuid, noexec  | news              |       |
+|                     | /data       | EXT4 | remaining | relatime, nodev, nosuid, noexec  | largefile4        |       |
+| RAID10              | /samba      | EXT4 | 4 TB      | relatime, nodev, nosuid, noexec  | largefile4        |       |
 
-Another example for larger disks.
+More examples for larger disks.
 
-| Drive               | Mount Point | Type | Size      | Mount Options                    | Other         |
-|---------------------|-------------|------|-----------|----------------------------------|---------------|
-| sda (512 GB NVME)   |             | EFI  | 512 MB    |                                  | Bootable      |
-|                     | /           | EXT4 | 128 GB    | discard, relatime                |               |
-|                     | /usr/local  | EXT4 | 96 GB     | discard, relatime, nodev         |               |
-|                     | /opt        | EXT4 | 96 GB     | discard, relatime, nodev         |               | 
-|                     | /home       | EXT4 | remaining | discard, relatime, nodev, nosuid |               |
-| sdb (2 TB spinning) |             | SWAP | 196 GB    |                                  | 128 GB memory |
-|                     | /var        | EXT4 | 256 GB    | relatime, nodev, nosuid          |               |
-|                     | /tmp        | EXT4 | 256 GB    | relatime, nodev, nosuid, noexec  |               |
-|                     | /data       | EXT4 | remaining | relatime, nodev, nosuid, noexec  |               |
-| RAID10              | /samba      | EXT4 | 4 TB      | relatime, nodev, nosuid, noexec  | largefile     |
+| Drive               | Mount Point | Type | Size      | Mount Options                    | Typical Usage     | Note          |
+|---------------------|-------------|------|-----------|----------------------------------|-------------------|---------------|
+| sda (512 GB NVMe)   |             | EFI  | 512 MB    |                                  |                   | FAT32         |
+|                     | /           | EXT4 | 128 GB    | discard, relatime                | standard          |               |
+|                     | /usr/local  | EXT4 | 96 GB     | discard, relatime, nodev         | largefile         |               |
+|                     | /opt        | EXT4 | 96 GB     | discard, relatime, nodev         | largefile         |               |
+|                     | /home       | EXT4 | remaining | discard, relatime, nodev, nosuid | standard          |               |
+| sdb (2 TB spinning) |             | SWAP | 196 GB    |                                  |                   | 128 GB memory |
+|                     | /var        | EXT4 | 256 GB    | relatime, nodev, nosuid          | news              |               |
+|                     | /tmp        | EXT4 | 256 GB    | relatime, nodev, nosuid, noexec  | news              |               |
+|                     | /data       | EXT4 | remaining | relatime, nodev, nosuid, noexec  | largefile4        |               |
+| RAID10              | /samba      | EXT4 | 4 TB      | relatime, nodev, nosuid, noexec  | largefile4        |               |
+
+| Drive           | Mount Point | Type | Size      | Mount Options                            | Typical Usage     | Note          |
+|-----------------|-------------|------|-----------|------------------------------------------|-------------------|---------------|
+| sda (2 TB NVMe) |             | EFI  | 512 MB    |                                          |                   | FAT32         |
+|                 |             | SWAP | 128 GB    |                                          |                   | 128 GB memory |
+|                 | /           | EXT4 | 128 GB    | discard, relatime                        | standard          |               |
+|                 | /tmp        | EXT4 | 256 GB    | discard, relatime, nodev, nosuid, noexec | news              |               |
+|                 | /var        | EXT4 | 256 GB    | discard, relatime, nodev, nosuid         | news              |               |
+|                 | /opt        | EXT4 | 256 GB    | discard, relatime, nodev                 | largefile         |               |
+|                 | /usr/local  | EXT4 | 256 GB    | discard, relatime, nodev                 | largefile         |               |
+|                 | /home       | EXT4 | remaining | discard, relatime, nodev, nosuid         | standard          |               |
+| RAID10          | /samba      | EXT4 | 32 TB     | relatime, nodev, nosuid, noexec          | largefile4        |               |
 
 Finally it lets you review the partitions. Scroll to the bottom of the review list, choose `Finish partitioning and write changes to disk`.
 
@@ -120,3 +132,4 @@ In fact, this applied not only to RAID partitions but also to any partition. Not
     * [Solid State Drives - Arch Linux Wiki](https://wiki.archlinux.org/index.php/Solid_State_Drives)
 
 **Go back to [Installation](0200-install.md)**
+
