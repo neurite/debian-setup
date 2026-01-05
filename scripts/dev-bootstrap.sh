@@ -23,6 +23,7 @@ echo "About to update and upgrade the system..."
 sleep 3s
 
 apt-get -q -y update
+# TODO: Optionally turn it on with a switch -upgrade-system
 apt-get -q -y dist-upgrade
 apt-get -q -y autoremove
 apt-get -q -y autoclean
@@ -39,12 +40,10 @@ apt-get -q -y install curl wget
 
 # Security tools
 # ==================
-# ca-certificates: certificate authorities shipped with Mozilla's browser
 # openssl: OpenSSL's implementation of SSL and TLS
-# gnupg: the full suite of GnuPG tools
-# gpg: part of gnupg, for public key operations only
-# dirmngr: part of gnupg, for managing and downloading OpenPGP and X.509 certificates
-apt-get -q -y install ca-certificates openssl gnupg gpg dirmngr
+# ca-certificates: certificate authorities shipped with Mozilla's browser
+# gnupg: the full suite of GnuPG tools for cryptographic communications and data storage
+apt-get -q -y install openssl ca-certificates gnupg
 
 # git
 # ==================
@@ -52,12 +51,6 @@ apt-get -q -y install git
 
 # Fonts
 # ==================
-# CJK fonts
-apt-get -q -y install fonts-arphic-ukai \
-                      fonts-arphic-uming \
-                      fonts-ipafont-mincho \
-                      fonts-ipafont-gothic \
-                      fonts-unfonts-core
 
 # Monospaced fonts
 apt-get -q -y install ttf-anonymous-pro fonts-inconsolata
@@ -73,11 +66,20 @@ fc-cache -fv
 # Clean up
 rm -r source-code-pro
 
+# CJK fonts
+# TODO: Make CJK fonts optional with a switch to turn it on --add-cjk-fonts
+apt-get -q -y install fonts-arphic-ukai \
+                      fonts-arphic-uming \
+                      fonts-ipafont-mincho \
+                      fonts-ipafont-gothic \
+                      fonts-unfonts-core
+
 # Monospaced CJK from Adobe
-wget https://github.com/adobe-fonts/source-han-mono/releases/download/1.002/SourceHanMono.ttc
-mkdir -p /usr/local/share/fonts/adobe
-mv SourceHanMono.ttc /usr/local/share/fonts/adobe
+git clone https://github.com/adobe-fonts/source-han-mono.git
+mkdir -p /usr/local/share/fonts/adobe/source-han-mono
+find source-han-mono -name "*.otf" -print0 | xargs -0 cp -t /usr/local/share/fonts/adobe/source-han-mono
 fc-cache -fv
+rm -r source-han-mono
 
 # Build tools
 # ==================
@@ -117,7 +119,18 @@ apt-get -q -y install vim-gtk3
 
 # Java
 # ==================
+
+# To see and choose the default Java commands:
+#   sudo update-alternatives --config java
+#   sudo update-alternatives --config javac
+#   sudo update-alternatives --config jar
+
+# Default JDK for Debian bookworm (see package default-jdk)
 apt-get -q -y install openjdk-17-jdk openjdk-17-source
+# Default JDK for Debian trixie (see package default-jdk)
+apt-get -q -y install openjdk-21-jdk openjdk-21-source
+# Latest JDK available on Debian trixie
+apt-get -q -y install openjdk-25-jdk openjdk-25-source
 
 # conda
 # ==================
