@@ -1,5 +1,33 @@
 #!/usr/bin/env bash
 
+# A companion hardening directive
+# IFS - Internal Field Separator
+# It removes space as a word delimiter from the original IFS.
+IFS=$'\n\t'
+
+# Create transaction-grade execution semantics.
+# set -E: Enable errtrace
+#    Inherit ERR traps everywhere in addition to direct statments such as functions.
+# set -e: Exit on Error
+#    Immediately terminates the script if any command returns a non-zero exit status.
+# set -u: Treat Unset Variables as Errors
+#    Any reference to an undefined variable immediately terminates the script.
+# set -o: pipefail
+#    A pipeline fails if any command inside the pipeline fails
+set -Eeuo pipefail
+
+# Add cleanup trap
+# This is where you would:
+# - Remove temporary files
+# - Release locks
+# - Stop background processes
+# - Roll back partial operations
+# Note ERR is fired when set -e
+cleanup() {
+    echo "Script failed at line $1"
+}
+trap 'cleanup $LINENO' ERR
+
 ### Check preconditions
 
 echo "About to check preconditions..."
