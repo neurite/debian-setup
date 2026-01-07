@@ -67,29 +67,32 @@ echo "Done updating the repositories."
 echo "About to install packages..."
 sleep 3s
 
-# For commandline downloading
+# Tools for downloading
+# ======================
 apt-get -q -y install curl wget
 
 # Security tools
-# ==================
+# ======================
 # openssl: OpenSSL's implementation of SSL and TLS
 # ca-certificates: certificate authorities shipped with Mozilla's browser
 # gnupg: the full suite of GnuPG tools for cryptographic communications and data storage
 apt-get -q -y install openssl ca-certificates gnupg
 
 # git
-# ==================
+# ======================
 apt-get -q -y install git
 
 # Fonts
-# ==================
+# ======================
 
 # Monospaced fonts
 apt-get -q -y install ttf-anonymous-pro fonts-inconsolata
 
 # Monospaced Source Code Pro from Adobe
 # Note the default branch is release which is what we want
-git clone https://github.com/adobe-fonts/source-code-pro.git
+if [[ ! -d "source-code-pro" ]]; then
+    git clone --depth 1 https://github.com/adobe-fonts/source-code-pro.git
+fi
 mkdir -p /usr/local/share/fonts/adobe/source-code-pro
 # The otf files are a newer format than ttf files
 cp source-code-pro/OTF/*otf /usr/local/share/fonts/adobe/source-code-pro/
@@ -106,8 +109,10 @@ apt-get -q -y install fonts-arphic-ukai \
                       fonts-ipafont-gothic \
                       fonts-unfonts-core
 
-# Monospaced CJK from Adobe
-git clone https://github.com/adobe-fonts/source-han-mono.git
+# Monospaced CJK - Source Han Mono from Adobe
+if [[ ! -d "source-han-mono" ]]; then
+    git clone https://github.com/adobe-fonts/source-han-mono.git
+fi
 mkdir -p /usr/local/share/fonts/adobe/source-han-mono
 find source-han-mono -name "*.otf" -print0 | xargs -0 cp -t /usr/local/share/fonts/adobe/source-han-mono
 fc-cache -fv
