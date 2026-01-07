@@ -193,7 +193,7 @@ apt-get -q -y install conda
 # Init conda at login
 ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
 
-echo "Done. Rebooting..."
-sleep 3s
-
+echo "Done. System will reboot in 30 seconds."
+echo "Press Ctrl+C to cancel the reboot."
+sleep 30
 reboot
