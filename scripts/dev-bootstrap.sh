@@ -5,6 +5,8 @@
 # It removes space as a word delimiter from the original IFS.
 IFS=$'\n\t'
 
+### Error handling
+
 # Create transaction-grade execution semantics.
 # set -E: Enable errtrace
 #    Inherit ERR traps everywhere in addition to direct statments such as functions.
@@ -45,18 +47,14 @@ echo "Done checking preconditions."
 
 export DEBIAN_FRONTEND=noninteractive
 
-### Update and upgrade
+### Update apt
 
-echo "About to update and upgrade the system..."
+echo "About to update the repositories..."
 sleep 3s
 
 apt-get -q -y update
-# TODO: Optionally turn it on with a switch -upgrade-system
-apt-get -q -y dist-upgrade
-apt-get -q -y autoremove
-apt-get -q -y autoclean
 
-echo "Done updating and upgrading the system."
+echo "Done updating the repositories."
 
 ### Various packages, tools for development
 
@@ -183,15 +181,6 @@ apt-get -q -y install conda
 
 # Init conda at login
 ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
-
-echo "Done installing. Cleaning up..."
-
-### Clean up
-
-apt-get -q -y update
-apt-get -q -y dist-upgrade
-apt-get -q -y autoremove
-apt-get -q -y autoclean
 
 echo "Done. Rebooting..."
 sleep 3s
