@@ -41,6 +41,12 @@ if [[ "${EUID}" -ne 0 ]]; then
     exit 1
 fi
 
+# Check for network before starting
+if ! ping -c 1 8.8.8.8 &> /dev/null; then
+    echo "[ERROR] No network connectivity detected"
+    exit 1
+fi
+
 echo "Done checking preconditions."
 
 ### Non-interactive
