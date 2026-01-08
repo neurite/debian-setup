@@ -2,8 +2,6 @@
 
 ### Overview
 
-##### Tools & libraries
-
 1. Web tools (curl, wget)
 2. Security tools (openssl, gnupg)
 3. git
@@ -46,3 +44,4 @@ bash /home/<usr>/Workspace/debian-setup/scripts/dev-bootstrap.sh
 7. `fc-list`
 
 **Next step: [nvidia](0302-nvidia.md)**
+
