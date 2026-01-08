@@ -133,7 +133,7 @@ apt-get -q -y install git
 # ======================
 
 # Monospaced fonts
-apt-get -q -y install ttf-anonymous-pro fonts-inconsolata
+apt-get -q -y install fonts-anonymous-pro fonts-inconsolata
 
 # Monospaced Source Code Pro from Adobe
 # Note the default branch is release which is what we want
