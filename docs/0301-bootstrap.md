@@ -33,6 +33,14 @@ sudo su
 bash /home/<usr>/Workspace/debian-setup/scripts/dev-bootstrap.sh
 ```
 
+Options
+```bash
+    --add-cjk-fonts     Install CJK (Chinese, Japanese, Korean) fonts
+    --add-jdk           Install the recommended version of JDK
+    --add-conda         Install conda
+    -h, --help          Show this help message
+```
+
 ### Verify
 
 1. `git --version`
@@ -44,4 +52,5 @@ bash /home/<usr>/Workspace/debian-setup/scripts/dev-bootstrap.sh
 7. `fc-list`
 
 **Next step: [nvidia](0302-nvidia.md)**
+
 
