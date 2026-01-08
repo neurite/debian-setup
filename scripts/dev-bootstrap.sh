@@ -5,7 +5,7 @@
 # It removes space as a word delimiter from the original IFS.
 IFS=$'\n\t'
 
-### Error handling
+### Set up error handling
 
 # Create transaction-grade execution semantics.
 # set -E: Enable errtrace
@@ -49,9 +49,56 @@ fi
 
 echo "Done checking preconditions."
 
-### Non-interactive
-
+### Set non-interactive
 export DEBIAN_FRONTEND=noninteractive
+
+### Parse command-line arguments
+
+ADD_CJK_FONTS=false
+ADD_JDK=false
+ADD_CONDA=false
+
+# Note $0 is the script name itself
+show_usage() {
+    echo "Usage: $0 [OPTIONS]"
+    echo ""
+    echo "Options:"
+    echo "  --add-cjk-fonts     Install CJK (Chinese, Japanese, Korean) fonts"
+    echo "  --add-jdk           Install the recommended version of JDK"
+    echo "  --add-conda         Install conda"
+    echo "  -h, --help          Show this help message"
+    echo ""
+}
+
+# Loop through the arguments
+# $# Count of arguments
+# $0  The script name itself
+# $1  First argument
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --add-cjk-fonts)
+            ADD_CJK_FONTS=true
+            shift  # Remove first argument, $# decreases by 1
+            ;;
+        --add-jdk)
+            ADD_JDK=true
+            shift  # Remove first argument, $# decreases by 1
+            ;;
+        --add-conda)
+            ADD_CONDA=true
+            shift  # Remove first argument, $# decreases by 1
+            ;;
+        -h|--help)
+            show_usage
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1"
+            show_usage
+            exit 1
+            ;;
+    esac
+done
 
 ### Update apt
 
@@ -101,22 +148,27 @@ fc-cache -fv
 # Clean up
 rm -r source-code-pro
 
-# CJK fonts
-# TODO: Make CJK fonts optional with a switch to turn it on --add-cjk-fonts
-apt-get -q -y install fonts-arphic-ukai \
-                      fonts-arphic-uming \
-                      fonts-ipafont-mincho \
-                      fonts-ipafont-gothic \
-                      fonts-unfonts-core
-
-# Monospaced CJK - Source Han Mono from Adobe
-if [[ ! -d "source-han-mono" ]]; then
-    git clone https://github.com/adobe-fonts/source-han-mono.git
+# CJK fonts - optional
+# In bash, everything is a string. So we check the string value "true" or "false" directly
+if [[ "$ADD_CJK_FONTS" == true ]]; then
+    echo "Installing CJK fonts..."
+    apt-get -q -y install fonts-noto-cjk \
+                          fonts-noto-cjk-extra \
+                          fonts-ipaexfont \
+                          fonts-nanum \
+                          fonts-nanum-extra
+    # Monospaced CJK - Source Han Mono from Adobe
+    if [[ ! -d "source-han-mono" ]]; then
+        git clone https://github.com/adobe-fonts/source-han-mono.git
+    fi
+    mkdir -p /usr/local/share/fonts/adobe/source-han-mono
+    find source-han-mono -name "*.otf" -print0 | xargs -0 cp -t /usr/local/share/fonts/adobe/source-han-mono
+    fc-cache -fv
+    rm -r source-han-mono
+    echo "CJK fonts installed."
+else
+    echo "Skipping CJK fonts (use --add-cjk-fonts to install)."
 fi
-mkdir -p /usr/local/share/fonts/adobe/source-han-mono
-find source-han-mono -name "*.otf" -print0 | xargs -0 cp -t /usr/local/share/fonts/adobe/source-han-mono
-fc-cache -fv
-rm -r source-han-mono
 
 # Build tools
 # ==================
@@ -156,42 +208,43 @@ apt-get -q -y install vim-gtk3
 
 # Java
 # ==================
-
-# To see and choose the default Java commands:
-#   sudo update-alternatives --config java
-#   sudo update-alternatives --config javac
-#   sudo update-alternatives --config jar
-
-# Default JDK for Debian bookworm (see package default-jdk)
-apt-get -q -y install openjdk-17-jdk openjdk-17-source
-# Default JDK for Debian trixie (see package default-jdk)
-apt-get -q -y install openjdk-21-jdk openjdk-21-source
-# Latest JDK available on Debian trixie
-apt-get -q -y install openjdk-25-jdk openjdk-25-source
+if [[ "$ADD_JDK" == true ]]; then
+    echo "Installing JDK..."
+    apt-get -q -y install default-jdk
+    echo "JDK installed."
+else
+    echo "Skipping JDK (use --add-jdk to install)."
+fi
 
 # conda
 # ==================
 # Installs miniconda via the repository
-# Install our public GPG key to trusted store
-curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg
-install -o root -g root -m 644 conda.gpg /usr/share/keyrings/conda-archive-keyring.gpg
-rm conda.gpg
-
-# Check whether fingerprint is correct (will output an error message otherwise)
-gpg --keyring /usr/share/keyrings/conda-archive-keyring.gpg --no-default-keyring \
-    --fingerprint 34161F5BF5EB1D4BFBBB8F0A8AEB4F8B29D82806
-
-# Add our Debian repo
-DEB_CONDA="deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg]"
-DEB_CONDA+=" https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main"
-echo "${DEB_CONDA}" > /etc/apt/sources.list.d/conda.list
-
-# Install conda
-apt-get -q -y update
-apt-get -q -y install conda
-
-# Init conda at login
-ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+if [[ "$ADD_CONDA" == true ]]; then
+    echo "Installing conda..."
+    # Install our public GPG key to trusted store
+    curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg
+    install -o root -g root -m 644 conda.gpg /usr/share/keyrings/conda-archive-keyring.gpg
+    rm conda.gpg
+    
+    # Check whether fingerprint is correct (will output an error message otherwise)
+    gpg --keyring /usr/share/keyrings/conda-archive-keyring.gpg --no-default-keyring \
+        --fingerprint 34161F5BF5EB1D4BFBBB8F0A8AEB4F8B29D82806
+    
+    # Add our Debian repo
+    DEB_CONDA="deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg]"
+    DEB_CONDA+=" https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main"
+    echo "${DEB_CONDA}" > /etc/apt/sources.list.d/conda.list
+    
+    # Install conda
+    apt-get -q -y update
+    apt-get -q -y install conda
+    
+    # Init conda at login
+    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+    echo "Conda installed."
+else
+    echo "Skipping conda (use --add-conda to install)."
+fi
 
 echo "Done. System will reboot in 30 seconds."
 echo "Press Ctrl+C to cancel the reboot."
