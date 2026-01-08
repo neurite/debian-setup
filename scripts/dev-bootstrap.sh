@@ -159,7 +159,7 @@ if [[ "$ADD_CJK_FONTS" == true ]]; then
                           fonts-nanum-extra
     # Monospaced CJK - Source Han Mono from Adobe
     if [[ ! -d "source-han-mono" ]]; then
-        git clone https://github.com/adobe-fonts/source-han-mono.git
+        git clone --depth 1 https://github.com/adobe-fonts/source-han-mono.git
     fi
     mkdir -p /usr/local/share/fonts/adobe/source-han-mono
     find source-han-mono -name "*.otf" -print0 | xargs -0 cp -t /usr/local/share/fonts/adobe/source-han-mono
