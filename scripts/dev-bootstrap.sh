@@ -189,8 +189,9 @@ apt-get -q -y install dpkg-dev libc6-dev gcc g++ gfortran make check
 apt-get -q -y install dstat htop strace lsof
 
 # Optimized linear algebra libraries
+# Install the OpenBLAS implementation
 # ======================================
-apt-get -q -y install libopenblas-base libopenblas-dev
+apt-get -q -y install libopenblas-dev
 
 # dkms
 # ==================
