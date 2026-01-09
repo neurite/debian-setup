@@ -132,6 +132,9 @@ apt-get -q -y install git
 # Fonts
 # ======================
 
+# To use commands like fc-cache later
+apt-get -q -y install fontconfig
+
 # Monospaced fonts
 apt-get -q -y install fonts-anonymous-pro fonts-inconsolata
 
