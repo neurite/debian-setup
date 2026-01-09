@@ -125,6 +125,11 @@ apt-get -q -y install curl wget
 # gnupg: the full suite of GnuPG tools for cryptographic communications and data storage
 apt-get -q -y install openssl ca-certificates gnupg
 
+# File transfer tools
+# ======================
+# Example, rsync -avP "/path/to/source-folder/" <username>@<hostname>:"/path/to/destination-folder/"
+apt-get -q -y install openssh-server rsync
+
 # git
 # ======================
 apt-get -q -y install git
