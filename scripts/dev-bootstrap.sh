@@ -54,7 +54,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 ### Parse command-line arguments
 
-ADD_CJK_FONTS=false
+ADD_CJK=false
 ADD_JDK=false
 
 # Note $0 is the script name itself
@@ -62,9 +62,9 @@ show_usage() {
     echo "Usage: $0 [OPTIONS]"
     echo ""
     echo "Options:"
-    echo "  --add-cjk-fonts     Install CJK (Chinese, Japanese, Korean) fonts"
-    echo "  --add-jdk           Install the recommended version of JDK"
-    echo "  -h, --help          Show this help message"
+    echo "  --add-cjk   Install CJK (Chinese, Japanese, Korean) fonts"
+    echo "  --add-jdk   Install the recommended version of JDK"
+    echo "  -h, --help  Show this help message"
     echo ""
 }
 
@@ -74,8 +74,8 @@ show_usage() {
 # $1  First argument
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --add-cjk-fonts)
-            ADD_CJK_FONTS=true
+        --add-cjk)
+            ADD_CJK=true
             shift  # Remove first argument, $# decreases by 1
             ;;
         --add-jdk)
@@ -152,7 +152,7 @@ rm -r source-code-pro
 
 # CJK fonts - optional
 # In bash, everything is a string. So we check the string value "true" or "false" directly
-if [[ "$ADD_CJK_FONTS" == true ]]; then
+if [[ "$ADD_CJK" == true ]]; then
     echo "Installing CJK fonts..."
     apt-get -q -y install fonts-noto-cjk \
                           fonts-noto-cjk-extra \
@@ -169,7 +169,7 @@ if [[ "$ADD_CJK_FONTS" == true ]]; then
     rm -r source-han-mono
     echo "CJK fonts installed."
 else
-    echo "Skipping CJK fonts (use --add-cjk-fonts to install)."
+    echo "Skipping CJK fonts (use --add-cjk to install)."
 fi
 
 # Build tools
