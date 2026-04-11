@@ -56,7 +56,6 @@ export DEBIAN_FRONTEND=noninteractive
 
 ADD_CJK_FONTS=false
 ADD_JDK=false
-ADD_CONDA=false
 
 # Note $0 is the script name itself
 show_usage() {
@@ -65,7 +64,6 @@ show_usage() {
     echo "Options:"
     echo "  --add-cjk-fonts     Install CJK (Chinese, Japanese, Korean) fonts"
     echo "  --add-jdk           Install the recommended version of JDK"
-    echo "  --add-conda         Install conda"
     echo "  -h, --help          Show this help message"
     echo ""
 }
@@ -82,10 +80,6 @@ while [[ $# -gt 0 ]]; do
             ;;
         --add-jdk)
             ADD_JDK=true
-            shift  # Remove first argument, $# decreases by 1
-            ;;
-        --add-conda)
-            ADD_CONDA=true
             shift  # Remove first argument, $# decreases by 1
             ;;
         -h|--help)
@@ -223,36 +217,6 @@ if [[ "$ADD_JDK" == true ]]; then
     echo "JDK installed."
 else
     echo "Skipping JDK (use --add-jdk to install)."
-fi
-
-# conda
-# ==================
-# Installs miniconda via the repository
-if [[ "$ADD_CONDA" == true ]]; then
-    echo "Installing conda..."
-    # Install our public GPG key to trusted store
-    curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg
-    install -o root -g root -m 644 conda.gpg /usr/share/keyrings/conda-archive-keyring.gpg
-    rm conda.gpg
-    
-    # Check whether fingerprint is correct (will output an error message otherwise)
-    gpg --keyring /usr/share/keyrings/conda-archive-keyring.gpg --no-default-keyring \
-        --fingerprint 34161F5BF5EB1D4BFBBB8F0A8AEB4F8B29D82806
-    
-    # Add our Debian repo
-    DEB_CONDA="deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg]"
-    DEB_CONDA+=" https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main"
-    echo "${DEB_CONDA}" > /etc/apt/sources.list.d/conda.list
-    
-    # Install conda
-    apt-get -q -y update
-    apt-get -q -y install conda
-    
-    # Init conda at login
-    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
-    echo "Conda installed."
-else
-    echo "Skipping conda (use --add-conda to install)."
 fi
 
 echo "Done. System will reboot in 30 seconds."
