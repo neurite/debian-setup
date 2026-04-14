@@ -32,7 +32,7 @@ There are 4 tiers of packages to install, each serving a distinct purpose and bu
     2. [nvidia-driver 550.163.01 (trixie)](https://packages.debian.org/trixie/nvidia-driver)
     3. [nvidia-driver 535.216.03 (bookworm-backports)](https://packages.debian.org/bookworm-backports/nvidia-driver)
     4. [nvidia-driver 535.261.03 (bookworm)](https://packages.debian.org/bookworm/nvidia-driver)
-    5. [nvidia-driver 470.256 (bullseye)](https://packages.debian.org/bullseye/nvidia-driver)
+    5. [nvidia-driver 470.256.02 (bullseye)](https://packages.debian.org/bullseye/nvidia-driver)
 3. CUDA toolkit - the development toolkit for GPU computing
     1. [nvidia-cuda-toolkit 12.4.131 (trixie)](https://packages.debian.org/trixie/nvidia-cuda-toolkit)
     2. [nvidia-cuda-toolkit 11.8.89 (bookworm)](https://packages.debian.org/bookworm/nvidia-cuda-toolkit)
