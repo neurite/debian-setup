@@ -1,112 +1,94 @@
 ## NVIDIA
 
+
 ### Table of Contents
 
-   * [Package Tiers](#package-tiers)
-   * [Package Versions](#package-versions)
-       * [Sources](#sources)
-       * [Compatible Versions](#compatible-versions)
-   * [Installation](#installation)
-       1. [Linux headers](#1-linux-headers)
-       2. [DKMS](#2-dkms)
-       3. [Graphics drivers](#3-graphics-drivers)
-       4. [CUDA toolkit](#4-cuda-toolkit)
-   * [Conda for CUDA and cuDNN](#conda-for-cuda-and-cudnn)
+  * [Package Versions](#package-versions)
+    * [Package tiers](#package-tiers)
+    * [Other sources](#other-sources)
+    * [Compatible hardware](#compatible-hardware)
+  * [Installation](#installation)
+    * [Linux headers](#1-linux-headers)
+    * [DKMS](#2-dkms)
+    * [Graphics drivers](#3-graphics-drivers)
+    * [CUDA toolkit](#4-cuda-toolkit)
+  * [Conda for CUDA and cuDNN](#conda-for-cuda-and-cudnn)
 
-
-### Package Tiers
-
-We have 4 tiers of packages to install. They are tiered because a particular tier depends on packages of previous tiers. Depending on the need, the last 2 tiers can be optional. Here is the landscape of the package tiers:
-
-1. Linux headers
-    1. [linux-headers-amd64 6.0 (bullseye-backports)](https://packages.debian.org/bullseye-backports/linux-headers-amd64)
-    2. [linux-headers-amd64 5.10 (bullseye)](https://packages.debian.org/bullseye/linux-headers-amd64)
-    3. [linux-headers-amd64 5.10 (buster-backports)](https://packages.debian.org/buster-backports/linux-headers-amd64)
-    4. [linux-headers-amd64 4.19 (buster)](https://packages.debian.org/buster/linux-headers-amd64)
-2. NVIDIA graphics driver
-    1. [nvidia-driver 470.103 (bullseye-backports)](https://packages.debian.org/bullseye-backports/nvidia-driver)
-    2. [nvidia-driver 470.161 (bullseye)](https://packages.debian.org/bullseye/nvidia-driver)
-    3. [nvidia-driver 470.141 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-driver)
-    4. [nvidia-driver 418.226 (buster)](https://packages.debian.org/buster/nvidia-driver)
-    5. [NVIDIA list](http://www.nvidia.com/object/unix.html)
-3. NVIDIA CUDA toolkit
-    1. [nvidia-cuda-toolkit 11.2.2 (bullseye)](https://packages.debian.org/bullseye/nvidia-cuda-toolkit)
-    2. [nvidia-cuda-toolkit 11.2.2 (buster-backports)](https://packages.debian.org/buster-backports/nvidia-cuda-toolkit)
-    3. [nvidia-cuda-toolkit 9.2.148 (buster)](https://packages.debian.org/buster/nvidia-cuda-toolkit)
-    4. [anaconda cudatoolkit](https://anaconda.org/anaconda/cudatoolkit)
-    5. [NVIDIA doc](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)
-4. cuDNN
-    1. [anaconda cudnn](https://anaconda.org/anaconda/cudnn)
-    2. [NVIDIA doc](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/)
-
-Other NVIDIA deep learning packages, such as [TensorRT](https://developer.nvidia.com/tensorrt) and [NCCL](https://developer.nvidia.com/nccl), are not covered here.
 
 ### Package Versions
 
-#### Sources
+#### Package tiers
 
-##### 1. Debian
+There are 4 tiers of packages to install, each serving a distinct purpose and building on the tiers before it. Depending on your environment — [uv](https://docs.astral.sh/uv/), conda, or bare-metal Python — the final 2 tiers may be optional when installing on Debian. The package tier landscape is as follows:
 
-Debian has older versions of the NVIDIA packages. But installation is a breeze. As of Debian Bullseye, there is no cuDNN. The package [nvidia-cudnn](https://packages.debian.org/bookworm/nvidia-cudnn) is being tested. 
+1. Linux headers
+    1. [linux-headers-amd64 6.19 (trixie-backports)](https://packages.debian.org/trixie-backports/linux-headers-amd64)
+    2. [linux-headers-amd64 6.12 (trixie)](https://packages.debian.org/trixie/linux-headers-amd64)
+    3. [linux-headers-amd64 6.12 (bookworm-backports)](https://packages.debian.org/bookworm-backports/linux-headers-amd64)
+    4. [linux-headers-amd64 6.1 (bookworm)](https://packages.debian.org/bookworm/linux-headers-amd64)
+    5. [linux-headers-amd64 5.10 (bullseye)](https://packages.debian.org/bullseye/linux-headers-amd64)
+2. NVIDIA graphics driver
+    1. [nvidia-driver 550.163.01 (trixie-backports)](https://packages.debian.org/trixie-backports/nvidia-driver)
+    2. [nvidia-driver 550.163.01 (trixie)](https://packages.debian.org/trixie/nvidia-driver)
+    3. [nvidia-driver 535.216.03 (bookworm-backports)](https://packages.debian.org/bookworm-backports/nvidia-driver)
+    4. [nvidia-driver 535.261.03 (bookworm)](https://packages.debian.org/bookworm/nvidia-driver)
+    5. [nvidia-driver 470.256 (bullseye)](https://packages.debian.org/bullseye/nvidia-driver)
+3. CUDA toolkit - the development toolkit for GPU computing
+    1. [nvidia-cuda-toolkit 12.4.131 (trixie)](https://packages.debian.org/trixie/nvidia-cuda-toolkit)
+    2. [nvidia-cuda-toolkit 11.8.89 (bookworm)](https://packages.debian.org/bookworm/nvidia-cuda-toolkit)
+    3. [nvidia-cuda-toolkit 11.2.2 (bullseye)](https://packages.debian.org/bullseye/nvidia-cuda-toolkit)
+4. cuDNN - the Deep Neural Network library
+    1. [nvidia-cudnn 9.0.0 (trixie)](https://packages.debian.org/trixie/nvidia-cudnn)
+    2. [nvidia-cudnn 8.5.0 (bookworm)](https://packages.debian.org/bookworm/nvidia-cudnn)
 
-##### 2. NVIDIA
+#### Other Sources
 
-NVIDIA provides the latest versions. NVIDIA has good documentation on [CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which describes the installation of both the graphics drivers and the CUDA toolkit. NVIDIA also has detailed documention on [cuDNN installation](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/). Note you must register with NVIDIA to download and install cuDNN. In the cuDNN documentation, you can clearly see the 2 prerequisites: graphics drivers and CUDA.
+##### NVIDIA
 
-NVIDIA installation supports Debian Bullseye 11.2 (kernel 5.10).
+NVIDIA provides the latest versions.
 
-##### 3. Conda
+Here is the [NVIDIA graphics driver list for UNIX](https://www.nvidia.com/en-us/drivers/unix/).
 
-Conda provides CUDA toolkit and cuDNN. Note they requires compatible versions of the graphics driver to function. In fact, conda has multiple channels providing CUDA toolkit and cuDNN. The default channel has [cudatoolkit](https://anaconda.org/anaconda/cudatoolkit) and [cudnn](https://anaconda.org/anaconda/cudnn). The conda-forge channel has newer versions of [cudatoolkit](https://anaconda.org/conda-forge/cudatoolkit) and [cudnn](https://anaconda.org/conda-forge/cudnn). The NVIDIA channel has [cuda](https://anaconda.org/nvidia/cuda) and [cudnn](https://anaconda.org/nvidia/cudnn).
+NVIDIA has a good documentation on [CUDA installation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/), which describes the installation of the graphics driver and the CUDA toolkit.
 
-#### Compatible Versions
+NVIDIA also has detailed documention on [cuDNN installation](https://docs.nvidia.com/deeplearning/cudnn/installation/latest/index.html). In the cuDNN documentation, you can clearly see the 2 prerequisites: graphics drivers and CUDA.
+
+##### Conda
+
+Conda provides CUDA toolkit and cuDNN. Note they requires compatible versions of the graphics driver to function. In fact, conda has multiple channels providing CUDA toolkit and cuDNN. The default anaconda channel has [cudatoolkit](https://anaconda.org/anaconda/cudatoolkit) and [cudnn](https://anaconda.org/anaconda/cudnn). The conda-forge channel has newer versions of [cudatoolkit](https://anaconda.org/conda-forge/cudatoolkit) and [cudnn](https://anaconda.org/conda-forge/cudnn). The NVIDIA channel has the most up-to-date [cuda](https://anaconda.org/nvidia/cuda) and [cudnn](https://anaconda.org/nvidia/cudnn).
+
+#### Compatible Hardware
 
 First, choose the version of the graphics driver that is compatible with the GPUs at hand. For example, for 2070 Super, the graphics driver from `buster-backports` or later is needed. For 3080 TI, `bullseye` or later is needed.
 
 | Debian Release     | NVIDIA graphics driver | Supported GPUs | Note |
 |--------------------|------------------------|----------------|------|
-| bullseye-backports | [nvidia-driver 470.103.01](https://packages.debian.org/bullseye-backports/nvidia-driver) | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/470.103.01/README/supportedchips.html) |                           |
-| bullseye           | [nvidia-driver 470.161.03](https://packages.debian.org/bullseye/nvidia-driver)            | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/460.91.03/README/supportedchips.html)  | 3070 ti, 3080 ti          |
-| buster-backports   | [nvidia-driver 470.141.03](https://packages.debian.org/buster-backports/nvidia-driver)   | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/460.73.01/README/supportedchips.html)  | 20xx super, 30xx, 3060 ti |
-| buster             | [nvidia-driver 418.226.00](https://packages.debian.org/buster/nvidia-driver)               | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/418.113/README/supportedchips.html)    | 20xx, 20xx ti             |
+| trixie-backports   | [nvidia-driver 550.163.01](https://packages.debian.org/trixie-backports/nvidia-driver)    | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/550.163.01/README/supportedchips.html)  | Geforce RTX 40xx          |
+| trixie             | [nvidia-driver 550.163.01](https://packages.debian.org/trixie/nvidia-driver)              | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/550.163.01/README/supportedchips.html)  | Geforce RTX 40xx          |
+| bookworm-backports | [nvidia-driver 535.216.03](https://packages.debian.org/bookworm-backports/nvidia-driver)  | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/535.216.01/README/supportedchips.html)  | Geforce RTX 40xx          |
+| bookworm           | [nvidia-driver 535.261.03](https://packages.debian.org/bookworm/nvidia-driver)            | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/535.261.03/README/supportedchips.html)  | Geforce RTX 40xx          |
+| bullseye           | [nvidia-driver 470.256.02](https://packages.debian.org/bullseye/nvidia-driver)            | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/470.256.02/README/supportedchips.html)  | Geforce RTX 30xx          |
+
 
 Second, it is critical that CUDA is supported by a **compatible graphics driver**. Here is a table copied from NVIDIA's release nots of [CUDA toolkit components](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#major-components):
 
 | CUDA Toolkit                | Linux x86_64 Driver Version | Windows x86_64 Driver Version |
 |-----------------------------|-----------------------------|-------------------------------|
-| CUDA 11.6 Update 1          | >=510.47.03                 | >=511.65                      |
-| CUDA 11.6 GA                | >=510.39.01                 | >=511.23                      |
-| CUDA 11.5 Update 2          | >=495.29.05                 | >=496.13                      |
-| CUDA 11.5 Update 1          | >=495.29.05                 | >=496.13                      |
-| CUDA 11.5 GA                | >=495.29.05                 | >=496.04                      |
-| CUDA 11.4 Update 4          | >=470.82.01                 | >=472.50                      |
-| CUDA 11.4 Update 3          | >=470.82.01                 | >=472.50                      |
-| CUDA 11.4 Update 2          | >=470.57.02                 | >=471.41                      |
-| CUDA 11.4 Update 1          | >=470.57.02                 | >=471.41                      |
-| CUDA 11.4.0 GA.             | >=470.42.01                 | >=471.11                      |
-| CUDA 11.3.1 Update 1        | >=465.19.01                 | >=465.89                      |
-| CUDA 11.3.0 GA              | >=465.19.01                 | >=465.89                      |
+| ...                         | ...                         | ...                           |
+| CUDA 12.4 Update 1          | >=550.54.15                 | >=551.78                      |
+| CUDA 12.4 GA                | >=550.54.14                 | >=551.61                      |
+| ...                         | ...                         | ...                           |
+| CUDA 11.8 GA                | >=520.61.05                 | >=520.06                      |
+| ...                         | ...                         | ...                           |
 | CUDA 11.2.2 Update 2        | >=460.32.03                 | >=461.33                      |
 | CUDA 11.2.1 Update 1        | >=460.32.03                 | >=461.09                      |
 | CUDA 11.2.0 GA              | >=460.27.03                 | >=460.82                      |
-| CUDA 11.1.1 Update 1        | >= 455.32                   | >= 456.81                     |
-| CUDA 11.1 GA                | >= 455.23                   | >= 456.38                     |
-| CUDA 11.0.3 Update 1        | >= 450.51.06                | >= 451.82                     |
-| CUDA 11.0.2 GA              | >= 450.51.05                | >= 451.48                     |
-| CUDA 11.0.1 RC              | >= 450.36.06                | >= 451.22                     |
-| CUDA 10.2.89                | >= 440.33                   | >= 441.22                     |
-| CUDA 10.1.105               | >= 418.39                   | >= 418.96                     |
-| CUDA 10.0.130               | >= 410.48                   | >= 411.31                     |
+| ...                         | ...                         | ...                           |
 | CUDA 9.2 (9.2.148 Update 1) | >= 396.37                   | >= 398.26                     |
 | CUDA 9.2 (9.2.88)           | >= 396.26                   | >= 397.44                     |
-| CUDA 9.1 (9.1.85)           | >= 390.46                   | >= 391.29                     |
-| CUDA 9.0 (9.0.76)           | >= 384.81                   | >= 385.54                     |
-| CUDA 8.0 (8.0.61 GA2)       | >= 375.26                   | >= 376.51                     |
-| CUDA 8.0 (8.0.44)           | >= 367.48                   | >= 369.30                     |
-| CUDA 7.5 (7.5.16)           | >= 352.31                   | >= 353.66                     |
-| CUDA 7.0 (7.0.28)           | >= 346.46                   | >= 347.62                     |
+| ...                         | ...                         | ...                           |
 
-When installing CUDA and cuDNN, you may need to lock down the versions to obtain compatibility.
+When installing CUDA and cuDNN, you might need to lock down the versions to obtain compatibility.
 
 ### Installation
 
