@@ -64,17 +64,19 @@ More examples for larger disks.
 |                     | /data       | EXT4 | remaining | relatime, nodev, nosuid, noexec  | largefile4        |               |
 | RAID10              | /samba      | EXT4 | 4 TB      | relatime, nodev, nosuid, noexec  | largefile4        |               |
 
-| Drive           | Mount Point | Type | Size      | Mount Options                            | Typical Usage     | Note          |
-|-----------------|-------------|------|-----------|------------------------------------------|-------------------|---------------|
-| sda (2 TB NVMe) |             | EFI  | 512 MB    |                                          |                   | FAT32         |
-|                 |             | SWAP | 128 GB    |                                          |                   | 128 GB memory |
-|                 | /           | EXT4 | 128 GB    | discard, relatime                        | standard          |               |
-|                 | /tmp        | EXT4 | 256 GB    | discard, relatime, nodev, nosuid, noexec | news              |               |
-|                 | /var        | EXT4 | 256 GB    | discard, relatime, nodev, nosuid         | news              |               |
-|                 | /opt        | EXT4 | 256 GB    | discard, relatime, nodev                 | largefile         |               |
-|                 | /usr/local  | EXT4 | 256 GB    | discard, relatime, nodev                 | largefile         |               |
-|                 | /home       | EXT4 | remaining | discard, relatime, nodev, nosuid         | standard          |               |
-| RAID10          | /samba      | EXT4 | 32 TB     | relatime, nodev, nosuid, noexec          | largefile4        |               |
+One 2 TB NVMe and a RAID10 array of 4x 16 TB spinning disks.
+
+| Drive           | Mount Point | Type | Size      | Mount Options                              | Typical Usage     | Note          |
+|-----------------|-------------|------|-----------|--------------------------------------------|-------------------|---------------|
+| sda (2 TB NVMe) |             | EFI  | 512 MB    |                                            |                   | FAT32         |
+|                 |             | SWAP | 128 GB    |                                            |                   | 128 GB memory |
+|                 | /           | EXT4 | 256 GB    | noatime, nodiratime                        | standard          |               |
+|                 | /tmp        | EXT4 | 256 GB    | noatime, nodiratime, nodev, nosuid, noexec | news              |               |
+|                 | /var        | EXT4 | 256 GB    | noatime, nodiratime, nodev, nosuid         | news              |               |
+|                 | /opt        | EXT4 | 256 GB    | noatime, nodiratime, nodev                 | largefile         |               |
+|                 | /usr/local  | EXT4 | 256 GB    | noatime, nodiratime, nodev                 | largefile         |               |
+|                 | /home       | EXT4 | remaining | noatime, nodiratime, nodev, nosuid         | standard          |               |
+| RAID10          | /samba      | EXT4 | 32 TB     | relatime, nodev, nosuid, noexec            | largefile4        |               |
 
 Finally it lets you review the partitions. Scroll to the bottom of the review list, choose `Finish partitioning and write changes to disk`.
 
