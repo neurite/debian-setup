@@ -23,22 +23,22 @@ The second reason is about installing a customized, lightweight desktop. Like di
 13. `Partition disks`.
     * Choose `Manual` and see [manual disk partitions](0201-partitions.md) for detailed steps and information.
     * Or, for the simple cases such as setting up a VM, choose `Guided - use entire disk`.
-14. `Install the base system`
-    * kernel: `linux-image-amd-64` (this installs the same version but free to upgrade to newer kernel versions while the other option locks down the kernel to a particular version)
-    * initrd (initial ram disk): `generic (all available drivers)`
-15. `Configure the package manager`
-    * Use network mirror: Yes
+14. `Install the base system`.
+    * kernel: `linux-image-amd-64` (this installs the same version but free to upgrade to newer kernel versions while the other option with specific version numbers locks down the kernel to a particular version).
+    * initrd (initial ram disk): `generic (all available drivers)`.
+15. `Configure the package manager`.
+    * Use a network mirror: Yes
     * Protocol: https
     * Country: US
     * Mirror: (choose a good one that is near you, e.g. `mirrors.ocf.berkeley.edu`)
-    * Use non-free software: Yes (which implies also using contrib software). If, for example, you need to install NVIDIA packages, you must say yes to non-free
+    * Use non-free firmware: Yes. This is needed for installing e.g. Intel, AMD, or NVIDIA video drivers.
+    * Use non-free software: Yes (which implies also using contrib software). If, for example, you need to install the NVIDIA packages, you must say yes to non-free
     * Use contrib software: Yes
     * Enable source repositories in APT: No
     * Services to use: `security updates`, `release updates`, and also check `backported software`
 16. `Select and install software`
     * Updates management on this system: No automatic updates (we don't want model tranining to be interrupted for example)
     * Package usage survey: No
-    * Should man and mandb be installed 'setuid man': No
     * Choose only `standard system utilities`, which includes bzip2, ca-certificates, dbus, dpkg, less, perl, python, openssl, etc.
     * Note, if you want to install a customized desktop, make sure **do not select any desktop environment**. We will install a lightweight desktop at a later stage. For example, [a GNOME desktop reduced to the core](0303-gnome.md).
 17. `Install the GRUB boot loader`
