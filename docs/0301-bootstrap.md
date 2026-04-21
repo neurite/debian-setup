@@ -12,7 +12,6 @@
 8. Linear algebra libraries
 9. vim with Python 3 support
 10. OpenJDK - optional
-11. conda - opitonal
 
 ### Execute the bootstrap script
 
@@ -37,7 +36,6 @@ Options
 ```bash
     --add-cjk-fonts     Install CJK (Chinese, Japanese, Korean) fonts
     --add-jdk           Install the recommended version of JDK
-    --add-conda         Install conda
     -h, --help          Show this help message
 ```
 
@@ -47,10 +45,9 @@ Options
 2. `gcc --version`
 3. `g++ --version`
 4. `vim --version`, check for Python 3 support
-5. `conda --version`
+5. `fc-list`
 6. `java -version`, note the non-standard way of the java command, 1 dash only
-7. `fc-list`
+
 
 **Next step: [nvidia](0302-nvidia.md)**
-
 
