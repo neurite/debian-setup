@@ -47,6 +47,4 @@ The second reason is about installing a customized, lightweight desktop. Like di
     * Set the system clock to UTC: Yes
     * Reboot
 
-Edit package sources `sudo vi /etc/apt/sources.list`. Since we will not use the USB disk for updates and we have chosen to use network for updates, comment out the line that starts with `deb cdrom:[Debian GNU/Linux ...`.
-
 **Next step: [Bootstrap](0301-bootstrap.md)**
