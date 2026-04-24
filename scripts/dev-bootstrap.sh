@@ -205,9 +205,21 @@ apt-get -q -y install dkms
 
 # vim
 # ==================
+#
+# If you don't actually need the GTK3 GUI but do want Python 3 scripting support
+# (e.g. for plugins like YouCompleteMe or others), vim-nox is a lighter alternative.
+#
+# * Syntax highlighting for Python 3 files is handled by Vim's runtime files —
+#   specifically, the vim-runtime package, which contains language-specific syntax
+#   highlighting rules. This works regardless of which vim binary you install,
+#   and yes, the plain vim package pulls in vim-runtime and will highlight .py files
+#   just fine.
+# * Python 3 scripting support (the +python3 compile flag) means Vim itself can execute
+#   Python 3 code — used by certain plugins (like YouCompleteMe, UltiSnips, etc.) that
+#   embed Python logic inside Vim. This is what requires vim-gtk3 or vim-nox.
 apt-get -q -y purge vim
 apt-get -q -y purge vim-tiny
-apt-get -q -y install vim-gtk3
+apt-get -q -y install vim-nox
 
 # Java
 # ==================
