@@ -34,9 +34,9 @@ bash /home/<usr>/Workspace/debian-setup/scripts/dev-bootstrap.sh
 
 Options
 ```bash
-    --add-cjk-fonts     Install CJK (Chinese, Japanese, Korean) fonts
-    --add-jdk           Install the recommended version of JDK
-    -h, --help          Show this help message
+    --add-cjk   Install CJK (Chinese, Japanese, Korean) fonts
+    --add-jdk   Install the recommended version of JDK
+    -h, --help  Show this help message
 ```
 
 ### Verify
