@@ -8,10 +8,11 @@
     * [Other sources](#other-sources)
     * [Compatible hardware](#compatible-hardware)
   * [Installation](#installation)
-    * [Linux headers](#1-linux-headers)
-    * [DKMS](#2-dkms)
-    * [Graphics drivers](#3-graphics-drivers)
-    * [CUDA toolkit](#4-cuda-toolkit)
+    * [Prerequisites](#1-prerequisites)
+    * [Linux headers](#2-linux-headers)
+    * [DKMS](#3-dkms)
+    * [Graphics drivers](#4-graphics-drivers)
+    * [CUDA toolkit and cuDNN](#5-cuda-toolkit-and-cudnn)
   * [Conda for CUDA and cuDNN](#conda-for-cuda-and-cudnn)
 
 
@@ -69,7 +70,6 @@ First, choose the version of the graphics driver that is compatible with the GPU
 | bookworm           | [nvidia-driver 535.261.03](https://packages.debian.org/bookworm/nvidia-driver)            | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/535.261.03/README/supportedchips.html)  | Geforce RTX 40xx          |
 | bullseye           | [nvidia-driver 470.256.02](https://packages.debian.org/bullseye/nvidia-driver)            | [supported devices](https://us.download.nvidia.com/XFree86/Linux-x86_64/470.256.02/README/supportedchips.html)  | Geforce RTX 30xx          |
 
-
 Second, it is critical that CUDA is supported by a **compatible graphics driver**. Here is a table copied from NVIDIA's release nots of [CUDA toolkit components](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#major-components):
 
 | CUDA Toolkit                | Linux x86_64 Driver Version | Windows x86_64 Driver Version |
@@ -92,14 +92,25 @@ When installing CUDA and cuDNN, you might need to lock down the versions to obta
 
 ### Installation
 
-#### 1. Linux headers
+[Debian Wiki about NVIDIA graphics drivers](https://wiki.debian.org/NvidiaGraphicsDrivers#debian-drivers)
+
+#### 1. Prerequisites
+
+  * Check if NVIDIA cards are installed `lspci | grep -i nvidia`
+  * When you configure the package manager during installation, you should enable non-free software and non-free firmware. Otherwise, edit `etc/apt/sources.list` to add them
+
+```
+deb http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
+deb http://security.debian.org/debian-security/ trixie-security main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ trixie-backports main contrib non-free non-free-firmware
+```
+
+#### 2. Linux headers
 
 NVIDIA installs into the kernel tree. In order to do that, Linux headers are needed. **It is important we install the exact version of Linux headers**. Thus this better be done manually and separately.
 
-First do a quick verification before install:
-
-* Verify NVIDIA graphics is installed and is recognized in the system `lspci | grep -i nvidia`
-* Verify Linux kernel `uname -r` and architecture `uname -m`
+First, verify Linux kernel `uname -r` and architecture `uname -m`
 
 To list the linux-headers packages already installed:
 
@@ -113,9 +124,15 @@ Then to install the Linux headers:
 sudo apt-get install linux-headers-$(uname -r | sed 's/[^-]*-[^-]*-//')
 ```
 
-The command `uname -r | sed 's/[^-]*-[^-]*-//'` output `amd64`. The package `linux-headers-amd64` is the architecture-specific meta-package. The package manager points it to the package of the correct kernel version, for example, `linux-headers-4.19.0-10-amd64`. So in the list of packages to be installed, double check there is `linux-headers-4.19.0-10-amd64` where the `4.19.0-10-amd64` part should match the kernel of your system.
+On my desktop, the command `uname -r | sed 's/[^-]*-[^-]*-//'` outputs `amd64`. So the above command is equivalent to:
 
-#### 2. DKMS
+```bash
+sudo apt-get install linux-headers-amd64
+```
+
+The package `linux-headers-amd64` is the architecture-specific meta-package. The package manager points it to the package of the correct kernel version, for example, `linux-headers-6.12.74+deb13+1-amd64`. So in the list of packages to be installed, double check there is `linux-headers-6.12.74+deb13+1-amd64` where the `6.12.74+deb13+1-amd64` part should match the kernel of your system shown by `uname -r`.
+
+#### 3. DKMS
 
 ```bash
 sudo apt-get install dkms
@@ -123,84 +140,32 @@ sudo apt-get install dkms
 
 The dkms package is singled out to make it clear that NVIDIA installs into the kernel tree. From the Ubuntu documentation, "This DKMS (Dynamic Kernel Module Support) package provides support for installing supplementary versions of kernel modules. The package compiles and installs into the kernel tree." It turns out this package is also required by other software such as VirtulBox, Docker. Thus locking it down as a manual install.
 
-#### 3. Graphics drivers
+#### 4. Graphics drivers
 
-Note the package `nvidia-driver` requires non-free software enabled in `/etc/apt/sources.list`.
+Again, the packages to install at this step require `non-free` and `non-free-firmware` enabled in `/etc/apt/sources.list`.
 
-```bash
-# nvidia-driver 470.103
-sudo apt-get -t bullseye-backports install nvidia-driver nvidia-smi nvidia-persistenced
-```
+In Trixie still, the meta package `nvidia-driver` introduces dependencies to X Server dependencies. The dependencies, however, are incomplete for a desktop workstation as they are missing `xserver-xorg-input-*` for keyboard and mouse, and yet are redundant for a headless ML server.
 
-Or
+So, for the desktop environment, we explicitly include the `xserver-xorg` meta package which will pull in the input drivers. Note X Server may be replaced by Wayland in the future.
 
 ```bash
-# nvidia-driver 460.91
-sudo apt-get install nvidia-driver nvidia-smi nvidia-persistenced
+sudo apt-get install nvidia-driver xserver-xorg
 ```
 
-The `nvidia-driver` metapackage has `nvidia-kernel-dkms`, which should be installed and uninstalled together with other NVIDIA packages. That is to say, do not install `nvidia-kernel-dkms` by itself.
+For the headless server, we install only `nvidia-kernel-dkms`.
 
-The `nvidia-driver` metapackage has a hard dependency to `xserver-xorg-video-nvidia` which in turn depends on `xserver-xorg-core`. Installing `nvidia-driver` pulls in the X server. However, just `xserver-xorg-core` is incomplete; it is missing the input drivers. This is addressed at the step of installing [Gnome](0303-gnome.md) by installing the meta package `xserver-xorg`.
+```bash
+sudo apt-get --no-install-recommends install nvidia-kernel-dkms
+```
 
 In the end, restart to replace nouveau with nvidia. You will be prompted during installation if a reboot is needed.
 
 To verify, `nvidia-smi`.
 
-#### 4. CUDA toolkit
-
-This step is optional as CUDA toolkit can be provided by anaconda.
+#### 5. CUDA toolkit and cuDNN
 
 ```bash
-# nvidia-cuda-toolkit 11.2.2
-sudo apt-get install nvidia-cuda-toolkit
-```
-
-Alternatively, without installing the nvcc compiler (which is included in `nvidia-cuda-toolkit`):
-
-```bash
-# nvidia-cuda-dev 11.2.2
-sudo apt-get install nvidia-cuda-dev
-```
-
-Here is the CUDA toolkit package tree:
-
-```
-    nvidia-cuda-toolkit
-            |
-            |-----> nvidia-cuda-dev
-            |           |
-            |           |-----> libcudart: CUDA runtime
-            |           |
-            |           |-----> libcublas: cuBLAS
-            |           |
-            |           |-----> libnvblas: nvBLAS
-            |           |
-            |           |-----> libcufft: cuFFT
-            |           |
-            |           |-----> libcufftw: cuFFTW
-            |           |
-            |           |-----> libcurand: cuRAND
-            |           |
-            |           |-----> libcusolver: cuSOLVER, LAPACK-like functions
-            |           |
-            |           |-----> libcusparse8.0: cuSPARSE
-            |           |
-            |           |=====> libcuda1 (already a hard dependency)
-            |           |           |
-            |           |           |=====> nvidia-cuda-mps (not installed)
-            |           |
-            |           |-----> libnvvm3 (library used by NVCC)
-            |
-            |-----> libnvvm3
-            |
-            |-----> nvidia-opencl-dev
-            |
-            |-----> nvidia-profiler
-            |
-            |=====> nvidia-cuda-gdb
-            |
-            |=====> nvidia-cuda-doc
+sudo apt-get install nvidia-cuda-toolkit nvidia-cudnn
 ```
 
 To verify, `nvcc --version` should display the CUDA version.
