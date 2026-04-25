@@ -44,44 +44,7 @@ See [Debian Wiki of Environment Variables](https://wiki.debian.org/EnvironmentVa
 
 `cp ~/Workspace/debian-setup/scripts/.vimrc ~/`
 
-There are 3 types of vim packages:
-
-1. [vim-tiny](https://packages.debian.org/stretch/vim-tiny)
-2. [vim](https://packages.debian.org/stretch/vim)
-3. [vim-gtk3](https://packages.debian.org/stretch/vim-gtk3)
-
-The package vim-tiny installs the `vi` binary.
-
-Vim is improved vi. The package vim installs a vanilla `vim` without GUI.
-
-The package vim-gtk3 installs vim with the GTK3 GUI and many other features. The feature I want is the syntax highlighting of Python 3 among other languages.
-
-If you run `vi --version` or `vim --version`, you will see a list of enabled, disabled features. For example, the one below shows python3 is not enabled:
-```
-...
--cryptv         -libcall        -python         -viminfo
--cscope         -linebreak      -python3        -vreplace
--cursorbind     -lispindent     -quickfix       +wildignore
-...
-```
-
-If the ones you want are not enabled, upgrade to the vim package with more features.
-
-The dev bootstrap script esstentially installs the vim-gtk3 package:
-
-```bash
-sudo apt-get purge   vim
-sudo apt-get purge   vim-tiny
-sudo apt-get install vim-gtk3
-```
-
-
-### Conda
-
-`echo "source /opt/conda/etc/profile.d/conda.sh" > ~/.bashrc`
-
-To make `conda activate` available.
-
+The variant [vim-nox](https://packages.debian.org/trixie/vim-nox) is a non-GUI vim that suppors Python 3 scripting.
 
 ### Network Manager
 
@@ -93,7 +56,7 @@ managed=true
 ```
 
 ```bash
-sudo service NetworkManager restart
+sudo systemctl restart NetworkManager
 ```
 
 Wireless has no internet connection. Again edit `/etc/NetworkManager/NetworkManager.conf` and comment out the following like so:
@@ -105,35 +68,9 @@ Wireless has no internet connection. Again edit `/etc/NetworkManager/NetworkMana
 ```
 
 ```bash
-sudo service NetworkManager restart
+sudo systemctl restart NetworkManager
 ```
 
 To configure VPN, install the following:
 
 `sudo apt-get install network-manager-openvpn network-manager-openvpn-gnome`
-
-
-### Upgrade Kernel via Backports (optional)
-
-Kernel upgrade better be done at a early stage of the installation. The earlier the better. Otherwise, recommend backing up the system before the upgrade.
-
-If you want newer versions of NVIDIA software, you may want to upgrade the kernel, as NVIDIA installs into the kernel tree. But double-check NVIDIA does have the compatible versions for the upgraded kernel.
-
-1. `sudo apt-get update`
-2. `sudo apt-get -t bullseye-backports upgrade`
-
-Or, more aggressively, do `dist-upgrade` which replaces old dependencies with new ones.
-
-1. `sudo apt-get update`
-2. `sudo apt-get -t bullseye-backports dist-upgrade`
-
-
-### Tune SSD (optional)
-
-* I/O scheduler (optional, especially the hard disk letter sequence `sdx` is not 100% reliable)
-    1. `cat /sys/block/sda/queue/scheduler` should show `CFQ` as the scheduler
-    2. `sudo vi /etc/rc.local` and add this line `echo noop > /sys/block/sda/queue/scheduler`
-* swappiness (only if we are swapping on the SSD; even better set up swap on a spinning disk)
-    1. `cat /proc/sys/vm/swappiness` should show the default value of 60
-    2. `cat /proc/sys/vm/vfs_cache_pressure` should show the default value of 100
-    3. Edit `/etc/sysctl.conf` and set `vm.swappiness=30` and `vm.vfs_cache_pressure=50`
