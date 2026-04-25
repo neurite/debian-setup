@@ -3,7 +3,7 @@
 There is the [gnome-core](https://packages.debian.org/bullseye/gnome-core) metapackage that can be installed.
 
 ```bash
-sudo apt-get --no-install-recommends install gnome-core
+sudo apt-get install gnome-core
 ```
 
 If `gnome-core` does not look lean enough, the following packages are hand-picked from the gnome-core list:
@@ -29,6 +29,6 @@ sudo apt-get install \
 * [gnome-control-center](https://packages.debian.org/trixie/gnome-control-center) -- The "Settings"
 * [ptyxis](https://packages.debian.org/trixie/ptyxis) -- The terminal emulator
 * [network-mananger-gnome](https://packages.debian.org/trixie/network-manager-gnome) -- Optional, if you want to manage network
-* [pipewire-audio](https://packages.debian.org/trixie/pulseaudio) -- Optional, if you want audio
+* [pipewire-audio](https://packages.debian.org/trixie/pipewire-audio) -- Optional, if you want audio
 
 **Next step: [Browsers](0304-browsers.md)**
