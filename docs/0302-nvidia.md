@@ -92,12 +92,10 @@ When installing CUDA and cuDNN, you might need to lock down the versions to obta
 
 ### Installation
 
-[Debian Wiki about NVIDIA graphics drivers](https://wiki.debian.org/NvidiaGraphicsDrivers#debian-drivers)
-
 #### 1. Prerequisites
 
   * Check if NVIDIA cards are installed `lspci | grep -i nvidia`
-  * When you configure the package manager during installation, you should enable non-free software and non-free firmware. Otherwise, edit `etc/apt/sources.list` to add them
+  * When you configure the package manager during installation, you should enable non-free software and non-free firmware. Otherwise, edit `etc/apt/sources.list` to add them. Your `sources.list` should look like the following:
 
 ```
 deb http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
