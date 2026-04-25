@@ -24,7 +24,7 @@ sudo apt-get --no-install-recommends install \
 * [xserver-xorg](https://packages.debian.org/bullseye/xserver-xorg) -- The X server, input drivers, video drivers
 * [gdm3](https://packages.debian.org/bullseye/gdm3) -- The display manager
 * [gnome-session](https://packages.debian.org/bullseye/gnome-session) -- The session manager
-* [gnome-shell](https://packages.debian.org/bullseye/gnome-shell) -- This points to [Mutter](https://packages.debian.org/bullseye/mutter), the GTK+ window manager
+* [gnome-shell](https://packages.debian.org/bullseye/gnome-shell) -- This points to [Mutter](https://packages.debian.org/trixie/mutter)
 * [gnome-keyring](https://packages.debian.org/bullseye/gnome-keyring), [libpam-gnome-keyring](https://packages.debian.org/bullseye/libpam-gnome-keyring) -- [The GNOM keyring packages](https://wiki.archlinux.org/index.php/GNOME/Keyring)
 * [gnome-control-center](https://packages.debian.org/bullseye/gnome-control-center) -- The "Settings"
 * [gnome-terminal](https://packages.debian.org/bullseye/gnome-terminal) -- The terminal emulator
