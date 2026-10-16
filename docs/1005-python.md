@@ -115,6 +115,55 @@ Packags installed from the source code will be listed under the "<develop>" chan
 Recommend locking down the versions for the target packages. For example, if the project is to use Scrapy to crawl websites, lock down Scrapy `conda install scrapy=2.6.1` or `pip install scrapy==2.6.1`.
 
 
+### Jupyter
+
+Run Jupyter and the project separately in different Python processes. Yet let Jupyter access the running project code. This is indeed similar to how typical IDEs work. See [Stackoverflow question](https://stackoverflow.com/questions/58068818/how-to-use-jupyter-notebooks-in-a-conda-environment). We are following an approach similar to option 3 in the accepted answer.
+
+#### Set up Jupyter
+
+Here are the 3 steps for setting up and running Jupyter:
+
+##### 1. Create a Jupyter environment
+
+```
+conda create --name jupyter python=3.12
+conda activate jupyter
+conda install jupyterlab jupyterlab_widgets nb_conda_kernels
+```
+
+Note the Jupyter evironment is created in the user home `~/.conda/envs` and is meant for any project, any work.
+
+The packages are explained in later sections.
+
+##### 2. Create a project environment
+
+```
+conda create --prefix <project-folder>/envs/<env-name>
+conda activate --prefix <project-folder>/envs/<env-name>
+conda install ipywidgets ipykernel
+```
+
+Remember to add the `evs/` folder to `.gitignore`.
+
+Note the project environment is created within the project folder. It is local to the project. The creation of the project environment can be via scripts that are under the project source control.
+
+##### 3. Load the project kernel in Jupyter
+
+See documentation about [`nb_conda_kernels`](https://github.com/anaconda/nb_conda_kernels). As mentioned in the doc, language kernels other than Python are also possible.
+
+Go to the project root, activate the jupyter environment `conda activate jupyter`, launch `jupyter lab`, then choose the project kernel from the dropdown list.
+
+Note we install `nb_conda_kernels` in the Jupyter environment and we do NOT explicitly install the project kernel. Installing the kernel `ipython kernel install --user --name=project-name` creates a kernel configuration in `~/.local/share/jupyter/kernels`. However, we do NOT use this approach -- it has an issue that the project environment's bin folder is not in PATH. Instead the PATH has the Jupyter environment's bin folder.
+
+#### Jupyter Widgets
+
+Here is a brief explaination of why.
+
+Widgets for interactive UI in the notebooks. It is required to run progress bar properly for example.
+
+See [manual](https://ipywidgets.readthedocs.io/en/latest/user_install.html) for installing `jupyterlab_widgets` in the Jupyter environment and installing `ipywidgets` in the kernel environment.
+
+
 ### IDEs
 
 #### PyCharm
@@ -223,52 +272,3 @@ apt-get -q -y install python3-boto awscli
 # apt-get -q -y install python3-numpy python3-matplotlib python3-scipy
 # apt-get -q -y install python3-pandas
 ```
-
-
-### Jupyter
-
-Run Jupyter and the project separately in different Python processes. Yet let Jupyter access the running project code. This is indeed similar to how typical IDEs work. See [Stackoverflow question](https://stackoverflow.com/questions/58068818/how-to-use-jupyter-notebooks-in-a-conda-environment). We are following an approach similar to option 3 in the accepted answer.
-
-#### Set up Jupyter
-
-Here are the 3 steps for setting up and running Jupyter:
-
-##### 1. Create a Jupyter environment
-
-```
-conda create --name jupyter python=3.12
-conda activate jupyter
-conda install jupyterlab jupyterlab_widgets nb_conda_kernels
-```
-
-Note the Jupyter evironment is created in the user home `~/.conda/envs` and is meant for any project, any work.
-
-The packages are explained in later sections.
-
-##### 2. Create a project environment
-
-```
-conda create --prefix <project-folder>/envs/<env-name>
-conda activate --prefix <project-folder>/envs/<env-name>
-conda install ipywidgets ipykernel
-```
-
-Remember to add the `evs/` folder to `.gitignore`.
-
-Note the project environment is created within the project folder. It is local to the project. The creation of the project environment can be via scripts that are under the project source control.
-
-##### 3. Load the project kernel in Jupyter
-
-See documentation about [`nb_conda_kernels`](https://github.com/anaconda/nb_conda_kernels). As mentioned in the doc, language kernels other than Python are also possible.
-
-Go to the project root, activate the jupyter environment `conda activate jupyter`, launch `jupyter lab`, then choose the project kernel from the dropdown list.
-
-Note we install `nb_conda_kernels` in the Jupyter environment and we do NOT explicitly install the project kernel. Installing the kernel `ipython kernel install --user --name=project-name` creates a kernel configuration in `~/.local/share/jupyter/kernels`. However, we do NOT use this approach -- it has an issue that the project environment's bin folder is not in PATH. Instead the PATH has the Jupyter environment's bin folder.
-
-#### Jupyter Widgets
-
-Here is a brief explaination of why.
-
-Widgets for interactive UI in the notebooks. It is required to run progress bar properly for example.
-
-See [manual](https://ipywidgets.readthedocs.io/en/latest/user_install.html) for installing `jupyterlab_widgets` in the Jupyter environment and installing `ipywidgets` in the kernel environment.
