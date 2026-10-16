@@ -1,3 +1,33 @@
+### Pixi
+
+Recommend pixi for managing Python environments and installing Python packages.
+
+Comparing it with conda, pixi is project-based by default, provides a lockfile by default, and runs fast.
+
+Typical workflows include:
+
+```bash
+# Initialize a Pixi project called coffeemug
+# Run this in ~/Workspace for a brand new project
+pixi init coffeemug
+
+# Within a project, e.g. ~/Workspace/coffeemug, initialize Pixi
+pixi init
+
+# Within a project, e.g. ~/Workspace/coffeemug, install Python packages
+pixi add python=3.15 pytorch torchvision torchaudio transformers
+
+# Maintenance
+# Update pixi
+pixi self-update
+
+# Update the packages in the project
+pixi update
+
+# Upgrade the packages in the project even if they are pinned to specific versions
+pixi upgrade
+```
+
 ### Conda
 
 Conda is the preferred approach for installing Python packages.
