@@ -24,18 +24,18 @@ Alternatively, you can install miniconda manually. Note this installs miniconda 
 
 A conda environment not only creates an isolated, self-contained space for installing packages, but also makes it portable across hosts of the same architecture. There are several ways to create an environment.
 
-Create a Python 3.12 environment with the `--name` option:
+Create a Python 3.15 environment with the `--name` option:
 
 ```bash
-conda create --name coffeemug python=3.12
+conda create --name coffeemug python=3.15
 ```
 
-The above command creates a Python 3.12 environment called `coffeemug`. It is located in the user home by default.
+The above command creates a Python 3.15 environment called `coffeemug`. It is located in the user home by default.
 
-Another way, using the `--prefix` option, creates an environment at a specific location. The following command, *running from the project folder*, creates a Python 3.9 environment within the project's `envs/coffeemug` folder:
+Another way, using the `--prefix` option, creates an environment at a specific location. The following command, *running from the project folder*, creates a Python 3.15 environment within the project's `envs/coffeemug` folder:
 
 ```bash
-conda create --prefix envs/coffeemug python=3.12
+conda create --prefix envs/coffeemug python=3.15
 ```
 
 The directories of the project `coffeemug` look like below:
@@ -54,7 +54,7 @@ The directories of the project `coffeemug` look like below:
 
 This way, each project has its own envs located within its own folder and each project can have multiple envs. The principle is such that relevant stuff are physically close to each other and/or are contained within.
 
-Recommend explicitly specifying the `python` package version when creating a conda environment. As of 2025, use [python 3.12](https://devguide.python.org/versions/) by default.
+Recommend explicitly specifying the `python` package version when creating a conda environment. As of 2026, use [python 3.15](https://devguide.python.org/versions/) by default.
 
 Next, how do we duplicate the environment across machines?
 
@@ -126,7 +126,7 @@ Here are the 3 steps for setting up and running Jupyter:
 ##### 1. Create a Jupyter environment
 
 ```
-conda create --name jupyter python=3.12
+conda create --name jupyter python=3.15
 conda activate jupyter
 conda install jupyterlab jupyterlab_widgets nb_conda_kernels
 ```
