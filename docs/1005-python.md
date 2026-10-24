@@ -4,7 +4,7 @@ Recommend pixi for managing Python environments and installing Python packages.
 
 Comparing it with conda, pixi is project-based by default, provides a lockfile by default, and runs fast.
 
-Typical workflows include:
+#### Typical workflows
 
 ```bash
 # Initialize a Pixi project called coffeemug
@@ -17,16 +17,44 @@ pixi init
 # Within a project, e.g. ~/Workspace/coffeemug, install Python packages
 pixi add python=3.15 pytorch torchvision torchaudio transformers
 
-# Maintenance
+# Show information about pixi and the workspace
+pixi info
+
+# List packages installed in the current project
+pixi list
+
+# Show the packages installed in the current project as a dependency tree
+pixi tree
+
 # Update pixi
 pixi self-update
 
-# Update the packages in the project
+# Update the packages in the current project
 pixi update
 
 # Upgrade the packages in the project even if they are pinned to specific versions
 pixi upgrade
+
 ```
+
+#### JupyterLab as a global tool
+
+```bash
+pixi global install jupyterlab --with jupyterlab_widgets --with pixi-kernel
+```
+
+The above expose the `jupyter-lab` command globally. Under the hood, pixi installs JupyterLab in its own environment and exposes it globally.
+
+On the JupyterLab server side:
+
+  1. `jupyterlab_widgets`: the JupyterLab frontend extension that renders `ipywidgets`
+  2. `pixi-kernel`: it exposes pixi environments as kernels
+
+Run `pixi global tree --environment jupyterlab` to see the complete dependency tree.
+
+Then in each project/kernel env, install `ipykernel` and `ipywidgets`.
+
+Launch JupyterLab, `jupyter-lab`, should see the pixi projects that have `ipykernel` and `ipywidgets` installed. Such pixi project can be loaded into the Jupyter server.
 
 ### Conda
 
