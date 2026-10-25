@@ -7,20 +7,20 @@ Comparing it with conda, pixi is project-based by default, provides a lockfile b
 #### Typical workflows
 
 ```bash
-# Initialize a Pixi project called coffeemug
 # Run this in ~/Workspace for a brand new project
+# Initialize a pixi project called coffeemug
 pixi init coffeemug
 
-# Within a project, e.g. ~/Workspace/coffeemug, initialize Pixi
+# Within an existing project, e.g. ~/Workspace/coffeemug, initialize pixi
 pixi init
 
-# Within a project, e.g. ~/Workspace/coffeemug, install Python packages
+# Install packages in a pixi project, e.g. ~/Workspace/coffeemug
 pixi add python=3.15 pytorch torchvision torchaudio transformers
 
-# Show information about pixi and the workspace
+# Show information about pixi
 pixi info
 
-# List packages installed in the current project
+# List the packages installed in the current project
 pixi list
 
 # Show the packages installed in the current project as a dependency tree
@@ -34,27 +34,40 @@ pixi update
 
 # Upgrade the packages in the project even if they are pinned to specific versions
 pixi upgrade
-
 ```
 
 #### JupyterLab as a global tool
+
+We want to:
+
+  1. Peel off Jupyter from the dependency trees of pixi projects
+  2. Run Jupyter and any particular project as separate processes
+
+With pixi, we can install Jupyter as a global tool and add only very light dependencies, `ipywidgets` and `ipykernel`, in the project.
+
+First, install Jupyter as a global tool.
 
 ```bash
 pixi global install jupyterlab --with jupyterlab_widgets --with pixi-kernel
 ```
 
-The above expose the `jupyter-lab` command globally. Under the hood, pixi installs JupyterLab in its own environment and exposes it globally.
+The above expose the `jupyter-lab` command globally. Under the hood, pixi installs JupyterLab in its own environment and exposes the command globally.
 
-On the JupyterLab server side:
+Of particular note, on the JupyterLab server side:
 
-  1. `jupyterlab_widgets`: the JupyterLab frontend extension that renders `ipywidgets`
-  2. `pixi-kernel`: it exposes pixi environments as kernels
+  1. `jupyterlab_widgets` - the JupyterLab frontend extension that renders `ipywidgets`
+  2. `pixi-kernel` - it exposes pixi environments as kernels
 
-Run `pixi global tree --environment jupyterlab` to see the complete dependency tree.
+Once installed, run `pixi global tree --environment jupyterlab` to see the complete dependency tree of Jupyter. As `jupyterlab_widgets` and `pixi-kernel` are not in the jupyter dependency tree, they are pulled in explicitly.
 
-Then in each project/kernel env, install `ipykernel` and `ipywidgets`.
+Then, in each project/kernel env, install `ipywidgets` and `ipykernel`.
 
-Launch JupyterLab, `jupyter-lab`, should see the pixi projects that have `ipykernel` and `ipywidgets` installed. Such pixi project can be loaded into the Jupyter server.
+```bash
+# Install in a pixi project, e.g. ~/Workspace/coffeemug
+pixi add ipywidgets ipykernel
+```
+
+Launch JupyterLab, `jupyter-lab`. On the browser home page, navigate to the project, e.g. `~/Workspace/coffeemug`.  We can add a Python (Pixi) notebook there. On the notebook, we should be able to import packages installed in the project.
 
 ### Conda
 
