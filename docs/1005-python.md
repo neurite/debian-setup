@@ -34,31 +34,36 @@ pixi update
 
 # Upgrade the packages in the project even if they are pinned to specific versions
 pixi upgrade
+
+# Clean the shared cache of packages
+pixi clean cache
 ```
 
 #### JupyterLab as a global tool
 
 We want to:
 
-  1. Peel off Jupyter from the dependency trees of pixi projects
-  2. Run Jupyter and any particular project as separate processes
+  1. Peel off JupyterLab from the dependency trees of the pixi-managed projects
+  2. Isolate JupyterLab and any particular project by running them as separate processes
 
-With pixi, we can install Jupyter as a global tool and add only very light dependencies, `ipywidgets` and `ipykernel`, in the project.
+With pixi, we can install JupyterLab as a global tool and, while in the pixi managed project, add only very light dependencies, `ipywidgets` and `ipykernel`.
 
-First, install Jupyter as a global tool.
+First, install JupyterLab as a global tool.
 
 ```bash
 pixi global install jupyterlab --with jupyterlab_widgets --with pixi-kernel
 ```
 
-The above expose the `jupyter-lab` command globally. Under the hood, pixi installs JupyterLab in its own environment and exposes the command globally.
+The above expose the `jupyter-lab` command globally. Under the hood, pixi installs JupyterLab in its own environment and exposes the command globally. Once installed, run `pixi global list` to see the installed command.
+
+Note that install `jupyterlab` instead of the meta package `jupyter` as the Jupyter server is what we want here.
 
 Of particular note, on the JupyterLab server side:
 
   1. `jupyterlab_widgets` - the JupyterLab frontend extension that renders `ipywidgets`
   2. `pixi-kernel` - it exposes pixi environments as kernels
 
-Once installed, run `pixi global tree --environment jupyterlab` to see the complete dependency tree of Jupyter. As `jupyterlab_widgets` and `pixi-kernel` are not in the jupyter dependency tree, they are pulled in explicitly.
+Run `pixi global tree --environment jupyterlab` to see the complete dependency tree. As you can see, `jupyterlab_widgets` and `pixi-kernel` are not in the `jupyterlab` dependency tree. So they are pulled in explicitly.
 
 Then, in each project/kernel env, install `ipywidgets` and `ipykernel`.
 
@@ -67,7 +72,7 @@ Then, in each project/kernel env, install `ipywidgets` and `ipykernel`.
 pixi add ipywidgets ipykernel
 ```
 
-Launch JupyterLab, `jupyter-lab`. On the browser home page, navigate to the project, e.g. `~/Workspace/coffeemug`.  We can add a Python (Pixi) notebook there. On the notebook, we should be able to import packages installed in the project.
+Launch JupyterLab, `jupyter-lab`. On the browser home page, navigate to the project, e.g. `~/Workspace/coffeemug`.  We can add a Python (Pixi) notebook there, for example. On the notebook, we should be able to import packages installed in the project.
 
 
 ### Conda
